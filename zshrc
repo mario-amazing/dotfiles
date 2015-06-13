@@ -1,7 +1,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 #export TERM='screen-256color'
-export TERM='xterm-256color'
+#export TERM='xterm-256color'
+export TERM='screen-256color'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -98,3 +99,5 @@ alias gp='git push'
 
 
 alias f=fg
+
+zstyle ':completion:*' rehash true

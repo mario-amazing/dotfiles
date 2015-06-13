@@ -1,3 +1,4 @@
+set t_Co=256
 if !1 | finish | endif
 
 if has('vim_starting')
