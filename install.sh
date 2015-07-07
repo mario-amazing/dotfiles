@@ -51,6 +51,8 @@ git clone git://github.com/tpope/rbenv-aliases.git \
   rbenv install -v 2.2.1
   rbenv global 2.2.1
   rbenv alias --auto
+
+  gem install bundler
 }
 
 
