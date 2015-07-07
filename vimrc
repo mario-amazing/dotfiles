@@ -16,6 +16,8 @@ NeoBundle 'rhysd/vim-clang-format'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'tpope/vim-commentary'
 
+NeoBundle 'terryma/vim-expand-region'
+
 "NeoBundle 'Valloric/YouCompleteMe'
 "NeoBundle 'scrooloose/syntastic'
 " My Bundles here:
