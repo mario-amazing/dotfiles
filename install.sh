@@ -2,6 +2,8 @@ SELF_DIR="$(dirname $0)"
 
 install_pachages() {
   sudo apt-get install -f $@
+  git config --global user.email "megosparta@mail.ru"
+  git config --global user.name  "megosparta"
 }
 
 install_git() {
@@ -57,6 +59,4 @@ install_tmux
 
 install_ruby
 install_term_colors
-
-
 
