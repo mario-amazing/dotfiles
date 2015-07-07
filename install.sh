@@ -55,10 +55,10 @@ git clone git://github.com/tpope/rbenv-aliases.git \
 
 
 install_git
-# install_zsh
-# install_vim
-# install_tmux
+install_zsh
+install_vim
+install_tmux
 
-# install_ruby
-# install_term_colors
+install_ruby
+install_term_colors
 
