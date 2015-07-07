@@ -2,13 +2,15 @@ SELF_DIR="$(dirname $0)"
 
 install_pachages() {
   sudo apt-get install -f $@
-  git config --global user.email "megosparta@mail.ru"
-  git config --global user.name  "megosparta"
 }
 
 install_git() {
   install_pachages git
+  git config --global user.name  "$1"
+  git config --global user.email "$2"
+  git config --global push.default simple
 }
+
 install_tmux() {
   cp "$SELF_DIR/tmux.conf" "$HOME/.tmux.conf"
 }
@@ -53,10 +55,10 @@ git clone git://github.com/tpope/rbenv-aliases.git \
 
 
 install_git
-install_zsh
-install_vim
-install_tmux
+# install_zsh
+# install_vim
+# install_tmux
 
-install_ruby
-install_term_colors
+# install_ruby
+# install_term_colors
 
