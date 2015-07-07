@@ -1,20 +1,8 @@
 set t_Co=256
-if !1 | finish | endif
+set nocompatible
+if has('vim_starting') | set runtimepath+=~/.vim/bundle/neobundle.vim/ | endif
 
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-" Required:
 call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'scrooloose/nerdtree'
@@ -26,6 +14,7 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'rhysd/vim-clang-format'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'tpope/vim-commentary'
 
 "NeoBundle 'Valloric/YouCompleteMe'
 "NeoBundle 'scrooloose/syntastic'

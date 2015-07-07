@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 #export TERM='screen-256color'
 #export TERM='xterm-256color'
-export TERM='screen-256color'
+# export TERM='screen-256color'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -81,8 +81,6 @@ export LANG=en_US.UTF-8
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-[[ -r $rvm_path/scripts/completion ]] 
-
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -101,3 +99,6 @@ alias gp='git push'
 alias f=fg
 
 zstyle ':completion:*' rehash true
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+eval "$(rbenv init -)"
