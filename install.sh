@@ -54,12 +54,19 @@ git clone git://github.com/tpope/rbenv-aliases.git \
 
   gem install bundler
 }
+
 install_numix(){
 sudo add-apt-repository ppa:numix/ppa
 sudo apt-get update
 install_pachages numix-gtk-theme numix-icon-theme-circle
 install_pachages numix-wallpaper-notd
 install_pachages unity-tweak-tool
+}
+
+install_programs(){
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+install_pachages google-chrome-stable
 }
 
 install_git
@@ -70,3 +77,5 @@ install_tmux
 install_ruby
 install_term_colors
 install_numix
+install_programs
+
