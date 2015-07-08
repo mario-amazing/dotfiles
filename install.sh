@@ -54,7 +54,13 @@ git clone git://github.com/tpope/rbenv-aliases.git \
 
   gem install bundler
 }
-
+install_numix(){
+sudo add-apt-repository ppa:numix/ppa
+sudo apt-get update
+sudo apt-get install numix-gtk-theme numix-icon-theme-circle
+sudo apt-get install numix-wallpaper-notd
+sudo apt-get install unity-tweak-tool
+}
 
 install_git
 install_zsh
@@ -63,4 +69,4 @@ install_tmux
 
 install_ruby
 install_term_colors
-
+install_numix
