@@ -1,7 +1,7 @@
 SELF_DIR="$(dirname $0)"
 
 install_pachages() {
-  sudo apt-get install -f $@
+  sudo apt-get install -y $@
 }
 
 install_git() {
@@ -56,7 +56,7 @@ git clone git://github.com/tpope/rbenv-aliases.git \
 }
 
 install_numix(){
-sudo add-apt-repository ppa:numix/ppa
+sudo add-apt-repository -y ppa:numix/ppa
 sudo apt-get update
 install_pachages numix-gtk-theme numix-icon-theme-circle
 install_pachages numix-wallpaper-notd
@@ -64,19 +64,14 @@ install_pachages unity-tweak-tool
 }
 
 install_programs(){
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-install_pachages google-chrome-stable
-install_pachages flashplugin-installer
+install_pachages chromium-browser adobe-flashplugin
 }
 
 install_git
-install_zsh
 install_vim
 install_tmux
-
 install_ruby
 install_term_colors
 install_numix
 install_programs
-
+install_zsh
