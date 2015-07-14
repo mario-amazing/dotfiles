@@ -73,8 +73,7 @@ install_pachages vlc krita  #Video-player and paint
 
 wget -q -O-
 http://download.opensuse.org/repositories/home:olav-st/xUbuntu_14.04/Release.key | sudo apt-key add -  #screen window
-sudo add-apt-repository 'deb
-http://download.opensuse.org/repositories/home:/olav-st/xUbuntu_14.04/ /'
+sudo add-apt-repository 'deb http://download.opensuse.org/repositories/home:/olav-st/xUbuntu_14.04/ /'
 sudo apt-get update && install_pachages screencloud
 
 sudo add-apt-repository -y ppa:me-davidsansome/clementine  #Audio player
