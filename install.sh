@@ -4,6 +4,9 @@ install_pachages() {
   sudo apt-get install -y $@
 }
 
+remove_pachages(){
+ sudo apt-get purge -y $@
+}
 install_git() {
   install_pachages git
   git config --global user.name  "$1"
@@ -57,14 +60,35 @@ git clone git://github.com/tpope/rbenv-aliases.git \
 
 install_numix(){
 sudo add-apt-repository -y ppa:numix/ppa
-sudo apt-get update
-install_pachages numix-gtk-theme numix-icon-theme-circle
-install_pachages numix-wallpaper-notd
+sudo apt-get update && install_pachages numix-gtk-theme numix-icon-theme-circle
 install_pachages unity-tweak-tool
 }
 
 install_programs(){
-install_pachages chromium-browser adobe-flashplugin
+install_pachages ubuntu-restricted-extras   #Flash,java,audio-,video-codecs
+install_pachages chromium-browser pepperflashplugin-nonfree
+install_pachages sni-qt:i386 libdbusmenu-qt2:i386 libqt4-dbus:i386 libxss1:i386 libasound2-plugins:i386
+install_pachages skype
+install_pachages vlc krita  #Video-player and paint
+
+wget -q -O-
+http://download.opensuse.org/repositories/home:olav-st/xUbuntu_14.04/Release.key | sudo apt-key add -  #screen window
+sudo add-apt-repository 'deb
+http://download.opensuse.org/repositories/home:/olav-st/xUbuntu_14.04/ /'
+sudo apt-get update && install_pachages screencloud
+
+sudo add-apt-repository -y ppa:me-davidsansome/clementine  #Audio player
+sudo apt-get update && install_pachages clementine
+}
+
+fix_logs(){
+sudo bash -c "echo 'vm.swappiness=0'>> /etc/sysctl.conf"
+}
+
+remove_programs(){
+remove_pachages zeitgeist zeitgeist-core zeitgeist-datahub gnome-orca unity-webapps-common
+remove_pachages rhythmbox totem totem-common
+remove_pachages empathy empathy-common nautilus-sendto-empathy  #center fast message
 }
 
 install_git
@@ -74,4 +98,6 @@ install_ruby
 install_term_colors
 install_numix
 install_programs
+remove_programs
+fix_logs
 install_zsh
