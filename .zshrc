@@ -97,7 +97,6 @@ alias gp='git push'
 
 alias sudo apt-get install='sudo apt-get install -y'
 alias sudo apt-get add-apt-repository='sudo apt-get add-apt-repository -y'
-
 alias f=fg
 
 zstyle ':completion:*' rehash true
