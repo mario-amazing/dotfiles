@@ -78,6 +78,9 @@ sudo apt-get update && install_pachages screencloud
 
 sudo add-apt-repository -y ppa:me-davidsansome/clementine  #Audio player
 sudo apt-get update && install_pachages clementine
+
+sudo add-apt-repository -y ppa:nilarimogard/webupd8   #Equalizer for fix audio
+sudo apt-get update && install_pachages pulseaudio-equalizer
 }
 
 fix_logs(){
