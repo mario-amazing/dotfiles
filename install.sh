@@ -85,6 +85,7 @@ sudo apt-get update && install_pachages pulseaudio-equalizer
 
 fix_logs(){
 sudo bash -c "echo 'vm.swappiness=0'>> /etc/sysctl.conf"
+sudo bash -c "echo 'SUSPEND_MODULES="xhci-hcd"'>> /etc/pm/config.d/unload_module"
 }
 
 remove_programs(){
