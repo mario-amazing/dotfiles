@@ -16,6 +16,14 @@ NeoBundle 'rhysd/vim-clang-format'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'tpope/vim-commentary'
 
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'Raimondi/delimitMate'
+
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+
 NeoBundle 'terryma/vim-expand-region'
 
 "NeoBundle 'Valloric/YouCompleteMe'
@@ -59,10 +67,14 @@ set mouse=a
 let loaded_matchparen = 1
 scriptencoding utf-8
 syntax on
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 
 let g:syntastic_cpp_compiler_options = '-std=c++0x'
 
@@ -89,6 +101,7 @@ let g:clang_format#style_options = {
             \ "AllowShortIfStatementsOnASingleLine" : "false",
             \ "IndentCaseLabels" : "false"}
 
+set mouse=
 set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -102,6 +115,7 @@ let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#enable_fuzzy_completion = 1
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
@@ -150,7 +164,6 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " AutoComplPop like behavior.
 "let g:neocomplete#enable_auto_select = 1
-
 " Shell like behavior(not recommended).
 "set completeopt+=longest
 "let g:neocomplete#enable_auto_select = 1
@@ -175,17 +188,54 @@ endif
 
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+" let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+let g:neocomplete#enable_ignore_case = 1
 
 nnoremap Q <nop>
 nnoremap Q :q<CR>
 nnoremap <C-s> :w<CR>
 
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
 
+nnoremap <CR> :nohl<CR>
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
 
+hi Visual ctermbg=237
 
+cabbrev tr :call TrimWhiteSpace()
+fu! TrimWhiteSpace()
+  %s/\s\+$//e
+  %s/\n\{3,}/\r\r/e
+  retab
+endf
 
+autocmd VimEnter * if !argc() | NERDTree | endif
 
 nnoremap ; :
 
+nnoremap <C-c> <Esc>
+
+let g:UltiSnipsExpandTrigger             = "<tab>"
+let g:UltiSnipsListSnippets              = "<c-tab>"
+let g:UltiSnipsJumpForwardTrigger        = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger       = "<c-k>"
+
+let g:user_emmet_leader_key = ','
+let mapleader = ','
+
+nnoremap <silent><Leader>t :NERDTreeToggle<CR>
+
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
