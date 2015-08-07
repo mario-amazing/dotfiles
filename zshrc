@@ -97,8 +97,14 @@ alias gp='git push'
 
 alias sudo apt-get install='sudo apt-get install -y'
 alias sudo apt-get add-apt-repository='sudo apt-get add-apt-repository -y'
-
 alias f=fg
+alias si="sudo apt-get install"
+alias bi="bundle install"
+
+alias ez="vim ~/.zshrc"
+alias ev="vim ~/.vimrc"
+
+alias tmux=«TERM=screen-256color tmux»
 
 zstyle ':completion:*' rehash true
 export PATH="$HOME/.rbenv/bin:$PATH"
