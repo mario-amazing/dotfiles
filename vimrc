@@ -25,6 +25,7 @@ NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 
 NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'tpope/vim-fugitive'    "github
 
 "NeoBundle 'Valloric/YouCompleteMe'
 "NeoBundle 'scrooloose/syntastic'
@@ -75,6 +76,7 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+inoremap <C-d> <C-o><Delete>
 
 let g:syntastic_cpp_compiler_options = '-std=c++0x'
 
@@ -88,6 +90,8 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+let g:syntastic_eruby_checkers = ['ruby']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -201,6 +205,8 @@ nnoremap <C-k> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
 
 nnoremap <CR> :nohl<CR>
+au filetype qf nnoremap <buffer>o <CR>zz
+
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
@@ -239,3 +245,8 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup
       \ --ignore .DS_Store
       \ --ignore "**/*.pyc"
       \ -g ""'
+
+function! FixMist()
+  echo "Hello"
+endfunction
+
