@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 #export TERM='screen-256color'
-#export TERM='xterm-256color'
+# export TERM='xterm-256color'
 # export TERM='screen-256color'
 
 # Set name of the theme to load.
@@ -91,22 +91,29 @@ alias t='touch'
 alias md='mkdir'
 alias g='gedit'
 
+alias gi='git init'
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
 
-alias sudo apt-get install='sudo apt-get install -y'
+# alias sudo apt-get install='sudo apt-get install -y'
 alias sudo apt-get add-apt-repository='sudo apt-get add-apt-repository -y'
 alias f=fg
-alias si="sudo apt-get install"
+alias si="sudo apt-get install -y"
 alias bi="bundle install"
 
 alias ez="vim ~/.zshrc"
 alias ev="vim ~/.vimrc"
 
-alias tmux=«TERM=screen-256color tmux»
+# alias tmux=«TERM=screen-256color tmux»
+# alias tmux='tmux attach || tmux new' #save sessions
+tmux_session=common
 
 zstyle ':completion:*' rehash true
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 eval "$(rbenv init -)"
+
+alias rs="bundle exec rails s"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
