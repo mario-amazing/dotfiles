@@ -1,4 +1,6 @@
 SELF_DIR="$(dirname $0)"
+gle-chrome-stable
+gle-chrome-stable
 
 install_pachages() {
   sudo apt-get install -y $@
@@ -26,9 +28,9 @@ install_vim() {
 }
 
 install_zsh() {
+  cp "$SELF_DIR/zshrc" "$HOME/.zshrc"
   install_pachages zsh
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  cp "$SELF_DIR/zshrc" "$HOME/.zshrc"
 }
 
 install_term_colors() {
@@ -70,22 +72,30 @@ install_pachages chromium-browser pepperflashplugin-nonfree
 install_pachages sni-qt:i386 libdbusmenu-qt2:i386 libqt4-dbus:i386 libxss1:i386 libasound2-plugins:i386
 install_pachages skype
 install_pachages vlc krita  #Video-player and paint
+install_pachages clementine
+install_pachages dconf-tools  #configs
+install_pachages preload  #cache the most used programs
 
-wget -q -O-
-http://download.opensuse.org/repositories/home:olav-st/xUbuntu_14.04/Release.key | sudo apt-key add -  #screen window
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+sudo apt-get update && install_pachages google-chrome-stable
+
+wget -q -O- http://download.opensuse.org/repositories/home:olav-st/xUbuntu_14.04/Release.key | sudo apt-key add -  #screen window
 sudo add-apt-repository -y 'deb http://download.opensuse.org/repositories/home:/olav-st/xUbuntu_14.04/ /'
-sudo apt-get update && install_pachages screencloud
-
-sudo add-apt-repository -y ppa:me-davidsansome/clementine  #Audio player
-sudo apt-get update && install_pachages clementine
+sudo apt-get update && install_pachages screencloud	
 
 sudo add-apt-repository -y ppa:nilarimogard/webupd8   #Equalizer for fix audio
 sudo apt-get update && install_pachages pulseaudio-equalizer
+
+sudo add-apt-repository -y ppa:linrunner/tlp    #save energy
+sudo apt-get update && install_pachages tlp tlp-rdw
+sudo tlp start
 }
 
 fix_logs(){
 sudo bash -c "echo 'vm.swappiness=0'>> /etc/sysctl.conf"
 sudo bash -c "echo 'SUSPEND_MODULES="xhci-hcd"'>> /etc/pm/config.d/unload_module"
+gsettings set com.canonical.desktop.interface scrollbar-mode normal  #Normal scroll
 }
 
 remove_programs(){
@@ -95,12 +105,12 @@ remove_pachages empathy empathy-common nautilus-sendto-empathy  #center fast mes
 }
 
 install_git
-install_vim
+install_programs
 install_tmux
 install_ruby
 install_term_colors
 install_numix
-install_programs
 remove_programs
 fix_logs
+install_vim
 install_zsh
