@@ -75,6 +75,8 @@ install_pachages vlc krita  #Video-player and paint
 install_pachages clementine
 install_pachages dconf-tools  #configs
 install_pachages preload  #cache the most used programs
+install_pachages nodejs
+install_pachages ncurses-dev #libs-dev
 
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
@@ -102,6 +104,7 @@ remove_programs(){
 remove_pachages zeitgeist zeitgeist-core zeitgeist-datahub gnome-orca unity-webapps-common
 remove_pachages rhythmbox totem totem-common
 remove_pachages empathy empathy-common nautilus-sendto-empathy  #center fast message
+remove_pachages thunderbird
 }
 
 install_git
