@@ -1,6 +1,4 @@
 SELF_DIR="$(dirname $0)"
-gle-chrome-stable
-gle-chrome-stable
 
 install_pachages() {
   sudo apt-get install -y $@
@@ -9,6 +7,7 @@ install_pachages() {
 remove_pachages(){
  sudo apt-get purge -y $@
 }
+
 install_git() {
   install_pachages git
   git config --global user.name  "$1"
@@ -58,6 +57,7 @@ git clone git://github.com/tpope/rbenv-aliases.git \
   rbenv alias --auto
 
   gem install bundler
+  cp "$SELF_DIR/gemspec_template" "$HOME/.gemspec_template"
 }
 
 install_numix(){
