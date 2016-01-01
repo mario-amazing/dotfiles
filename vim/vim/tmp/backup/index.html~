@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mario Sparta - home blog</title>
+</head>
+<body>
+  <header id="main_navigation" class="clearfix">
+    <a class="name" href="#">Mario Sparta</a>
+    <nav>
+      <a href="#">Articles</a>
+      <a href="#">Projects</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+</body>
+</html>

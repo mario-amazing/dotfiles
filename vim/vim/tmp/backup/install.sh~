@@ -24,13 +24,10 @@ install_tmux() {
 }
 
 install_vim() {
-  sudo add-apt-repository -y ppa:neovim-ppa/unstable
-  sudo apt-get update
-  install_pachages vim-gnome neovim
-  install_pachages software-properties-common exuberant-ctags
+  install_pachages vim-gnome
+  sudo apt-get install exuberant-ctags
   curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
-  cp "$SELF_DIR/vimrc/vimrc" "$HOME/.vimrc"
-  cp -r "$SELF_DIR/vimrc/vim" "$HOME/.vim"
+  cp "$SELF_DIR/vimrc" "$HOME/.vimrc"
   vim +NeoBundleInstall +qall
 }
 
