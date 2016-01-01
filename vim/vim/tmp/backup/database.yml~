@@ -1,0 +1,8 @@
+development:
+  host: localhost
+  adapter: mysql
+  encoding: utf-8
+  database: pushkin_dev
+  pool: 5
+  username: root
+  password: 123

@@ -1,0 +1,5 @@
+require_relative 'lib/quiz'
+require 'rake'
+$stdout.sync = true
+
+run Quiz.new
