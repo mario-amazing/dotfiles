@@ -194,8 +194,11 @@ vnoremap <S-y> ygv
 imap <C-h> <BS>
 imap <C-h> <BS>
 
-xmap <leader>n <Plug>NrrwrgnDo
-nmap <leader>n <Plug>NrrwrgnDo
+" xmap <leader>n <Plug>NrrwrgnDo
+" nmap <leader>n <Plug>NrrwrgnDo
+
+nmap <leader>n :call emmet#moveNextPrev(0)
+nmap <leader>N :call emmet#moveNextPrev(1)
 
 nmap <M-k> <Plug>(textmanip-move-up)==
 nmap <M-j> <Plug>(textmanip-move-down)==
