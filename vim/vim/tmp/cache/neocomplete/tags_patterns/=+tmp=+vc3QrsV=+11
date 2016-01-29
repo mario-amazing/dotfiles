@@ -1,4 +1,0 @@
-sh
-$dummy$
-
-[[:alpha:]_.-][[:alnum:]_.-]*
