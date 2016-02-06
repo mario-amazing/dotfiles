@@ -83,7 +83,7 @@ cmap     <c-o> <Plug>(unite_cmdmatch_complete)
 
   " ,motion
   nnoremap <C-t> :tabnew<CR>
-  nnoremap <silent> <C-i> <C-i>zz
+  " nnoremap <silent> <C-i> <C-i>zz
   nnoremap <silent> <C-o> <C-o>zz
   map <C-\>123123123 <Plug>(easymotion-prefix)
   " nmap <C-g>/ <Plug>(easymotion-sn)
@@ -197,8 +197,8 @@ imap <C-h> <BS>
 " xmap <leader>n <Plug>NrrwrgnDo
 " nmap <leader>n <Plug>NrrwrgnDo
 
-nmap <leader>n :call emmet#moveNextPrev(0)
-nmap <leader>N :call emmet#moveNextPrev(1)
+nmap <leader>n :call emmet#moveNextPrev(0)<cr>
+nmap <leader>N :call emmet#moveNextPrev(1)<cr>
 
 nmap <M-k> <Plug>(textmanip-move-up)==
 nmap <M-j> <Plug>(textmanip-move-down)==
