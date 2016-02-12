@@ -28,8 +28,7 @@ install_vim() {
   sudo apt-get update
   install_pachages vim-gnome neovim
   install_pachages software-properties-common exuberant-ctags
-  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   cp $SELF_DIR/vim/vimrc $HOME/.vimrc
   cp -r $SELF_DIR/vim/* $HOME/.vim
   vim +PlugInstall
