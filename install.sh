@@ -28,16 +28,17 @@ install_vim() {
   sudo apt-get update
   install_pachages vim-gnome neovim
   install_pachages software-properties-common exuberant-ctags
-  curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
-  cp "$SELF_DIR/vimrc/vimrc" "$HOME/.vimrc"
-  cp -r "$SELF_DIR/vimrc/vim" "$HOME/.vim"
-  vim +NeoBundleInstall +qall
+  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  cp $SELF_DIR/vim/vimrc $HOME/.vimrc
+  cp -r $SELF_DIR/vim/* $HOME/.vim
+  vim +PlugInstall
 }
 
 install_zsh() {
-  cp "$SELF_DIR/zshrc" "$HOME/.zshrc"
   install_pachages zsh
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  cp $SELF_DIR/zshrc $HOME/.zshrc
 }
 
 install_term_colors() {
