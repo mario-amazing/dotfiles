@@ -11,6 +11,12 @@ source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
 
+export HISTSIZE=200000
+export SAVEHIST=200000
+export HISTFILE="$HOME/.zsh_history"
+export SAVEHIST=$HISTSIZE
+setopt hist_ignore_all_dups
+
 # Aliases
 alias x='exit'
 alias v='vim'
@@ -20,14 +26,21 @@ alias t='touch'
 alias md='mkdir'
 alias g='gedit'
 alias p='pry'
+alias mysql='mysql --auto-rehash'
+alias kl='kill -9'
+alias o='xdg-open'
 
 alias gi='git init'
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
 alias gs='git status -s'
+alias gr='git reset'
 alias gcl='git clone'
-alias grр='git reset HEAD'
+alias gpl='git pull'
+alias gsh='git stash'
+alias gco='git checkout'
+
 
 alias sudo apt-get install='sudo apt-get install -y'
 alias sudo apt-get add-apt-repository='sudo apt-get add-apt-repository -y'
@@ -43,7 +56,10 @@ alias ev="vim ~/.vimrc"
 alias rc='rails c'
 alias rs='rails s'
 alias rr='rake routes'
+alias rs2='ruby script/server -u'
+alias rc2='ruby script/console'
 alias rdb='rake db:migrate'
+
 # alias tmux=«TERM=screen-256color tmux»
 # alias tmux='tmux attach || tmux new' #save sessions
 tmux_session=common

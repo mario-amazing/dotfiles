@@ -11,7 +11,10 @@ endif
 
 set mouse=
 
+" set synmaxcol=200
+set noswapfile
 set autoread
+set tags=tags
 
 set nocompatible
 set expandtab
