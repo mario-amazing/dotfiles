@@ -32,7 +32,7 @@ cmap     <c-o> <Plug>(unite_cmdmatch_complete)
   " ,tree
   " let NERDTreeMapJumpNextSibling = "\<C-w>j"
   " let NERDTreeMapJumpPrevSibling = "\<C-w>k"
-  nnoremap <silent> <Leader>t  :NERDTreeTabsToggle<CR>
+  nnoremap <silent> <Leader>t  ::NERDTreeMirrorToggle<CR>
   nnoremap <silent> <Leader>ft :NERDTreeFind<CR>
   nnoremap <C-r>      :Unite -buffer-name=outline -start-insert outline<CR>
 
@@ -116,6 +116,7 @@ cmap     <c-o> <Plug>(unite_cmdmatch_complete)
   map <S-B> <Plug>CamelCaseMotion_b
   map <S-E> <Plug>CamelCaseMotion_e
 
+  "nnoremap <C-l> <C-i>
   nnoremap <Tab>    gt
   nnoremap <S-Tab>  gT
   nnoremap g1 1gt
@@ -297,6 +298,7 @@ nnoremap          <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>l     :lopen<CR>
 nnoremap <Leader>c     :copen<CR>
 nnoremap <Leader><S-c> :Copen<CR>
+vnoremap p "_dP
 
 " #Misc
 nnoremap j gj
