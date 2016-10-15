@@ -1,4 +1,5 @@
-SELF_DIR="$(dirname $0)"
+# SELF_DIR="$(dirname $0)"     # terminal sheme, full size terminal, settings,fix cd and self_dir
+SELF_DIR=$PWD
 
 install_pachages() {
   sudo apt-get install -y $@
@@ -29,8 +30,9 @@ install_vim() {
   install_pachages vim-gnome neovim
   install_pachages software-properties-common exuberant-ctags
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  mkdir $HOME/.vim -p
+  cp -r $SELF_DIR/vim/vim/* $HOME/.vim
   cp $SELF_DIR/vim/vimrc $HOME/.vimrc
-  cp -r $SELF_DIR/vim/* $HOME/.vim
   vim +PlugInstall
 }
 
@@ -46,6 +48,7 @@ install_term_colors() {
   git clone https://github.com/chriskempson/base16-builder.git "$target_dir"
   cd "$target_dir"
   ./base16
+  bash "chmod +x output/gnome-terminal/base16-eighties.dark.sh"
   bash "./output/gnome-terminal/base16-eighties.dark.sh"
   cd "$SELF_DIR"
 }
@@ -93,6 +96,7 @@ install_programs(){
   install_pachages dconf-tools  #configs
   install_pachages preload  #cache the most used programs
   install_pachages nodejs
+  install_pachages npm
   install_pachages ncurses-dev #libs-dev
   install_pachages libpq-dev
   install_pachages silversearcher-ag #ag to ctrl-p plagin
@@ -128,13 +132,15 @@ fix_logs(){
   gsettings set org.gnome.settings-daemon.plugins.power critical-battery-action nothing
   gsettings set org.gnome.settings-daemon.plugins.power percentage-low 25
   gsettings set org.gnome.settings-daemon.plugins.power percentage-critical 5
+  gsettings set org.compiz.integrated show-hud "['']"
+  gsettings set org.gnome.settings-daemon.plugins.media-keys terminator "<Alt>t"
 }
 
 remove_programs(){
   remove_pachages zeitgeist zeitgeist-core zeitgeist-datahub gnome-orca unity-webapps-common
   remove_pachages rhythmbox totem totem-common
   remove_pachages empathy empathy-common nautilus-sendto-empathy  #center fast message
-  remove_pachages thunderbird
+  # remove_pachages thunderbird
 }
 
 install_git
@@ -144,9 +150,9 @@ install_tmux
 install_heroku
 install_ruby
 install_gems
-install_term_colors
 install_numix
 remove_programs
 fix_logs
 install_vim
 install_zsh
+# install_term_colors
