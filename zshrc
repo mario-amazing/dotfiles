@@ -43,6 +43,7 @@ alias ev="vim ~/.vimrc"
 alias rc='rails c'
 alias rs='rails s'
 alias rr='rake routes'
+alias rdb='rake db:migrate'
 # alias tmux=«TERM=screen-256color tmux»
 # alias tmux='tmux attach || tmux new' #save sessions
 tmux_session=common
