@@ -1,0 +1,103 @@
+{
+  "thumbs": [
+    {
+      "url": "http://vk.com/im",
+      "title": "Conversations",
+      "pinned": 1,
+      "visits": 100
+    },
+    {
+      "url": "https://e.mail.ru/messages",
+      "title": "Входящие - megosparta@mail.ru - Почта Mail.Ru",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
+      "url": "https://github.com/megosparta",
+      "title": "megosparta (Mario)",
+      "pinned": 1,
+      "visits": 77
+    },
+    {
+      "url": "http://readmanga.me/",
+      "title": "Читать мангу на Русском онлайн. Свежие переводы. Read manga online! - ReadManga.me",
+      "pinned": 1,
+      "visits": 102
+    },
+    {
+      "url": "https://www.youtube.com/",
+      "title": "YouTube",
+      "pinned": 1,
+      "visits": 100
+    },
+    {
+      "url": "http://www.onliner.by/",
+      "title": "Onliner.by",
+      "pinned": 1,
+      "visits": 100
+    },
+    {
+      "url": "https://translate.google.by/",
+      "title": "Переводчик Google",
+      "pinned": 1,
+      "visits": 77
+    },
+    {
+      "url": "http://rubygems.org/",
+      "title": "RubyGems.org | your community gem host",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
+      "url": "http://manga24.ru/",
+      "title": "Манга! Манга онлайн на русском языке, читать мангу.",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
+      "url": "http://localhost:3000/",
+      "title": "TRPO",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
+      "url": "http://lingualeo.com/",
+      "title": "Lingualeo — английский язык онлайн",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
+      "url": "http://musicforprogramming.net/?zero",
+      "title": "musicForProgramming(\"00: _manifesto\");",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
+      "url": "http://centerv.by:8181/root/crm.centerv.by",
+      "title": "Administrator / crm.centerv.by · GitLab",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
+      "url": "https://centervby.slack.com/",
+      "title": "centerv.by Slack",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
+      "url": "http://crm1.centerv.by:3000/",
+      "pinned": 1,
+      "visits": 0
+    }
+  ],
+  "settings": {
+    "showBookmarks": false,
+    "showSearchForm": true,
+    "showAdvertisement": false,
+    "showInformers": true,
+    "uiThumbsType": 1,
+    "geolocation": false,
+    "sendUsageStat": false,
+    "backgroundRotation": true
+  }
+}

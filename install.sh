@@ -1,16 +1,25 @@
 # SELF_DIR="$(dirname $0)"     # terminal sheme, full size terminal, settings,fix cd and self_dir
 SELF_DIR=$PWD
 
+copy(){
+  yes | cp -f $@
+}
+
 install_pachages() {
-  sudo apt-get install -y $@
+  for i in $@; do
+    sudo apt-get install -y $i
+  done
 }
 
 remove_pachages(){
-  sudo apt-get purge -y $@
+  for i in $@; do
+    sudo apt-get purge -y $i
+  done
 }
 
 install_git() {
   install_pachages git
+  git config --global color.ui true
   git config --global user.name  "$1"
   git config --global user.email "$2"
   git config --global push.default simple
@@ -21,7 +30,7 @@ install_heroku() {
 }
 
 install_tmux() {
-  cp "$SELF_DIR/tmux.conf" "$HOME/.tmux.conf"
+  copy "$SELF_DIR/tmux.conf" "$HOME/.tmux.conf"
 }
 
 install_vim() {
@@ -31,15 +40,22 @@ install_vim() {
   install_pachages software-properties-common exuberant-ctags
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   mkdir $HOME/.vim -p
-  cp -r $SELF_DIR/vim/vim/* $HOME/.vim
-  cp $SELF_DIR/vim/vimrc $HOME/.vimrc
-  vim +PlugInstall
+  copy -r $SELF_DIR/vim/vim/* $HOME/.vim
+  copy $SELF_DIR/vim/vimrc $HOME/.vimrc
+  yes | vim +PlugInstall
 }
 
 install_zsh() {
-  install_pachages zsh
-  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  cp $SELF_DIR/zshrc $HOME/.zshrc
+  install_pachages zsh git-core
+  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"  
+  chsh -s `which zsh` && copy $SELF_DIR/zshrc $HOME/.zshrc
+}
+
+install_terminator() {
+  sudo add-apt-repository -y ppa:gnome-terminator/nightly
+  sudo apt-get update && install_pachages terminator
+  mkdir $HOME/.config/terminator -p
+  copy $SELF_DIR/terminator/config $HOME/.config/terminator/
 }
 
 install_term_colors() {
@@ -63,26 +79,29 @@ install_ruby() {
   export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
   eval "$(rbenv init -)"
 
-  rbenv install -v 2.2.1
-  rbenv global 2.2.1
+  rbenv install -v 2.3.0
+  rbenv global 2.3.0
   rbenv alias --auto
 
-  cp "$SELF_DIR/pryrc" "$HOME/.pryrc"
-  cp "$SELF_DIR/irbrc" "$HOME/.irbrc"
-  cp "$SELF_DIR/gemspec_template" "$HOME/.gemspec_template"
+  copy "$SELF_DIR/pryrc" "$HOME/.pryrc"
+  copy "$SELF_DIR/irbrc" "$HOME/.irbrc"
+  copy "$SELF_DIR/gemspec_template" "$HOME/.gemspec_template"
+
+  sudo apt-get install postgresql postgresql-contrib
 }
 
 install_gems() {
   gem install bundler
   gem install pry
+  gem install pry-rails
   gem install interactive_editor
   gem install awesome_print
 }
 
 install_numix(){
   sudo add-apt-repository -y ppa:numix/ppa
-  sudo apt-get update && install_pachages numix-gtk-theme numix-icon-theme-circle
-  install_pachages unity-tweak-tool
+  sudo apt-get update && install_pachages numix-gtk-theme numix-icon-theme-circle numix-wallpaper-*
+  install_pachages unity-tweak-tool gnome-tweak-tool
 }
 
 install_programs(){
@@ -100,13 +119,18 @@ install_programs(){
   install_pachages ncurses-dev #libs-dev
   install_pachages libpq-dev
   install_pachages silversearcher-ag #ag to ctrl-p plagin
+  cd /tmp
 
+  install_pachages gdebi
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
   sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
   sudo apt-get update && install_pachages google-chrome-stable
 
-  wget -q -O- http://download.opensuse.org/repositories/home:olav-st/xUbuntu_14.04/Release.key | sudo apt-key add -  #screen window
-  sudo add-apt-repository -y 'deb http://download.opensuse.org/repositories/home:/olav-st/xUbuntu_14.04/ /'
+  wget http://de.archive.ubuntu.com/ubuntu/pool/universe/q/qtmobility/libqtmultimediakit1_1.2.0-1ubuntu2_amd64.deb  #screen window
+  sudo dpkg -i libqtmultimediakit1_1.2.0-1ubuntu2_amd64.deb
+  sudo apt-get install -f
+  wget http://download.opensuse.org/repositories/home:olav-st/xUbuntu_16.04/Release.key | sudo apt-key add -
+  sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/olav-st/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/screencloud.list"
   sudo apt-get update && install_pachages screencloud	
 
   sudo add-apt-repository -y ppa:nilarimogard/webupd8   #Equalizer for fix audio
@@ -115,6 +139,13 @@ install_programs(){
   sudo add-apt-repository -y ppa:linrunner/tlp    #save energy
   sudo apt-get update && install_pachages tlp tlp-rdw
   sudo tlp start
+  
+  sudo dpkg --add-architecture i386 && sudo apt-get update #teamviewer
+  install_pachages libdbus-1-3:i386 libasound2:i386 libexpat1:i386 libfontconfig1:i386 libfreetype6:i386 libjpeg62:i386 libpng12-0:i386 libsm6:i386 libxdamage1:i386 libxext6:i386 libxfixes3:i386 libxinerama1:i386 libxrandr2:i386 libxrender1:i386 libxtst6:i386 zlib1g:i386 libc6:i386
+  wget http://download.teamviewer.com/download/teamviewer_i386.deb
+  yes | sudo gdebi teamviewer*.deb
+  sudo dpkg --remove-architecture i386
+  cd "$SELF_DIR"
 }
 
 install_steam() {
@@ -133,7 +164,7 @@ fix_logs(){
   gsettings set org.gnome.settings-daemon.plugins.power percentage-low 25
   gsettings set org.gnome.settings-daemon.plugins.power percentage-critical 5
   gsettings set org.compiz.integrated show-hud "['']"
-  gsettings set org.gnome.settings-daemon.plugins.media-keys terminator "<Alt>t"
+  gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "<Alt>t"
 }
 
 remove_programs(){
@@ -144,15 +175,16 @@ remove_programs(){
 }
 
 install_git
-install_programs
 install_steam
-install_tmux
+install_programs
+#install_tmux
 install_heroku
 install_ruby
 install_gems
 install_numix
+install_term_colors
 remove_programs
 fix_logs
+install_terminator
 install_vim
 install_zsh
-# install_term_colors
