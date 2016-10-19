@@ -23,6 +23,7 @@ install_git() {
   git config --global user.name  "$1"
   git config --global user.email "$2"
   git config --global push.default simple
+  copy $SELF_DIR/gitignore_global $HOME/.gitignore_global
 }
 
 install_heroku() {
@@ -47,7 +48,7 @@ install_vim() {
 
 install_zsh() {
   install_pachages zsh git-core
-  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"  
+  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   chsh -s `which zsh` && copy $SELF_DIR/zshrc $HOME/.zshrc
 }
 
@@ -129,9 +130,9 @@ install_programs(){
   wget http://de.archive.ubuntu.com/ubuntu/pool/universe/q/qtmobility/libqtmultimediakit1_1.2.0-1ubuntu2_amd64.deb  #screen window
   sudo dpkg -i libqtmultimediakit1_1.2.0-1ubuntu2_amd64.deb
   sudo apt-get install -f
-  wget http://download.opensuse.org/repositories/home:olav-st/xUbuntu_16.04/Release.key | sudo apt-key add -
-  sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/olav-st/xUbuntu_16.04/ /' > /etc/apt/sources.list.d/screencloud.list"
-  sudo apt-get update && install_pachages screencloud	
+  wget http://download.opensuse.org/repositories/home:olav-st/xUbuntu_14.04/Release.key | sudo apt-key add -
+  sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/olav-st/xUbuntu_14.04/ /' > /etc/apt/sources.list.d/screencloud.list"
+  sudo apt-get update && install_pachages screencloud
 
   sudo add-apt-repository -y ppa:nilarimogard/webupd8   #Equalizer for fix audio
   sudo apt-get update && install_pachages pulseaudio-equalizer

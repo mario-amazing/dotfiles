@@ -1,5 +1,6 @@
 [global_config]
-  enabled_plugins = CustomCommandsMenu, LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
+  dbus = False
+  enabled_plugins = CustomCommandsMenu, InactivityWatch, TestPlugin, ActivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, Logger, MavenPluginURLHandler, LaunchpadBugURLHandler
   handle_size = 0
   inactive_color_offset = 1.0
   suppress_multiple_term_dialog = True
@@ -9,6 +10,7 @@
   title_transmit_bg_color = "#000000"
   window_state = maximise
 [keybindings]
+  help = None
   layout_launcher = None
 [layouts]
   highlight = copy
@@ -27,6 +29,7 @@
     background_color = "#1c1c1c"
     background_image = None
     copy_on_selection = True
+    cursor_color = "#cacdcd"
     foreground_color = "#cacdcd"
     login_shell = True
     palette = "#1c1c1c:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
