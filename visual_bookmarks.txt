@@ -73,8 +73,8 @@
       "visits": 0
     },
     {
-      "url": "http://centerv.by:8181/root/crm.centerv.by",
-      "title": "Administrator / crm.centerv.by · GitLab",
+      "url": "http://gitlab.centerv.by/",
+      "title": "Projects · Dashboard · GitLab",
       "pinned": 1,
       "visits": 0
     },
@@ -86,6 +86,7 @@
     },
     {
       "url": "http://crm1.centerv.by:3000/",
+      "title": "Центр внедрений - CRM",
       "pinned": 1,
       "visits": 0
     }
