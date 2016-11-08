@@ -19,8 +19,8 @@ setopt hist_ignore_all_dups
 
 # Aliases
 alias x='exit'
-alias v='vim'
-alias sv="sudo vim"
+alias v='nvim'
+alias sv="sudo nvim"
 alias s='subl'
 alias t='touch'
 alias md='mkdir'
@@ -29,17 +29,27 @@ alias p='pry'
 alias mysql='mysql --auto-rehash'
 alias kl='kill -9'
 alias o='xdg-open'
+alias ctg='ctags -R --exclude=.git --exclude=log -f tmp/tags *'
+
+alias ls='ls --color=auto'
 
 alias gi='git init'
 alias ga='git add'
-alias gc='git commit'
+alias gc='git commit -m'
+alias gca='git commit --amend'
+alias gcam='git commit --amend -m'
+alias gcmf='git commit -m "Minor fix"'
+alias gcmfs='git commit -m "Minor fixes"'
 alias gp='git push'
 alias gs='git status -s'
 alias gr='git reset'
 alias gcl='git clone'
-alias gpl='git pull'
+alias gpl='git pull --rebase'
 alias gsh='git stash'
+alias gsha='git stash apply'
 alias gco='git checkout'
+
+alias gl="git log --date-order --date=iso --graph --full-history --all --pretty=format:'%x08%x09%C(red)%h %C(cyan)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08 %C(bold blue)%<(10)%aN%C(reset) %C(reset)%<(70,trunc)%s%C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset) '"
 
 
 alias sudo apt-get install='sudo apt-get install -y'
@@ -75,3 +85,5 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

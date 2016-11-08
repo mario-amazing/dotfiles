@@ -46,12 +46,22 @@ install_vim() {
   sudo add-apt-repository -y ppa:neovim-ppa/unstable
   sudo apt-get update
   install_pachages vim-gnome neovim
+  install_pachages python-neovim python3-neovim python-pip python3-pip python-pip python-dev python3-dev
   install_pachages software-properties-common exuberant-ctags
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   mkdir $HOME/.vim -p
   copy -r $SELF_DIR/vim/vim/* $HOME/.vim
   copy $SELF_DIR/vim/vimrc $HOME/.vimrc
+  mkdir ~/.config
+  ln -s ~/.vim ~/.config/nvim
+  ln -s ~/.vimrc ~/.config/nvim/init.vim
   yes | vim +PlugInstall
+}
+
+install_fonts() {
+  mkdir $HOME/.fonts -p
+  copy -r $SELF_DIR/fonts/* $HOME/.fonts
+  fc-cache
 }
 
 install_zsh() {
@@ -106,6 +116,7 @@ install_gems() {
   gem install pry-rails
   gem install interactive_editor
   gem install awesome_print
+  gem install neovim
 }
 
 install_numix(){
@@ -197,7 +208,7 @@ install_vim
 install_steam
 install_git
 install_programs
-#install_tmux
+install_fonts
 install_heroku
 install_ruby
 install_gems
