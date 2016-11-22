@@ -14,10 +14,10 @@ let g:neocomplete#sources#omni#min_keyword_length = 3
 
 
 " let g:monster#completion#rcodetools#backend = "async_rct_complete"
-let g:neocomplete#sources#omni#input_patterns = {
-      \ 'ruby': '[^. \t].\w|\h\w*::',
-      \ 'css': '^\s\+\k\+\|\w\+[):;]\?\s\+\k*\|[@!]'
-      \}
+" let g:neocomplete#sources#omni#input_patterns = {
+"       \ 'css': '^\s\+\k\+\|\w\+[):;]\?\s\+\k*\|[@!]'
+"       \}
+      " \ 'ruby': '[^. \t].\w|\h\w*::',
 
 if !exists('g:neocomplete#force_omni_input_patterns')
   let g:neocomplete#force_omni_input_patterns = {}
@@ -27,8 +27,8 @@ endif
 " ,neocomplete
 
 
-let g:neocomplete#sources = {}
-let g:neocomplete#sources._ = ['rubymf', 'file', 'tag', 'file/include', 'dictionary', 'omni', 'syntax', 'member', 'buffer', 'ultisnips']
+" let g:neocomplete#sources = {}
+" let g:neocomplete#sources._ = ['rubymf', 'file', 'tag', 'file/include', 'dictionary', 'omni', 'syntax', 'member', 'buffer', 'ultisnips']
 " let g:neocomplete#sources._ = ['buffer', 'member', 'tag', 'dictionary', 'file', 'omni']
 " let g:neocomplete#sources.ruby = ['buffer', 'member', 'tag', 'dictionary', 'file', 'omni', 'UltiSnips']
 

@@ -1,15 +1,34 @@
+if !has("autocmd")
+  finish
+endif
 
 if &t_Co > 2 || has("gui_running") | syntax on | endif
 
 augroup FiletypeAutocommands
   au!
-  au FileType eruby,css,scss,sass setlocal iskeyword+=-
+  au FileType html,eruby,css,scss,sass setlocal iskeyword+=-
   au BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in runtime! indent/cmake.vim
   au BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
+  au FileType cmake setlocal commentstring=#\ %s
+
+  au FileType slim let &commentstring = '/ %s'
+
+  au BufRead,BufNewFile *.vspec setlocal filetype=vim
+  au BufRead,BufNewFile *.vspec nnoremap <buffer> <leader>rt :!vspec . %<CR>
+
+
+  au BufRead,BufNewFile *.jbuilder setlocal ft=ruby
+
+  au FileType git,GV setlocal nolist nowrap nonumber
+
+  au FileType go setlocal nolist
+  au FileType css,scss setlocal foldmethod=syntax
+  au FileType python setlocal ts=4 sw=4 sts=4 foldmethod=indent
+
   au BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
   au FileType vimrc setlocal foldmethod=marker ts=2 sw=2 sts=2
   au Filetype c,cpp setlocal ts=4 sw=4 sts=4 cindent foldmethod=syntax
-  au Filetype ruby setlocal expandtab ts=2 sw=2 sts=2  foldmethod=syntax
+  au Filetype ruby setlocal expandtab ts=2 sw=2 sts=2  foldmethod=syntax makeprg=ruby
   au Filetype ruby let ruby_fold = 1
   au Filetype lex,yacc setlocal cindent ts=4 sw=4 sts=4
   au Filetype html,css setlocal expandtab foldmethod=syntax ts=2 sw=2 sts=2
@@ -17,7 +36,15 @@ augroup FiletypeAutocommands
   au Filetype ruby,eruby setlocal foldmethod=indent  iskeyword-=.
   au Filetype eruby let b:delimitMate_matchpairs = '(:),[:],{:},<:>'
   " Disable automatical wrap
-  au FileType html,eruby setlocal formatoptions-=t
+
+
+
+  au BufRead,BufNewFile *.slim set ft=slim
+
+
+  " au FileType html let b:current_syntax = 'html'
+  " t: Auto-wrap text using textwidth
+  au FileType html,eruby,slim setlocal formatoptions-=t
   au BufNewFile,BufRead *.slim set iskeyword-=. foldmethod=indent
   au BufRead,BufNewFile *.scss set filetype=scss
   au FileType qf setlocal nolist
@@ -25,6 +52,15 @@ augroup FiletypeAutocommands
   au filetype qf nnoremap <buffer>o <CR>
   " au filetype ruby au BufWritePost <buffer> call GenerateCtags()
   au bufenter * call SetCtags()
+
+  " au BufReadPre ControlP  cclose | lclose
+  " au BufReadPre,BufEnter ControlP  let g:a = 1
+  au BufEnter ControlP let g:a = 1  
+  au BufLeave ControlP let g:a = 1  
+  au BufEnter * let g:a = expand('%')
+  " au BufLeave * let g:a = expand('%')
+
+  " autocmd! BufWritePost * Neomake
 augroup END
 
 augroup UrlBodyHighlight
@@ -64,10 +100,10 @@ augroup InitAutocommands
   au WinEnter     * if &buftype == 'quickfix' && winheight(0) < 10 | resize 10 | endif
   au BufWinEnter,BufWritePost * let &numberwidth=(float2nr(log10(line('$'))) + 3)
   " Restore cursor position
-  " au BufReadPost *
-  "   \ if line("'\"") > 1 && line("'\"") <= line("$") |
-  "   \   exe "normal! g`\"" |
-  "   \ endif
+  au BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
   if has('nvim')
     au BufWritePost * call CheckSyntax() | call lightline#update()
   else
@@ -78,19 +114,6 @@ augroup InitAutocommands
   endif
 augroup END
 
-augroup ChangeCurosrShape
-  au!
-  if 0 && executable('gconftool-2')
-    au InsertEnter * call system("gconftool-2 -s -t int /apps/guake/style/cursor_shape 1")
-    au InsertLeave * call system("gconftool-2 -s -t int /apps/guake/style/cursor_shape 0")
-    au WinLeave,FocusLost * call system("gconftool-2 -s -t int /apps/guake/style/cursor_shape 0")
-    au VimEnter,WinEnter,BufWinEnter * if mode() == 'i' |
-          \ call system("gconftool-2 -s -t int /apps/guake/style/cursor_shape 1") |
-          \ else |
-          \ call system("gconftool-2 -s -t int /apps/guake/style/cursor_shape 0") |
-          \ endif
-  endif
-augroup END
 
 
 augroup JavascriptFold
@@ -110,3 +133,42 @@ augroup END
 
 " autocmd VimEnter *
 "         \   call insert(g:dispatch_handlers, 'x11', 0)
+
+if has('nvim')
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+elseif executable('gnome-terminal-cursor-shape.sh')
+  augroup ChangeCurosrShape
+    au!
+    au InsertEnter *
+        \ if v:insertmode == 'i' && &ft !=# 'unite' |
+        \   silent execute "!gnome-terminal-cursor-shape.sh ibeam" |
+        \ elseif v:insertmode == 'r' |
+        \   silent execute "!gnome-terminal-cursor-shape.sh underline" |
+        \ endif
+    au FocusGained *
+          \ if mode() ==# 'i' |
+          \   silent execute "!gnome-terminal-cursor-shape.sh ibeam" |
+          \ endif
+    au VimLeave,FocusLost,InsertLeave * silent execute "!gnome-terminal-cursor-shape.sh block"
+    if has('nvim')
+      au User IncSearchEnter silent execute "!gnome-terminal-cursor-shape.sh underline"
+      au User IncSearchLeave
+            \ if mode() ==# 'i' |
+            \   silent execute "!gnome-terminal-cursor-shape.sh underline" |
+            \ else |
+            \   silent execute "!gnome-terminal-cursor-shape.sh block" |
+            \ endif
+    endif
+    " if 0 && executable('gconftool-2')
+    "   au InsertEnter * call system("gconftool-2 -s -t int /apps/guake/style/cursor_shape 1")
+    "   au InsertLeave * call system("gconftool-2 -s -t int /apps/guake/style/cursor_shape 0")
+    "   au WinLeave,FocusLost * call system("gconftool-2 -s -t int /apps/guake/style/cursor_shape 0")
+    "   au VimEnter,WinEnter,BufWinEnter * if mode() == 'i' |
+    "         \ call system("gconftool-2 -s -t int /apps/guake/style/cursor_shape 1") |
+    "         \ else |
+    "         \ call system("gconftool-2 -s -t int /apps/guake/style/cursor_shape 0") |
+    "         \ endif
+    " endif
+  augroup END
+endif
+

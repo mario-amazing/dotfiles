@@ -1,4 +1,4 @@
-fu s:SID()
+fu! s:SID()
   return matchstr(expand('<sfile>'), '\zs<SNR>\d\+_\zeSID$')
 endfun
 set laststatus=2
@@ -15,28 +15,18 @@ else
 endif
 let s:SID = s:SID()
 
-" let s:p =  g:lightline#colorscheme#spacegray#palette
-let s:rbicon   = [['', '', 203]]
-let s:erricon  = [['', '', 1  ]]
-let s:warnicon = [['', '', 3  ]]
-" let s:middle   = get(s:p.normal, 'middle', [['', '', 248, 8]])
 
-" exe 'hi RbIconM   ctermfg='.get(s:p.normal, 'rbicon'  , s:rbicon  )[0][2].' ctermbg='.s:middle[0][3]
-" exe 'hi ErrIconM  ctermfg='.get(s:p.normal, 'erricon' , s:erricon )[0][2].' ctermbg='.s:middle[0][3]
-" exe 'hi WarnIconM ctermfg='.get(s:p.normal, 'warnicon', s:warnicon)[0][2].' ctermbg='.s:middle[0][3]
-" exe 'hi StatLnM   ctermfg='.s:middle[0][2]                               .' ctermbg='.s:middle[0][3]
-
-" \ 'fname':    '%-010.20t'
+" \ 'fname':    '%-010.20t' 'relpath', 
 let g:lightline = {
-      \ 'colorscheme': 'spacegray',
+      \ 'colorscheme': 'spacegray3',
       \ 'active': {
-      \   'left': [[ 'mode', 'paste' ], [ 'filename', 'modified'], [ 'search_stat' ]],
-      \   'right': [['percent', 'lineinfo'], [ 'relpath', 'filetype', 'fticon'], 
-                  \ ['first_err', 'err', 'warn', 'git', 'rbver']]
+      \   'left': [[ 'mode', 'paste' ], [ 'fnameactive', 'modified'], [ 'search_stat' ]],
+      \   'right': [['percent'], [ 'filetype', 'fticon'], 
+                  \ ['first_err', 'err', 'warn', 'git', 'rbver']],
       \ },
       \ 'inactive': {
       \   'left': [[], [ 'lpadding', 'filename', 'modified'], []],
-      \   'right': [[], ['relpath', 'filetype', 'padding']]
+      \   'right': [[], ['filetype', 'rpadding']]
       \ },
       \ 'tabline': {
       \   'left':  [[ 'tabs' ]],
@@ -47,30 +37,30 @@ let g:lightline = {
       \   'inactive': [ 'tabnum', 'filename', 'modified' ]
       \ },
       \ 'component': {
-      \ 'padding': '%{"             "}',
+      \ 'rpadding': '%{"'.repeat(' ', 14).'"}',
       \ 'lpadding': '%{" "}',
-      \ 'fname':    '%t'
       \ },
       \ 'component_function': {
       \   'filetype':     s:SID."filetype",
       \   'relpath':      s:SID."relpath",
       \   'abspath':      s:SID."abspath",
       \   'rvm':          s:SID.'rvmrbver',
-      \   'filename':     s:SID.'fname',
-      \   'mode':         s:SID.'mode',
       \   'search_stat':  s:SID.'search_stat',
       \   'modified':     s:SID.'modified',
+      \   'mode':         s:SID.'mode',
+      \   'percent':    s:SID.'percent',
+      \   'filename':     s:SID.'fname',
       \ },
       \ 'tab_component_function': {
       \   'fticon': s:SID.'fticon'
       \ },
       \ 'component_expand': {
-      \   'percent':    s:SID.'percent',
+      \   'fnameactive':     s:SID.'fnameactive',
       \   'lineinfo':   s:SID.'lineinfo',
       \   'first_err':  s:SID.'first_err',
       \   'warn':       s:SID.'warn',
       \   'err':        s:SID.'err',
-      \   'rbver':        s:SID.'rbver',
+      \   'rbver':      s:SID.'rbver',
       \   'git':        s:SID.'git',
       \ },
       \ 'component_type': {
@@ -78,8 +68,9 @@ let g:lightline = {
       \ 'separator':            { 'left': '', 'right': '' },
       \ 'subseparator':         { 'left': '', 'right': '' },
       \ 'tabline_separator':    { 'left': '', 'right': '' },
-      \ 'tabline_subseparator': { 'left': '', 'right': '' },
+      \ 'tabline_subseparator': { 'left': '', 'right': '' },
       \ 'mode_map': {
+      \   'layout' : '--- LAYOUT EDITING ---',
       \   'n' : 'N',
       \   'i' : 'I',
       \   'R' : 'R',
@@ -92,9 +83,29 @@ let g:lightline = {
       \   "\<C-s>": 'SB',
       \   '?': ' ',
       \ }
-      \ }
+    \ }
 " ⋮
+"
 "
+"
+"
+try
+  let s:p =  g:lightline#colorscheme#{g:lightline.colorscheme}#palette
+catch
+  finish
+endtry
+let s:rbicon   = [['', '', 203]]
+let s:erricon  = [['', '', 1  ]]
+let s:warnicon = [['', '', 3  ]]
+let s:middle   = get(s:p.normal, 'middle', [['', '', 248, 8]])
+exe 'hi RbIconM   ctermfg='.get(s:p.normal, 'rbicon'  , s:rbicon  )[0][2].' ctermbg='.s:middle[0][3]
+exe 'hi ErrIconM  ctermfg='.get(s:p.normal, 'erricon' , s:erricon )[0][2].' ctermbg='.s:middle[0][3]
+exe 'hi WarnIconM ctermfg='.get(s:p.normal, 'warnicon', s:warnicon)[0][2].' ctermbg='.s:middle[0][3]
+exe 'hi StatLnM   ctermfg='.s:middle[0][2]                               .' ctermbg='.s:middle[0][3]
+unlet s:middle
+
+
+
 fu! s:git()
   if s:regularbuf() && exists("*fugitive#head") && fugitive#head() != ''
     let head = fugitive#head()
@@ -103,18 +114,21 @@ fu! s:git()
     " let hunks[0] = '˖' . hunks[0]
     " let hunks[1] = '∼' . hunks[1]
     " let hunks[2] = '-' . hunks[2]
-    return '%#StatLnM#%{"   "}%#StatLnM#%{"'.head.'"}'
-    " return '%#StatLnM#%{"  "}%#StatLnM#%{"'.head.'"}'
+    return '%#StatLnM#%{"  "}%#StatLnM#%{"'.head.'"}'
     " return '%#StatLnM#%{"' . join(hunks, ' ') . '  "}%#StatLnM#%{"'.head.'"}'
   endif
   return ''
 endfu
 
 fu! s:rbver()
-  if s:regularbuf() && (RailsDetect() || &ft==#"ruby")
-    let rbver = substitute(matchstr($GEM_HOME,'[^/]*$'),'^\[\]$','','')
-    return '%#RbIconM#%{"  "}%#StatLnM#%{"'.rbver.'"}'
-    " return '%#RbIconM#%{" "}%#StatLnM#%{"'.rbver.'"}'
+  if s:regularbuf() && (RailsDetect() || &ft==#"ruby") && exists('$GEM_HOME')
+    if $GEM_HOME =~# 'gemsets'
+      let rbver = fnamemodify($GEM_HOME, ':h:h:t')
+    else
+      let rbver = fnamemodify($GEM_HOME, ':t')
+    endif
+
+    return '%#RbIconM#%{" "}%#StatLnM#%{"'.rbver.'"}'
   endif
   return ''
 endfu
@@ -145,20 +159,55 @@ fu! s:warn()
   return ''
 endfu
 
-fu! s:percent()
-  return s:regularbuf() ? '%3p%%' : ''
+" let g:marginal = '⬛'
+let g:placeholder = ' '
+let s:fmt = '▕%s▎'
+let s:fmt = '%s'
+
+fu! s:percent() abort
+  let frs = ['▏', '▎', '▍', '▌', '▋', '▊', '▉', '█']
+  " let frs = ['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█']
+  " let frs = ['▁▁', '▂▂', '▃▃', '▄▄', '▅▅', '▆▆', '▇▇', '██']
+  " let frs = [ '▱', '▰' ]
+  " let frs = ['◔', '◑', '◕', '●']
+  " let frs = ['🞗', '🞘', '🞙', '◆']
+  " let frs = ['▭', '▬']
+  " let frs = ['□', '■']
+  " let frs = ['⬚', '□','▤', '▦', '■']
+  " let frs = ['⬚', '□','▨', '▩', '■']
+
+
+  let lcurr = line('.')
+  let llast = line('$')
+  let barsmax = 14
+
+  if !s:regularbuf()
+    return ''
+  elseif lcurr == 1
+    return printf(s:fmt,repeat(g:placeholder, barsmax))
+  elseif lcurr == llast
+    return printf(s:fmt, repeat('▓', barsmax))
+  endif
+
+  let percent =  line('.') * 1.0 / line('$')
+  let nbars =  float2nr(percent * barsmax)
+
+  let nfrs = float2nr(percent * barsmax * len(frs)) % len(frs)
+  let rpadding =  barsmax - nbars - 1
+  " return  string([nbars, nfrs, rpadding])
+  return printf(s:fmt, repeat(frs[-1], nbars) . frs[nfrs] . repeat(g:placeholder, rpadding))
+endfu
+
+fu! s:lineinfo()
+  return  s:regularbuf() ? '%l:%-v' : ''
 endfu
 
 fu! s:search_stat()
   return s:regularbuf() ? anzu#search_status() : ''
 endfu
 
-fu! s:lineinfo()
-  return  s:regularbuf() ? '%3l:%-3v' : ''
-endfu
-
 fu! s:regularbuf()
-  return expand('%:t') !~? '__Gundo\|NERD_tree\|__Tagbar__\|ControlP'
+  return expand('%:t') !~? '__Gundo\|NERD_tree\|__Tagbar__\|ControlP' && &ft !~# 'gitcommit\|unite'
 endfu
 
 fu! s:modified()
@@ -174,20 +223,38 @@ fu! s:abspath()
 endfu
 
 fu! s:readonly()
-  return &ft !~? 'help' && &readonly ? 'r' : ''
-  " return &ft !~? 'help' && &readonly ? '' : ''
+  return &ft !~? 'help' && &readonly ? '' : ''
 endfu
 
-fu! s:fname()
-  let fname = expand('%:t')
-  return fname == 'ControlP' ? g:lightline.ctrlp_item :
-        \ fname == '__Tagbar__' ? g:lightline.fname :
+fu! s:fname(...)
+  " let name = a:0 ? a:1 : escape(expand('%:.'), '}')
+  " let name = a:0 ? a:1 : get(g:lightline, 'fname', '')
+  " TODO
+  " let name = a:0 ? a:1 : substitute(expand("%:."), '}', '❵', 'g')
+  let name = expand("%:.")
+  " let name = a:0 && name  ? substitute(a:1, '}', '❵', 'g') : 
+  " since fnamemodify can't properly handle this case
+  let name = substitute(name, '\%(fugitive://\)\?'.$PWD.'/', '', '')
+  let name = substitute(name, $HOME, '~', '')
+  " let fname = expand('%:t')
+  let fname = expand('%')
+  return fname == 'ControlP' ? get(g:lightline, 'ctrlp_item', '_') :
+        \ fname == '__Tagbar__' ? get(g:lightline, 'fname', '') :
         \ fname =~ '__Gundo\|NERD_tree' ? '' :
+        \ exists('w:quickfix_title') ? w:quickfix_title :
         \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
         \ &ft == 'unite' ? unite#get_status_string() :
         \ &ft == 'vimshell' ? vimshell#get_status_string() :
         \ ('' != s:readonly() ? s:readonly() . ' ' : '') .
-        \ ('' != fname ? fname : '[No Name]')
+        \ (len(fname) ? name : '[No Name]')
+endfu
+
+fu! s:fnameactive()
+  let rel = expand('%:h')
+  let rel = '.' ==# rel ? '': rel.'/'
+  " TODO improve hightlights (filename - bright, relpath - pale)
+  let name = '%#LightLineRight_active_1#%{"'.rel.'"}%#LightLineLeft_active_1#%{"'.expand('%:t').'"}'
+  return s:fname(name)
 endfu
 
 fu! s:ctrlps1(focus, byfname, regex, prev, item, next, marked)
@@ -214,14 +281,20 @@ let g:tagbar_status_func = s:SID.'tagbar'
 
 fu! s:mode()
   let fname = expand('%:t')
+  let submode = submode#current()
+  if submode ==# 'layout'
+    call lightline#link('R')
+  endif
   return fname == '__Tagbar__' ? 'Tagbar' :
         \ fname == 'ControlP' ? 'CtrlP' :
         \ fname == '__Gundo__' ? 'Gundo' :
         \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
         \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ &ft == 'qf' ? ' ' :
         \ &ft == 'unite' ? 'Unite' :
         \ &ft == 'vimfiler' ? 'VimFiler' :
         \ &ft == 'vimshell' ? 'VimShell' :
+        \ len(submode) ? get(g:lightline.mode_map, submode, g:lightline.mode_map['?']) :
         \ winwidth(0) > 60 ? lightline#mode() : ''
 endfu
 

@@ -11,10 +11,7 @@ endif
 
 set mouse=
 
-" set synmaxcol=200
-set noswapfile
 set autoread
-set tags=tags
 
 set nocompatible
 set expandtab
@@ -25,7 +22,7 @@ set ignorecase
 set hls
 set incsearch
 
-set showcmd  " show command you entering at the bottom
+set noshowcmd  " show command you entering at the bottom
 scriptencoding utf-8
 set encoding=utf-8
 
@@ -130,3 +127,6 @@ set conceallevel=1
 
 set notagbsearch
 set viewoptions=cursor
+
+
+set previewheight=20

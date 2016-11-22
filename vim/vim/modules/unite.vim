@@ -2,6 +2,11 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom#source('file,file/new,mru,buffer,file_rec,line,grep,outline', 'matchers', 'matcher_fuzzy')
 
+call unite#custom#source('rails', 'matchers', 'matcher_start')
+call unite#custom#profile('rails', 'context', {
+      \ 'immediately': 1,
+  \ })
+
 " \ 'marked_icon': '» ',
 " \ 'candidate_icon': '› ',
 " \ 'prompt': '❯: ',
@@ -20,15 +25,17 @@ augroup END
 
 function! s:unite_settings()
   resize 10
+  cclose
+  lclose
   setlocal winfixwidth
-  nmap      <buffer> Q <plug>(unite_exit)
-  nmap      <buffer> <esc> <plug>(unite_exit)
-  imap      <buffer> <esc> <plug>(unite_exit)
-  imap      <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap      <buffer> <C-k>   <Plug>(unite_select_previous_line)
-  imap      <buffer> <C-c>   <Esc>
-  inoremap  <silent><buffer><expr> <C-x>     unite#do_action('split')
-  inoremap  <silent><buffer><expr> <C-f>     unite#do_action('preview')
+  nmap      <silent><buffer> Q <plug>(unite_exit)
+  nmap      <silent><buffer> <esc> <plug>(unite_exit)
+  imap      <silent><buffer> <esc> <plug>(unite_exit)
+  imap      <silent><buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap      <silent><buffer> <C-k>   <Plug>(unite_select_previous_line)
+  imap      <silent><buffer> <C-c>   <Esc>
+  inoremap <silent><buffer><expr> <C-x>     unite#do_action('split')
+  inoremap <silent><buffer><expr> <C-f>     unite#do_action('preview')
 endfu
 
 function! s:UniteBuffFilter(candidates, context)
@@ -59,7 +66,7 @@ call unite#custom#profile('files', 'filters', 'uniq_by_word')
 call unite#custom#profile('default', 'context', {
       \ 'winheight': 10,
       \ 'prompt_direction': 'below',
-      \ 'direction': 'botright'
+      \ 'direction': 'botright',
   \ })
 
 call unite#define_filter({'name': 'buff_filter', 'filter': function('s:UniteBuffFilter')})
@@ -78,20 +85,32 @@ function! my_open.func(candidates)
       break
     endif
   endfor
-  exe (nr >= 0 ? (nr.'wincmd w') : (tabpagewinnr(tabpagenr(), '$').'wincmd w | split'))
+  exe (nr >= 0 ? nr.'wincmd w' : tabpagewinnr(tabpagenr(), '$').'wincmd w | split')
   call unite#take_action('open', a:candidates)
 endfu
+
 " call unite#custom#action('file,buffer,conf', 'open', my_open)
-call unite#custom#action('outline,common,openable,cdable,file_base,file_vimfiler_base,file,buffer,tab,directory,word,jump_list,command,window,completion,source,uri,guicmd', 'open', my_open)
+" call unite#custom#action('outline,common,openable,cdable,file_base,file_vimfiler_base,file,buffer,tab,directory,word,jump_list,command,window,completion,source,uri,guicmd', 'open', my_open)
 " common,openable,cdable,file_base,file_vimfiler_base,file,buffer,tab,directory,word,jump_list,command,window,completion,source,uri,guicmd
 " call unite#custom#action('common,openable', 'open', my_open)
 unlet my_open
 
 let g:unite_source_menu_menus = {}
 let g:unite_source_menu_menus.conf = {
-    \ 'description' : 'Config modules'
-    \}
+      \ 'description' : 'Config modules'
+      \}
+
+" let g:unite_source_menu_menus.sheet = {
+"       \ 'description' : 'Cheatsheets'
+"       \}
+
+
+" let g:unite_source_menu_menus..command_candidates = [
+"   \ [ 'faker', 'split ~/.vim/cheat/faker' ],
+" ]
+
 let g:unite_source_menu_menus.conf.command_candidates = [
+        \ [ 'misc', 'split ~/.vim/modules/misc.vim' ],
         \ [ 'unite', 'split ~/.vim/modules/unite.vim' ],
         \ [ 'colors', 'split ~/.vim/modules/colors.vim' ],
         \ [ 'helpers', 'split ~/.vim/modules/helpers.vim' ],
@@ -106,3 +125,7 @@ let g:unite_source_menu_menus.conf.command_candidates = [
         \ [ 'smartinput', 'split ~/.vim/modules/smartinput.vim' ],
       \ ]
 
+" call unite#custom#profile('default', 'context', {
+" \ 'start_insert': 1,
+" \ 'immediately': 1,
+" \ })

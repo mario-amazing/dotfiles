@@ -1,14 +1,15 @@
+nnoremap <SID>  <SID>
+let s:sid = maparg('<SID>', 'n')
+
+let s:cr = '<C-r>='.s:sid.'close_popup()<CR>'
+
 call smartinput#clear_rules()
 call smartinput#define_default_rules()
 call smartinput#map_to_trigger('i', '<Space>', '<Space>', '<Space>')
 call smartinput#map_to_trigger('i', '<BS>', '<BS>', '<BS>')
-call smartinput#map_to_trigger('i', '<Bar>', '<Bar>', '<Bar>')
+" call smartinput#map_to_trigger('i', '<Bar>', '<Bar>', '<Bar>')
+" call smartinput#map_to_trigger('i', '<Bar>', '<Bar>', '<Bar><Esc>:call'.s:sid.'align()<Bar>echo""<CR>a')
 call smartinput#map_to_trigger('i', ':', ':', ':')
-
-
-nnoremap <SID>  <SID>
-let s:cr = '<C-r>='.maparg('<SID>', 'n').'close_popup()<CR>'
-
 
 let s:rules =
       \ {
@@ -21,25 +22,35 @@ let s:rules =
       \   "''": [
       \     {     'at': '\%#[@a-zA-Z0-9"]',        'char': "'",       'input': "'", },
       \   ],
+      \   "html": [
+      \     {     'at': '>\s*\%#\s*</\w',        'char': "<Enter>",       'input': "<Enter><Esc>O", },
+      \   ],
       \   '[]': [
-      \     {     'at': '\%#[@a-zA-Z0-9"'''']',    'char': '[',       'input': '[', },
+      \     {     'at': '\%#[@a-zA-Z0-9"'''':]',    'char': '[',       'input': '[', },
       \   ],
       \   '""': [
-      \     {     'at': '\%#[@a-zA-Z0-9'''']',     'char': '"',       'input': '"', },
+      \     {     'at': '\%#[@a-zA-Z0-9''''{]',     'char': '"',       'input': '"', },
+      \     {     'at': '[@a-zA-Z0-9/''''}"]\%#[^"]',     'char': '"',       'input': '"', },
       \   ],
       \   '{}': [
       \     {     'at': '\%#[@a-zA-Z0-9"'''']',    'char': '{',       'input': '{<Left><Right>', },
       \     {     'at': '{\%#}',                   'char': '<Space>', 'input': '<Space><Space><Left>'},
       \   ],
       \   'rb': [
+      \     {     'at': '\<\%(if\|unless\)\>.*\%#[^\s]\+',               'char': '<CR>',    'input': s:cr.'<Esc>belvwhs<CR><Esc>oend<Esc>kA', 'syntax': ['rubyConditionalExpression']},
       \     {     'at': '\<\%(if\|unless\)\>.*\%#',               'char': '<CR>',    'input': s:cr.'end<Esc>O', 'syntax': ['rubyConditionalExpression']},
+      \     {     'at': '^\s*\%(module\|def\|class\|if\|unless\|for\|while\|until\|case\)\>\%(.*[^.:@$]\<end\>\)\@!.*\%#[^\s]\+', 'char': '<CR>', 'input': s:cr.'<Esc>belvwhs<CR><Esc>oend<Esc>kA' },
       \     {     'at': '^\s*\%(module\|def\|class\|if\|unless\|for\|while\|until\|case\)\>\%(.*[^.:@$]\<end\>\)\@!.*\%#', 'char': '<CR>', 'input': s:cr.'end<Esc>O' },
       \     {     'at': '^\s*\%(begin\)\s*\%#', 'char': '<CR>', 'input': s:cr.'end<Esc>O'},
+      \     {     'at': '^\s*\%(begin\)\s*\%#[^\s]\+', 'char': '<CR>', 'input': s:cr.'<Esc>belvwhs<CR><Esc>oend<Esc>kA'},
       \     {     'at': '\%(^\s*#.*\)\@<!do\%(\s*|\k\+\%(\s*,\s*\k\+\)*|\)\?\s*\%#', 'char': '<CR>', 'input': s:cr.'end<Esc>O'},
       \   ],
       \   'vim': [],
       \   'css': [
-      \     {     'at': '\w\+\%#\%($\|[^;]\)', 'char': ':', 'input': ':<Space>;<Left>', 'syntax': ['cssDefinition'] },
+      \     {     'at': '\w\+\%#\%($\|\s*[^;{]\)', 'char': ':', 'input': ':<Space>;<Left>', 'syntax': ['cssDefinition', 'scssDefinition'] },
+      \     {     'at': '\w\+\%#;',                'char': ':',            'input': ':<Space>', 'syntax': ['cssDefinition', 'scssDefinition'] },
+      \     {     'at': '\w\+:\%#\s;',             'char': '<Space>',   'input': '<Right>', 'syntax': ['cssDefinition', 'scssDefinition'] },
+      \     {     'at': '\w\+:\s\{2,}\%#;',        'char': '<BS>', 'input': '<Esc>cT:<Right>', 'syntax': ['cssDefinition', 'scssDefinition'] },
       \   ],
       \   'sh': [
       \     {     'at': '^\s*if\>.*\%#',            'char': '<CR>', 'input': '<CR>fi<Esc>O' },
@@ -73,6 +84,7 @@ let s:ftrules = [
       \   { 'filetypes': ['vim'], 'rules': ['vim'] },
       \   { 'filetypes': ['sh', 'zsh'], 'rules': ['sh'] },
       \   { 'filetypes': ['html', 'eruby', 'css', 'sass', 'scss', 'slim', 'haml'], 'rules': ['css'] },
+      \   { 'filetypes': ['html', 'eruby'], 'rules': ['html'] },
       \ ]
 
 for frule in s:ftrules
@@ -109,6 +121,24 @@ fu! s:close_popup()
   endif
 endfu
 
+let s:ftcomments = {
+      \   'ruby': '#',
+      \   'vim':  '"'
+      \ }
+
+function! s:align()
+  let p1 = '^\s*' . (has_key(s:ftcomments, &ft) ? s:ftcomments[&ft].'*':'') .'\s*|'
+  let p =  p1.'\s*.*\s*|\s*$'
+  let curline = getline('.')
+  let curcol = col('.')
+  if exists(':Tabularize') && curline =~# p1 && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(curline[0:curcol],'[^|]','','g'))
+    let position = strlen(matchstr(curline[0:curcol],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
 
 call smartinput#define_rule({
 \   'at': '<%\%#',

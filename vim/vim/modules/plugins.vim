@@ -1,10 +1,12 @@
 " ,vCoolor
 let g:vcoolor_disable_mappings = 1
 let g:vcoolor_lowercase = 1
-let g:vcoolor_custom_picker = 'zenity --title "Vim colorsel" --color-selection --show-palette --color '
+" let g:vcoolor_custom_picker = 'zenity --title "Vim colorsel" --color-selection --show-palette --color '
+let g:vcoolor_custom_picker = 'yad --title "Vim colorsel" --color-selection --show-palette --color '
+
 
 " ,instantmarkdown
-let g:instant_markdown_autostart = 0
+let g:instant_markdown_autostart = 1
 
 " ,clever-f
 let g:clever_f_smart_case = 1
@@ -13,14 +15,28 @@ let g:clever_f_fix_key_direction = 1
 " ,sideways
 nnoremap <S-h> :SidewaysLeft<CR>
 nnoremap <S-l> :SidewaysRight<CR>
+
 " ,Bookmarks
-au BufLeave exe 'BookmarkSave ' .$HOME . '/.vim-bookmars'
-let g:bookmark_auto_save = 0
-" let g:bookmark_manage_per_buffer = 1
-let g:bookmark_save_per_working_dir = 0
-let g:bookmark_auto_save_file = $HOME . '/.vim-bookmars'
+hi link BookmarkUnitePath Directory
+let g:bookmark_save_per_working_dir = 1
+
+
+let g:bookmark_sign = ' ⮩'
+" let g:bookmark_sign = ' 🗹'
+" let g:bookmark_annotation_sign = ' '
+let g:bookmark_annotation_sign = ' …'
+let g:bookmark_show_toggle_warning = 0
+let g:bookmark_center = 1
+
+" itchyny/vim-parenmatch
+let g:parenmatch_highlight = 0
+let loaded_matchparen = 1
+hi link ParenMatch  MatchParen
+
+hi BookmarkSign cterm=bold ctermbg=7 ctermfg=39
+hi BookmarkAnnotationSign  ctermbg=7 ctermfg=83
 call unite#custom#profile('source/vim_bookmarks', 'context', {
-  \   'winheight': 13,
+  \   'winheight': 10,
   \   'direction': 'botright',
   \   'start_insert': 1,
   \   'keep_focus': 0,
@@ -29,33 +45,34 @@ call unite#custom#profile('source/vim_bookmarks', 'context', {
 
 " ,notes
 let g:notes_suffix = '.txt'
+
 " Exchange
 au VimEnter * hi ExchangeRegion cterm=bold ctermfg=7 ctermbg=240
 
 " ,webdev icons
-" let g:webdevicons_enable = 1
-" let g:webdevicons_enable_nerdtree = 0
+let g:webdevicons_enable = 1
 let g:webdevicons_enable_nerdtree = 0
+" let g:webdevicons_enable_nerdtree = 1
 " let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-" let g:webdevicons_enable_airline_tabline = 0
-" let g:webdevicons_enable_airline_statusline = 0
+let g:webdevicons_enable_airline_tabline = 0
+let g:webdevicons_enable_airline_statusline = 0
 
-" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
-" let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
-" let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['Gemfile'] = ''
-" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rb'] = ''
-" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['erb'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['Gemfile'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rb'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['erb'] = ''
 
-" let g:WebDevIconsUnicodeDecorateFolderNodes = 0
+let g:WebDevIconsUnicodeDecorateFolderNodes = 0
 " let g:DevIconsEnableFoldersOpenClose = 1
 " let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
-" let g:NERDTreeDirArrowExpandable = ''
-" let g:NERDTreeDirArrowCollapsible = ''
+"let g:NERDTreeDirArrowExpandable = ''
+"let g:NERDTreeDirArrowCollapsible = ''
 
-" let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
-" let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = '🗋'
-" hi YellowFG ctermfg=3
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = '🗋'
+hi YellowFG ctermfg=3
 
 
 
@@ -67,6 +84,7 @@ let g:switch_mapping = '-'
 
 " ,undoquit
 nnoremap <c-w>c :call undoquit#SaveWindowQuitHistory()<cr><c-w>c
+let g:windowswap_map_keys = 0
 
 " ,Delimmate
 let delimitMate_expand_space = 1
@@ -97,7 +115,7 @@ let g:notes_directories = ['~/Dropbox/Notes']
 
 
 " ,IndentLine
-" let g:indentLine_char = ''   " another versions ┆│┊︙¦⋮⋮
+let g:indentLine_char = ''   " another versions ┆│┊︙¦⋮⋮
 let g:indentLine_faster = 1
 let g:indentLine_concealcursor = ''
 " let g:indentLine_fileTypeExclude = ['nerdtree', 'help']
@@ -137,20 +155,22 @@ let g:syntastic_warning_symbol = ' ●'
 let g:syntastic_style_error_symbol   = ' ◉'
 let g:syntastic_style_warning_symbol = ' ○'
 
-" let g:neomake_error_sign   = { 'text': ' ●', 'texthl': 'SyntasticErrorSign', }
-" let g:neomake_warning_sign = { 'text': ' ●', 'texthl': 'SyntasticWarningSign', }
-" let g:neomake_vim_enabled_makers = []
+let g:neomake_error_sign   = { 'text': ' ●', 'texthl': 'SyntasticErrorSign', }
+let g:neomake_warning_sign = { 'text': ' ●', 'texthl': 'SyntasticWarningSign', }
+let g:neomake_vim_enabled_makers = ['vint']
 " ,gitgutter
 " let g:gitgutter_sign_added = ' ➕'
 " let g:gitgutter_sign_removed = ' ➖'
 " let g:gitgutter_sign_modified = ' ∆'
 " let g:gitgutter_sign_modified_removed = ' ≁'
-let g:gitgutter_sign_added =    ' ˖'
-let g:gitgutter_sign_removed =  ' -'
 " let g:gitgutter_sign_modified = ' ∼'
 " let g:gitgutter_sign_modified_removed = ' ≁'
-let g:gitgutter_sign_modified = ' ∆'
-let g:gitgutter_sign_modified_removed = ' ∆'
+" let g:gitgutter_sign_modified = ' ∆'
+" let g:gitgutter_sign_modified_removed = ' ∆'
+let g:gitgutter_sign_added =    ' ˖'
+let g:gitgutter_sign_removed =  ' -'
+let g:gitgutter_sign_modified = ' ▵'
+let g:gitgutter_sign_modified_removed = ' ▵'
 
 " ,OverCommandLine
 let g:over_command_line_prompt = ':'
@@ -176,11 +196,12 @@ let ruby_operators = 1
 let ruby_spellcheck_strings = 1
 let g:rubycomplete_rails = 1
 let g:rubycomplete_use_bundler = 1
+" let g:rubycomplete_load_gemfile = 1
 let g:rubycomplete_classes_in_global = 1
 
 
 " ,clang formatter
-let g:clang_format#command = 'clang-format-3.6'
+let g:clang_format#command = 'clang-format-3.8'
 let g:clang_format#style_options = {
       \ "IndentWidth" : 4,
       \ "UseTab" : "Never",
@@ -192,24 +213,34 @@ let g:clang_format#style_options = {
       \ }
 
 " ,ultiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 let g:UltiSnipsEditSplit="horizontal"
 
 " ,ctrlp
-let g:ctrlp_reuse_window = 'netrw\|help\|quickfix\|NERD_tree_2\|NERD_tree_3'
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" let g:ctrlp_reuse_window = 'netrw\|help\|quickfix\|nerdtree'
+" let g:ctrlp_reuse_window = 'nerdtree'
+" let g:ctrlp_open_single_match = ['buffer tags', 'buffer']
+" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 " E - jump to the window
 let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_user_command = 'ag %s -U -l --nocolor -g ""'
-let g:ctrlp_root_markers = ['Gemfile', '.git', '.meteor', 'Rakefile', 'package.json', 'bower.json', 'index.html', 'main.c', 'main.cpp']
+let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'package.json', 'bower.json', 'main.c', 'main.cpp']
+" let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'package.json', 'bower.json', 'index.html', 'main.c', 'main.cpp']
 
 " let g:ctrlp_lazy_update = 350
 let g:ctrlp_clear_cache_on_exit = 0
 " let g:ctrlp_match_window = 'bottom,order:btt,min:9,max:10,results:30'
+
+
+fu! CloseQuickfix()
+  cclos
+  lclose
+endfu
+let g:ctrlp_buffer_func = {
+  \ 'enter': 'CloseQuickfix',
+  \ }
+" \ 'exit':  'Function_Name_2',
 
 
 " ,fuzzyFinder
@@ -293,6 +324,8 @@ let g:javascript_conceal_prototype  = "¶"
 let g:javascript_conceal_static     = "•"
 let g:javascript_conceal_super      = "Ω"
 
+let g:used_javascript_libs = 'jquery,angularjs,angularui'
+
 
 " autocmd BufNewFile,BufRead fugitive* setlocal bufhidden=delete
 "
@@ -324,3 +357,174 @@ let g:easytags_file = 'tmp/tags'
 " let g:easytags_syntax_keyword = 'always'
 "
 let g:easytags_opts = ['--sort=yes', '--append=yes']
+
+
+let g:submode_timeoutlen = 2500
+
+let g:eregex_default_enable = 0
+let g:incsearch#magic = '\v'
+
+let g:gitgutter_eager = 0
+
+
+if !exists('g:rails_gem_projections')
+  let g:rails_gem_projections = {}
+endif
+
+if !exists('g:rails_projections')
+  let g:rails_projections = {}
+endif
+
+call extend(g:rails_gem_projections, {
+      \   'sidekiq': {
+      \     'app/workers/*_worker.rb': {
+      \       'command': 'worker',
+      \       'template': [
+      \        'class {camelcase|capitalize|colons}Worker',
+      \        '  include Sidekiq::Worker',
+      \        '',
+      \        '  def perform',
+      \        '  end',
+      \        'end',
+      \        ]
+      \     },
+      \   },
+      \ })
+
+
+
+call extend(g:rails_projections, {
+\ "config/projections.json": {
+\   "command": "projections"
+\ },
+\ "app/serializers/*_serializer.rb": {
+\   "command": "serializer",
+\   "affinity": "model",
+\   "test": "spec/serializers/%s_spec.rb",
+\   "related": "app/models/%s.rb",
+\   "template": "class %SSerializer < ActiveModel::Serializer\nend"
+\ },
+\ "app/services/*.rb": {
+\   "command": "service",
+\   "affinity": "model",
+\   "alternate": ["spec/services/%s_spec.rb", "unit/services/%s_spec.rb"],
+\   "template": "class %S\n\n  def perform\n  end\nend"
+\ },
+\ "app/presenters/*_presenter.rb": {
+\   "command": "presenter",
+\   "affinity": "model",
+\   "alternate": ["spec/presenters/%s_presenter_spec.rb", "unit/presenters/%s_presenter_spec.rb"],
+\   "related": "app/models/%s.rb",
+\   "template": "class %SPresenter < SimpleDelegator\n  def self.wrap(collection)\n    collection.map{open} |object| new object {close}\n  end\n\nend"
+\ },
+\ "spec/factories/*s.rb": {
+\   "command": "factory",
+\   "affinity": "model",
+\   "related": "app/models/%s.rb",
+\   "template": "FactoryGirl.define do\n  factory :%s do\n  end\nend"
+\ },
+\ "spec/presenters/*_presenter.rb": {
+\   "command": "specpresenter",
+\   "affinity": "presenter",
+\   "alternate": ["app/presenters/%s_presenter.rb"],
+\   "related": "app/models/%s.rb",
+\   "template": "require 'rails_helper'\n\nRSpec.describe %SPresenter, type: :presenter do\n\nend"
+\ },
+\ "features/cukes/*.feature": {
+\   "alternate": ["features/step_definitions/%s_steps.rb", "features/steps/%s_steps.rb"],
+\ },
+\ "spec/controllers/*_controller_spec.rb": {
+\   "command": "speccontroller",
+\   "affinity": "controller",
+\   "related": "app/controllers/%s.rb",
+\   "template": "require 'rails_helper'\n\nRSpec.describe %SController, type: :controller do\n\nend"
+\ },
+\ "spec/serializers/*_serializer_spec.rb": {
+\   "command": "specserializer",
+\   "affinity": "serializer",
+\   "related": "app/serializers/%s.rb",
+\   "template": "require 'rails_helper'\n\nRSpec.describe %SSerializer, type: :serializer do\n\nend"
+\ },
+\ "spec/models/*_spec.rb": {
+\   "command": "spec",
+\   "affinity": "model",
+\   "related": "app/models/%s.rb",
+\   "template": "require 'rails_helper'\n\nRSpec.describe %S, type: :model do\n\nend"
+\ },
+\ "spec/services/*_spec.rb": {
+\   "command": "specservice",
+\   "affinity": "service",
+\   "related": "app/services/%s.rb",
+\   "template": "require 'rails_helper'\n\nRSpec.describe %S do\n\nend"
+\ },
+\ "spec/workers/*_spec.rb": {
+\   "command": "specworker",
+\   "affinity": "worker",
+\   "related": "app/workers/%s.rb",
+\   "template": "require 'rails_helper'\n\nRSpec.describe %S, type: :worker do\n\nend"
+\ },
+\ "spec/features/*_spec.rb": {
+\   "command": "specfeature",
+\   "template": "require 'rails_helper'\n\nRSpec.feature '%S', type: :feature do\n\nend"
+\ },
+\ "spec/helpers/*_helper_spec.rb": {
+\   "command": "spechelper",
+\   "related": "app/helpers/%_helper.rb",
+\   "affinity": "helper",
+\   "template": "require 'rails_helper'\n\nRSpec.describe ApplicationHelper, type: :helper do\n\nend"
+\ },
+\ "lib/tasks/*.rake": {
+\   "command": "rake",
+\   "template": ["namespace :%s do\n  desc '%s'\n  task %s: :environment do\n\n  end\nend"],
+\ },
+\ "config/*.rb": { "command": "config"  },
+\ "spec/support/*.rb": { "command": "support" },
+\ })
+
+let g:rails_gem_projections = {
+\ "carrierwave": {
+\   "app/uploaders/*_uploader.rb": {
+\   "command": "uploader",
+\   "template": "class %SUploader < CarrierWave::Uploader::Base\nend"
+\   }
+\ },
+\ "resque": {
+\   "app/workers/*_job.rb": {
+\   "command": "worker",
+\   "template": "class %SJob\n\n  \n@queue = :main\ndef self.perform\n  end\nend"
+\   }
+\ },
+\ }
+
+" let g:esearch#out#win#open = 'if @% !=# "" | edit | endif'
+let g:esearch#cmdline#dir_icon = " "
+let g:esearch#cmdline#help_prompt = 0
+let g:esearch#substitute#swapchoice = 'q'
+
+let g:ruby_refactoring_map_keys = 0
+
+let g:esearch = { 'backend': 'vimproc', 'adapter': 'ag' }
+
+      " \   'backend':    'nvim',
+let g:test = []
+au User ESearchOutputFinishQFList call lightline#update()
+let g:esearch#out#win#context_syntax_highlight = 1
+" set ut=300
+
+let g:diminactive_use_colorcolumn = 0
+
+let g:diminactive_use_syntax = 1
+let g:tmuxcomplete#trigger = ''
+
+" autoswap
+let g:autoswap_detect_tmux = 1
+
+" let g:vimpipe_invoke_map = '<leader>r'
+
+let g:dbext_default_MYSQL_extra = '-t'
+
+let g:quickrun_config = {'outputter/buffer/split': 'vertical'}
+" let g:quickrun_config = {}
+let g:quickrun_config.sql = {
+      \ 'cmdopt': 'msw_dev'
+      \}

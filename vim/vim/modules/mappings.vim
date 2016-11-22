@@ -1,15 +1,16 @@
+" Helpers
+function! s:incsearch_fuzzy(...) abort
+  return extend(copy({'converters': [incsearch#config#fuzzy#converter(), incsearch#config#fuzzyspell#converter() ]}), get(a:, 1, {}))
+endfunction
 fu! s:alias(to, from)
   exe 'nmap '.a:from.' '.a:to
   exe 'nnoremap '.a:to.' <Nop>'
 endfu
-function! s:incsearch_fuzzy(...) abort
-  return extend(copy({
-  \   'converters': [
-  \     incsearch#config#fuzzy#converter(),
-  \     incsearch#config#fuzzyspell#converter()
-  \   ],
-  \ }), get(a:, 1, {}))
-endfunction
+fu! s:map_ctrl(map, keys, cmd)
+  let key_pos = len(a:keys)-2
+  exe a:map.' <silent> '.a:keys.' '.a:cmd
+  exe a:map.' <silent> '.a:keys[:key_pos].'<C-'.a:keys[key_pos+1].'> '.a:cmd
+endfu
 
 if has('nvim')
   call s:alias('[shftf2]', '<S-F2>')
@@ -33,31 +34,41 @@ cmap     <c-o> <Plug>(unite_cmdmatch_complete)
   " let NERDTreeMapJumpNextSibling = "\<C-w>j"
   " let NERDTreeMapJumpPrevSibling = "\<C-w>k"
   nnoremap <silent> <Leader>t  ::NERDTreeMirrorToggle<CR>
+  " nnoremap <silent> <Leader>t  :NERDTreeTabsToggle<CR>
   nnoremap <silent> <Leader>ft :NERDTreeFind<CR>
+  " nnoremap <silent> <Leader>ft :NERDTreeTabsFind<CR>
   nnoremap <C-r>      :Unite -buffer-name=outline -start-insert outline<CR>
 
-  nnoremap <F9>       :call GenerateCtags()<CR>
+  " nnoremap <F9>       :call GenerateCtags()<CR>
   nnoremap <F2>       :TagbarToggle<CR>
   nnoremap <Leader>fb :CtrlPLine<CR>
   nnoremap <Leader>e  :call RailsCommands(g:rails_commands, g:rails_edit_mappings, 'CtrlP %s')<CR>
+  " nnoremap <leader>rr :!rake<CR>
 
   " ,search
+  " nnoremap <C-f><C-d> :<C-u>CtrlPNerdTree<CR>
   nnoremap <C-f><C-d> :<C-u>CtrlPNerdTree<CR>
-  call   esearch#map('<C-f><C-f>','<Plug>(esearch)')
-  call   esearch#map('<C-f>f',    '<Plug>(esearch)')
-  call   esearch#map('<Leader>ff','<Plug>(esearch)')
+  nnoremap <leader>rc :CtrlPControllers<CR>
+  nnoremap <leader>rm :CtrlPModels<CR>
+  nnoremap <leader>rs :CtrlPSpecs<CR>
+  nnoremap <leader>rv :CtrlPViews<CR>
+  call   esearch#map('<C-f><C-f>','esearch')
+  call   esearch#map('<C-f>f',    'esearch')
+  call   esearch#map('<Leader>ff','esearch')
+
+  let g:vim_search_pulse_disable_auto_mappings = 1
   nnoremap               <Leader>fl   :Unite -buffer-name=search\ line -start-insert line<CR>
   nnoremap               <C-f>l       :Unite -buffer-name=search\ line -start-insert line<CR>
   map                    /            <Plug>(incsearch-forward)
   map                    ?            <Plug>(incsearch-backward)
   map                    g/           <Plug>(incsearch-stay)
-  map     <silent>       #            <Plug>(incsearch-nohl0)<Plug>(asterisk-z#)<Plug>(anzu-echo-search-status)
-  map     <silent>       *            <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)<Plug>(anzu-echo-search-status)
-  map     <silent>       g*           <Plug>(incsearch-nohl0)<Plug>(asterisk-gz*)<Plug>(anzu-echo-search-status)
-  map     <silent>       g#           <Plug>(incsearch-nohl0)<Plug>(asterisk-gz#)<Plug>(anzu-echo-search-status)
-  map                    N            <Plug>(incsearch-nohl)<Plug>(anzu-N)zz
-  map                    n            <Plug>(incsearch-nohl)<Plug>(anzu-n)zz
-  nnoremap               <CR>         :nohl<Bar>AnzuClearSearchStatus<CR>:echo ''<CR>
+  map     <silent>       #            <Plug>(incsearch-nohl0)<Plug>(asterisk-z#)<Plug>(anzu-echo-search-status)<Plug>Pulse
+  map     <silent>       *            <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)<Plug>(anzu-echo-search-status)<Plug>Pulse
+  map     <silent>       g*           <Plug>(incsearch-nohl0)<Plug>(asterisk-gz*)<Plug>(anzu-echo-search-status)<Plug>Pulse
+  map     <silent>       g#           <Plug>(incsearch-nohl0)<Plug>(asterisk-gz#)<Plug>(anzu-echo-search-status)<Plug>Pulse
+  map                    N            <Plug>(incsearch-nohl)<Plug>(anzu-N)zz<Plug>Pulse
+  map                    n            <Plug>(incsearch-nohl)<Plug>(anzu-n)zz<Plug>Pulse
+  nnoremap               <CR>         :nohl<Bar>AnzuClearSearchStatus<CR>:<Esc>
   noremap <silent><expr> z/           incsearch#go(<SID>incsearch_fuzzy())
   noremap <silent><expr> z?           incsearch#go(<SID>incsearch_fuzzy({'command': '?'}))
   noremap <silent><expr> zg?          incsearch#go(<SID>incsearch_fuzzy({'is_stay': 1}))
@@ -83,7 +94,7 @@ cmap     <c-o> <Plug>(unite_cmdmatch_complete)
 
   " ,motion
   nnoremap <C-t> :tabnew<CR>
-  " nnoremap <silent> <C-i> <C-i>zz
+  nnoremap <silent> <C-i> <C-i>zz
   nnoremap <silent> <C-o> <C-o>zz
   map <C-\>123123123 <Plug>(easymotion-prefix)
   " nmap <C-g>/ <Plug>(easymotion-sn)
@@ -101,22 +112,21 @@ cmap     <c-o> <Plug>(unite_cmdmatch_complete)
   xmap gk <Plug>(easymotion-k)
   nmap <C-g> %
 
-  map <Plug>(smartword-basic-w)  <Plug>CamelCaseMotion_w
-  map <Plug>(smartword-basic-b)  <Plug>CamelCaseMotion_b
-  map <Plug>(smartword-basic-e)  <Plug>CamelCaseMotion_e
-  nmap w  <Plug>(smartword-w)
-  nmap b  <Plug>(smartword-b)
-  nmap e  <Plug>(smartword-e)
-  nmap ge  <Plug>(smartword-ge)
-  xmap w  <Plug>(smartword-w)
-  xmap b  <Plug>(smartword-b)
-  xmap e  <Plug>(smartword-e)
-  xmap ge  <Plug>(smartword-ge)
+  " map <Plug>(smartword-basic-w)  <Plug>CamelCaseMotion_w
+  " map <Plug>(smartword-basic-b)  <Plug>CamelCaseMotion_b
+  " map <Plug>(smartword-basic-e)  <Plug>CamelCaseMotion_e
+  " nmap w  <Plug>(smartword-w)
+  " nmap b  <Plug>(smartword-b)
+  " nmap e  <Plug>(smartword-e)
+  " nmap ge  <Plug>(smartword-ge)
+  " xmap w  <Plug>(smartword-w)
+  " xmap b  <Plug>(smartword-b)
+  " xmap e  <Plug>(smartword-e)
+  " xmap ge  <Plug>(smartword-ge)
   map <S-W> <Plug>CamelCaseMotion_w
   map <S-B> <Plug>CamelCaseMotion_b
   map <S-E> <Plug>CamelCaseMotion_e
 
-  "nnoremap <C-l> <C-i>
   nnoremap <Tab>    gt
   nnoremap <S-Tab>  gT
   nnoremap g1 1gt
@@ -130,10 +140,51 @@ cmap     <c-o> <Plug>(unite_cmdmatch_complete)
   nnoremap g9 9gt
   nnoremap g0 10gt
 
-  map <C-j> <C-W>j
-  map <C-k> <C-W>k
-  map <C-h> <C-W>h
-  map <C-l> <C-W>l
+  " jump window
+  if has('nvim') 
+    noremap <silent> <C-k> <C-w><C-k>
+    noremap <silent> <C-j> <C-w><C-j>
+    noremap <silent> <C-l> <C-w><C-l>
+    noremap <silent> <C-h> <C-w><C-h>
+  else
+    nnoremap <silent> <C-k> <C-w><C-k>
+    nnoremap <silent> <C-j> <C-w><C-j>
+    nnoremap <silent> <C-l> <C-w><C-l>
+    nnoremap <silent> <C-h> <C-w><C-h>
+    " noremap <silent> <C-k> :<C-u>winc k<CR>
+    " noremap <silent> <C-j> :<C-u>winc j<CR>
+    " noremap <silent> <C-l> :<C-u>winc l<Bar>mode<CR>
+    " noremap <silent> <C-h> :<C-u>winc h<CR>
+  endif
+
+  " nmap <silent> <C-k> <Plug>scrollwinUp
+  " nmap <silent> <C-j> <Plug>scrollwinDown
+  " nmap <silent> <C-l> <Plug>scrollwinRight
+  " nmap <silent> <C-h> <Plug>scrollwinLeft
+
+
+  let g:tmux_navigator_no_mappings = 1
+
+  " call submode#leave_with('layout', 'n', '', '<Esc>')
+  " call submode#leave_with('layout', 'n', '', '<C-c>')
+  for s:set in [
+        \['n',      ':cal MoveToNextTab()<CR>'],
+        \['p',      ':cal MoveToPrevTab()<CR>'],
+        \['H',      ':winc H<CR>'],
+        \['L',      ':winc L<CR>'],
+        \['J',      ':winc J<CR>'],
+        \['K',      ':winc K<CR>'],
+        \['h',      ':cal WindowSwap#MarkWindowSwap()<Bar>winc h<Bar>cal WindowSwap#DoWindowSwap()<CR>'],
+        \['l',      ':cal WindowSwap#MarkWindowSwap()<Bar>winc l<Bar>cal WindowSwap#DoWindowSwap()<CR>'],
+        \['j',      ':cal WindowSwap#MarkWindowSwap()<Bar>winc j<Bar>cal WindowSwap#DoWindowSwap()<CR>'],
+        \['k',      ':cal WindowSwap#MarkWindowSwap()<bar>winc k<bar>cal WindowSwap#DoWindowSwap()<cr>'],
+        \['t', ':exe "tabm"tabpagenr()<CR>'],
+        \['T', ':exe "tabm"tabpagenr()-2<CR>']]
+    call submode#enter_with('layout', 'n', 's', '<C-w>'.s:set[0],        s:set[1].':cal lightline#update()<CR>')
+    call submode#enter_with('layout', 'n', 's', '<C-w><C-'.s:set[0].'>', s:set[1].':cal lightline#update()<CR>')
+    call        submode#map('layout', 'n', 's', s:set[0],                s:set[1])
+    call        submode#map('layout', 'n', 's', '<C-'.s:set[0].'>',      s:set[1])
+  endfor
 
   " ,MRU
   nnoremap <C-f> <Nop>
@@ -160,10 +211,31 @@ nnoremap <silent> <Leader>gc :Gcommit<CR>
 nnoremap <silent> <Leader>gl :Glog<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gb :NERDTreeClose<Bar>Gblame<CR>
-nnoremap <silent> <Leader>gv :Gitv<CR>
+" nnoremap <silent> <Leader>gv :Gitv<CR>
+nnoremap <silent> <Leader>gv :GV<CR>
+nnoremap <silent> <Leader>dp :diffput<CR>
+
 
 " #Editing
-vnoremap <Leader>ree :Rextract<space>
+let g:UltiSnipsExpandTrigger="<Tab>"
+" let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" imap <expr><tab>
+"   \ getline(line('.')) !~# '^\s*$' && getline(line('.'))[col('.')-1] != ' ' && !empty(UltiSnips#SnippetsInCurrentScope()) ? "\<C-R>=UltiSnips#ExpandSnippetOrJump()\<cr>" :
+"   \ emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" :
+"   \ "\<tab>"
+
+
+
+nmap <leader>u :<C-u>UltiSnipsEdit<CR>
+
+xnoremap <Leader>ree :Rextract<space>
+
+
+xmap <C-j> <Plug>(vertical_move_down)
+xmap <C-k> <Plug>(vertical_move_up)
 
 vmap c <Plug>Commentary
 vmap " <Plug>VSurround"
@@ -171,7 +243,6 @@ vmap ' <Plug>VSurround'
 nmap d" <Plug>Dsurround"
 nmap dt <Plug>Dsurroundt
 nmap d' <Plug>Dsurround'
-
 vmap v      <Plug>(expand_region_expand)
 vmap <C-v>  <Plug>(expand_region_shrink)
 call expand_region#custom_text_objects('ruby', { 'im' :0, 'am' :0, })
@@ -189,17 +260,16 @@ nnoremap < <<
 vnoremap < <gv
 vnoremap > >gv
 vnoremap = =gv
+vnoremap <C-a> <C-a>gv
+vnoremap <C-x> <C-x>gv
 nnoremap = ==
 vnoremap <S-y> ygv
 
 imap <C-h> <BS>
 imap <C-h> <BS>
 
-" xmap <leader>n <Plug>NrrwrgnDo
-" nmap <leader>n <Plug>NrrwrgnDo
-
-nmap <leader>n :call emmet#moveNextPrev(0)<cr>
-nmap <leader>N :call emmet#moveNextPrev(1)<cr>
+xmap <leader>n <Plug>NrrwrgnDo
+nmap <leader>n <Plug>NrrwrgnDo
 
 nmap <M-k> <Plug>(textmanip-move-up)==
 nmap <M-j> <Plug>(textmanip-move-down)==
@@ -226,7 +296,7 @@ nmap <Leader>rrc :source $MYVIMRC<CR>
 cabbrev trw :call TrimWhiteSpace()
 nmap <silent> [shftf2] :call feedkeys(':Rename '.expand('%:t'), 'n')<CR>
 let g:vcoolor_map = '<F4>'
-let g:vcool_ins_rgb_map = '<F4>'
+" let g:vcool_ins_rgb_map = '<F4>'
 
 " #insert mode motions
 inoremap <C-d> <Delete>
@@ -254,8 +324,8 @@ cnoreabbrev qqq qa!
 cnoreabbrev q Q
 cnoreabbrev qq Q!
 cnoreabbrev m Make
-cnoreabbrev a A
-cnoreabbrev r R
+" cnoreabbrev a A
+" cnoreabbrev r R
 cabbrev Tab Tabularize
 
 
@@ -292,13 +362,12 @@ cabbrev pls Unite neobundle/search
 
 nnoremap <silent> <Leader>rp :RainbowParenthesesToggle<CR>
 nnoremap <silent> <Leader>fc :call ToggleFoldColumn()<CR>
-" nnoremap          <Leader>ig :IndentGuidesToggle<CR>
-nmap <leader>ig :IndentLinesToggle<CR>
+nnoremap          <Leader>ig :IndentGuidesToggle<CR>
+" nmap <leader>ig :IndentLinesToggle<CR>
 nnoremap          <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>l     :lopen<CR>
 nnoremap <Leader>c     :copen<CR>
 nnoremap <Leader><S-c> :Copen<CR>
-vnoremap p "_dP
 
 " #Misc
 nnoremap j gj
@@ -314,6 +383,7 @@ nnoremap <C-s> :write<CR>
 nmap <S-u> :<C-u>redo<CR><Plug>(RepeatRedo)
 " nnoremap <S-u> :redo<CR>
 nnoremap ; :
+vnoremap ; :
 nnoremap <silent> <S-q> :call Quit()<CR>
 noremap  <silent>  <C-q> :call CloseSomething()<CR>
 nnoremap <silent> z<S-m> :call g:FoldEverything()<CR>
@@ -324,6 +394,11 @@ map с c| map м v| map и b| map т n| map ь m| map б ,| map ю .| map Ё ~| 
 map Н Y| map Г U| map Ш I| map Щ O| map З P| map Х {| map Ъ }| map Ф A| map Ы S| map В D| map А F| map П G| map Р H
 map О J| map Л K| map Д L| map Ж :| map Э "| map Я Z| map Ч X| map С C| map М V| map И B| map Т N| map Ь M| map Б <
 map Ю >
+
+
+" set langmap=ёйцукенгшщзхъфывапролджэячсмитьбю;`qwertyuiop[]asdfghjkl\;'zxcvbnm\,.,ЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>
+" setlocal spell spelllang=ru_yo,en_us
+
 
 let g:endwise_no_mappings = 1
 
@@ -337,3 +412,20 @@ let g:endwise_no_mappings = 1
 "
 "
 nmap gx <Plug>(openbrowser-open)
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+
+nmap <F9> :Make! %<CR>
+nmap <F6> :Make  %<CR>
+
+augroup TmpWorkaroundWithEsearch
+  au!
+  au VimEnter * unmap <Leader>ff
+augroup END
+
+nmap <leader>rr <Plug>(quickrun)
