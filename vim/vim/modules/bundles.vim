@@ -43,6 +43,8 @@ Plug 'ryanoasis/vim-webdevicons'
   Plug 'osyo-manga/vim-anzu'               " Search position info
   Plug 'eugen0329/vim-easy-search'         " Project-wide search
 
+  Plug 'inside/vim-search-pulse'
+
   " ,motion
   Plug 'Lokaltog/vim-easymotion'           " highlight jumb target
   Plug 'rhysd/clever-f.vim'                " f{char} improved
@@ -179,6 +181,7 @@ Plug 'xolox/vim-notes', { 'depends': 'xolox/vim-misc' }
   Plug 'marijnh/tern_for_vim', {
         \ 'build' : {'linux': 'npm install'}}     " js completion
   " Plug 'myhere/vim-nodejs-complete'
+  Plug 'carlitux/deoplete-ternjs'
 
   " Plug 'Rip-Rip/clang_complete'
   Plug 'osyo-manga/vim-marching', { 'for': ['c', 'cpp']} " clang async completion

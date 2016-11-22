@@ -116,8 +116,8 @@ fu! Quit()
   endtry
 endfu
 
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-function! s:align()
+inoremap <silent> <Bar>   <Bar><Esc>:call GAalign()<CR>a
+function! GAalign()
   let p = '^\s*|\s.*\s|\s*$'
   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
     let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
@@ -128,9 +128,20 @@ function! s:align()
   endif
 endfunction
 
+" function! s:align()
+"   let p = '^\s*|\s.*\s|\s*$'
+"   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+"     let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+"     let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+"     Tabularize/|/l1
+"     normal! 0
+"     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+"   endif
+" endfunction
+
 if has('nvim')
   fu! CheckSyntax()
-    exe 'Neomake'
+    " exe 'Neomake'
     " if exists('w:s_err_count')
     "   unlet w:s_err_count
     " endif
@@ -171,7 +182,13 @@ fu! RmSwp()
 endfu
 
 fu! GenerateCtags()
+
+  return ''
   let p = 'tmp/tags'
+
+  if !RailsDetect()
+    return ''
+  endif
   if RailsDetect()
     if !isdirectory(fnamemodify(p, ':h'))
       call mkdir('tmp')
@@ -212,3 +229,78 @@ fu! Exists(files)
   endfor
   return r
 endfu
+
+
+fu! MoveToPrevTab()
+  "there is only one window
+  if tabpagenr('$') == 1 && winnr('$') == 1
+    return
+  endif
+  "preparing new window
+  let l:tab_nr = tabpagenr('$')
+  let l:cur_buf = bufnr('%')
+  if tabpagenr() != 1
+    close!
+    if l:tab_nr == tabpagenr('$')
+      tabprev
+    endif
+    sp
+  else
+    close!
+    exe "0tabnew"
+  endif
+  "opening current buffer in new window
+  exe "b".l:cur_buf
+endfunc
+
+fu! MoveToNextTab()
+  "there is only one window
+  if tabpagenr('$') == 1 && winnr('$') == 1
+    return
+  endif
+  "preparing new window
+  let l:tab_nr = tabpagenr('$')
+  let l:cur_buf = bufnr('%')
+  if tabpagenr() < tab_nr
+    close!
+    if l:tab_nr == tabpagenr('$')
+      tabnext
+    endif
+    sp
+  else
+    close!
+    tabnew
+  endif
+  "opening current buffer in new window
+  exe "b".l:cur_buf
+endfunc
+
+" Simple re-format for minified Javascript
+command! UnMinify call UnMinify()
+function! UnMinify()
+    %s/{\ze[^\r\n]/{\r/g
+    %s/){/) {/g
+    %s/};\?\ze[^\r\n]/\0\r/g
+    %s/;\ze[^\r\n]/;\r/g
+    %s/[^\s]\zs[=&|]\+\ze[^\s]/ \0 /g
+    normal ggVG=
+endfunction
+
+
+
+function! g:BMWorkDirFileLocation()
+    let filename = 'bookmarks'
+    let location = ''
+    if isdirectory('.git')
+        " Current work dir is git's work tree
+        let location = getcwd().'/.git'
+    else
+        " Look upwards (at parents) for a directory named '.git'
+        let location = finddir('.git', '.;')
+    endif
+    if len(location) > 0
+        return location.'/'.filename
+    else
+        return getcwd().'/.'.filename
+    endif
+endfunction

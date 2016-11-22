@@ -139,7 +139,7 @@ endfunction
 function! IndentWithI()
   if getline('.') =~ '^\s*$'
     " return "\"_cc"
-    return "cc"
+    return '"_cc'
   else
     return "i"
   endif

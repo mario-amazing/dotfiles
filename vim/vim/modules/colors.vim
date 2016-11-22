@@ -19,13 +19,13 @@ fu! s:FixColors()
     hi LineNr       ctermbg=236 ctermfg=240
     hi CursorLineNr ctermbg=236 ctermfg=240 cterm=bold
     hi CursorLine   ctermbg=237
-    hi StatusLineNC ctermbg=238 ctermfg=0
+    hi StatusLineNC ctermbg=238 ctermfg=7
     hi StatusLine   ctermbg=240 ctermfg=12
     hi Visual       ctermbg=239
     hi PMenu        ctermfg=250 ctermbg=239
     hi PmenuSel     cterm=reverse ctermfg=250 ctermbg=239
     hi PmenuSbar    ctermbg=248
-    hi SpellBad     ctermbg=0   ctermfg=1
+    hi SpellBad     ctermbg=7   ctermfg=1
     hi Folded       ctermfg=245 ctermbg=235
     hi SyntasticErrorSign        ctermbg=236
     hi SyntasticWarningSign      ctermbg=236
@@ -49,7 +49,7 @@ fu! s:FixColors()
     hi Constant ctermfg=229
     hi rubyConstant ctermfg=229
     hi rubyConstant ctermfg=222
-    hi wildmenu     ctermfg=0 ctermbg=11
+    hi wildmenu     ctermfg=7 ctermbg=11
     hi StatusLine   cterm=reverse ctermfg=59 ctermbg=221
     hi StatusLineNC cterm=reverse ctermfg=59 ctermbg=251
 
@@ -74,7 +74,7 @@ fu! s:FixColors()
     hi LineNr       ctermbg=236 ctermfg=240
     hi CursorLineNr ctermbg=236 ctermfg=240
     hi CursorLine   ctermbg=236
-    hi StatusLineNC ctermbg=238 ctermfg=0
+    hi StatusLineNC ctermbg=238 ctermfg=7
     hi StatusLine   ctermbg=240 ctermfg=12
     hi Visual       ctermbg=239
     hi PMenu        ctermfg=250 ctermbg=239
@@ -83,7 +83,7 @@ fu! s:FixColors()
     hi PmenuSel     cterm=reverse ctermfg=2
 
     hi PmenuSbar    ctermbg=248
-    hi SpellBad     ctermbg=0   ctermfg=1
+    hi SpellBad     ctermbg=7   ctermfg=1
     hi Folded       ctermfg=245 ctermbg=235
     au ColorScheme * hi SyntasticErrorSign        ctermbg=236
     au ColorScheme * hi SyntasticWarningSign      ctermbg=236
@@ -114,8 +114,9 @@ colorscheme molokai
 let g:molokai_original = 0
 let g:rehash256 = 1
 set background=dark
+hi EndOfBuffer ctermbg=0  ctermfg=0
+hi ModeMsg     ctermbg=27 ctermfg=255
 
-" colorscheme  hybrid
 
 au ColorScheme * exe 'hi GitGutterChangeDelete ctermfg=39' .
       \ "ctermbg=".synIDattr(synIDtrans(hlID("StatusLineNC")), "bg", "cterm")
@@ -127,5 +128,5 @@ hi link uniteInputLine Normal
 hi link uniteCandidateInputKeyword Identifier
 hi link CtrlPMatch Identifier
 
-hi EndOfBuffer ctermbg=0 ctermfg=0
 " let g:easytags_python_enabled = 1
+"

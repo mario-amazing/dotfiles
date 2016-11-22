@@ -117,6 +117,7 @@ install_gems() {
   gem install interactive_editor
   gem install awesome_print
   gem install neovim
+  gem install rmagick
 }
 
 install_numix(){
@@ -140,6 +141,7 @@ install_programs(){
   install_pachages ncurses-dev #libs-dev
   install_pachages libpq-dev
   install_pachages silversearcher-ag #ag to ctrl-p plagin
+  install_pachages imagemagick libmagickwand-dev
   cd /tmp
 
   install_pachages gdebi
@@ -196,7 +198,7 @@ remove_programs(){
 }
 
 tmp_configs() {
-  sudo bash -c "echo '127.0.0.1  localhost www1.centerv.by crm1.centerv.by centerv.by.local'>> /etc/hosts"
+  sudo bash -c "echo '127.0.0.1  localhost www1.centerv.by www.centerv.by crm1.centerv.by centerv.by centerv.by.local'>> /etc/hosts"
 }
 
 finish_fix() {
