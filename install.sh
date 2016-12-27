@@ -31,6 +31,7 @@ install_git() {
   git config --global user.email "$2"
   git config --global push.default simple
   git config --global core.excludesfile ~/.gitignore_global
+  git config --global help.autoCorrect -1
   copy $SELF_DIR/gitignore_global $HOME/.gitignore_global
 }
 
