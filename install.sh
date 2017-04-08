@@ -119,6 +119,7 @@ install_gems() {
   gem install awesome_print
   gem install neovim
   gem install rmagick
+  gem install shutup
 }
 
 install_numix(){
