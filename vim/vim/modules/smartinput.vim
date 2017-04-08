@@ -83,8 +83,8 @@ let s:ftrules = [
       \   { 'filetypes': ['ruby'], 'rules': ['rb'] },
       \   { 'filetypes': ['vim'], 'rules': ['vim'] },
       \   { 'filetypes': ['sh', 'zsh'], 'rules': ['sh'] },
-      \   { 'filetypes': ['html', 'eruby', 'css', 'sass', 'scss', 'slim', 'haml'], 'rules': ['css'] },
-      \   { 'filetypes': ['html', 'eruby'], 'rules': ['html'] },
+      \   { 'filetypes': ['html', 'eruby', 'css', 'sass', 'scss', 'slim', 'haml', 'docx', 'axlsx'], 'rules': ['css'] },
+      \   { 'filetypes': ['html', 'eruby', 'docx', 'axlsx'], 'rules': ['html'] },
       \ ]
 
 for frule in s:ftrules

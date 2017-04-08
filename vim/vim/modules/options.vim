@@ -59,7 +59,6 @@ set ttyfast
 set nostartofline
 
 set number      " line numbers
-"au BufWinEnter * setlocal numberwidth=2
 set ts=2 sw=2 sts=2
 
 set timeoutlen=1000 ttimeoutlen=40

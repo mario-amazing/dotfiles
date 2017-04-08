@@ -6,7 +6,7 @@ if &t_Co > 2 || has("gui_running") | syntax on | endif
 
 augroup FiletypeAutocommands
   au!
-  au FileType html,eruby,css,scss,sass setlocal iskeyword+=-
+  au FileType html,eruby,css,scss,sass,docx,axlsx setlocal iskeyword+=-
   au BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in runtime! indent/cmake.vim
   au BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
   au FileType cmake setlocal commentstring=#\ %s
@@ -18,6 +18,8 @@ augroup FiletypeAutocommands
 
 
   au BufRead,BufNewFile *.jbuilder setlocal ft=ruby
+  au BufRead *.docx.erb let b:eruby_subtype = 'html'
+  au BufRead,BufNewFile *.axlsx setlocal ft=ruby
 
   au FileType git,GV setlocal nolist nowrap nonumber
 

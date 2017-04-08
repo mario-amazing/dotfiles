@@ -115,7 +115,7 @@ let g:notes_directories = ['~/Dropbox/Notes']
 
 
 " ,IndentLine
-let g:indentLine_char = ''   " another versions ┆│┊︙¦⋮⋮
+let g:indentLine_char = '⋮'   " another versions ┆│┊︙¦⋮⋮ ''
 let g:indentLine_faster = 1
 let g:indentLine_concealcursor = ''
 " let g:indentLine_fileTypeExclude = ['nerdtree', 'help']
@@ -123,7 +123,7 @@ nmap <leader>ig :IndentLinesToggle<CR>
 " let g:indentLine_showFirstIndentLevel = 1
 " let g:indentLine_enabled = 0
 let g:indentLine_color_term = 12
-let g:indentLine_fileType = ['html', 'eruby']
+let g:indentLine_fileType = ['html', 'eruby', 'docx', 'axlsx']
 " let g:indentLine_conceallevel = 1
 " let g:indentLine_leadingSpaceChar = '·'
 " let g:indentLine_leadingSpaceEnabled = 1
