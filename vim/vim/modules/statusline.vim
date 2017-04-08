@@ -159,7 +159,7 @@ fu! s:warn()
   return ''
 endfu
 
-" let g:marginal = '⬛'
+let g:marginal = '⬛'
 let g:placeholder = ' '
 let s:fmt = '▕%s▎'
 let s:fmt = '%s'
