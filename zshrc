@@ -59,6 +59,7 @@ alias si='sudo apt-get install -y'
 alias sp='sudo apt-get purge'
 alias bi='bundle init --gemspec=~/.gemspec_template'
 alias bl='bundle install'
+alias bgi='gem install'
 
 alias ez="vim ~/.zshrc"
 alias ev="vim ~/.vimrc"
