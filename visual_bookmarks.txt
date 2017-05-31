@@ -13,16 +13,28 @@
       "visits": 0
     },
     {
+      "url": "http://rubygems.org/",
+      "title": "RubyGems.org | your community gem host",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
       "url": "https://github.com/megosparta",
       "title": "megosparta (Mario)",
       "pinned": 1,
       "visits": 77
     },
     {
-      "url": "http://readmanga.me/",
-      "title": "Читать мангу на Русском онлайн. Свежие переводы. Read manga online! - ReadManga.me",
+      "url": "http://git.centerv.by/",
+      "title": "Projects · Dashboard · GitLab",
       "pinned": 1,
-      "visits": 102
+      "visits": 0
+    },
+    {
+      "url": "https://translate.google.by/",
+      "title": "Переводчик Google",
+      "pinned": 1,
+      "visits": 77
     },
     {
       "url": "https://www.youtube.com/",
@@ -37,26 +49,14 @@
       "visits": 100
     },
     {
-      "url": "https://translate.google.by/",
-      "title": "Переводчик Google",
+      "url": "http://readmanga.me/",
+      "title": "Читать мангу на Русском онлайн. Свежие переводы. Read manga online! - ReadManga.me",
       "pinned": 1,
-      "visits": 77
-    },
-    {
-      "url": "http://rubygems.org/",
-      "title": "RubyGems.org | your community gem host",
-      "pinned": 1,
-      "visits": 0
+      "visits": 102
     },
     {
       "url": "http://manga24.ru/",
       "title": "Манга! Манга онлайн на русском языке, читать мангу.",
-      "pinned": 1,
-      "visits": 0
-    },
-    {
-      "url": "http://localhost:3000/",
-      "title": "TRPO",
       "pinned": 1,
       "visits": 0
     },
@@ -67,26 +67,56 @@
       "visits": 0
     },
     {
-      "url": "http://musicforprogramming.net/?zero",
-      "title": "musicForProgramming(\"00: _manifesto\");",
-      "pinned": 1,
-      "visits": 0
-    },
-    {
-      "url": "http://gitlab.centerv.by/",
-      "title": "Projects · Dashboard · GitLab",
-      "pinned": 1,
-      "visits": 0
-    },
-    {
       "url": "https://centervby.slack.com/",
       "title": "centerv.by Slack",
       "pinned": 1,
       "visits": 0
     },
     {
+      "url": "http://musicforprogramming.net/?zero",
+      "title": "musicForProgramming(\"00: _manifesto\");",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
+      "url": "http://zurb.com/playground/foundation-icon-fonts-3",
+      "title": "Foundation Icon Fonts 3 | Playground from ZURB",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
+      "url": "http://fontawesome.io/",
+      "title": "Font Awesome, the iconic font and CSS toolkit",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
+      "url": "https://crm.centerv.by/",
+      "title": "YesCRM",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
+      "url": "http://crm.plissa.by:55580/",
+      "title": "CRM-Плисса",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
+      "url": "http://localhost:3000/",
+      "title": "TRPO",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
       "url": "http://crm1.centerv.by:3000/",
       "title": "Центр внедрений - CRM",
+      "pinned": 1,
+      "visits": 0
+    },
+    {
+      "url": "http://crm1.plissa.by:3000/tasks",
+      "title": "crm1.plissa.by:3000/tasks",
       "pinned": 1,
       "visits": 0
     }
