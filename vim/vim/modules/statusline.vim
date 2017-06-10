@@ -51,9 +51,6 @@ let g:lightline = {
       \   'percent':    s:SID.'percent',
       \   'filename':     s:SID.'fname',
       \ },
-      \ 'tab_component_function': {
-      \   'fticon': s:SID.'fticon'
-      \ },
       \ 'component_expand': {
       \   'fnameactive':     s:SID.'fnameactive',
       \   'lineinfo':   s:SID.'lineinfo',
