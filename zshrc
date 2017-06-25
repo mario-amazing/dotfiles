@@ -66,10 +66,12 @@ alias ev="vim ~/.vimrc"
 
 alias rc='rails c'
 alias rs='rails s'
-alias rr='rake routes'
+alias rr='bundle exec rake routes'
 alias rs2='ruby script/server -u'
 alias rc2='ruby script/console'
-alias rdb='rake db:migrate'
+alias rdb='bundle exec rake db:migrate'
+alias rdbr='bundle exec rake db:rollback'
+alias be='bundle exec'
 
 # alias tmux=«TERM=screen-256color tmux»
 # alias tmux='tmux attach || tmux new' #save sessions
