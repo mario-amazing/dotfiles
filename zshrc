@@ -1,16 +1,49 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="awesomepanda"
+#ZSH_THEME="awesomepanda"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
+# export DEFAULT_USER="v1rgul"
+export TERM="xterm-256color"
+
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_MODE='awesome-patched'
+
+
+POWERLEVEL9K_DIR_OMIT_FIRST_CHARACTER=true
+POWERLEVEL9K_STATUS_VERBOSE=false
+POWERLEVEL9K_STATUS_OK_IN_NON_VERBOSE=true
+POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='black'
+POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='178'
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="cyan"
+# POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="178"
+POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND="015"
+
+POWERLEVEL9K_CONTEXT_TEMPLATE="%m"
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %d/%m/%Y}"
+
+POWERLEVEL9K_VCS_STAGED_ICON='\u00b1'
+POWERLEVEL9K_VCS_UNTRACKED_ICON='\u25CF'
+POWERLEVEL9K_VCS_UNSTAGED_ICON='\u00b1'
+POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
+POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon ssh context root_indicator dir dir_writable vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status rbenv rvm  background_jobs time)
+
+# HYPHEN_INSENSITIVE="true"
+source $ZSH/oh-my-zsh.sh
+
 stty -ixon
 
 plugins=(git)
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/mario/.rvm/bin:/home/mario/.rvm/bin"
 
-source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
 
+export HOMEBREW_AUTO_UPDATE_SECS=86400
 export HISTSIZE=200000
 export SAVEHIST=200000
 export HISTFILE="$HOME/.zsh_history"
@@ -18,9 +51,11 @@ export SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups
 
 # Aliases
+alias vim='vim'
+alias be='bundle exec'
 alias x='exit'
-alias v='nvim'
-alias sv="sudo nvim"
+alias v='vim'
+alias sv="sudo vim"
 alias s='subl'
 alias t='touch'
 alias md='mkdir'
@@ -30,8 +65,11 @@ alias mysql='mysql --auto-rehash'
 alias kl='kill -9'
 alias o='xdg-open'
 alias ctg='ctags -R --exclude=.git --exclude=log -f tmp/tags *'
+alias ctags="`brew --prefix`/bin/ctags -R --exclude=.git --exclude=log *"
 
-alias ls='ls --color=auto'
+alias ls='ls -G'
+
+# alias ls='ls --color=auto'
 
 alias gi='git init'
 alias ga='git add'
