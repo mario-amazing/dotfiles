@@ -6,7 +6,10 @@ let g:vcoolor_custom_picker = 'yad --title "Vim colorsel" --color-selection --sh
 
 
 " ,instantmarkdown
-let g:instant_markdown_autostart = 1
+let g:instant_markdown_autostart = 0
+let g:vim_markdown_conceal = 1
+
+let g:markdown_fenced_languages = ['sql']
 
 " ,clever-f
 let g:clever_f_smart_case = 1
@@ -50,29 +53,32 @@ let g:notes_suffix = '.txt'
 au VimEnter * hi ExchangeRegion cterm=bold ctermfg=7 ctermbg=240
 
 " ,webdev icons
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_nerdtree = 0
-" let g:webdevicons_enable_nerdtree = 1
-" let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-let g:webdevicons_enable_airline_tabline = 0
-let g:webdevicons_enable_airline_statusline = 0
+" let g:webdevicons_enable = 1
+" let g:webdevicons_enable_nerdtree = 0
+" " let g:webdevicons_enable_nerdtree = 1
+" " let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+" let g:webdevicons_enable_airline_tabline = 0
+" let g:webdevicons_enable_airline_statusline = 0
 
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
-let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
-let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['Gemfile'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rb'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['erb'] = ''
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+" let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
+" let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['Gemfile'] = ''
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rb'] = ''
+" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['erb'] = ''
 
-let g:WebDevIconsUnicodeDecorateFolderNodes = 0
-" let g:DevIconsEnableFoldersOpenClose = 1
-" let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+" let g:WebDevIconsUnicodeDecorateFolderNodes = 0
+" " let g:DevIconsEnableFoldersOpenClose = 1
+" " let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
-"let g:NERDTreeDirArrowExpandable = ''
-"let g:NERDTreeDirArrowCollapsible = ''
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
 
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
-let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = '🗋'
-hi YellowFG ctermfg=3
+let NERDTreeIgnore = []
+let NERDTreeIgnore += ['__pycache__', '.ropeproject']
+
+" let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+" let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = '🗋'
+" hi YellowFG ctermfg=3
 
 
 
@@ -225,7 +231,8 @@ let g:UltiSnipsEditSplit="horizontal"
 let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_user_command = 'ag %s -U -l --nocolor -g ""'
-let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'package.json', 'bower.json', 'main.c', 'main.cpp']
+" let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'package.json', 'bower.json', 'main.c', 'main.cpp']
+let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'main.c', 'main.cpp']
 " let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'package.json', 'bower.json', 'index.html', 'main.c', 'main.cpp']
 
 " let g:ctrlp_lazy_update = 350
@@ -375,126 +382,124 @@ if !exists('g:rails_projections')
   let g:rails_projections = {}
 endif
 
-call extend(g:rails_gem_projections, {
-      \   'sidekiq': {
-      \     'app/workers/*_worker.rb': {
-      \       'command': 'worker',
-      \       'template': [
-      \        'class {camelcase|capitalize|colons}Worker',
-      \        '  include Sidekiq::Worker',
-      \        '',
-      \        '  def perform',
-      \        '  end',
-      \        'end',
-      \        ]
-      \     },
-      \   },
-      \ })
+" call extend(g:rails_gem_projections, {
+"       \   'sidekiq': {
+"       \     'app/workers/*_worker.rb': {
+"       \       'command': 'worker',
+"       \       'template': [
+"       \        'class {camelcase|capitalize|colons}Worker',
+"       \        '  include Sidekiq::Worker',
+"       \        '',
+"       \        '  def perform',
+"       \        '  end',
+"       \        'end',
+"       \        ]
+"       \     },
+"       \   },
+"       \ })
 
+" call extend(g:rails_projections, {
+" \ "config/projections.json": {
+" \   "command": "projections"
+" \ },
+" \ "app/serializers/*_serializer.rb": {
+" \   "command": "serializer",
+" \   "affinity": "model",
+" \   "test": "spec/serializers/%s_spec.rb",
+" \   "related": "app/models/%s.rb",
+" \   "template": "class %SSerializer < ActiveModel::Serializer\nend"
+" \ },
+" \ "app/services/*.rb": {
+" \   "command": "service",
+" \   "affinity": "model",
+" \   "alternate": ["spec/services/%s_spec.rb", "unit/services/%s_spec.rb"],
+" \   "template": "class %S\n\n  def perform\n  end\nend"
+" \ },
+" \ "app/presenters/*_presenter.rb": {
+" \   "command": "presenter",
+" \   "affinity": "model",
+" \   "alternate": ["spec/presenters/%s_presenter_spec.rb", "unit/presenters/%s_presenter_spec.rb"],
+" \   "related": "app/models/%s.rb",
+" \   "template": "class %SPresenter < SimpleDelegator\n  def self.wrap(collection)\n    collection.map{open} |object| new object {close}\n  end\n\nend"
+" \ },
+" \ "spec/factories/*s.rb": {
+" \   "command": "factory",
+" \   "affinity": "model",
+" \   "related": "app/models/%s.rb",
+" \   "template": "FactoryGirl.define do\n  factory :%s do\n  end\nend"
+" \ },
+" \ "spec/presenters/*_presenter.rb": {
+" \   "command": "specpresenter",
+" \   "affinity": "presenter",
+" \   "alternate": ["app/presenters/%s_presenter.rb"],
+" \   "related": "app/models/%s.rb",
+" \   "template": "require 'rails_helper'\n\nRSpec.describe %SPresenter, type: :presenter do\n\nend"
+" \ },
+" \ "features/cukes/*.feature": {
+" \   "alternate": ["features/step_definitions/%s_steps.rb", "features/steps/%s_steps.rb"],
+" \ },
+" \ "spec/controllers/*_controller_spec.rb": {
+" \   "command": "speccontroller",
+" \   "affinity": "controller",
+" \   "related": "app/controllers/%s.rb",
+" \   "template": "require 'rails_helper'\n\nRSpec.describe %SController, type: :controller do\n\nend"
+" \ },
+" \ "spec/serializers/*_serializer_spec.rb": {
+" \   "command": "specserializer",
+" \   "affinity": "serializer",
+" \   "related": "app/serializers/%s.rb",
+" \   "template": "require 'rails_helper'\n\nRSpec.describe %SSerializer, type: :serializer do\n\nend"
+" \ },
+" \ "spec/models/*_spec.rb": {
+" \   "command": "spec",
+" \   "affinity": "model",
+" \   "related": "app/models/%s.rb",
+" \   "template": "require 'rails_helper'\n\nRSpec.describe %S, type: :model do\n\nend"
+" \ },
+" \ "spec/services/*_spec.rb": {
+" \   "command": "specservice",
+" \   "affinity": "service",
+" \   "related": "app/services/%s.rb",
+" \   "template": "require 'rails_helper'\n\nRSpec.describe %S do\n\nend"
+" \ },
+" \ "spec/workers/*_spec.rb": {
+" \   "command": "specworker",
+" \   "affinity": "worker",
+" \   "related": "app/workers/%s.rb",
+" \   "template": "require 'rails_helper'\n\nRSpec.describe %S, type: :worker do\n\nend"
+" \ },
+" \ "spec/features/*_spec.rb": {
+" \   "command": "specfeature",
+" \   "template": "require 'rails_helper'\n\nRSpec.feature '%S', type: :feature do\n\nend"
+" \ },
+" \ "spec/helpers/*_helper_spec.rb": {
+" \   "command": "spechelper",
+" \   "related": "app/helpers/%_helper.rb",
+" \   "affinity": "helper",
+" \   "template": "require 'rails_helper'\n\nRSpec.describe ApplicationHelper, type: :helper do\n\nend"
+" \ },
+" \ "lib/tasks/*.rake": {
+" \   "command": "rake",
+" \   "template": ["namespace :%s do\n  desc '%s'\n  task %s: :environment do\n\n  end\nend"],
+" \ },
+" \ })
+" \ "config/*.rb": { "command": "config"  },
+" \ "spec/support/*.rb": { "command": "support" },
 
-
-call extend(g:rails_projections, {
-\ "config/projections.json": {
-\   "command": "projections"
-\ },
-\ "app/serializers/*_serializer.rb": {
-\   "command": "serializer",
-\   "affinity": "model",
-\   "test": "spec/serializers/%s_spec.rb",
-\   "related": "app/models/%s.rb",
-\   "template": "class %SSerializer < ActiveModel::Serializer\nend"
-\ },
-\ "app/services/*.rb": {
-\   "command": "service",
-\   "affinity": "model",
-\   "alternate": ["spec/services/%s_spec.rb", "unit/services/%s_spec.rb"],
-\   "template": "class %S\n\n  def perform\n  end\nend"
-\ },
-\ "app/presenters/*_presenter.rb": {
-\   "command": "presenter",
-\   "affinity": "model",
-\   "alternate": ["spec/presenters/%s_presenter_spec.rb", "unit/presenters/%s_presenter_spec.rb"],
-\   "related": "app/models/%s.rb",
-\   "template": "class %SPresenter < SimpleDelegator\n  def self.wrap(collection)\n    collection.map{open} |object| new object {close}\n  end\n\nend"
-\ },
-\ "spec/factories/*s.rb": {
-\   "command": "factory",
-\   "affinity": "model",
-\   "related": "app/models/%s.rb",
-\   "template": "FactoryGirl.define do\n  factory :%s do\n  end\nend"
-\ },
-\ "spec/presenters/*_presenter.rb": {
-\   "command": "specpresenter",
-\   "affinity": "presenter",
-\   "alternate": ["app/presenters/%s_presenter.rb"],
-\   "related": "app/models/%s.rb",
-\   "template": "require 'rails_helper'\n\nRSpec.describe %SPresenter, type: :presenter do\n\nend"
-\ },
-\ "features/cukes/*.feature": {
-\   "alternate": ["features/step_definitions/%s_steps.rb", "features/steps/%s_steps.rb"],
-\ },
-\ "spec/controllers/*_controller_spec.rb": {
-\   "command": "speccontroller",
-\   "affinity": "controller",
-\   "related": "app/controllers/%s.rb",
-\   "template": "require 'rails_helper'\n\nRSpec.describe %SController, type: :controller do\n\nend"
-\ },
-\ "spec/serializers/*_serializer_spec.rb": {
-\   "command": "specserializer",
-\   "affinity": "serializer",
-\   "related": "app/serializers/%s.rb",
-\   "template": "require 'rails_helper'\n\nRSpec.describe %SSerializer, type: :serializer do\n\nend"
-\ },
-\ "spec/models/*_spec.rb": {
-\   "command": "spec",
-\   "affinity": "model",
-\   "related": "app/models/%s.rb",
-\   "template": "require 'rails_helper'\n\nRSpec.describe %S, type: :model do\n\nend"
-\ },
-\ "spec/services/*_spec.rb": {
-\   "command": "specservice",
-\   "affinity": "service",
-\   "related": "app/services/%s.rb",
-\   "template": "require 'rails_helper'\n\nRSpec.describe %S do\n\nend"
-\ },
-\ "spec/workers/*_spec.rb": {
-\   "command": "specworker",
-\   "affinity": "worker",
-\   "related": "app/workers/%s.rb",
-\   "template": "require 'rails_helper'\n\nRSpec.describe %S, type: :worker do\n\nend"
-\ },
-\ "spec/features/*_spec.rb": {
-\   "command": "specfeature",
-\   "template": "require 'rails_helper'\n\nRSpec.feature '%S', type: :feature do\n\nend"
-\ },
-\ "spec/helpers/*_helper_spec.rb": {
-\   "command": "spechelper",
-\   "related": "app/helpers/%_helper.rb",
-\   "affinity": "helper",
-\   "template": "require 'rails_helper'\n\nRSpec.describe ApplicationHelper, type: :helper do\n\nend"
-\ },
-\ "lib/tasks/*.rake": {
-\   "command": "rake",
-\   "template": ["namespace :%s do\n  desc '%s'\n  task %s: :environment do\n\n  end\nend"],
-\ },
-\ "config/*.rb": { "command": "config"  },
-\ "spec/support/*.rb": { "command": "support" },
-\ })
-
-let g:rails_gem_projections = {
-\ "carrierwave": {
-\   "app/uploaders/*_uploader.rb": {
-\   "command": "uploader",
-\   "template": "class %SUploader < CarrierWave::Uploader::Base\nend"
-\   }
-\ },
-\ "resque": {
-\   "app/workers/*_job.rb": {
-\   "command": "worker",
-\   "template": "class %SJob\n\n  \n@queue = :main\ndef self.perform\n  end\nend"
-\   }
-\ },
-\ }
+" let g:rails_gem_projections = {
+" \ "carrierwave": {
+" \   "app/uploaders/*_uploader.rb": {
+" \   "command": "uploader",
+" \   "template": "class %SUploader < CarrierWave::Uploader::Base\nend"
+" \   }
+" \ },
+" \ "resque": {
+" \   "app/workers/*_job.rb": {
+" \   "command": "worker",
+" \   "template": "class %SJob\n\n  \n@queue = :main\ndef self.perform\n  end\nend"
+" \   }
+" \ },
+" \ }
 
 " let g:esearch#out#win#open = 'if @% !=# "" | edit | endif'
 let g:esearch#cmdline#dir_icon = " "
@@ -503,7 +508,16 @@ let g:esearch#substitute#swapchoice = 'q'
 
 let g:ruby_refactoring_map_keys = 0
 
-let g:esearch = { 'backend': 'vimproc', 'adapter': 'ag' }
+
+" let g:esearch = { 'backend': 'nvim', 'adapter': 'ag' }
+" let g:esearch = { 'backend': 'nvim', 'adapter': 'ag' }
+" let g:esearch = { 'adapter': 'ag', 'ignore_batches': 0}
+" let g:esearch = { 'backend': 'nvim', 'adapter': 'ag', 'out': 'qflist' }
+" let g:esearch = { 'backend': 'vimproc', 'adapter': 'ag', 'wordchars': 'a-z,A-Z,_,0-9' }
+" let g:esearch = { 'backend': 'vimproc', 'adapter': 'ag' }
+"
+"
+
 
       " \   'backend':    'nvim',
 let g:test = []
@@ -528,3 +542,38 @@ let g:quickrun_config = {'outputter/buffer/split': 'vertical'}
 let g:quickrun_config.sql = {
       \ 'cmdopt': 'msw_dev'
       \}
+
+let g:tabular_default_format = "l0"
+
+
+
+let g:codi#width = 100
+let g:codi#rightalign = 0
+
+
+
+autocmd BufNewFile,BufRead *.docx.erb let b:eruby_subtype = 'html'
+" au BufReadPost *.docx.erb let b:eruby_subtype = 'html'
+"
+" ORGMODE
+let g:org_plugins = ['|', 'Navigator', 'EditStructure', 'EditCheckbox', '|', 'Hyperlinks', '|', 'Todo', 'TagsProperties', 'Date', 'Agenda', 'Misc', '|', 'Export']
+
+
+" Rspec
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+let g:tslime_always_current_session = 1
+
+
+let g:esearch = {
+            \ 'adapter':    'ag',
+            \ 'backend':    'nvim',
+            \ 'out':        'win',
+            \ 'batch_size': 3000,
+            \ 'use':        ['visual', 'hlsearch'],
+            \}
+" let g:esearch#out#win#open = "if has_key(b:, 'esearch') | call esearch#backend#{b:esearch.backend}#abort(bufnr('%')) | end | enew"
+let  g:esearch#adapter#git#options = '-C 3'
+
+" tablemode
+let g:table_mode_map_prefix = '<Leader>T'
+let g:table_mode_realign_map = '<Leader>Tr'

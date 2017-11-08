@@ -24,13 +24,23 @@ call s:load('misc')
 call s:load('colors')
 call s:load('smartinput')
 
-fu! Db(...)
-  if get(g:, 'dbg', 1)  == 0 | return 0 | endif
-  PrettyPrint a:000
-  call getchar()
-endfu
+" fu! Db(...)
+"   if get(g:, 'dbg', 1)  == 0 | return 0 | endif
+"   PrettyPrint a:000
+"   call getchar()
+" endfu
 
 
+
+if has('gui_running')
+  set background=light
+  colorscheme solarized
+  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Pomicons\ Book
+endif
+
+if filereadable(expand(".vimrc.local"))
+  source .vimrc.local
+endif
 
 
 " function! JumpToCSS()
