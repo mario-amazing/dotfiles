@@ -10,6 +10,7 @@ augroup FiletypeAutocommands
   au BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in runtime! indent/cmake.vim
   au BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
   au FileType cmake setlocal commentstring=#\ %s
+  au FileType cfg setlocal commentstring=#\ %s
 
   au FileType slim let &commentstring = '/ %s'
 
@@ -27,6 +28,12 @@ augroup FiletypeAutocommands
   au FileType css,scss setlocal foldmethod=syntax
   au FileType python setlocal ts=4 sw=4 sts=4 foldmethod=indent
 
+  autocmd! BufWritePost *.py Neomake
+  let g:neomake_python_enabled_makers = ['flake8']
+
+
+  au FileType coffee setlocal foldmethod=indent
+
   au BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
   au FileType vimrc setlocal foldmethod=marker ts=2 sw=2 sts=2
   au Filetype c,cpp setlocal ts=4 sw=4 sts=4 cindent foldmethod=syntax
@@ -40,8 +47,16 @@ augroup FiletypeAutocommands
   " Disable automatical wrap
 
 
+  au FileType java setlocal omnifunc=javacomplete#Complete
+
+
+  au FileType * setlocal conceallevel=0
+  au FileType markdown setlocal conceallevel=2
 
   au BufRead,BufNewFile *.slim set ft=slim
+
+
+  au BufReadPre,BufNewFile *.jsx set conceallevel=0
 
 
   " au FileType html let b:current_syntax = 'html'
@@ -99,7 +114,7 @@ augroup InitAutocommands
   " au VimEnter  * if argc() == 0  | NERDTree | end
   au BufReadCmd  index{,.lock} xnoremap <buffer> <silent> d :<C-U>exe RemoveFugitiveIndexFiles(line("'<"),line("'>"))<CR>
 
-  au WinEnter     * if &buftype == 'quickfix' && winheight(0) < 10 | resize 10 | endif
+  au WinEnter,BufWinEnter     * if &buftype == 'quickfix' && winheight(0) < 10 | resize 10 | endif
   au BufWinEnter,BufWritePost * let &numberwidth=(float2nr(log10(line('$'))) + 3)
   " Restore cursor position
   au BufReadPost *
@@ -116,12 +131,10 @@ augroup InitAutocommands
   endif
 augroup END
 
-
-
-augroup JavascriptFold
-  au!
-  " au FileType javascript call JavaScriptFold()
-augroup END
+" augroup JavascriptFold
+"   au!
+"   " au FileType javascript call JavaScriptFold()
+" augroup END
 
 
 " augroup NoSimultaneousEdit
@@ -174,3 +187,7 @@ elseif executable('gnome-terminal-cursor-shape.sh')
   augroup END
 endif
 
+
+
+
+let maplocalleader = ","

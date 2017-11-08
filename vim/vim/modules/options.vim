@@ -59,6 +59,7 @@ set ttyfast
 set nostartofline
 
 set number      " line numbers
+"au BufWinEnter * setlocal numberwidth=2
 set ts=2 sw=2 sts=2
 
 set timeoutlen=1000 ttimeoutlen=40
@@ -68,7 +69,9 @@ set list
 set listchars=tab:▷ ,trail:·
 " set smartcase
 set smarttab
-set smartindent
+
+" stop remove my tabs before comments!11
+set nosmartindent
 
 set scrolloff=1
 
@@ -129,3 +132,8 @@ set viewoptions=cursor
 
 
 set previewheight=20
+
+set confirm
+
+
+" set termguicolors

@@ -129,4 +129,20 @@ hi link uniteCandidateInputKeyword Identifier
 hi link CtrlPMatch Identifier
 
 " let g:easytags_python_enabled = 1
-"
+
+augroup collumnLimit
+  autocmd!
+  " au FileType vim,ruby,c,cpp,eruby,html  exe 'setlocal colorcolumn='.colLim
+  " au VimEnter * hi ColorColumn cterm=bold ctermfg=161 ctermbg=none
+  " au VimEnter * hi ColorColumn ctermbg=5
+  au VimEnter * hi ColorColumn ctermbg=238
+  " au VimEnter * hi ColorColumn ctermbg=160
+  " au VimEnter * hi ColorColumn cterm=bold ctermbg=8
+augroup END
+
+hi link jsxTagName  Statement
+hi link jsxCloseString  jsxTagName
+hi link jsxTag  jsxTagName
+hi link jsxAttrib Type
+
+au BufEnter * match ColorColumn '\%80c.'

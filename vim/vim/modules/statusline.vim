@@ -9,7 +9,7 @@ if has('nvim')
     let $GEM_HOME = a:data[0]
   endfu
   let $GEM_HOME = ''
-  call jobstart('env -i PATH="'.$PATH.'" ruby -rubygems -e "print Gem.dir"', {'on_stdout': function('s:read_gemhome')})
+  " call jobstart('env -i PATH="'.$PATH.'" ruby -rubygems -e "print Gem.dir"', {'on_stdout': function('s:read_gemhome')})
 else
   let $GEM_HOME = system('env -i PATH="'.$PATH.'" ruby -rubygems -e "print Gem.dir"')
 endif
@@ -21,7 +21,7 @@ let g:lightline = {
       \ 'colorscheme': 'spacegray3',
       \ 'active': {
       \   'left': [[ 'mode', 'paste' ], [ 'fnameactive', 'modified'], [ 'search_stat' ]],
-      \   'right': [['percent'], [ 'filetype', 'fticon'], 
+      \   'right': [['percent', 'lineinfo'], [ 'filetype'], 
                   \ ['first_err', 'err', 'warn', 'git', 'rbver']],
       \ },
       \ 'inactive': {
@@ -33,7 +33,7 @@ let g:lightline = {
       \   'right': [[]]
       \ },
       \ 'tab': {
-      \   'active':   [ 'tabnum', 'fticon', 'filename', 'modified' ],
+      \   'active':   [ 'tabnum', 'filename', 'modified' ],
       \   'inactive': [ 'tabnum', 'filename', 'modified' ]
       \ },
       \ 'component': {
@@ -48,8 +48,11 @@ let g:lightline = {
       \   'search_stat':  s:SID.'search_stat',
       \   'modified':     s:SID.'modified',
       \   'mode':         s:SID.'mode',
-      \   'percent':    s:SID.'percent',
       \   'filename':     s:SID.'fname',
+      \   'percent':    'Hud',
+      \ },
+      \ 'tab_component_function': {
+      \   'fticon': s:SID.'fticon'
       \ },
       \ 'component_expand': {
       \   'fnameactive':     s:SID.'fnameactive',
@@ -156,11 +159,14 @@ fu! s:warn()
   return ''
 endfu
 
+
+" fu! s:percent()
+"   return s:regularbuf() ? '%3p%%' : ''
+" endfu
 let g:marginal = '⬛'
 let g:placeholder = ' '
 let s:fmt = '▕%s▎'
 let s:fmt = '%s'
-
 fu! s:percent() abort
   let frs = ['▏', '▎', '▍', '▌', '▋', '▊', '▉', '█']
   " let frs = ['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█']
@@ -196,7 +202,7 @@ fu! s:percent() abort
 endfu
 
 fu! s:lineinfo()
-  return  s:regularbuf() ? '%l:%-v' : ''
+  return  s:regularbuf() ? '%3l:%-2v' : ''
 endfu
 
 fu! s:search_stat()
@@ -309,6 +315,7 @@ fu! s:fticon(tabnum)
 endfu
 
 fu! s:filetype()
-  return winwidth(0) > 70 && s:regularbuf() ? (strlen(&filetype) ? printf('%3s %1s', &ft, WebDevIconsGetFileTypeSymbol()) : 'no ft') : ''
+  return winwidth(0) > 70 && s:regularbuf() ? (strlen(&filetype) ? printf('%3s', &ft) : 'no ft') : ''
+  " return winwidth(0) > 70 && s:regularbuf() ? (strlen(&filetype) ? printf('%3s %1s', &ft, WebDevIconsGetFileTypeSymbol()) : 'no ft') : ''
   " return winwidth(0) > 70 && s:regularbuf() ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfu
