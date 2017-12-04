@@ -22,12 +22,12 @@ endif
 
 
 
-function! s:noregexp(pattern) abort
+function! s:incsearch_noregex_converter(pattern) abort
   return '\V' . escape(a:pattern, '\')
 endfunction
 
-function! s:config() abort
-  return {'converters': [function('s:noregexp')]}
+function! s:incsearch_config() abort
+  return {'converters': [function('s:incsearch_noregex_converter')]}
 endfunction
 
 let g:mapleader = ','
@@ -71,7 +71,7 @@ cmap     <c-o> <Plug>(unite_cmdmatch_complete)
   nnoremap               <C-f>l       :Unite -buffer-name=search\ line -start-insert line<CR>
 
 
-  noremap <silent><expr> / incsearch#go(<SID>config())
+  noremap <silent><expr> / incsearch#go(<SID>incsearch_config())
   " map                    /            <Plug>(incsearch-forward)
   map                    ?            <Plug>(incsearch-backward)
   map                    g/           <Plug>(incsearch-stay)
@@ -190,7 +190,7 @@ cmap     <c-o> <Plug>(unite_cmdmatch_complete)
         \['h',      ':cal WindowSwap#MarkWindowSwap()<Bar>winc h<Bar>cal WindowSwap#DoWindowSwap()<CR>'],
         \['l',      ':cal WindowSwap#MarkWindowSwap()<Bar>winc l<Bar>cal WindowSwap#DoWindowSwap()<CR>'],
         \['j',      ':cal WindowSwap#MarkWindowSwap()<Bar>winc j<Bar>cal WindowSwap#DoWindowSwap()<CR>'],
-        \['k',      ':cal WindowSwap#MarkWindowSwap()<bar>winc k<bar>cal WindowSwap#DoWindowSwap()<cr>'],
+        \['k',      ':cal WindowSwap#MarkWindowSwap(h<bar>winc k<bar>cal WindowSwap#DoWindowSwap()<cr>'],
         \['t', ':exe "tabm"tabpagenr()<CR>'],
         \['T', ':exe "tabm"tabpagenr()-2<CR>']]
     call submode#enter_with('layout', 'n', 's', '<C-w>'.s:set[0],        s:set[1].':cal lightline#update()<CR>')
@@ -448,3 +448,100 @@ nmap <leader>yN :let @+ = expand("%:t")<CR>
 
 
 nmap <leader>rr :call RunCurrentSpecFile()<CR>
+
+fu! TryCTag() abort
+  try
+    let cword = expand('<cword>')
+    if empty(cword)
+      return 0
+    endif
+
+    exec "tag " . cword
+    return 1
+  catch /E73:/ " tag stack is empty
+    return 0
+  catch /E433:/ " no tags file
+    return 0
+  catch /E426:/ " no tag  found
+    return 0
+  endtry
+endfu
+
+fu! TryRailsCFile() abort
+  if !exists('*rails#cfile')
+    return 0
+  endif
+
+  try
+    exec 'find ' . rails#cfile()
+    return 1
+  catch /E345:/ " E345: Can't find file in path
+    return 0
+  catch /Not in a Rails app/
+    return 0
+  endtry
+endfu
+
+let s:openers =  ['xdg-open', 'open', 'gnome-open', 'kde-open']
+fu! TryURI() abort
+  " https://github.com/itchyny/vim-highlighturl/blob/master/autoload/highlighturl.vim 
+  let pattern = '\v\c%(%(h?ttps?|ftp|file|ssh|git)://|[a-z]+\@[a-z]+.[a-z]+:)%('
+        \.'%([&:#*@~%_\-=?!+;/.0-9A-Za-z]*%(%([.,][&:#*@~%_\-=?!+;/0-9A-Za-z]+)+|:\d+))?'
+        \.'%(\([&:#*@~%_\-=?!+;/.0-9A-Za-z]*\))?%(\[[&:#*@~%_\-=?!+;/.0-9A-Za-z]*\])?'
+        \.'%(\{%([&:#*@~%_\-=?!+;/.0-9A-Za-z]*|\{[&:#*@~%_\-=?!+;/.0-9A-Za-z]*\})\})?'
+        \.')*[-/0-9A-Za-z]*'
+
+  " This hack is required to capture uri with params after question mark
+  """""""""""""""""""""""
+  let curcol = col('.')
+  let line = getline('.')
+  let endpos = 0
+  while 1
+    " Find next uri start position. Is required to capture file ignoring some
+    " chars in ahead like native gf do
+    let startpos = match(line, expand("<cfile>"), endpos)
+    " Find next uri including uri params end position
+    let endpos =  matchend(line, pattern, startpos)
+    if endpos ==# -1 | return 0 | endif
+
+    if curcol <= endpos
+      let cfile = matchstr(line, pattern, startpos)
+      break
+    endif
+  endwhile
+  """""""""""""""""""""""
+
+  for opener in s:openers
+    if executable(opener)
+      call system(opener . ' ' . cfile)
+      return 1
+    endif
+  endfor
+
+  return 0
+endfu
+
+fu! TryPlainGF() abort
+  try
+    norm! gf
+    return 1
+
+  catch /E446:/ " No file name under cursor
+    return 0
+  catch /E447:/ " Can't find file "" in path
+    return 0
+  endtry
+endfu
+
+fu! SmartGF() abort
+  for Strategy in g:smartgf_strategies
+    if Strategy()
+      return
+    endif
+  endfor
+  unsilent echo "Can't find file or tag"
+endfu
+let g:smartgf_strategies = [function('TryURI'), function('TryRailsCFile'), function('TryCTag'), function('TryPlainGF')]
+
+nmap <silent> gf :<C-u>call SmartGF()<CR>
+xmap <silent> gf :<C-u>call SmartGF()<CR>gv

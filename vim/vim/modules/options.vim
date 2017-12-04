@@ -134,6 +134,10 @@ set viewoptions=cursor
 set previewheight=20
 
 set confirm
+set tags+=./tmp/tags
+set tagcase=match
 
+" set background=dark
 
-" set termguicolors
+" setbackground termguicolors
+" let g:loaded_ruby_provider = 1 " disable ruby support

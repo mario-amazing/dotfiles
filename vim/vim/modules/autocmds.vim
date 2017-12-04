@@ -6,7 +6,7 @@ if &t_Co > 2 || has("gui_running") | syntax on | endif
 
 augroup FiletypeAutocommands
   au!
-  au FileType html,eruby,css,scss,sass,docx,axlsx setlocal iskeyword+=-
+  au FileType html,eruby,css,scss,sass setlocal iskeyword+=-
   au BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in runtime! indent/cmake.vim
   au BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
   au FileType cmake setlocal commentstring=#\ %s
@@ -19,8 +19,6 @@ augroup FiletypeAutocommands
 
 
   au BufRead,BufNewFile *.jbuilder setlocal ft=ruby
-  au BufRead *.docx.erb let b:eruby_subtype = 'html'
-  au BufRead,BufNewFile *.axlsx setlocal ft=ruby
 
   au FileType git,GV setlocal nolist nowrap nonumber
 
@@ -68,7 +66,7 @@ augroup FiletypeAutocommands
   au FileType notes setlocal foldmethod=indent
   au filetype qf nnoremap <buffer>o <CR>
   " au filetype ruby au BufWritePost <buffer> call GenerateCtags()
-  au bufenter * call SetCtags()
+  " au bufenter * call SetCtags()
 
   " au BufReadPre ControlP  cclose | lclose
   " au BufReadPre,BufEnter ControlP  let g:a = 1
@@ -78,6 +76,7 @@ augroup FiletypeAutocommands
   " au BufLeave * let g:a = expand('%')
 
   " autocmd! BufWritePost * Neomake
+  " autocmd BufWritePost * GenCtags
 augroup END
 
 augroup UrlBodyHighlight
@@ -89,12 +88,6 @@ augroup UrlBodyHighlight
   "         \\%(\[[&:#*@~%_\-=?!+;/.0-9A-Za-z]*\]\)\?\)*[-/0-9A-Za-z]*')
 augroup END
 
-
-augroup collumnLimit
-  autocmd!
-  au FileType vim,ruby,c,cpp,eruby,html  exe 'setlocal colorcolumn='.colLim
-  au VimEnter * hi ColorColumn cterm=bold ctermfg=161 ctermbg=none
-augroup END
 
 augroup CursorLine
   au!

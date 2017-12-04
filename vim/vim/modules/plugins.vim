@@ -129,7 +129,7 @@ nmap <leader>ig :IndentLinesToggle<CR>
 " let g:indentLine_showFirstIndentLevel = 1
 " let g:indentLine_enabled = 0
 let g:indentLine_color_term = 12
-let g:indentLine_fileType = ['html', 'eruby', 'docx', 'axlsx']
+let g:indentLine_fileType = ['html', 'eruby']
 " let g:indentLine_conceallevel = 1
 " let g:indentLine_leadingSpaceChar = '·'
 " let g:indentLine_leadingSpaceEnabled = 1
@@ -230,7 +230,12 @@ let g:UltiSnipsEditSplit="horizontal"
 " E - jump to the window
 let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_use_caching = 0
-let g:ctrlp_user_command = 'ag %s -U -l --nocolor -g ""'
+" let g:ctrlp_user_command = 'ag %s -U -l --nocolor -g ""'
+
+let g:ctrlp_user_command =
+    \ 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
+
+
 " let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'package.json', 'bower.json', 'main.c', 'main.cpp']
 let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'main.c', 'main.cpp']
 " let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'package.json', 'bower.json', 'index.html', 'main.c', 'main.cpp']
@@ -577,3 +582,60 @@ let  g:esearch#adapter#git#options = '-C 3'
 " tablemode
 let g:table_mode_map_prefix = '<Leader>T'
 let g:table_mode_realign_map = '<Leader>Tr'
+
+" let g:atags_build_commands_list = [
+"     \"ctags -R -f tags.tmp",
+"     \"awk 'length($0) < 400' tags.tmp > tmp/tags",
+"     \"rm tags.tmp"
+"     \]
+
+let g:filetype_tag_generate_commands = {
+  \ 'ruby': "ripper-tags -R --exclude=vendor",
+  \}
+" let g:atags_build_commands_list = ["ripper-tags -R --exclude=vendor"]
+
+function! s:err_handler(job_id, data, event_type)
+  let msg = "? An error occurred generating ctags: " . join(a:data)
+  echom msg
+  let g:ctags_in_progress = 0
+endfunction
+
+function! s:exit_handler(job_id, data, event_type)
+  echom "tags generated"
+  let g:ctags_in_progress = 0
+endfunction
+
+let g:ctags_in_progress = 0
+fu! RegenerateTags() abort
+  if g:ctags_in_progress || &ft != 'ruby'
+    return
+  endif
+  let g:ctags_in_progress = 1
+  let argv = get(g:filetype_tag_generate_commands, &filetype, 'ctags .')
+  call async#job#start(argv, {
+        \ 'on_stderr': function('s:err_handler'),
+        \ 'on_exit': function('s:exit_handler'),
+        \ })
+endfu
+
+autocmd BufWritePost * call RegenerateTags()
+
+" 
+if executable('ripper-tags')
+  let g:tagbar_type_ruby = {
+      \ 'kinds'      : ['m:modules',
+                      \ 'c:classes',
+                      \ 'C:constants',
+                      \ 'F:singleton methods',
+                      \ 'f:methods',
+                      \ 'a:aliases'],
+      \ 'kind2scope' : { 'c' : 'class',
+                       \ 'm' : 'class' },
+      \ 'scope2kind' : { 'class' : 'c' },
+      \ 'ctagsbin'   : 'ripper-tags',
+      \ 'ctagsargs'  : ['-f', '-']
+      \ }
+endif
+
+" nvim-r
+let g:R_assign = 0 " dont't replace _ with <-

@@ -8,7 +8,8 @@ if has('nvim')
   fu! s:read_gemhome(_, data)
     let $GEM_HOME = a:data[0]
   endfu
-  let $GEM_HOME = ''
+  "let $GEM_HOME = ''
+  let $GEM_HOME = system('env -i PATH="'.$PATH.'" ruby -rubygems -e "print Gem.dir"')
   " call jobstart('env -i PATH="'.$PATH.'" ruby -rubygems -e "print Gem.dir"', {'on_stdout': function('s:read_gemhome')})
 else
   let $GEM_HOME = system('env -i PATH="'.$PATH.'" ruby -rubygems -e "print Gem.dir"')
@@ -18,7 +19,7 @@ let s:SID = s:SID()
 
 " \ 'fname':    '%-010.20t' 'relpath', 
 let g:lightline = {
-      \ 'colorscheme': 'spacegray3',
+      \ 'colorscheme': 'Tomorrow_Night',
       \ 'active': {
       \   'left': [[ 'mode', 'paste' ], [ 'fnameactive', 'modified'], [ 'search_stat' ]],
       \   'right': [['percent', 'lineinfo'], [ 'filetype'], 
