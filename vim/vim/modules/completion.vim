@@ -57,7 +57,7 @@ augroup OmniFunctions
   au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   au FileType python setlocal omnifunc=pythoncomplete#Complete
   au FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  au FileType ruby setlocal omnifunc=rubycomplete#Complete
+  " au FileType ruby setlocal omnifunc=rubycomplete#Complete
 augroup END
 
 

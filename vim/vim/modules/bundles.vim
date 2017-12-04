@@ -213,6 +213,7 @@ Plug 'vim-scripts/utl.vim'
   else
     Plug 'Shougo/neocomplete.vim'
   endif
+  Plug 'jalvesaq/Nvim-R'
   Plug 'Shougo/neoinclude.vim'
   Plug 'Shougo/neco-syntax'
   Plug 'ujihisa/neco-look'
@@ -332,6 +333,8 @@ Plug     'suan/vim-instant-markdown'  " Markdown live preview
 " Plug 'kassio/neoterm'
 
 " #Colors
+Plug 'joshdick/onedark.vim'
+
 " Plug 'KabbAmine/yowish.vim'
 " Plug     'jonathanfilip/vim-lucius'
 " Plug 'voronianski/oceanic-next-color-scheme'
@@ -399,6 +402,9 @@ Plug 'vim-scripts/dbext.vim'
 " Plug 'metakirby5/codi.vim'
 
 Plug     'vim-scripts/vim-links'
+Plug 'prabirshrestha/async.vim'
+" Plug 'gorkunov/smartgf.vim'
+" Plug 'jsfaint/gen_tags.vim'
 " Plug 'thinca/vim-themis'         " Project-wide search
 call plug#end()
 filetype plugin indent on
