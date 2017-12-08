@@ -70,8 +70,8 @@ au VimEnter * hi ExchangeRegion cterm=bold ctermfg=7 ctermbg=240
 " " let g:DevIconsEnableFoldersOpenClose = 1
 " " let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
+" let g:NERDTreeDirArrowExpandable = ''
+" let g:NERDTreeDirArrowCollapsible = ''
 
 let NERDTreeIgnore = []
 let NERDTreeIgnore += ['__pycache__', '.ropeproject']
@@ -167,16 +167,16 @@ let g:neomake_vim_enabled_makers = ['vint']
 " ,gitgutter
 " let g:gitgutter_sign_added = ' ➕'
 " let g:gitgutter_sign_removed = ' ➖'
-" let g:gitgutter_sign_modified = ' ∆'
-" let g:gitgutter_sign_modified_removed = ' ≁'
+let g:gitgutter_sign_modified = ' ∆'
+let g:gitgutter_sign_modified_removed = ' ≁'
 " let g:gitgutter_sign_modified = ' ∼'
 " let g:gitgutter_sign_modified_removed = ' ≁'
 " let g:gitgutter_sign_modified = ' ∆'
 " let g:gitgutter_sign_modified_removed = ' ∆'
 let g:gitgutter_sign_added =    ' ˖'
 let g:gitgutter_sign_removed =  ' -'
-let g:gitgutter_sign_modified = ' ▵'
-let g:gitgutter_sign_modified_removed = ' ▵'
+" let g:gitgutter_sign_modified = ' ▵'
+" let g:gitgutter_sign_modified_removed = ' ▵'
 
 " ,OverCommandLine
 let g:over_command_line_prompt = ':'
