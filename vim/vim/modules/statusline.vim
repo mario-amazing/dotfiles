@@ -115,7 +115,7 @@ fu! s:git()
     " let hunks[0] = '˖' . hunks[0]
     " let hunks[1] = '∼' . hunks[1]
     " let hunks[2] = '-' . hunks[2]
-    return '%#StatLnM#%{"  "}%#StatLnM#%{"'.head.'"}'
+    return '%#StatLnM#%{""}%#StatLnM#%{"'.head.'"}'
     " return '%#StatLnM#%{"' . join(hunks, ' ') . '  "}%#StatLnM#%{"'.head.'"}'
   endif
   return ''
@@ -129,7 +129,7 @@ fu! s:rbver()
       let rbver = fnamemodify($GEM_HOME, ':t')
     endif
 
-    return '%#RbIconM#%{" "}%#StatLnM#%{"'.rbver.'"}'
+    return '%#RbIconM#%{"v."}%#StatLnM#%{"'.rbver.'"}'
   endif
   return ''
 endfu

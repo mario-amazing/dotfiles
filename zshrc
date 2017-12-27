@@ -1,44 +1,18 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-#ZSH_THEME="awesomepanda"
-ZSH_THEME="powerlevel9k/powerlevel9k"
 
-# export DEFAULT_USER="v1rgul"
-export TERM="xterm-256color"
+# Themes
+# ZSH_THEME="awesomepanda"
+source ~/.zsh/themes/powerlevel9k.bash
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE='awesome-patched'
-
-
-POWERLEVEL9K_DIR_OMIT_FIRST_CHARACTER=true
-POWERLEVEL9K_STATUS_VERBOSE=false
-POWERLEVEL9K_STATUS_OK_IN_NON_VERBOSE=true
-POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND='black'
-POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND='178'
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="cyan"
-# POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="178"
-POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND="015"
-
-POWERLEVEL9K_CONTEXT_TEMPLATE="%m"
-POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %d/%m/%Y}"
-
-POWERLEVEL9K_VCS_STAGED_ICON='\u00b1'
-POWERLEVEL9K_VCS_UNTRACKED_ICON='\u25CF'
-POWERLEVEL9K_VCS_UNSTAGED_ICON='\u00b1'
-POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
-POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon ssh context root_indicator dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status rbenv rvm  background_jobs time)
-
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 source $ZSH/oh-my-zsh.sh
 
 stty -ixon
 
 plugins=(git)
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/mario/.rvm/bin:/home/mario/.rvm/bin"
+# export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/mario/.rvm/bin:/home/mario/.rvm/bin"
 
 
 export LANG=en_US.UTF-8
@@ -51,7 +25,7 @@ export SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups
 
 # Aliases
-alias vim='vim'
+alias vim='nvim'
 alias be='bundle exec'
 alias x='exit'
 alias v='vim'
@@ -63,7 +37,7 @@ alias g='gedit'
 alias p='pry'
 alias mysql='mysql --auto-rehash'
 alias kl='kill -9'
-alias o='xdg-open'
+alias o='open'
 alias ctg='ctags -R --exclude=.git --exclude=log -f tmp/tags *'
 alias ctags="`brew --prefix`/bin/ctags -R --exclude=.git --exclude=log *"
 
@@ -83,12 +57,51 @@ alias gs='git status -s'
 alias gr='git reset'
 alias gcl='git clone'
 alias gpl='git pull --rebase'
+
 alias gsh='git stash'
-alias gsha='git stash apply'
+alias gsha="git stash apply"
+alias gshl="git stash list"
+alias gshc="git stash clear"
+
 alias gco='git checkout'
+alias gcom='git checkout master'
+alias gcod='git checkout develop'
+alias gd='git diff'
+
+alias gpr='git pull --rebase'
+alias gra='git rebase --abort'
+alias grc='git rebase --continue'
+alias gri='git rebase -i'
+alias grm='git rebase master'
+alias grd='git rebase develop'
+grih () { git rebase -i HEAD~$1 ;}
+
+
+alias gplum='git pull upstream master'
+alias gplud='git pull upstream develop'
+alias gplom='git pull origin master'
+alias gplod='git pull origin develop'
+
+alias gpum='git push upstream master'
+alias gpud='git push upstream develop'
+alias gpom='git push origin master'
+alias gpod='git push origin develop'
 
 alias gl="git log --date-order --date=iso --graph --full-history --all --pretty=format:'%x08%x09%C(red)%h %C(cyan)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08 %C(bold blue)%<(10)%aN%C(reset) %C(reset)%<(70,trunc)%s%C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset) '"
 
+alias rgi="bundle exec rails generate i18n"
+alias rgsc="bundle exec rails generate scaffold"
+alias rgmg="bundle exec rails generate migration"
+alias rgmo="bundle exec rails generate model"
+alias rgma="bundle exec rails generate mailer"
+alias rgco="bundle exec rails generate controller"
+alias rgo="bundle exec rails generate observer"
+
+alias drgsc="bundle exec rails d scaffold"
+alias drgmg="bundle exec rails d migration"
+alias drgmo="bundle exec rails d model"
+alias drgma="bundle exec rails d mailer"
+alias drgco="bundle exec rails d controller"
 
 alias sudo apt-get install='sudo apt-get install -y'
 alias sudo apt-get add-apt-repository='sudo apt-get add-apt-repository -y'
@@ -102,27 +115,48 @@ alias bgi='gem install'
 alias ez="vim ~/.zshrc"
 alias ev="vim ~/.vimrc"
 
-alias rc='rails c'
-alias rs='rails s'
+alias rc='bundle exec rails c'
+alias drc='dotenv bundle exec rails c'
+alias rs='bundle exec rails s'
 alias rr='bundle exec rake routes'
+alias rrg='bundle exec rake routes | grep'
 alias rs2='ruby script/server -u'
 alias rc2='ruby script/console'
 alias rdb='bundle exec rake db:migrate'
 alias rdbr='bundle exec rake db:rollback'
 alias be='bundle exec'
 
-# alias tmux=«TERM=screen-256color tmux»
-# alias tmux='tmux attach || tmux new' #save sessions
+#fidor aliases
+alias onboarding='dotenv bundle exec rails s -p 3007'
+alias adapter='dotenv bundle exec rails s -p 7000'
+alias banking='dotenv bundle exec rails s'
+alias backoffice='dotenv bundle exec rails s -p 3002'
+alias api_gateway='dotenv rackup -p 3004'
+alias frontend='dotenv bundle exec rails s -p 4000'
+alias transfer_cart='dotenv bundle exec rails s -p 7001'
+alias event_store='dotenv bundle exec rails s -p 7002'
+alias card_management='dotenv bundle exec rails s -p 7003'
+alias card_gateway='bundle exec rails s -p 7004'
+alias transaction_query_service='bundle exec rails s -p 3008'
+
+#start fidor services
+alias run_fidor='osascript ~/work/fidor/scripts/fidor_services.scpt'
+alias fidor_pull='osascript ~/work/fidor/scripts/fidor_services_pull.scpt'
+
+alias rg='rails g'
+
+# al as tmux=«TERM=screen-256color tmux»
+# al as tmux='tmux attach || tmux new' #save sessions
 tmux_session=common
 
 zstyle ':completion:*' rehash true
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+# eval "$(rbenv init -)"
 
 alias rs="bundle exec rails s"
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
