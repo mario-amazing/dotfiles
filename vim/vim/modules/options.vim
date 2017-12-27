@@ -79,6 +79,7 @@ set scrolloff=1
 set noundofile
 set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swapfiles
+set noswapfile
 set backup
 "set swapfile
 " if has("persistent_undo")

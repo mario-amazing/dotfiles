@@ -24,7 +24,7 @@ hi link BookmarkUnitePath Directory
 let g:bookmark_save_per_working_dir = 1
 
 
-let g:bookmark_sign = ' ⮩'
+" let g:bookmark_sign = ' ⮩'
 " let g:bookmark_sign = ' 🗹'
 " let g:bookmark_annotation_sign = ' '
 let g:bookmark_annotation_sign = ' …'
@@ -221,7 +221,7 @@ let g:clang_format#style_options = {
 " ,ultiSnips
 
 let g:UltiSnipsEditSplit="horizontal"
-
+let g:UltiSnipsSnippetsDir = '~/.vim/ultisnips'
 " ,ctrlp
 " let g:ctrlp_reuse_window = 'netrw\|help\|quickfix\|nerdtree'
 " let g:ctrlp_reuse_window = 'nerdtree'
@@ -507,7 +507,7 @@ endif
 " \ }
 
 " let g:esearch#out#win#open = 'if @% !=# "" | edit | endif'
-let g:esearch#cmdline#dir_icon = " "
+" let g:esearch#cmdline#dir_icon = " "
 let g:esearch#cmdline#help_prompt = 0
 let g:esearch#substitute#swapchoice = 'q'
 
