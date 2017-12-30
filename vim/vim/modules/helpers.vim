@@ -21,6 +21,8 @@ let g:rails_edit_mappings = {
       \ "\<S-e>": 'E',
       \}
 
+let g:UltiSnipsSnippetsDir = "~/.vim/ultisnips"
+
 let g:rails_edit_default = 'S'
 
 fu! RailsCommands(commands, mappings, runner)
