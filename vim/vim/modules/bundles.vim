@@ -123,6 +123,11 @@ Plug     'sandeepravi/refactor-rails.vim'
 " Plug     'tpope/vim-rvm'
 
 
+"GOlang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+
+
 " #Highlight
 Plug 'digitaltoad/vim-pug'
 Plug 'mxw/vim-jsx-improve'

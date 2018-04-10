@@ -126,6 +126,9 @@ alias rdb='bundle exec rake db:migrate'
 alias rdbr='bundle exec rake db:rollback'
 alias be='bundle exec'
 
+#go
+alias gor='go run'
+
 #fidor aliases
 alias onboarding='dotenv bundle exec rails s -p 3007'
 alias adapter='dotenv bundle exec rails s -p 7000'
@@ -160,5 +163,7 @@ alias rs="bundle exec rails s"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+# GO
+export GOPATH=$HOME/go
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
