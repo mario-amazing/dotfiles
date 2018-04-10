@@ -143,7 +143,7 @@ augroup END
 "         \   call insert(g:dispatch_handlers, 'x11', 0)
 
 if has('nvim')
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+  set guicursor=
 elseif executable('gnome-terminal-cursor-shape.sh')
   augroup ChangeCurosrShape
     au!
