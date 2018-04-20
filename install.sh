@@ -29,7 +29,7 @@ install_git() {
   git config --global color.ui true
   git config --global user.name  "$1"
   git config --global user.email "$2"
-  git config --global push.default simple
+  git config --global push.default current
   git config --global core.excludesfile ~/.gitignore_global
   git config --global help.autoCorrect -1
   copy $SELF_DIR/gitignore_global $HOME/.gitignore_global
