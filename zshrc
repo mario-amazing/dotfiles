@@ -10,7 +10,18 @@ source $ZSH/oh-my-zsh.sh
 
 stty -ixon
 
-plugins=(git)
+plugins=(
+  sudo
+  globalias
+  gem
+  git
+  osx
+  dotenv
+  ruby
+  bundler
+  rake
+  rails
+)
 
 # export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/mario/.rvm/bin:/home/mario/.rvm/bin"
 
@@ -76,7 +87,6 @@ alias grm='git rebase master'
 alias grd='git rebase develop'
 grih () { git rebase -i HEAD~$1 ;}
 
-
 alias gplum='git pull upstream master'
 alias gplud='git pull upstream develop'
 alias gplom='git pull origin master'
@@ -118,13 +128,15 @@ alias ev="vim ~/.vimrc"
 alias rc='bundle exec rails c'
 alias drc='dotenv bundle exec rails c'
 alias rs='bundle exec rails s'
-alias rr='bundle exec rake routes'
-alias rrg='bundle exec rake routes | grep'
+# alias rr='bundle exec rake routes'
+# alias rrg='bundle exec rake routes | grep'
 alias rs2='ruby script/server -u'
 alias rc2='ruby script/console'
 alias rdb='bundle exec rake db:migrate'
 alias rdbr='bundle exec rake db:rollback'
 alias be='bundle exec'
+alias rr='bundle exec rspec'
+alias rf='bundle exec rspec --only-failures'
 
 #go
 alias gor='go run'
@@ -141,10 +153,13 @@ alias event_store='dotenv bundle exec rails s -p 7002'
 alias card_management='dotenv bundle exec rails s -p 7003'
 alias card_gateway='bundle exec rails s -p 7004'
 alias transaction_query_service='bundle exec rails s -p 3008'
+alias cash_transfer='dotenv bundle exec rails s -p 3009'
+alias confirmable_actions='bundle exec rails s -p 3010'
 
 #start fidor services
 alias run_fidor='osascript ~/work/fidor/scripts/fidor_services.scpt'
 alias fidor_pull='osascript ~/work/fidor/scripts/fidor_services_pull.scpt'
+alias jobs_run='cd ~/work/fidor/utils && ./jobs'
 
 alias rg='rails g'
 
@@ -162,7 +177,7 @@ alias rs="bundle exec rails s"
 # export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# export PATH="/usr/local/heroku/bin:$PATH"
 # GO
 export GOPATH=$HOME/go
 
