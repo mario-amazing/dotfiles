@@ -1,5 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+export EDITOR=nvim
+
 
 # Themes
 # ZSH_THEME="awesomepanda"
@@ -21,6 +23,7 @@ plugins=(
   bundler
   rake
   rails
+  command-not-found
 )
 
 # export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/mario/.rvm/bin:/home/mario/.rvm/bin"
@@ -36,11 +39,11 @@ export SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups
 
 # Aliases
-alias vim='nvim'
+alias vim='vim'
 alias be='bundle exec'
 alias x='exit'
-alias v='vim'
-alias sv="sudo vim"
+alias v='nvim'
+alias sv="sudo nvim"
 alias s='subl'
 alias t='touch'
 alias md='mkdir'
@@ -132,8 +135,6 @@ alias rs='bundle exec rails s'
 # alias rrg='bundle exec rake routes | grep'
 alias rs2='ruby script/server -u'
 alias rc2='ruby script/console'
-alias rdb='bundle exec rake db:migrate'
-alias rdbr='bundle exec rake db:rollback'
 alias be='bundle exec'
 alias rr='bundle exec rspec'
 alias rf='bundle exec rspec --only-failures'
@@ -160,6 +161,8 @@ alias confirmable_actions='bundle exec rails s -p 3010'
 alias run_fidor='osascript ~/work/fidor/scripts/fidor_services.scpt'
 alias fidor_pull='osascript ~/work/fidor/scripts/fidor_services_pull.scpt'
 alias jobs_run='cd ~/work/fidor/utils && ./jobs'
+alias cdw='cd ~/work/fidor'
+alias cdd='cd ~/Documents'
 
 alias rg='rails g'
 
