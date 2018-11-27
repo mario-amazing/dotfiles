@@ -1,7 +1,7 @@
 Pry.editor = 'vim'
 Pry.config.theme = "railscasts"
-$LOAD_PATH << '~/.rvm/gems/ruby-2.2.2/gems/awesome_print-1.7.0/lib'
-$LOAD_PATH << '~/.rvm/gems/ruby-2.2.2/gems/interactive_editor-0.0.10/lib'
+$LOAD_PATH << '~/.rvm/gems/ruby-2.5.3/gems/awesome_print-1.7.0/lib'
+$LOAD_PATH << '~/.rvm/gems/ruby-2.5.3/gems/interactive_editor-0.0.10/lib'
 
 require 'awesome_print'
 require 'rubygems'
