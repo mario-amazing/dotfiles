@@ -42,8 +42,7 @@ install_vim() {
   mkdir ~/.config
   ln -s ~/.vim ~/.config/nvim
   ln -s ~/.vimrc ~/.config/nvim/init.vim
-  # yes | vim +PlugInstall +qa
-  nvim +PlugInstall +qa
+  yes | vim +PlugInstall +qa
   nvim +PlugUpdate +qa
   nvim +UpdateRemotePlugins +qa
 }
@@ -108,12 +107,14 @@ install_steam() {
   brew cask install steam
 }
 
-# tmp_configs() {
-  #for example
-  #sudo bash -c "echo '127.0.0.1  localhost www.some.domain'>> /etc/hosts"
-# }
+tmp_configs() {
+  # Add space to dock
+  repeat 4 { defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}' }
+  # sudo bash -c "echo '127.0.0.1  localhost www.some.domain'>> /etc/hosts"
+}
 
 init_settings
+
 brew_install
 install_git
 install_fonts
@@ -123,3 +124,4 @@ install_steam
 install_programs
 install_vim
 install_zsh
+#tmp_configs
