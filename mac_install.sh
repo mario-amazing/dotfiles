@@ -1,20 +1,24 @@
 #TODO  settings, su, sudo update after install
 # SELF_DIR="$(dirname $0)"
-SELF_DIR=$PWD
+SELF_DIR="$PWD"
 
 init_settings() {
-  # brew update && brew upgrade
   export HOMEBREW_NO_AUTO_UPDATE=1
 }
 
+brew_install() {
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew update && brew upgrade
+}
+
 install_git() {
-  cp $SELF_DIR/gitignore_global $HOME/.gitignore_global
+  cp "$SELF_DIR/gitignore_global" "$HOME/.gitignore_global"
   brew install git
   git config --global color.ui true
   git config --global user.name  "marian_golubev"
   git config --global user.email "marian_golubev@epam.com"
-  $git config --global user.name  "$1"
-  #git config --global user.email "$2"
+  # git config --global user.name  "$1"
+  # git config --global user.email "$2"
   git config --global push.default current
   git config --global core.excludesfile ~/.gitignore_global
   git config --global help.autoCorrect -1
@@ -32,24 +36,27 @@ install_vim() {
   npm install -g neovim
 
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  mkdir $HOME/.vim -p
-  cp -r $SELF_DIR/vim/vim/* $HOME/.vim
-  cp $SELF_DIR/vim/vimrc $HOME/.vimrc
+  mkdir "$HOME/.vim" -p
+  cp -r "$SELF_DIR/vim/vim/" "$HOME/.vim/"
+  cp "$SELF_DIR/vim/vimrc" "$HOME/.vimrc"
   mkdir ~/.config
   ln -s ~/.vim ~/.config/nvim
   ln -s ~/.vimrc ~/.config/nvim/init.vim
-  yes | vim +PlugInstall
+  # yes | vim +PlugInstall +qa
+  nvim +PlugInstall +qa
+  nvim +PlugUpdate +qa
+  nvim +UpdateRemotePlugins +qa
 }
 
 install_fonts() {
-  cp -r $SELF_DIR/fonts/zsh_powerline_fonts/* /Library/Fonts 
+  cp -r "$SELF_DIR/fonts/zsh_powerline_fonts" "/Library/Fonts"
 }
 
 install_zsh() {
   brew install zsh
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  cp $SELF_DIR/zshrc $HOME/.zshrc
-  cp -r $SELF_DIR/zsh $HOME/.zsh
+  cp "$SELF_DIR/zshrc" "$HOME/.zshrc"
+  cp -r "$SELF_DIR/zsh" "$HOME/.zsh"
   brew tap sambadevi/powerlevel9k
   brew install powerlevel9k
   git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
@@ -57,10 +64,12 @@ install_zsh() {
 }
 
 install_ruby() {
-  #install rvm
-  #\curl -sSL https://get.rvm.io | bash -s stable --rails 
-  #rvm install 2.5.3
-  #rvm use 2.5.3 --default
+  gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+  install rvm
+  \curl -sSL https://get.rvm.io | bash -s stable --rails
+  source "$HOME/.rvm/scripts/rvm"
+  # rvm install 2.5.3
+  # rvm use 2.5.3 --default
 
   cp "$SELF_DIR/pryrc" "$HOME/.pryrc"
   cp "$SELF_DIR/irbrc" "$HOME/.irbrc"
@@ -72,12 +81,17 @@ install_postgresql() {
   pg_ctl -D /usr/local/var/postgres start && brew services start postgresql
 }
 
+install_chromedriver() {
+  cp "tools/chromedriver" "/usr/local/bin/chromedriver"
+}
+
 install_gems() {
 rvm @global do gem install bundler pry pry-rails interactive_editor awesome_print neovim rmagick shutup ripper-tags end
 }
 
 install_programs(){
   install_postgresql
+  install_chromedriver
 
   brew install htop
   brew install ctags
@@ -96,15 +110,16 @@ install_steam() {
 
 # tmp_configs() {
   #for example
-  #sudo bash -c "echo '127.0.0.1  localhost www1.centerv.by www.centerv.by crm1.centerv.by centerv.by centerv.by.local'>> /etc/hosts"
+  #sudo bash -c "echo '127.0.0.1  localhost www.some.domain'>> /etc/hosts"
 # }
 
 init_settings
-#install_git
-#install_zsh
-#install_fonts
-#install_ruby
-#install_gems
-#install_steam
+brew_install
+install_git
+install_fonts
+install_ruby
+install_gems
+install_steam
 install_programs
-#install_vim
+install_vim
+install_zsh
