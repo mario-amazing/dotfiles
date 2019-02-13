@@ -24,7 +24,7 @@ augroup FiletypeAutocommands
 
   au FileType go setlocal nolist
   au FileType css,scss setlocal foldmethod=syntax
-  au FileType python setlocal ts=4 sw=4 sts=4 foldmethod=indent
+  au FileType python setlocal ts=2 sw=2 sts=2 foldmethod=indent
 
   autocmd! BufWritePost *.py Neomake
   let g:neomake_python_enabled_makers = ['flake8']

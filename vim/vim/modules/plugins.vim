@@ -70,8 +70,9 @@ au VimEnter * hi ExchangeRegion cterm=bold ctermfg=7 ctermbg=240
 " " let g:DevIconsEnableFoldersOpenClose = 1
 " " let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
-" let g:NERDTreeDirArrowExpandable = ''
-" let g:NERDTreeDirArrowCollapsible = ''
+" let g:NERDTreeDirArrowExpandable = '▸'
+" let g:NERDTreeDirArrowCollapsible = '▾'
+let g:NERDTreeNodeDelimiter = "\u2000"
 
 let NERDTreeIgnore = []
 let NERDTreeIgnore += ['__pycache__', '.ropeproject']

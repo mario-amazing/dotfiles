@@ -31,7 +31,6 @@ set shell=/bin/bash
 
 set textwidth=80
 
-
 set noequalalways " max size for the active window by default
 set winheight=9999
 set winminheight=0
