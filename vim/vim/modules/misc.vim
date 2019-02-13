@@ -56,7 +56,10 @@ function! s:Repl()
   let s:restore_reg = @"
   return "p@=RestoreRegister()\<cr>"
 endfunction
-vnoremap <silent> <expr> p <sid>Repl()
+
+xnoremap p pgvy
+let g:pasta_paste_after_mapping = ',p'
+" vnoremap <silent> <expr> p <sid>Repl()
 
 fu! TogglePasterMode()
   if &paste | set nopaste | else | set paste | endif | echo ''

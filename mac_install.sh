@@ -67,6 +67,7 @@ install_ruby() {
   install rvm
   \curl -sSL https://get.rvm.io | bash -s stable --rails
   source "$HOME/.rvm/scripts/rvm"
+  rvm pkg install openssl
   # rvm install 2.5.3
   # rvm use 2.5.3 --default
 
@@ -101,6 +102,9 @@ install_programs(){
   brew install capybara-webkit
   brew install tmux
   brew install overmind
+
+  brew install mysql
+  brew services start mysql
 }
 
 install_steam() {
