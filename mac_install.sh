@@ -55,7 +55,7 @@ install_zsh() {
   brew install zsh
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   cp "$SELF_DIR/zshrc" "$HOME/.zshrc"
-  cp -r "$SELF_DIR/zsh" "$HOME/.zsh"
+  cp -r "$SELF_DIR/zsh/themes" "$HOME/.zsh"
   brew tap sambadevi/powerlevel9k
   brew install powerlevel9k
   git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
