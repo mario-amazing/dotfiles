@@ -29,7 +29,7 @@ plugins=(
 # export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/mario/.rvm/bin:/home/mario/.rvm/bin"
 
 
-export LANG=en_US.UTF-8
+export LANG=en_US.utf-8
 
 export HOMEBREW_AUTO_UPDATE_SECS=86400
 export HISTSIZE=200000
@@ -49,13 +49,14 @@ alias t='touch'
 alias md='mkdir'
 alias g='gedit'
 alias p='pry'
-alias mysql='mysql --auto-rehash'
+# alias mysql='mysql --auto-rehash'
 alias kl='kill -9'
 alias o='open'
 alias ctg='ctags -R --exclude=.git --exclude=log -f tmp/tags *'
 alias ctags="`brew --prefix`/bin/ctags -R --exclude=.git --exclude=log *"
 
 alias ls='ls -G'
+alias sk='sudo kill -9'
 
 # alias ls='ls --color=auto'
 
@@ -68,7 +69,8 @@ alias gcmf='git commit -m "Minor fix"'
 alias gcmfs='git commit -m "Minor fixes"'
 alias gp='git push'
 alias gs='git status -s'
-alias gr='git reset'
+alias grb='git rebase'
+alias grs='git reset'
 alias gcl='git clone'
 alias gpl='git pull --rebase'
 
@@ -90,6 +92,7 @@ alias grm='git rebase master'
 alias grd='git rebase develop'
 grih () { git rebase -i HEAD~$1 ;}
 
+alias gplu='git pull upstream'
 alias gplum='git pull upstream master'
 alias gplud='git pull upstream develop'
 alias gplom='git pull origin master'
@@ -131,6 +134,9 @@ alias ev="vim ~/.vimrc"
 alias rc='bundle exec rails c'
 alias drc='dotenv bundle exec rails c'
 alias rs='bundle exec rails s'
+
+alias rdb='bundle exec rake db:migrate'
+alias rdbr='bundle exec rake db:rollback'
 # alias rr='bundle exec rake routes'
 # alias rrg='bundle exec rake routes | grep'
 alias rs2='ruby script/server -u'
@@ -142,28 +148,14 @@ alias rf='bundle exec rspec --only-failures'
 #go
 alias gor='go run'
 
-#fidor aliases
-alias onboarding='dotenv bundle exec rails s -p 3007'
-alias adapter='dotenv bundle exec rails s -p 7000'
-alias banking='dotenv bundle exec rails s'
-alias backoffice='dotenv bundle exec rails s -p 3002'
-alias api_gateway='dotenv rackup -p 3004'
-alias frontend='dotenv bundle exec rails s -p 4000'
-alias transfer_cart='dotenv bundle exec rails s -p 7001'
-alias event_store='dotenv bundle exec rails s -p 7002'
-alias card_management='dotenv bundle exec rails s -p 7003'
-alias card_gateway='bundle exec rails s -p 7004'
-alias transaction_query_service='bundle exec rails s -p 3008'
-alias cash_transfer='dotenv bundle exec rails s -p 3009'
-alias confirmable_actions='bundle exec rails s -p 3010'
+#start WORK
+WORK_PATH='/Users/marian_golubev/work'
+# alias run_fidor='osascript $WORK_PATH/fidor/scripts/fidor_services.scpt'
 
-#start fidor services
-alias run_fidor='osascript ~/work/fidor/scripts/fidor_services.scpt'
-alias fidor_pull='osascript ~/work/fidor/scripts/fidor_services_pull.scpt'
-alias jobs_run='cd ~/work/fidor/utils && ./jobs'
-alias cdw='cd ~/work/fidor'
-alias cdd='cd ~/Documents'
-
+#overmind
+alias oc='overmind connect'
+alias ok='overmind kill'
+alias or='overmind restart'
 alias rg='rails g'
 
 # al as tmux=«TERM=screen-256color tmux»
@@ -185,3 +177,5 @@ alias rs="bundle exec rails s"
 export GOPATH=$HOME/go
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH=${PATH}:/usr/local/mysql/bin
+export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
