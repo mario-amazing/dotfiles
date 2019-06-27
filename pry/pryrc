@@ -1,0 +1,31 @@
+require '~/.pryrc_helpers'
+
+# ___pry_gems = %w[awesome_print]
+# ___pry_gems.___require_gems
+
+# AwesomePrint.pry! if defined? AwesomePrint
+
+Pry.editor = 'vim'
+Pry.config.color = true
+Pry.config.theme = "railscasts"
+
+# Hotkeys aliases
+Pry.commands.alias_command 'c',  'continue' rescue nil
+Pry.commands.alias_command 's',  'step' rescue nil
+Pry.commands.alias_command 'n',  'next' rescue nil
+Pry.commands.alias_command 'u',  'up' rescue nil
+Pry.commands.alias_command 'h',  'hist' rescue nil
+Pry.commands.alias_command 'hg', 'hist --grep' rescue nil
+Pry.commands.alias_command 'x',  'exit' rescue nil
+Pry.commands.alias_command 'ss', 'show-source' rescue nil
+Pry.commands.alias_command 'bt', 'backtrace' rescue nil
+Pry.commjnds.alias_command 'fm', 'find-method' rescue nil
+Pry.commands.alias_command 'f',  'finish' rescue nil
+
+if defined?(Rails)
+  include Rails::ConsoleMethods
+
+  Pry::Commands.block_command 'r!', 'Alias for "reload!"', keep_retval: true do |lines|
+    reload!
+  end
+end
