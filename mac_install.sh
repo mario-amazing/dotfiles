@@ -71,7 +71,8 @@ install_ruby() {
   # rvm install 2.5.3
   # rvm use 2.5.3 --default
 
-  cp "$SELF_DIR/pryrc" "$HOME/.pryrc"
+  cp "$SELF_DIR/pry/pryrc" "$HOME/.pryrc"
+  cp "$SELF_DIR/pry/pryrc_helpers.rb" "$HOME/.pryrc_helpers.rb"
   cp "$SELF_DIR/irbrc" "$HOME/.irbrc"
   cp "$SELF_DIR/gemspec_template" "$HOME/.gemspec_template"
 }
