@@ -1,4 +1,4 @@
-require '~/.pryrc_helpers'
+require_relative 'pryrc_helpers.rb'
 
 # ___pry_gems = %w[awesome_print]
 # ___pry_gems.___require_gems

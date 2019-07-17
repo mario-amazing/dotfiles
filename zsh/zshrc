@@ -64,13 +64,12 @@ alias gi='git init'
 alias ga='git add'
 alias gc='git commit -m'
 alias gca='git commit --amend'
+alias gce='git commit --amend --no-edit'
 alias gcam='git commit --amend -m'
 alias gcmf='git commit -m "Minor fix"'
 alias gcmfs='git commit -m "Minor fixes"'
 alias gp='git push'
 alias gs='git status -s'
-alias grb='git rebase'
-alias grs='git reset'
 alias gcl='git clone'
 alias gpl='git pull --rebase'
 
@@ -84,13 +83,13 @@ alias gcom='git checkout master'
 alias gcod='git checkout develop'
 alias gd='git diff'
 
-alias gpr='git pull --rebase'
-alias gra='git rebase --abort'
-alias grc='git rebase --continue'
-alias gri='git rebase -i'
-alias grm='git rebase master'
-alias grd='git rebase develop'
-grih () { git rebase -i HEAD~$1 ;}
+alias grba='git rebase --abort'
+alias grbc='git rebase --continue'
+alias grb='git rebase'
+alias grbm='git rebase master'
+grbih () { git rebase -i HEAD~$1 ;}
+
+alias grs='git reset'
 
 alias gplu='git pull upstream'
 alias gplum='git pull upstream master'
@@ -104,6 +103,8 @@ alias gpom='git push origin master'
 alias gpod='git push origin develop'
 
 alias gl="git log --date-order --date=iso --graph --full-history --all --pretty=format:'%x08%x09%C(red)%h %C(cyan)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08 %C(bold blue)%<(10)%aN%C(reset) %C(reset)%<(70,trunc)%s%C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset) '"
+
+alias ss="spring stop"
 
 alias rgi="bundle exec rails generate i18n"
 alias rgsc="bundle exec rails generate scaffold"
@@ -137,19 +138,26 @@ alias rs='bundle exec rails s'
 
 alias rdb='bundle exec rake db:migrate'
 alias rdbr='bundle exec rake db:rollback'
-# alias rr='bundle exec rake routes'
-# alias rrg='bundle exec rake routes | grep'
+alias rr='bundle exec rake routes'
+alias rrg='bundle exec rake routes | grep'
 alias rs2='ruby script/server -u'
 alias rc2='ruby script/console'
 alias be='bundle exec'
-alias rr='bundle exec rspec'
+alias re='bundle exec rspec'
 alias rf='bundle exec rspec --only-failures'
 
 #go
 alias gor='go run'
 
 #start WORK
-WORK_PATH='/Users/marian_golubev/work'
+WORK_PATH='/Users/mario_amazing/work/itterritory'
+alias cdw='cd $WORK_PATH'
+alias cdd='cd ~/Documents/dotfiles'
+
+alias cdpt='cd $WORK_PATH/ptero'
+alias cdpts='cd $WORK_PATH/ptero-share'
+alias cdpr='cd $WORK_PATH/promo'
+alias cdh='cd $WORK_PATH/helpdesk'
 # alias run_fidor='osascript $WORK_PATH/fidor/scripts/fidor_services.scpt'
 
 #overmind
@@ -183,3 +191,14 @@ export GOPATH=$HOME/go
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH=${PATH}:/usr/local/mysql/bin
 export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/qt@5.5/lib"
+export CPPFLAGS="-I/usr/local/opt/qt@5.5/include"
+export PKG_CONFIG_PATH="/usr/local/opt/qt@5.5/lib/pkgconfig"
+
+export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+
+# export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
+# export LDFLAGS="-L/usr/local/opt/postgresql@9.5/lib"
+# export CPPFLAGS="-I/usr/local/opt/postgresql@9.5/include"
+# export PKG_CONFIG_PATH="/usr/local/opt/postgresql@9.5/lib/pkgconfig"
+# export PGHOST=localhost
