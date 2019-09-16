@@ -131,6 +131,9 @@ alias bgi='gem install'
 
 alias ez="vim ~/.zshrc"
 alias ev="vim ~/.vimrc"
+alias ep="vim ~/.pryrc"
+alias ee="vim .env"
+alias eph="vim ~/.pryrc_helpers.rb"
 
 alias rc='bundle exec rails c'
 alias drc='dotenv bundle exec rails c'
@@ -202,3 +205,5 @@ export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 # export CPPFLAGS="-I/usr/local/opt/postgresql@9.5/include"
 # export PKG_CONFIG_PATH="/usr/local/opt/postgresql@9.5/lib/pkgconfig"
 # export PGHOST=localhost
+
+eval $(thefuck --alias)

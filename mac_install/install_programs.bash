@@ -14,6 +14,7 @@ install_programs(){
   install_qt_5_5
   install_spacemax
 
+  brew install thefuck
   brew install htop
   brew install ctags
   brew install gpg

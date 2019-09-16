@@ -22,6 +22,10 @@ Pry.commands.alias_command 'bt', 'backtrace' rescue nil
 Pry.commjnds.alias_command 'fm', 'find-method' rescue nil
 Pry.commands.alias_command 'f',  'finish' rescue nil
 
+Pry::Commands.block_command 'e!', 'Alias for "exit!"', keep_retval: true do |lines|
+  exit!
+end
+
 if defined?(Rails)
   include Rails::ConsoleMethods
 
