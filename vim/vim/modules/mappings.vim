@@ -545,3 +545,5 @@ let g:smartgf_strategies = [function('TryURI'), function('TryRailsCFile'), funct
 
 nmap <silent> gf :<C-u>call SmartGF()<CR>
 xmap <silent> gf :<C-u>call SmartGF()<CR>gv
+nmap <silent> gn :tnext<CR>
+xmap <silent> gn :tnext<CR>

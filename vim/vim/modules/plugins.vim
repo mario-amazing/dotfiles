@@ -72,6 +72,8 @@ au VimEnter * hi ExchangeRegion cterm=bold ctermfg=7 ctermbg=240
 
 " let g:NERDTreeDirArrowExpandable = '▸'
 " let g:NERDTreeDirArrowCollapsible = '▾'
+
+"fix ^G in neerdtree
 let g:NERDTreeNodeDelimiter = "\u2000"
 
 let NERDTreeIgnore = []

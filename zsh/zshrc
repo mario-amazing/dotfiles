@@ -52,14 +52,20 @@ alias p='pry'
 # alias mysql='mysql --auto-rehash'
 alias kl='kill -9'
 alias o='open'
-alias ctg='ctags -R --exclude=.git --exclude=log -f tmp/tags *'
-alias ctags="`brew --prefix`/bin/ctags -R --exclude=.git --exclude=log *"
+
+#Ctags
+# alias ctg='ctags -R --exclude=.git --exclude=log --exclude=*.js -f tmp/tags *'
+# alias ctg="ctags -R --languages=ruby --exclude=.git --exclude=log --exclude='*.js' `bundle show --paths` ."
+alias ctags="`brew --prefix`/bin/ctags"
+alias ctg="ctags -R --languages=ruby --exclude=.git --exclude=log --exclude='*.js' ."
+alias rtg="ripper-tags -R --extra=q"
 
 alias ls='ls -G'
 alias sk='sudo kill -9'
 
 # alias ls='ls --color=auto'
 
+eval $(thefuck --alias)
 alias gi='git init'
 alias ga='git add'
 alias gc='git commit -m'
@@ -90,12 +96,14 @@ alias grbm='git rebase master'
 grbih () { git rebase -i HEAD~$1 ;}
 
 alias grs='git reset'
+alias gcn='git clean -di'
 
 alias gplu='git pull upstream'
 alias gplum='git pull upstream master'
 alias gplud='git pull upstream develop'
 alias gplom='git pull origin master'
 alias gplod='git pull origin develop'
+alias gplrbm='git checkout master && git pull --rebase && git checkout - && git rebase master'
 
 alias gpum='git push upstream master'
 alias gpud='git push upstream develop'
@@ -104,7 +112,8 @@ alias gpod='git push origin develop'
 
 alias gl="git log --date-order --date=iso --graph --full-history --all --pretty=format:'%x08%x09%C(red)%h %C(cyan)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08 %C(bold blue)%<(10)%aN%C(reset) %C(reset)%<(70,trunc)%s%C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset) '"
 
-alias ss="spring stop"
+# alias ss="spring stop"
+alias ss="spring stop && pkill spring"
 
 alias rgi="bundle exec rails generate i18n"
 alias rgsc="bundle exec rails generate scaffold"
@@ -148,6 +157,7 @@ alias rc2='ruby script/console'
 alias be='bundle exec'
 alias re='bundle exec rspec'
 alias rf='bundle exec rspec --only-failures'
+alias bre='bundle exec bin/rspec'
 
 #go
 alias gor='go run'
@@ -194,16 +204,14 @@ export GOPATH=$HOME/go
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH=${PATH}:/usr/local/mysql/bin
 export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+
+# Custom dependencies exports
 export LDFLAGS="-L/usr/local/opt/qt@5.5/lib"
 export CPPFLAGS="-I/usr/local/opt/qt@5.5/include"
 export PKG_CONFIG_PATH="/usr/local/opt/qt@5.5/lib/pkgconfig"
 
 export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 
-# export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
-# export LDFLAGS="-L/usr/local/opt/postgresql@9.5/lib"
-# export CPPFLAGS="-I/usr/local/opt/postgresql@9.5/include"
-# export PKG_CONFIG_PATH="/usr/local/opt/postgresql@9.5/lib/pkgconfig"
-# export PGHOST=localhost
-
-eval $(thefuck --alias)
+export PATH="/usr/local/opt/node@10/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/node@10/lib"
+export CPPFLAGS="-I/usr/local/opt/node@10/include"
