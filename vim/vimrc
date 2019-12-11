@@ -23,9 +23,14 @@ call s:load('helpers')
 call s:load('misc')
 
 call s:load('colors')
-call s:load('smartinput')
 
 
+augroup load_plugins_on_insert
+  au!
+  au InsertEnter * call plug#load('ultisnips', 'vim-smartinput')
+        \| call s:load('smartinput')
+        \| au! load_plugins_on_insert
+augroup END
 
 if has('gui_running')
   set background=light

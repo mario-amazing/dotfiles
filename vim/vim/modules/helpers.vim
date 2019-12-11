@@ -21,8 +21,6 @@ let g:rails_edit_mappings = {
       \ "\<S-e>": 'E',
       \}
 
-let g:UltiSnipsSnippetsDir = "~/.vim/ultisnips"
-
 let g:rails_edit_default = 'S'
 
 fu! RailsCommands(commands, mappings, runner)
@@ -163,6 +161,9 @@ if has('nvim')
   " call s:extend_makers()
 else
   fu! CheckSyntax()
+    if !exists(':SyntasticCheck')
+      return
+    endif
     exe 'SyntasticCheck'
     let loclist = g:SyntasticLoclist.current()
     let w:s_errors     = loclist.errors()
@@ -202,10 +203,6 @@ fu! GenerateCtags()
 endfu
 
 au BufWritePost * if &ft ==# 'ruby' | call GenerateCtags() |endif
-
-fu! SetCtags()
-
-endfu
 
 fu! RemoveFugitiveIndexFiles(l1, l2)
   for l in range(a:l1, a:l2)

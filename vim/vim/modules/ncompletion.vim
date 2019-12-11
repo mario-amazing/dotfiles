@@ -1,3 +1,5 @@
+" finish
+call deoplete#enable()
 let g:deoplete#enable_at_startup = 1
 " set completeopt+=noinsert
 let deoplete#max_list = 20
@@ -17,7 +19,6 @@ let g:deoplete#enable_ignore_case = 1
 " let g:neocomplete#sources._ = ['file', 'tag', 'file/include', 'dictionary', 'omni', 'syntax', 'member', 'buffer', 'ultisnips']
 let g:necosyntax#min_keyword_length = 1
 let g:deoplete#auto_completion_start_length = 1
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
 " let g:neoinclude#patterns = {}
 " let g:neoinclude#patterns.ruby = '^=\%(b\%[egin]\|e\%[nd]\)\|\%(@@\|[$@]\)\h\w*\|\h\w*\%(::\w*\)*[!?]\?'

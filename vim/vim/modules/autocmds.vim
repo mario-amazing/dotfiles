@@ -1,7 +1,6 @@
 if !has("autocmd")
   finish
 endif
-
 if &t_Co > 2 || has("gui_running") | syntax on | endif
 
 augroup FiletypeAutocommands
@@ -13,6 +12,7 @@ augroup FiletypeAutocommands
   au FileType cfg setlocal commentstring=#\ %s
 
   au FileType slim let &commentstring = '/ %s'
+  au FileType vhdl let &commentstring = '-- %s'
 
   au BufRead,BufNewFile *.vspec setlocal filetype=vim
   au BufRead,BufNewFile *.vspec nnoremap <buffer> <leader>rt :!vspec . %<CR>
@@ -24,23 +24,26 @@ augroup FiletypeAutocommands
 
   au FileType go setlocal nolist
   au FileType css,scss setlocal foldmethod=syntax
-  au FileType python setlocal ts=2 sw=2 sts=2 foldmethod=indent
+  au FileType python setlocal ts=4 sw=4 sts=4 foldmethod=indent
+  au FileType Jenkinsfile setlocal ts=4 sw=4 sts=4 foldmethod=syntax
 
-  autocmd! BufWritePost *.py Neomake
-  let g:neomake_python_enabled_makers = ['flake8']
+  " autocmd! BufWritePost *.py Neomake
+  " let g:neomake_python_enabled_makers = ['flake8']
 
 
   au FileType coffee setlocal foldmethod=indent
 
   au BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
-  au FileType vimrc setlocal foldmethod=marker ts=2 sw=2 sts=2
+  au FileType vimrc setlocal foldmethod=syntax ts=2 sw=2 sts=2
   au Filetype c,cpp setlocal ts=4 sw=4 sts=4 cindent foldmethod=syntax
   au Filetype ruby setlocal expandtab ts=2 sw=2 sts=2  foldmethod=syntax makeprg=ruby
   au Filetype ruby let ruby_fold = 1
   au Filetype lex,yacc setlocal cindent ts=4 sw=4 sts=4
   au Filetype html,css setlocal expandtab foldmethod=syntax ts=2 sw=2 sts=2
   au Filetype html,css setlocal autoindent
-  au Filetype ruby,eruby setlocal foldmethod=indent  iskeyword-=.
+
+  au Filetype eruby setlocal foldmethod=indent
+  au Filetype ruby,eruby setlocal iskeyword-=.
   au Filetype eruby let b:delimitMate_matchpairs = '(:),[:],{:},<:>'
   " Disable automatical wrap
 
@@ -49,7 +52,7 @@ augroup FiletypeAutocommands
 
 
   au FileType * setlocal conceallevel=0
-  au FileType markdown setlocal conceallevel=2
+  au FileType markdown setlocal conceallevel=2 
 
   au BufRead,BufNewFile *.slim set ft=slim
 
@@ -63,10 +66,11 @@ augroup FiletypeAutocommands
   au BufNewFile,BufRead *.slim set iskeyword-=. foldmethod=indent
   au BufRead,BufNewFile *.scss set filetype=scss
   au FileType qf setlocal nolist
+
+  au FileType make setlocal list listchars=tab:▷ ,trail:·
   au FileType notes setlocal foldmethod=indent
   au filetype qf nnoremap <buffer>o <CR>
   " au filetype ruby au BufWritePost <buffer> call GenerateCtags()
-  " au bufenter * call SetCtags()
 
   " au BufReadPre ControlP  cclose | lclose
   " au BufReadPre,BufEnter ControlP  let g:a = 1
@@ -102,7 +106,7 @@ augroup InitAutocommands
 
   au BufDelete * let g:deleted_buffer = bufname('%')
   au BufEnter  * call KeepTree()
-  au BufEnter *  if !exists('b:created') | call fugitive#detect(getcwd()) | endif
+  " au BufEnter *  if !exists('b:created') | call FugitiveDetect(getcwd()) | endif
   au BufEnter *  let b:created = 1
   " au VimEnter  * if argc() == 0  | NERDTree | end
   au BufReadCmd  index{,.lock} xnoremap <buffer> <silent> d :<C-U>exe RemoveFugitiveIndexFiles(line("'<"),line("'>"))<CR>
@@ -184,3 +188,10 @@ endif
 
 
 let maplocalleader = ","
+augroup Mkdir
+  autocmd!
+  autocmd BufWritePre *
+    \ if !isdirectory(expand("<afile>:p:h")) |
+        \ call mkdir(expand("<afile>:p:h"), "p") |
+    \ endif
+augroup END

@@ -5,8 +5,9 @@ let g:vcoolor_lowercase = 1
 let g:vcoolor_custom_picker = 'yad --title "Vim colorsel" --color-selection --show-palette --color '
 
 
-" ,instantmarkdown
+" ,instant
 let g:instant_markdown_autostart = 0
+" markdown
 let g:vim_markdown_conceal = 1
 
 let g:markdown_fenced_languages = ['sql']
@@ -20,11 +21,10 @@ nnoremap <S-h> :SidewaysLeft<CR>
 nnoremap <S-l> :SidewaysRight<CR>
 
 " ,Bookmarks
-hi link BookmarkUnitePath Directory
 let g:bookmark_save_per_working_dir = 1
 
 
-" let g:bookmark_sign = ' ⮩'
+let g:bookmark_sign = ' ⮩'
 " let g:bookmark_sign = ' 🗹'
 " let g:bookmark_annotation_sign = ' '
 let g:bookmark_annotation_sign = ' …'
@@ -41,7 +41,7 @@ hi BookmarkAnnotationSign  ctermbg=7 ctermfg=83
 call unite#custom#profile('source/vim_bookmarks', 'context', {
   \   'winheight': 10,
   \   'direction': 'botright',
-  \   'start_insert': 1,
+  \   'start_insert': 0,
   \   'keep_focus': 0,
   \   'no_quit': 0,
   \ })
@@ -53,34 +53,15 @@ let g:notes_suffix = '.txt'
 au VimEnter * hi ExchangeRegion cterm=bold ctermfg=7 ctermbg=240
 
 " ,webdev icons
-" let g:webdevicons_enable = 1
-" let g:webdevicons_enable_nerdtree = 0
-" " let g:webdevicons_enable_nerdtree = 1
-" " let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-" let g:webdevicons_enable_airline_tabline = 0
-" let g:webdevicons_enable_airline_statusline = 0
+let g:NERDTreeDirArrowExpandable = ' '
+let g:NERDTreeDirArrowCollapsible = ' '
+" https://github.com/scrooloose/nerdtree/issues/928
+let g:NERDTreeNodeDelimiter = "\u00a0"
 
-" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
-" let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
-" let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['Gemfile'] = ''
-" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rb'] = ''
-" let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['erb'] = ''
-
-" let g:WebDevIconsUnicodeDecorateFolderNodes = 0
-" " let g:DevIconsEnableFoldersOpenClose = 1
-" " let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-
-" let g:NERDTreeDirArrowExpandable = '▸'
-" let g:NERDTreeDirArrowCollapsible = '▾'
-
-"fix ^G in neerdtree
-let g:NERDTreeNodeDelimiter = "\u2000"
 
 let NERDTreeIgnore = []
 let NERDTreeIgnore += ['__pycache__', '.ropeproject']
 
-" let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
-" let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = '🗋'
 " hi YellowFG ctermfg=3
 
 
@@ -170,16 +151,16 @@ let g:neomake_vim_enabled_makers = ['vint']
 " ,gitgutter
 " let g:gitgutter_sign_added = ' ➕'
 " let g:gitgutter_sign_removed = ' ➖'
-let g:gitgutter_sign_modified = ' ∆'
-let g:gitgutter_sign_modified_removed = ' ≁'
+" let g:gitgutter_sign_modified = ' ∆'
+" let g:gitgutter_sign_modified_removed = ' ≁'
 " let g:gitgutter_sign_modified = ' ∼'
 " let g:gitgutter_sign_modified_removed = ' ≁'
 " let g:gitgutter_sign_modified = ' ∆'
 " let g:gitgutter_sign_modified_removed = ' ∆'
 let g:gitgutter_sign_added =    ' ˖'
 let g:gitgutter_sign_removed =  ' -'
-" let g:gitgutter_sign_modified = ' ▵'
-" let g:gitgutter_sign_modified_removed = ' ▵'
+let g:gitgutter_sign_modified = ' ▵'
+let g:gitgutter_sign_modified_removed = ' ▵'
 
 " ,OverCommandLine
 let g:over_command_line_prompt = ':'
@@ -224,7 +205,7 @@ let g:clang_format#style_options = {
 " ,ultiSnips
 
 let g:UltiSnipsEditSplit="horizontal"
-let g:UltiSnipsSnippetsDir = '~/.vim/ultisnips'
+
 " ,ctrlp
 " let g:ctrlp_reuse_window = 'netrw\|help\|quickfix\|nerdtree'
 " let g:ctrlp_reuse_window = 'nerdtree'
@@ -240,7 +221,7 @@ let g:ctrlp_user_command =
 
 
 " let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'package.json', 'bower.json', 'main.c', 'main.cpp']
-let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'main.c', 'main.cpp']
+let g:ctrlp_root_markers = ['Gemfile', '.git', '.meteor', 'Rakefile', 'main.c', 'main.cpp', 'package.json']
 " let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'package.json', 'bower.json', 'index.html', 'main.c', 'main.cpp']
 
 " let g:ctrlp_lazy_update = 350
@@ -510,21 +491,12 @@ endif
 " \ }
 
 " let g:esearch#out#win#open = 'if @% !=# "" | edit | endif'
-" let g:esearch#cmdline#dir_icon = " "
+let g:esearch#cmdline#dir_icon = " "
 let g:esearch#cmdline#help_prompt = 0
 let g:esearch#substitute#swapchoice = 'q'
 
 let g:ruby_refactoring_map_keys = 0
 
-
-" let g:esearch = { 'backend': 'nvim', 'adapter': 'ag' }
-" let g:esearch = { 'backend': 'nvim', 'adapter': 'ag' }
-" let g:esearch = { 'adapter': 'ag', 'ignore_batches': 0}
-" let g:esearch = { 'backend': 'nvim', 'adapter': 'ag', 'out': 'qflist' }
-" let g:esearch = { 'backend': 'vimproc', 'adapter': 'ag', 'wordchars': 'a-z,A-Z,_,0-9' }
-" let g:esearch = { 'backend': 'vimproc', 'adapter': 'ag' }
-"
-"
 
 
       " \   'backend':    'nvim',
@@ -572,15 +544,9 @@ let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
 let g:tslime_always_current_session = 1
 
 
-let g:esearch = {
-            \ 'adapter':    'ag',
-            \ 'backend':    'nvim',
-            \ 'out':        'win',
-            \ 'batch_size': 3000,
-            \ 'use':        ['visual', 'hlsearch'],
-            \}
+" \ 'batch_size': 3000,
 " let g:esearch#out#win#open = "if has_key(b:, 'esearch') | call esearch#backend#{b:esearch.backend}#abort(bufnr('%')) | end | enew"
-let  g:esearch#adapter#git#options = '-C 3'
+" let  g:esearch#adapter#git#options = '-C 3'
 
 " tablemode
 let g:table_mode_map_prefix = '<Leader>T'
@@ -615,10 +581,12 @@ fu! RegenerateTags() abort
   endif
   let g:ctags_in_progress = 1
   let argv = get(g:filetype_tag_generate_commands, &filetype, 'ctags .')
-  call async#job#start(argv, {
+
+  let job_id = jobstart(argv, {
         \ 'on_stderr': function('s:err_handler'),
         \ 'on_exit': function('s:exit_handler'),
         \ })
+  call jobclose(job_id, 'stdin')
 endfu
 
 autocmd BufWritePost * call RegenerateTags()
@@ -642,3 +610,19 @@ endif
 
 " nvim-r
 let g:R_assign = 0 " dont't replace _ with <-
+
+" \ 'adapter':    'git',
+let g:esearch = { 'adapter': 'ag'}
+" let g:esearch = { 'backend':    'vim8',  'adapter': 'ag'}
+" let g:esearch = {
+" \ 'adapter' : 'ag',
+" \ 'out': 'qflist',
+" \ 'use': ['visual', 'last', 'hlsearch']
+" \}
+call   esearch#map('<C-f><C-f>','esearch')
+call   esearch#map('<C-f>f',    'esearch')
+call   esearch#map('<C-f>w',    'esearch-word-under-cursor')
+call   esearch#map('<C-f><C-w>','esearch-word-under-cursor')
+
+
+let g:livepreview_engine = 'pdflatex -interaction=nonstopmode '

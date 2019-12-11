@@ -36,7 +36,8 @@ let g:user_emmet_leader_key = '<Leader>'
 " #Completion
 cmap     <C-P> <Plug>CmdlineCompletionForward
 cmap     <C-N> <Plug>CmdlineCompletionBackward
-cmap     <c-o> <Plug>(unite_cmdmatch_complete)
+" cmap     <c-o> <Plug>(unite_cmdmatch_complete)
+cmap <c-r> <Plug>(unite_cmdmatch_complete)
 " imap     <C-k>  <Plug>(neocomplete_start_unite_complete)
 
 " #Navigation
@@ -44,7 +45,7 @@ cmap     <c-o> <Plug>(unite_cmdmatch_complete)
   " let NERDTreeMapJumpNextSibling = "\<C-w>j"
   " let NERDTreeMapJumpPrevSibling = "\<C-w>k"
   nnoremap <silent> <Leader>t  :NERDTreeTabsToggle<CR>
-  " nnoremap <silent> <Leader>t  ::NERDTreeMirrorToggle<CR>
+  " nnoremap <silent> <Leader>t  :NERDTreeMirrorToggle<CR>
   nnoremap <silent> <Leader>ft :NERDTreeFind<CR>
   " nnoremap <silent> <Leader>ft :NERDTreeTabsFind<CR>
   nnoremap <C-r>      :Unite -buffer-name=outline -start-insert outline<CR>
@@ -62,9 +63,6 @@ cmap     <c-o> <Plug>(unite_cmdmatch_complete)
   nnoremap <leader>rm :CtrlPModels<CR>
   nnoremap <leader>rs :CtrlPSpecs<CR>
   nnoremap <leader>rv :CtrlPViews<CR>
-  call   esearch#map('<C-f><C-f>','esearch')
-  call   esearch#map('<C-f>f',    'esearch')
-  call   esearch#map('<Leader>ff','esearch')
 
   let g:vim_search_pulse_disable_auto_mappings = 1
   nnoremap               <Leader>fl   :Unite -buffer-name=search\ line -start-insert line<CR>
@@ -408,9 +406,14 @@ map Н Y| map Г U| map Ш I| map Щ O| map З P| map Х {| map Ъ }| map Ф A| 
 map О J| map Л K| map Д L| map Ж :| map Э "| map Я Z| map Ч X| map С C| map М V| map И B| map Т N| map Ь M| map Б <
 map Ю >
 
+map q: <nop>
+" avoid Entering Ex mode.  Type "visual" to go to Normal mode.
+nmap gQ Q
 
 " set langmap=ёйцукенгшщзхъфывапролджэячсмитьбю;`qwertyuiop[]asdfghjkl\;'zxcvbnm\,.,ЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>
-" setlocal spell spelllang=ru_yo,en_us
+" set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+" set langmap=ёйцукенгшщзхъфывапролджэячсмитьбю;`qwertyuiop[]asdfghjkl\;'zxcvbnm\,.,ЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>
+set spelllang=ru_yo,en_us
 
 
 let g:endwise_no_mappings = 1
@@ -436,10 +439,10 @@ nmap ga <Plug>(EasyAlign)
 nmap <F9> :Make! %<CR>
 nmap <F6> :Make  %<CR>
 
-augroup TmpWorkaroundWithEsearch
-  au!
-  au VimEnter * unmap <Leader>ff
-augroup END
+" augroup TmpWorkaroundWithEsearch
+"   au!
+"   au VimEnter * unmap <Leader>ff
+" augroup END
 
 " nmap <leader>rr <Plug>(quickrun)
 
@@ -513,7 +516,7 @@ fu! TryURI() abort
 
   for opener in s:openers
     if executable(opener)
-      call system(opener . ' ' . cfile)
+      call system(opener . ' ' . shellescape(cfile))
       return 1
     endif
   endfor
@@ -541,9 +544,184 @@ fu! SmartGF() abort
   endfor
   unsilent echo "Can't find file or tag"
 endfu
-let g:smartgf_strategies = [function('TryURI'), function('TryRailsCFile'), function('TryCTag'), function('TryPlainGF')]
+
+fu! TryFootnote() abort
+  let pattern='\(\[\d\+\]\)'
+
+  let curcol = col('.')
+  let line = getline('.')
+  let endpos = 0
+
+  let footnote = MatchUnderCursor(pattern)
+  if empty(footnote)
+    let footnote = matchstr(line, pattern, col('.')-1)
+    if empty(footnote) | return 0 | endif
+  endif
+
+  " search links section start from the end of an open buffer
+  let last_line = line('$')
+  let ln = last_line
+  while ln > 0
+    let line = getline(ln)
+
+    if line ==# '---'
+      let ln += 1
+      break
+    endif
+    let ln -= 1
+  endwhile
+
+  if ln ==# 0
+    return 0
+  endif
+
+  let links = []
+  let last_line = line('$')
+  while ln <= last_line
+    call add(links, getline(ln))
+    let ln += 1
+  endwhile
+
+
+  let link_pos = ''
+  for l in links
+    let n = matchstr(l, '^\(\[\d\+\]\)')
+    if n ==# footnote
+      let link = substitute(l, '^\(\[\d\+\]\) \(.*\)', '\2', '')
+
+      for opener in s:openers
+        if executable(opener)
+          call system(opener . ' ' . shellescape(link))
+          return 1
+        endif
+      endfor
+    endif
+  endfor
+endfu
+
+
+function! MatchUnderCursor(pat)
+  let line = getline(".")
+  let lastend = 0
+  while lastend >= 0
+    let beg = match(line,'\C'.a:pat,lastend)
+    let end = matchend(line,'\C'.a:pat,lastend)
+    if beg < col(".") && end >= col(".")
+      return matchstr(line,'\C'.a:pat,lastend)
+    endif
+    let lastend = end
+  endwhile
+  return ""
+endfunction
+
+
+
+fu! TryPythonCFile() abort
+  " call pymode#rope#goto_definition()
+  return 0
+endfu
+
+let g:smartgf_strategies = [function('TryURI'), function('TryPlainGF'), function('TryPythonCFile'), function('TryRailsCFile'), function('TryCTag'), function('TryFootnote')]
 
 nmap <silent> gf :<C-u>call SmartGF()<CR>
 xmap <silent> gf :<C-u>call SmartGF()<CR>gv
 nmap <silent> gn :tnext<CR>
 xmap <silent> gn :tnext<CR>
+
+function! s:isAtStartOfLine(mapping)
+  let text_before_cursor = getline('.')[0 : col('.')-1]
+  let mapping_pattern = '\V' . escape(a:mapping, '\')
+  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+endfunction
+
+fu! ParseLinks() abort
+  " echo mode()
+  " return
+  let input_link = input('Input link: ')
+  let input_link = substitute(input_link, '^\s\+\|\s\+$', '', 'g')
+
+  if empty(input_link)
+    return
+  endif
+
+  " search links section start from the end of an open buffer
+  let last_line = line('$')
+  let ln = last_line
+  while ln > 0
+    let line = getline(ln)
+
+    if line ==# '---'
+      let ln += 1
+      break
+    endif
+    let ln -= 1
+  endwhile
+
+  " insert links block boundary if not found
+  if ln ==# 0
+    call append(last_line, '---')
+    " let last_line += 1
+  endif
+
+  let links = []
+
+  " collect all links
+  let last_line = line('$')
+  while ln <= last_line
+    call add(links, getline(ln))
+    let ln += 1
+  endwhile
+
+  " extract links
+  let parsed_links = []
+  let link_pos = ''
+  for l in links
+    let n = substitute(l, '^\[\(\d\+\)\].*', '\1', '')
+    let link = substitute(l, '^\(\[\d\+\]\) \(.*\)', '\2', '')
+    call add(parsed_links, { 'n': n, 'link': link })
+
+    if link ==# input_link
+      let link_pos = '[' . n . ']'
+    endif
+  endfor
+
+  " try to setup link reference
+  if empty(link_pos)
+    " return ''
+    if empty(parsed_links)
+      let new_nr = 1
+    else
+      let new_nr = str2nr(parsed_links[len(parsed_links) - 1].n) + 1
+    endif
+    call append(line('$'), '[' . new_nr . '] ' . input_link)
+    let link_pos = '[' . new_nr . ']'
+  endif
+
+  let ln = line('.')
+  let col = col('.')
+
+  let was_nil = len(getline('.')) < col('.')
+  let was_len = len(getline('.'))
+  " call cursor(ln, col)
+  " exe 'norm! a' . link_pos . "\<Esc>"
+  exe 'norm! a'.link_pos
+  if was_nil
+    " call cursor(ln, len(line(.)) + 1)
+    " echo len(getline('.')) + len(link_pos)
+    call cursor(ln, was_len + len(link_pos) + 1)
+    " call cursor(ln, len(getline('.')) + len(link_pos) + 2, -1)
+  endif
+  " return link_pos
+  return link_pos
+endfu
+
+imap  <C-l> <C-o>:<C-u>call ParseLinks()<CR><Right>
+nmap <C-l> :<C-u>call ParseLinks()<CR><Right>
+
+inoreabbrev <expr> <bar><bar>
+          \ <SID>isAtStartOfLine('\|\|') ?
+          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+inoreabbrev <expr> __
+          \ <SID>isAtStartOfLine('__') ?
+          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
