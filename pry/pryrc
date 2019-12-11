@@ -29,7 +29,18 @@ end
 if defined?(Rails)
   include Rails::ConsoleMethods
 
-  Pry::Commands.block_command 'r!', 'Alias for "reload!"', keep_retval: true do |lines|
+  Pry.commands.alias_command "rr",  'show-routes' rescue nil
+  Pry.commands.alias_command "rrg", 'show-routes --grep' rescue nil
+
+  Pry::Commands.block_command 're', 'Alias for "reload!"', keep_retval: true do |lines|
     reload!
+  end
+
+  def rdb
+    ActiveRecord::Migrator.migrate "db/migrate"
+  end
+
+  def rdbr(steps = 1)
+    ActiveRecord::Migrator.rollback "db/migrate", steps
   end
 end

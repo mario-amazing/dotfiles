@@ -12,6 +12,7 @@ install_zsh() {
   mkdir -pv "$HOME/.zsh/backup"
   mv -v "$HOME/.zsh/themes" "$HOME/.zsh/backup/themes"
   ln -vsf "$ROOT_DIR/zsh/themes" "$HOME/.zsh"
+  ln -vsf "$ROOT_DIR/zsh/aliases.zsh" "$HOME/.zsh"
 
   brew install zsh
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
