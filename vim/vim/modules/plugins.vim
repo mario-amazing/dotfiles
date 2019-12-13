@@ -216,8 +216,9 @@ let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_use_caching = 0
 " let g:ctrlp_user_command = 'ag %s -U -l --nocolor -g ""'
 
-let g:ctrlp_user_command =
-    \ 'ag %s --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+let g:ctrlp_use_caching = 0
 
 
 " let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'package.json', 'bower.json', 'main.c', 'main.cpp']
@@ -612,7 +613,7 @@ endif
 let g:R_assign = 0 " dont't replace _ with <-
 
 " \ 'adapter':    'git',
-let g:esearch = { 'adapter': 'ag'}
+let g:esearch = { 'adapter': 'rg'}
 " let g:esearch = { 'backend':    'vim8',  'adapter': 'ag'}
 " let g:esearch = {
 " \ 'adapter' : 'ag',
@@ -623,6 +624,8 @@ call   esearch#map('<C-f><C-f>','esearch')
 call   esearch#map('<C-f>f',    'esearch')
 call   esearch#map('<C-f>w',    'esearch-word-under-cursor')
 call   esearch#map('<C-f><C-w>','esearch-word-under-cursor')
+call   esearch#map('<leader>ff','esearch')
+call   esearch#map('<leader>fw',    'esearch-word-under-cursor')
 
 
 let g:livepreview_engine = 'pdflatex -interaction=nonstopmode '

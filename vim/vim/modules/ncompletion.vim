@@ -18,7 +18,7 @@ let g:deoplete#enable_ignore_case = 1
 " let g:deoplete#sources.ruby = ['file', 'tag', 'file/include', 'dictionary', 'omni', 'syntax', 'member', 'buffer', 'ultisnips', 'vim']
 " let g:neocomplete#sources._ = ['file', 'tag', 'file/include', 'dictionary', 'omni', 'syntax', 'member', 'buffer', 'ultisnips']
 let g:necosyntax#min_keyword_length = 1
-let g:deoplete#auto_completion_start_length = 1
+let g:deoplete#auto_completion_start_length = 0
 
 " let g:neoinclude#patterns = {}
 " let g:neoinclude#patterns.ruby = '^=\%(b\%[egin]\|e\%[nd]\)\|\%(@@\|[$@]\)\h\w*\|\h\w*\%(::\w*\)*[!?]\?'

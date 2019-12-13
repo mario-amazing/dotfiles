@@ -114,6 +114,7 @@ colorscheme molokai
 let g:molokai_original = 0
 let g:rehash256 = 1
 set background=dark
+hi ESearchMatch ctermfg=black ctermbg=cyan guifg=#000000 guibg=#E6E6FA
 hi EndOfBuffer ctermbg=0  ctermfg=0
 hi ModeMsg     ctermbg=27 ctermfg=255
 

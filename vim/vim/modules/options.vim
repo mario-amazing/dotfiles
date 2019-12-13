@@ -4,6 +4,11 @@ if has("gui_running")
   set guioptions=cM
 endif
 
+if executable('rg')
+  set grepprg=rg\ --sort path \ --column\ --smart-case\ --nocolor\ --follow\ $*
+  set grepformat=%f:%l:%c:%m
+endif
+
 if executable('ag')
   set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow\ $*
   set grepformat=%f:%l:%c:%m

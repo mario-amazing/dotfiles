@@ -75,6 +75,7 @@ alias gl="git log --date-order --date=iso --graph --full-history --all --pretty=
 
 alias ss="spring stop && pkill spring"
 
+# alias rg='bundle exec rails g'
 alias rgi="bundle exec rails generate i18n"
 alias rgsc="bundle exec rails generate scaffold"
 alias rgmg="bundle exec rails generate migration"
@@ -138,4 +139,3 @@ alias cdh='cd $WORK_PATH/helpdesk'
 alias oc='overmind connect'
 alias ok='overmind kill'
 alias or='overmind restart'
-alias rg='rails g'
