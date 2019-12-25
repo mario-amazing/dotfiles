@@ -1,0 +1,14 @@
+export ZSH="/home/ubuntu/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
+export EDITOR=nvim
+export HISTSIZE=200000
+export SAVEHIST=200000
+export HISTFILE="$HOME/.zsh_history"
+export SAVEHIST=$HISTSIZE
+setopt hist_ignore_all_dups
+
+# Aliases
+source ~/.zsh/aliases.zsh
