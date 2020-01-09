@@ -5,7 +5,7 @@ if has("gui_running")
 endif
 
 if executable('rg')
-  set grepprg=rg\ --sort path \ --column\ --smart-case\ --nocolor\ --follow\ $*
+  set grepprg=rg\ --sort=path\ --column\ --smart-case\ --nocolor\ --follow\ $*
   set grepformat=%f:%l:%c:%m
 endif
 

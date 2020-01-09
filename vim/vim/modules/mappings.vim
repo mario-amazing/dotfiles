@@ -45,7 +45,7 @@ cmap <c-r> <Plug>(unite_cmdmatch_complete)
   " let NERDTreeMapJumpNextSibling = "\<C-w>j"
   " let NERDTreeMapJumpPrevSibling = "\<C-w>k"
   nnoremap <silent> <Leader>t  :NERDTreeTabsToggle<CR>
-  " nnoremap <silent> <Leader>t  :NERDTreeMirrorToggle<CR>
+  " nnoremap <silent> <Leader>t  <plug>NERDTreeMirrorToggle<CR>
   nnoremap <silent> <Leader>ft :NERDTreeFind<CR>
   " nnoremap <silent> <Leader>ft :NERDTreeTabsFind<CR>
   nnoremap <C-r>      :Unite -buffer-name=outline -start-insert outline<CR>

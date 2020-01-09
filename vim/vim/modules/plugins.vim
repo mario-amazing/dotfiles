@@ -613,8 +613,9 @@ endif
 let g:R_assign = 0 " dont't replace _ with <-
 
 " \ 'adapter':    'git',
-let g:esearch = { 'adapter': 'rg'}
-" let g:esearch = { 'backend':    'vim8',  'adapter': 'ag'}
+" let g:esearch = { 'adapter': 'rg'}
+" let g:esearch = { 'backend': 'nvim',  'adapter': 'rg'}
+" let g:esearch = { 'backend': 'nvim',  'adapter': 'ag'}
 " let g:esearch = {
 " \ 'adapter' : 'ag',
 " \ 'out': 'qflist',
