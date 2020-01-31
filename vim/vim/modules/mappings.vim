@@ -376,9 +376,6 @@ nnoremap <silent> <Leader>fc :call ToggleFoldColumn()<CR>
 nnoremap          <Leader>ig :IndentGuidesToggle<CR>
 " nmap <leader>ig :IndentLinesToggle<CR>
 nnoremap          <Leader>sc :SyntasticCheck<CR>
-nnoremap <Leader>l     :lopen<CR>
-nnoremap <Leader>c     :copen<CR>
-nnoremap <Leader><S-c> :Copen<CR>
 
 " #Misc
 nnoremap j gj

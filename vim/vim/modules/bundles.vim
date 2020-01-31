@@ -296,7 +296,13 @@ Plug     'othree/csscomplete.vim'
 
 " Colorschemes
 """""""""""""""
-Plug 'joshdick/onedark.vim'
+Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
+
+" Visual
+"""""""""""""""
+Plug 'chrisbra/Colorizer'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
 
 " Plug 'KabbAmine/yowish.vim'
 " Plug     'jonathanfilip/vim-lucius'

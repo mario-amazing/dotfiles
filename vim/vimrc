@@ -11,7 +11,9 @@ else
   call s:load('completion')
 endif
 
+call s:load('eugin_options')
 call s:load('options')
+
 call s:load('autocmds')
 call s:load('statusline')
 call s:load('unite')
