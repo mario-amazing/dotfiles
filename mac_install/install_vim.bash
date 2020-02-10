@@ -12,8 +12,11 @@ install_vim() {
   brew install the_silver_searcher
 
   brew install python3 python2
-  pip3 install neovim
-  pip install neovim
+  pip3 install --upgrade neovim
+  pip install --upgrade neovim
+
+  pip3 install --upgrade pynvim
+  pip install --upgrade pynvim
 
   brew install npm
   npm install -g neovim

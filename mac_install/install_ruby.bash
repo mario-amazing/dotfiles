@@ -5,7 +5,16 @@ ROOT_DIR=`dirname "$SELF_DIR"`
 
 source $SELF_DIR/display.bash
 
-DEFAULT_GEMS=(bundler pry pry-rails interactive_editor awesome_print neovim rmagick shutup ripper-tags)
+default_gems() {
+  gems_array=()
+  while IFS= read -r line; do
+    gems_array+=($line)
+  done < "$ROOT_DIR/global.gems"
+
+  echo ${gems_array[@]}
+}
+
+DEFAULT_GEMS=( $(default_gems) )
 
 install_ruby() {
   echo_title "!!!RUBY INSTALATION!!!"
@@ -30,9 +39,9 @@ install_rvm() {
   \curl -sSL https://get.rvm.io | bash -s stable --rails
   source "$HOME/.rvm/scripts/rvm"
   rvm pkg install openssl
-  # rvm install 2.6.3
-  # rvm use 2.6.3 --default
-  install_rvm_gems
+  rvm install 2.6.3
+  rvm use 2.6.3 --default
+  # install_rvm_gems
 }
 
 install_rbenv() {
@@ -50,7 +59,7 @@ install_ruby_rvm_configs(){
   echo_title "!!!RUBY RVM CONFIGS INSTALATION!!!"
 
   mkdir -p "$HOME/.rvm/gemsets"
-  ln -vsf "$ROOT_DIR/global.gems" "$HOME/.rvm/gemsets/global.gems "
+  ln -vsf "$ROOT_DIR/global.gems" "$HOME/.rvm/gemsets/global.gems"
 }
 
 install_ruby_configs() {
@@ -64,7 +73,6 @@ install_ruby_configs() {
 }
 
 install_rvm_gems() {
-  # TODO add option all-gemsets https://rvm.io/set/do
   rvm @global do gem install ${DEFAULT_GEMS[*]}
 }
 
