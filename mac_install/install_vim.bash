@@ -18,6 +18,9 @@ install_vim() {
   pip3 install --upgrade pynvim
   pip install --upgrade pynvim
 
+  pip3 install --upgrade msgpack
+  pip install --upgrade msgpack
+
   brew install npm
   npm install -g neovim
 

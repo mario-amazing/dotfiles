@@ -112,6 +112,7 @@ alias rs='bundle exec rails s'
 
 alias rdb='bundle exec rake db:migrate'
 alias rdbr='bundle exec rake db:rollback'
+rdbrs () { bundle exec rake db:rollback STEP=$1 ;}
 alias rr='bundle exec rake routes'
 alias rrg='bundle exec rake routes | grep'
 alias rs2='ruby script/server -u'
