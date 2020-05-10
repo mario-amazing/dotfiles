@@ -127,6 +127,19 @@ install_numix(){
   install_pachages unity-tweak-tool gnome-tweak-tool
 }
 
+install_homebridge(){
+  # https://github.com/nfarina/homebridge/wiki/Install-Homebridge-on-Raspbian
+  install_pachages nodejs
+  install_pachages libavahi-compat-libdnssd-dev
+  install_pachages npm
+  sudo npm install -g --unsafe-perm homebridge
+  sudo useradd -m --system homebridge
+  sudo mkdir -p /var/lib/homebridge
+
+  # Plugins
+  sudo npm install -g homebridge-yeelight-wifi
+}
+
 install_programs(){
   install_pachages ubuntu-desktop
 	install_pachages postgresql postgresql-contrib
@@ -139,8 +152,6 @@ install_programs(){
   # install_pachages clementine
   # install_pachages dconf-tools  #configs
   # install_pachages preload  #cache the most used programs
-  # install_pachages nodejs
-  # install_pachages npm
   # install_pachages ncurses-dev #libs-dev
   # install_pachages libpq-dev
   # install_pachages silversearcher-ag #ag to ctrl-p plagin

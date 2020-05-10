@@ -168,11 +168,15 @@ cmap <c-r> <Plug>(unite_cmdmatch_complete)
     " noremap <silent> <C-h> :<C-u>winc h<CR>
   endif
 
-  " nmap <silent> <C-k> <Plug>scrollwinUp
-  " nmap <silent> <C-j> <Plug>scrollwinDown
-  " nmap <silent> <C-l> <Plug>scrollwinRight
-  " nmap <silent> <C-h> <Plug>scrollwinLeft
-
+  " move blocks vim-textmanip
+  " execute "set <A-j>=\ej"
+  " execute "set <A-k>=\ek"
+  " execute "set <A-h>=\eh"
+  " execute "set <A-l>=\el"
+  xmap <A-j> <Plug>(textmanip-move-down)
+  xmap <A-k> <Plug>(textmanip-move-up)
+  xmap <A-h> <Plug>(textmanip-move-left)
+  xmap <A-l> <Plug>(textmanip-move-right)
 
   " let g:tmux_navigator_no_mappings = 1
 

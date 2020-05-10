@@ -267,7 +267,7 @@ Plug 'guileen/vim-node-dict'
 
 " Search
 """""""""""""""""""""""
-Plug 'eugen0329/vim-esearch'         " Project-wide search
+Plug 'eugen0329/vim-esearch', { 'branch': 'development' }         " Project-wide search
 Plug 'haya14busa/incsearch.vim'          " Incrementally highlight all pattern matches
 Plug 'haya14busa/incsearch-fuzzy.vim'    " Fuzzy search in 
 Plug 'haya14busa/vim-asterisk'           " *-improved
@@ -301,8 +301,8 @@ Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 " Visual
 """""""""""""""
 Plug 'chrisbra/Colorizer'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'ryanoasis/vim-devicons'
 
 " Plug 'KabbAmine/yowish.vim'
 " Plug     'jonathanfilip/vim-lucius'

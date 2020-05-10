@@ -57,6 +57,7 @@ alias grbm='git rebase master'
 grbih () { git rebase -i HEAD~$1 ;}
 
 alias grs='git reset'
+grsh () { git reset HEAD~$1 ;}
 alias gcn='git clean -di'
 
 alias gplu='git pull upstream'

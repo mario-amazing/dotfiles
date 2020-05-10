@@ -21,9 +21,8 @@ let s:SID = s:SID()
 let g:lightline = {
       \ 'colorscheme': 'Tomorrow_Night',
       \ 'active': {
-      \   'left': [[ 'mode', 'paste' ], [ 'spell', 'fnameactive', 'modified'], [ 'search_stat' ]],
-      \   'right': [['percent', 'lineinfo'], [ 'filetype'], 
-                  \ ['first_err', 'err', 'warn', 'git', 'rbver']],
+      \   'left': [[ 'mode', 'paste' ], [ 'spell', 'fnameactive', 'modified']],
+      \   'right': [['percent', 'lineinfo'], [ 'filetype']],
       \ },
       \ 'inactive': {
       \   'left': [[], [ 'lpadding', 'filename', 'modified'], []],

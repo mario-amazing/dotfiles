@@ -46,8 +46,6 @@ augroup END
 " endif
 " let g:neoinclude#exts.html = ['html']
 "
-let g:deoplete#enable_refresh_always = 1
-
 
 call deoplete#custom#source('-', 'matchers', ['matcher_length', 'matcher_full_fuzzy'])
 

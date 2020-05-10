@@ -13,6 +13,7 @@ endif
 
 call s:load('eugin_options')
 call s:load('options')
+call s:load('splitjoin')
 
 call s:load('autocmds')
 call s:load('statusline')
