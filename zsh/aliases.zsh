@@ -18,7 +18,7 @@ alias o='open'
 # alias ctg="ctags -R --languages=ruby --exclude=.git --exclude=log --exclude='*.js' `bundle show --paths` ."
 alias ctags="`brew --prefix`/bin/ctags"
 alias ctg="ctags -R --languages=ruby --exclude=.git --exclude=log --exclude='*.js' ."
-alias rtg="ripper-tags -R --extra=q"
+alias rtg="ripper-tags -R --extra=q --exclude=.git --exclude=log"
 
 alias ls='ls -G'
 alias sk='sudo kill -9'
@@ -38,7 +38,6 @@ alias gcmfs='git commit -m "Minor fixes"'
 alias gp='git push'
 alias gs='git status -s'
 alias gcl='git clone'
-alias gpl='git pull --rebase'
 
 alias gsh='git stash'
 alias gsha="git stash apply"
@@ -60,6 +59,8 @@ alias grs='git reset'
 grsh () { git reset HEAD~$1 ;}
 alias gcn='git clean -di'
 
+# alias gpl='git pull --rebase'
+alias gpl='git pull origin $(git rev-parse --abbrev-ref HEAD)'
 alias gplu='git pull upstream'
 alias gplum='git pull upstream master'
 alias gplud='git pull upstream develop'
@@ -100,12 +101,12 @@ alias bi='bundle init --gemspec=~/.gemspec_template'
 alias bl='bundle install'
 alias bgi='gem install'
 
-alias ez="vim ~/.zshrc"
-alias ea="vim ~/.zsh/aliases.zsh"
-alias ev="vim ~/.vimrc"
-alias ep="vim ~/.pryrc"
-alias ee="vim .env"
-alias eph="vim ~/.pryrc_helpers.rb"
+alias ez="nvim ~/.zshrc"
+alias ea="nvim ~/.zsh/aliases.zsh"
+alias ev="nvim ~/.vimrc"
+alias ep="nvim ~/.pryrc"
+alias ee="nvim .env"
+alias eph="nvim ~/.pryrc_helpers.rb"
 
 alias rc='bundle exec rails c'
 alias drc='dotenv bundle exec rails c'

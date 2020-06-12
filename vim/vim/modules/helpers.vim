@@ -199,7 +199,8 @@ fu! GenerateCtags()
   endif
   let tpath = fnameescape(p)
   let tpath =  filereadable(p) ? '-f ' . tpath : '-a ' . tpath
-  exe 'silent Dispatch! ctags -R --tag-relative=yes --languages=Ruby --append=yes --exclude=.git --exclude=log '.tpath .' *'
+  " exe 'silent Dispatch! ctags -R --tag-relative=yes --languages=Ruby --append=yes --exclude=.git --exclude=log '.tpath .' *'
+  exe 'silent Dispatch! ripper-tags -R --tag-relative=yes  --append=yes --exclude=.git --exclude=log '.tpath .' *'
 endfu
 
 au BufWritePost * if &ft ==# 'ruby' | call GenerateCtags() |endif
