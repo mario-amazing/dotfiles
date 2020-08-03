@@ -2,6 +2,7 @@
 
 SELF_DIR=`realpath $(dirname $BASH_SOURCE)`
 ROOT_DIR=`dirname "$SELF_DIR"`
+RUBY_VERSION="2.7.1"
 
 source $SELF_DIR/display.bash
 
@@ -19,9 +20,10 @@ DEFAULT_GEMS=( $(default_gems) )
 install_ruby() {
   echo_title "!!!RUBY INSTALATION!!!"
 
-  echo -e "${LGREEN}What Ruby version control do you want?${NORMAL}"
-  select yn in "RVM" "RBENV"; do
-    case $yn in
+  echo_question "What Ruby version control do you want?"
+
+  select ruby_manager in "RVM" "RBENV"; do
+    case $ruby_manager in
       RVM ) install_rvm; break;;
       RBENV ) install_rbenv; break;;
     esac
@@ -39,19 +41,22 @@ install_rvm() {
   \curl -sSL https://get.rvm.io | bash -s stable --rails
   source "$HOME/.rvm/scripts/rvm"
   rvm pkg install openssl
-  rvm install 2.6.3
-  rvm use 2.6.3 --default
+  rvm install "$RUBY_VERSION"
+  rvm use "$RUBY_VERSION" --default
+
   # install_rvm_gems
 }
 
 install_rbenv() {
   echo_title "!!!RBENV INSTALATION!!!"
+  echo_info "!!!IN A PROJECT USE: bundle install --path vendor/bundle!!!"
 
   brew install rbenv
-  rbenv install 2.6.3
-  rbenv global 2.6.3
+  rbenv install "$RUBY_VERSION"
+  rbenv global "$RUBY_VERSION"
   rbenv rehash
 
+  ln -vsf "$ROOT_DIR/rbenv_bundle_config" "$HOME/.bundle/config"
   install_rbenv_gems
 }
 

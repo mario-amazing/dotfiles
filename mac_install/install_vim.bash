@@ -10,8 +10,11 @@ install_vim() {
 
   brew install vim neovim
   brew install the_silver_searcher
+  brew cask install mactex # fix latexmk checkhealth error
 
-  brew install python3 python2
+  brew install python3
+  brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/86a44a0a552c673a05f11018459c9f5faae3becc/Formula/python@2.rb
+
   pip3 install --upgrade neovim
   pip install --upgrade neovim
 

@@ -2,7 +2,7 @@ bundler
 pry
 pry-rails
 interactive_editor
-awesome_print
+amazing_print
 neovim
 rmagick
 shutup

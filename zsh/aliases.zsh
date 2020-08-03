@@ -128,14 +128,10 @@ alias bre='bundle exec bin/rspec'
 alias gor='go run'
 
 #start WORK
-WORK_PATH='/Users/mario_amazing/work/itterritory'
-alias cdw='cd $WORK_PATH'
+WORK_PATH='~/work'
+alias cdw='eval cd $WORK_PATH'
 alias cdd='cd ~/Documents/dotfiles'
 
-alias cdpt='cd $WORK_PATH/ptero'
-alias cdpts='cd $WORK_PATH/ptero-share'
-alias cdpr='cd $WORK_PATH/promo'
-alias cdh='cd $WORK_PATH/helpdesk'
 # alias run_fidor='osascript $WORK_PATH/fidor/scripts/fidor_services.scpt'
 
 #overmind

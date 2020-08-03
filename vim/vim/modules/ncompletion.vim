@@ -2,7 +2,7 @@
 call deoplete#enable()
 let g:deoplete#enable_at_startup = 1
 " set completeopt+=noinsert
-let deoplete#max_list = 20
+call deoplete#custom#option({'max_list': 20})
 let g:deoplete#enable_ignore_case = 1
 " let g:deoplete#max_list = 8
 

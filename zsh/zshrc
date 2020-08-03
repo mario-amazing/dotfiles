@@ -60,17 +60,13 @@ export GOPATH=$HOME/go
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH=${PATH}:/usr/local/mysql/bin
-export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+# export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Custom dependencies exports
-export LDFLAGS="-L/usr/local/opt/qt@5.5/lib"
-export CPPFLAGS="-I/usr/local/opt/qt@5.5/include"
-export PKG_CONFIG_PATH="/usr/local/opt/qt@5.5/lib/pkgconfig"
-
-# export LDFLAGS="-L/usr/local/opt/postgresql@11/lib"
-# export CPPFLAGS="-I/usr/local/opt/postgresql@11/include"
-# export PKG_CONFIG_PATH="/usr/local/opt/postgresql@11/lib/pkgconfig"
+# export LDFLAGS="-L/usr/local/opt/qt@5.5/lib"
+# export CPPFLAGS="-I/usr/local/opt/qt@5.5/include"
+# export PKG_CONFIG_PATH="/usr/local/opt/qt@5.5/lib/pkgconfig"
 
 PKG_CONFIG_PATH=/usr/local/opt/imagemagick@6/lib/pkgconfig
 # Aliases

@@ -231,6 +231,9 @@ nnoremap <silent> <Leader>gv :GV<CR>
 nnoremap <silent> <Leader>dp :diffput<CR>
 
 
+" #Vimtex
+let g:vimtex_compiler_progname = 'nvr'
+
 " #Editing
 let g:UltiSnipsExpandTrigger="<Tab>"
 " let g:UltiSnipsExpandTrigger="<Tab>"
