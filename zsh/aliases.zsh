@@ -49,6 +49,10 @@ alias gcom='git checkout master'
 alias gcod='git checkout develop'
 alias gd='git diff'
 
+alias gma='git merge --abort'
+alias gmc='git merge --continue'
+alias gm='git merge'
+
 alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
 alias grb='git rebase'
@@ -127,10 +131,20 @@ alias bre='bundle exec bin/rspec'
 #go
 alias gor='go run'
 
+# python
+alias py='ipython3'
+alias py_clean='find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
+alias pt='py -m pytest'
+alias ptp='pt --pdb'
+
+
 #start WORK
 WORK_PATH='~/work'
 alias cdw='eval cd $WORK_PATH'
 alias cdd='cd ~/Documents/dotfiles'
+
+# projects
+alias cdt='eval cd $WORK_PATH/tour_bot'
 
 # alias run_fidor='osascript $WORK_PATH/fidor/scripts/fidor_services.scpt'
 

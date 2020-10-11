@@ -122,7 +122,6 @@ set noerrorbells         " don't beep
 
 set clipboard=unnamedplus
 " set clipboard=unnamed
-let colLim = 80
 
 "}}}
 

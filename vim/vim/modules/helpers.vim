@@ -304,3 +304,26 @@ function! g:BMWorkDirFileLocation()
         return getcwd().'/.'.filename
     endif
 endfunction
+
+
+let s:py_breakpoint_line="__import__('ipdb').set_trace()"
+func! RemoveBreakpoints()
+    exe 'silent! g/'.s:py_breakpoint_line.'/d'
+endf
+
+fun! ToggleBreakpoint(lnum)
+    let line = getline(a:lnum)
+    if strridx(line, s:py_breakpoint_line) != -1
+        normal dd
+    else
+        let plnum = prevnonblank(a:lnum)
+        if &expandtab
+            let indents = repeat(' ', indent(plnum))
+        else
+            let indents = repeat("\t", plnum / &shiftwidth)
+        endif
+
+        call append(line('.')-1, indents.s:py_breakpoint_line)
+        normal k
+    endif
+endf

@@ -218,6 +218,10 @@ cmap <c-r> <Plug>(unite_cmdmatch_complete)
   nmap <Space>j <Plug>BookmarkNext
   nmap <Space>k <Plug>BookmarkPrev
 
+  " Breakpoints
+  nnoremap <F5> :call RemoveBreakpoints()<CR>
+  nnoremap <silent><buffer><leader>b :call ToggleBreakpoint(line('.'))<CR>
+
 " #Git
 nnoremap          <Leader>gg :Git<space>
 nnoremap <silent> <Leader>gs :Gtabedit :<CR>
@@ -618,6 +622,33 @@ function! MatchUnderCursor(pat)
   return ""
 endfunction
 
+
+"lsp
+" Plug 'natebosch/vim-lsc'
+let g:lsc_enable_autocomplete  = v:false
+let g:lsc_reference_highlights = v:false
+let g:lsc_enable_diagnostics   = v:false
+let g:lsc_trace_level          = 'off'
+
+let g:lsc_auto_map = {
+    \ 'GoToDefinition': ['gd', '<C-]>'],
+    \ 'GoToDefinitionSplit': ['<C-W>]', '<C-W><C-]>', 'gs'],
+    \ 'FindReferences': 'gr',
+    \ 'NextReference': '',
+    \ 'PreviousReference': '',
+    \ 'FindImplementations': '',
+    \ 'FindCodeActions': '',
+    \ 'Rename': 'gR',
+    \ 'ShowHover': 'K',
+    \ 'DocumentSymbol': '',
+    \ 'WorkspaceSymbol': '',
+    \ 'SignatureHelp': '',
+    \ 'Completion': '',
+    \}
+let g:lsc_server_commands = {
+ \ 'ruby': { 'command': 'solargraph stdio', 'log_level': -1, 'suppress_stderr': v:true },
+ \ 'python': { 'command': 'pyls', 'log_level': -1, 'suppress_stderr': v:true }
+ \}
 
 
 fu! TryPythonCFile() abort

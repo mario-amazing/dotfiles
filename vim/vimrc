@@ -13,7 +13,6 @@ endif
 
 call s:load('eugin_options')
 call s:load('options')
-call s:load('splitjoin')
 
 call s:load('autocmds')
 call s:load('statusline')
@@ -44,7 +43,6 @@ endif
 if filereadable(expand(".vimrc.local"))
   source .vimrc.local
 endif
-
 
 " function! JumpToCSS()
 "   let id_pos = searchpos("id", "nb", line('.'))[1]

@@ -122,6 +122,10 @@ let g:indentLine_fileType = ['html', 'eruby']
 let g:NERDTreeHijackNetrw = 0
 let NERDTreeMinimalUI=1
 
+
+" pymode
+" let g:pymode_lint_ignore = ["E402", "E201","E202", "E701"]
+
 " ,Syntastic
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_checkers = ['tidy']
@@ -137,7 +141,6 @@ let max_autocheck_lines = 300
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:max_err_len = 30
-
 
 
 let g:syntastic_error_symbol   = ' ●'
@@ -324,6 +327,8 @@ let g:javascript_conceal_super      = "Ω"
 let g:used_javascript_libs = 'jquery,angularjs,angularui'
 
 
+autocmd FileType python syn keyword TODO contained TODO FIXME XXX NOTE contained containedin=pythoncomment
+autocmd BufWritePost *.py silent! !ctags -R --python-kinds=-i --languages=python 2&gt; /dev/null &amp;
 " autocmd BufNewFile,BufRead fugitive* setlocal bufhidden=delete
 "
 let g:languagetool_jar = '/home/eugen/.vim/bundle/LanguageTool/LanguageTool-3.1/languagetool-commandline.jar'
@@ -625,8 +630,12 @@ call   esearch#map('<C-f><C-f>','esearch')
 call   esearch#map('<C-f>f',    'esearch')
 call   esearch#map('<C-f>w',    'esearch-word-under-cursor')
 call   esearch#map('<C-f><C-w>','esearch-word-under-cursor')
-call   esearch#map('<leader>ff','esearch')
-call   esearch#map('<leader>fw',    'esearch-word-under-cursor')
 
 
 let g:livepreview_engine = 'pdflatex -interaction=nonstopmode '
+let g:tex_flavor = 'latex'
+
+" splitjoin
+let g:splitjoin_ruby_trailing_comma = 1
+let g:splitjoin_ruby_curly_braces = 0
+let g:splitjoin_ruby_hanging_args = 0

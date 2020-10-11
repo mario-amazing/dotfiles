@@ -188,15 +188,19 @@ endif
 
 " Languages
 """""""""""""""
+" lsp
+Plug 'natebosch/vim-lsc'
+" Plug 'hrsh7th/deoplete-vim-lsc' " autocomplete with lsp
+Plug 'deoplete-plugins/deoplete-jedi'
+
 " elixir
 Plug 'elixir-lang/vim-elixir'
 Plug 'c-brenn/phoenix.vim'
 " Plug 'avdgaag/vim-phoenix'
 " Plug 'slashmili/alchemist.vm'
 " python
-Plug 'mkomitee/vim-gf-python', { 'for': 'python' }
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
-Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
+" Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 " ruby
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'vim-ruby/vim-ruby'
@@ -235,14 +239,12 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug     'slim-template/vim-slim'
 "coffeescript
 Plug     'kchmck/vim-coffee-script'
-Plug 'JarrodCTaylor/vim-js2coffee'
 " monit
 Plug 'tmatilai/vim-monit'
 " javascript
 Plug     'jelera/vim-javascript-syntax'
 Plug     'othree/javascript-libraries-syntax.vim'
 Plug 'digitaltoad/vim-pug'
-Plug 'mxw/vim-jsx-improve'
 Plug 'moll/vim-node'
 " yaml, ansible
 Plug 'chase/vim-ansible-yaml'
@@ -283,7 +285,6 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'Shougo/context_filetype.vim'
-Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/echodoc'
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neco-syntax'
@@ -365,7 +366,6 @@ Plug 'gcavallanti/vim-noscrollbar'         " Project-wide search
 
 " Plug 'metakirby5/codi.vim'
 
-Plug     'vim-scripts/vim-links'
 Plug 'prabirshrestha/async.vim'
 " Plug 'gorkunov/smartgf.vim'
 " Plug 'jsfaint/gen_tags.vim'

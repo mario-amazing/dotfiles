@@ -58,10 +58,15 @@ fi
 # GO
 export GOPATH=$HOME/go
 
+
+# Python
+export PYTHONSTARTUP="$(ipython3 -m jedi repl)"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH=${PATH}:/usr/local/mysql/bin
 # export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+# export PATH=${PATH}:$HOME/.local/bin
 
 # Custom dependencies exports
 # export LDFLAGS="-L/usr/local/opt/qt@5.5/lib"
@@ -71,3 +76,4 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 PKG_CONFIG_PATH=/usr/local/opt/imagemagick@6/lib/pkgconfig
 # Aliases
 source ~/.zsh/aliases.zsh
+test -e /Users/mario/.iterm2_shell_integration.zsh && source /Users/mario/.iterm2_shell_integration.zsh || true
