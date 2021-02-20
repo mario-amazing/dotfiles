@@ -34,7 +34,7 @@ set encoding=utf-8
 set shell=/bin/bash
 " set cursorline
 
-set textwidth=80
+" set textwidth=80
 
 
 set noequalalways " max size for the active window by default

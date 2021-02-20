@@ -26,7 +26,6 @@ alias sk='sudo kill -9'
 # alias ls='ls --color=auto'
 
 # Git
-eval $(thefuck --alias)
 alias gi='git init'
 alias ga='git add'
 alias gc='git commit -m'
@@ -119,14 +118,19 @@ alias rs='bundle exec rails s'
 alias rdb='bundle exec rake db:migrate'
 alias rdbr='bundle exec rake db:rollback'
 rdbrs () { bundle exec rake db:rollback STEP=$1 ;}
-alias rr='bundle exec rake routes'
-alias rrg='bundle exec rake routes | grep'
+alias rr='bundle exec rails routes'
+alias rrg='bundle exec rails routes | grep'
 alias rs2='ruby script/server -u'
 alias rc2='ruby script/console'
 alias be='bundle exec'
 alias re='bundle exec rspec'
 alias rf='bundle exec rspec --only-failures'
 alias bre='bundle exec bin/rspec'
+
+# docker
+alias dbr='docker build -t tout_bot:latest .; docker run -d --restart="always" --name tb tout_bot:latest'
+alias ds='docker stop $(docker ps -aq)'
+alias dca='docker stop $(docker ps -aq); docker rm $(docker ps -aq); docker rmi $(docker images -q)'
 
 #go
 alias gor='go run'
@@ -145,6 +149,7 @@ alias cdd='cd ~/Documents/dotfiles'
 
 # projects
 alias cdt='eval cd $WORK_PATH/tour_bot'
+alias cdtm='eval cd $WORK_PATH/this_moment'
 
 # alias run_fidor='osascript $WORK_PATH/fidor/scripts/fidor_services.scpt'
 

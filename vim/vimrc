@@ -18,10 +18,10 @@ call s:load('autocmds')
 call s:load('statusline')
 call s:load('unite')
 
+call s:load('helpers')
 call s:load('plugins')
 call s:load('mappings')
 
-call s:load('helpers')
 call s:load('misc')
 
 call s:load('colors')

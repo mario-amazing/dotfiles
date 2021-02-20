@@ -199,8 +199,8 @@ Plug 'c-brenn/phoenix.vim'
 " Plug 'avdgaag/vim-phoenix'
 " Plug 'slashmili/alchemist.vm'
 " python
-Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
-" Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
+" Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
+Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 " ruby
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'vim-ruby/vim-ruby'

@@ -61,11 +61,15 @@ export GOPATH=$HOME/go
 
 # Python
 export PYTHONSTARTUP="$(ipython3 -m jedi repl)"
+export PIPENV_SYSTEM=1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH=${PATH}:/usr/local/mysql/bin
 # export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+
+# export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+#
 # export PATH=${PATH}:$HOME/.local/bin
 
 # Custom dependencies exports

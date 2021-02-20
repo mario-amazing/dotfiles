@@ -10,6 +10,8 @@ augroup FiletypeAutocommands
   au BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
   au FileType cmake setlocal commentstring=#\ %s
   au FileType cfg setlocal commentstring=#\ %s
+  au FileType arduino setlocal commentstring=//%s
+  au FileType eruby.yaml setlocal commentstring=#\ %s
 
   au FileType slim let &commentstring = '/ %s'
   au FileType vhdl let &commentstring = '-- %s'
@@ -80,6 +82,7 @@ augroup FiletypeAutocommands
   " au BufLeave * let g:a = expand('%')
 
   " autocmd! BufWritePost * Neomake
+  "
   " autocmd BufWritePost * GenCtags
 augroup END
 

@@ -306,14 +306,27 @@ function! g:BMWorkDirFileLocation()
 endfunction
 
 
-let s:py_breakpoint_line="__import__('ipdb').set_trace()"
+let g:python_bp_line="__import__('ipdb').set_trace()"
+let g:ruby_bp_line="require 'pry'; binding.pry"
+let g:eruby_bp_line="<% require 'pry'; binding.pry %>"
+func! BpString()
+    if &filetype == "ruby"
+      return g:ruby_bp_line
+    elseif &filetype == "eruby" || &filetype == "eruby.html"
+      return g:eruby_bp_line
+    elseif &filetype == "python"
+      return g:python_bp_line
+    endif
+endfunc
+
 func! RemoveBreakpoints()
-    exe 'silent! g/'.s:py_breakpoint_line.'/d'
+    exe 'silent! g/'.BpString().'/d'
 endf
 
 fun! ToggleBreakpoint(lnum)
     let line = getline(a:lnum)
-    if strridx(line, s:py_breakpoint_line) != -1
+    let pb_string = BpString()
+    if strridx(line, pb_string) != -1
         normal dd
     else
         let plnum = prevnonblank(a:lnum)
@@ -323,7 +336,7 @@ fun! ToggleBreakpoint(lnum)
             let indents = repeat("\t", plnum / &shiftwidth)
         endif
 
-        call append(line('.')-1, indents.s:py_breakpoint_line)
+        call append(line('.')-1, indents.pb_string)
         normal k
     endif
 endf

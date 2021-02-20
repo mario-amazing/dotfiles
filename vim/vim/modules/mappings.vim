@@ -220,7 +220,7 @@ cmap <c-r> <Plug>(unite_cmdmatch_complete)
 
   " Breakpoints
   nnoremap <F5> :call RemoveBreakpoints()<CR>
-  nnoremap <silent><buffer><leader>b :call ToggleBreakpoint(line('.'))<CR>
+  nnoremap <silent><leader>b :call ToggleBreakpoint(line('.'))<CR>
 
 " #Git
 nnoremap          <Leader>gg :Git<space>
@@ -386,7 +386,7 @@ nnoremap <silent> <Leader>rp :RainbowParenthesesToggle<CR>
 nnoremap <silent> <Leader>fc :call ToggleFoldColumn()<CR>
 nnoremap          <Leader>ig :IndentGuidesToggle<CR>
 " nmap <leader>ig :IndentLinesToggle<CR>
-nnoremap          <Leader>sc :SyntasticCheck<CR>
+" nnoremap          <Leader>sc :SyntasticCheck<CR>
 
 " #Misc
 nnoremap j gj
@@ -454,8 +454,11 @@ nmap <F6> :Make  %<CR>
 
 " nmap <leader>rr <Plug>(quickrun)
 
-nmap <leader>yn :let @+ = substitute(expand("%"), '^'.getcwd().'/', '', '')<CR>
-nmap <leader>yN :let @+ = expand("%:t")<CR>
+nnoremap yn :let @+ = substitute(expand("%"), '^'.getcwd().'/', '', '')<CR>
+nnoremap yN :let @+ = expand("%:t")<CR>
+nnoremap yp :let @+ = tr(expand('%:r'), '/', '.')<CR>
+nnoremap ypi :let @+ = "import " . tr(expand('%:r'), '/', '.')<CR>
+nnoremap ypf :let @+ = "from " . tr(expand('%:r'), '/', '.') . " import "<CR>
 
 
 nmap <leader>rr :call RunCurrentSpecFile()<CR>
@@ -639,7 +642,7 @@ let g:lsc_auto_map = {
     \ 'FindImplementations': '',
     \ 'FindCodeActions': '',
     \ 'Rename': 'gR',
-    \ 'ShowHover': 'K',
+    \ 'ShowHover': '<leader>k',
     \ 'DocumentSymbol': '',
     \ 'WorkspaceSymbol': '',
     \ 'SignatureHelp': '',
@@ -650,13 +653,7 @@ let g:lsc_server_commands = {
  \ 'python': { 'command': 'pyls', 'log_level': -1, 'suppress_stderr': v:true }
  \}
 
-
-fu! TryPythonCFile() abort
-  " call pymode#rope#goto_definition()
-  return 0
-endfu
-
-let g:smartgf_strategies = [function('TryURI'), function('TryPlainGF'), function('TryPythonCFile'), function('TryRailsCFile'), function('TryCTag'), function('TryFootnote')]
+let g:smartgf_strategies = [function('TryURI'), function('TryPlainGF'), function('TryRailsCFile'), function('TryCTag'), function('TryFootnote')]
 
 nmap <silent> gf :<C-u>call SmartGF()<CR>
 xmap <silent> gf :<C-u>call SmartGF()<CR>gv

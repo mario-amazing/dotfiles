@@ -124,7 +124,12 @@ let NERDTreeMinimalUI=1
 
 
 " pymode
-" let g:pymode_lint_ignore = ["E402", "E201","E202", "E701"]
+let g:pymode_lint_ignore = ["E402", "E201","E202", "E701", "E731"]
+let g:pymode_breakpoint_cmd = python_bp_line
+let g:pymode_options_colorcolumn = 0
+let g:pymode_options_max_line_length = 180
+let g:pymode_rope = 0
+let g:pymode_doc = 0
 
 " ,Syntastic
 let g:syntastic_javascript_checkers = ['jshint']
@@ -630,6 +635,34 @@ call   esearch#map('<C-f><C-f>','esearch')
 call   esearch#map('<C-f>f',    'esearch')
 call   esearch#map('<C-f>w',    'esearch-word-under-cursor')
 call   esearch#map('<C-f><C-w>','esearch-word-under-cursor')
+
+"   Keymap |     What it does
+" ---------+---------------------------------------------------------------------------------------------
+"    yf    | Yank a hovered file absolute path.
+"    t     | Use a custom command to open the file in a tab.
+"    +     | Render [count] more lines after a line with matches. Ex: + adds 1 line, 10+ adds 10.
+"    -     | Render [count] less lines after a line with matches. Ex: - hides 1 line, 10- hides 10.
+"    gq    | Populate QuickFix list using results of the current pattern search.
+"    gsp   | Sort the results by path. NOTE that it's search util-specific.
+"    gsd   | Sort the results by modification date. NOTE that it's search util-specific.
+
+" Each definition contains nvim_set_keymap() args: [{modes}, {lhs}, {rhs}].
+let g:esearch.win_map = [
+ \ ['n', 'yf',  ':call setreg(esearch#util#clipboard_reg(), b:esearch.filename())<cr>'],
+ \ ['n', 't',   ':call b:esearch.open("NewTabdrop")<cr>'                              ],
+ \ ['n', '+',   ':call esearch#init(extend(b:esearch, AddAfter(+v:count1)))<cr>'      ],
+ \ ['n', '-',   ':call esearch#init(extend(b:esearch, AddAfter(-v:count1)))<cr>'      ],
+ \ ['n', 'gq',  ':call esearch#init(extend(copy(b:esearch), {"out": "qflist"}))<cr>'  ],
+ \ ['n', 'gsp', ':call esearch#init(extend(b:esearch, sort_by_path))<cr>'             ],
+ \ ['n', 'gsd', ':call esearch#init(extend(b:esearch, sort_by_date))<cr>'             ],
+ \]
+
+" Helpers to use in keymaps.
+let g:sort_by_path = {'adapters': {'rg': {'options': '--sort path'}}}
+let g:sort_by_date = {'adapters': {'rg': {'options': '--sort modified'}}}
+" {'backend': 'system'} means synchronous reload using system() call to stay within the
+" same context
+let g:AddAfter = {n -> {'after': b:esearch.after + n, 'backend': 'system'}}
 
 
 let g:livepreview_engine = 'pdflatex -interaction=nonstopmode '

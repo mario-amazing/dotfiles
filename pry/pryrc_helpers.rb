@@ -45,6 +45,12 @@ def y(obj)
   obj.to_yaml
 end
 
+class String
+  def json_parse
+    JSON.parse(self)
+  end
+end
+
 def json_parse(obj)
   JSON.parse(obj)
 end
