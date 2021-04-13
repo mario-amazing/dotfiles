@@ -1,4 +1,3 @@
-# export DEFAULT_USER="v1rgul"
 export TERM="xterm-256color"
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -34,23 +33,9 @@ POWERLEVEL9K_NVM_FOREGROUND="green"
 
 POWERLEVEL9K_HOME_SUB_ICON="$( print $'\uE12C' )"
 
-# POWERLEVEL9K_BATTERY_ICON="$( print $'\u26a1' )"
-
-zsh_internet_signal(){
-local signal=$(ifconfig | awk '/'status/' {print $2}' | sed -n '/^active/{p;q;}')
-
-# No Signal - No Internet
-if [[ -z $signal ]] ;
-  then color='%F{red}' ; symbol="\u262F";
-  echo -n "%{$color%}$symbol"
-fi
-}
-POWERLEVEL9K_CUSTOM_INTERNET_SIGNAL="zsh_internet_signal"
-POWERLEVEL9K_CUSTOM_INTERNET_SIGNAL_BACKGROUND="black"
-POWERLEVEL9K_CUSTOM_INTERNET_SIGNAL_FOREGROUND="white"
 
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator ssh context root_indicator dir dir_writable vcs)
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status rbenv rvm  background_jobs time)
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator ssh dir dir_writable vcs background_jobs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status custom_internet_signal rbenv rvm battery time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status rbenv rvm battery time)

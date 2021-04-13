@@ -34,11 +34,13 @@ alias gce='git commit --amend --no-edit'
 alias gcam='git commit --amend -m'
 alias gcmf='git commit -m "Minor fix"'
 alias gcmfs='git commit -m "Minor fixes"'
+alias gcrf='git commit -m "Fix rubocop"'
+alias gcfr='git commit -m "Fix rubocop"'
 alias gp='git push'
 alias gs='git status -s'
 alias gcl='git clone'
 
-alias gsh='git stash'
+alias gsh='git stash --include-untracked'
 alias gsha="git stash apply"
 alias gshl="git stash list"
 alias gshc="git stash clear"
@@ -114,6 +116,7 @@ alias eph="nvim ~/.pryrc_helpers.rb"
 alias rc='bundle exec rails c'
 alias drc='dotenv bundle exec rails c'
 alias rs='bundle exec rails s'
+alias rsb='bundle exec rails s -b 0.0.0.0'
 
 alias rdb='bundle exec rake db:migrate'
 alias rdbr='bundle exec rake db:rollback'
@@ -126,11 +129,20 @@ alias be='bundle exec'
 alias re='bundle exec rspec'
 alias rf='bundle exec rspec --only-failures'
 alias bre='bundle exec bin/rspec'
+alias guard='bundle exec guard'
+alias ru='bundle exec rubocop'
+alias rua='bundle exec rubocop -A'
 
 # docker
+alias dc='docker-compose'
+alias dcu='docker-compose up'
+alias dcd='docker-compose down'
 alias dbr='docker build -t tout_bot:latest .; docker run -d --restart="always" --name tb tout_bot:latest'
 alias ds='docker stop $(docker ps -aq)'
 alias dca='docker stop $(docker ps -aq); docker rm $(docker ps -aq); docker rmi $(docker images -q)'
+alias dvc='docker volume rm $(docker volume ls -q)'
+alias de='docker exec -it'
+alias dl='docker-compose logs -f --tail=0'
 
 #go
 alias gor='go run'

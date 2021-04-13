@@ -309,11 +309,15 @@ endfunction
 let g:python_bp_line="__import__('ipdb').set_trace()"
 let g:ruby_bp_line="require 'pry'; binding.pry"
 let g:eruby_bp_line="<% require 'pry'; binding.pry %>"
+let g:js_bp_line="debugger"
+
 func! BpString()
     if &filetype == "ruby"
       return g:ruby_bp_line
     elseif &filetype == "eruby" || &filetype == "eruby.html"
       return g:eruby_bp_line
+    elseif &filetype == "javascript"
+      return g:js_bp_line
     elseif &filetype == "python"
       return g:python_bp_line
     endif

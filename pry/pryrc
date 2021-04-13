@@ -25,13 +25,15 @@ Pry::Commands.block_command 'e!', 'Alias for "exit!"', keep_retval: true do |lin
 end
 
 if defined?(Rails)
-  include Rails::ConsoleMethods
-
   Pry.commands.alias_command "rr",  'show-routes' rescue nil
   Pry.commands.alias_command "rrg", 'show-routes --grep' rescue nil
 
-  Pry::Commands.block_command 're', 'Alias for "reload!"', keep_retval: true do |lines|
-    reload!
+  if defined?(Rails::ConsoleMethods)
+    include Rails::ConsoleMethods
+
+    Pry::Commands.block_command 're', 'Alias for "reload!"', keep_retval: true do |lines|
+      reload!
+    end
   end
 
   def rdb

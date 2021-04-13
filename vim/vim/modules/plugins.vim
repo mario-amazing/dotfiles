@@ -542,8 +542,8 @@ let g:codi#width = 100
 let g:codi#rightalign = 0
 
 
-
 autocmd BufNewFile,BufRead *.docx.erb let b:eruby_subtype = 'html'
+autocmd BufNewFile,BufRead .env.* set syntax=sh
 " au BufReadPost *.docx.erb let b:eruby_subtype = 'html'
 "
 " ORGMODE

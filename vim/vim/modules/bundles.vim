@@ -101,6 +101,7 @@ Plug 'vim-utils/vim-vertical-move'   " Move 'up' or 'down' without changing the 
 Plug 'tpope/vim-abolish'             " Working with word cases
 Plug 'tpope/vim-commentary'          " Comment/uncomment code
 Plug 'tpope/vim-surround'            " Manage code surroundings(quotes, parenthesis, brackets, *ml-tags etc.)
+Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-speeddating'         " CTRL-A/CTRL-X to increment dates, times, and more
 Plug 'sickill/vim-pasta'             " Smart paste
 " Plug 'svermeulen/vim-easyclip'
@@ -140,7 +141,7 @@ if has('nvim')
 else
   " Plug     'scrooloose/syntastic'
 endif
-
+Plug 'chr4/nginx.vim'
 
 
 " Fuzzy menus
@@ -270,6 +271,7 @@ Plug 'guileen/vim-node-dict'
 " Search
 """""""""""""""""""""""
 Plug 'eugen0329/vim-esearch', { 'branch': 'development' }         " Project-wide search
+Plug 'eugen0329/vim-concertina'
 Plug 'haya14busa/incsearch.vim'          " Incrementally highlight all pattern matches
 Plug 'haya14busa/incsearch-fuzzy.vim'    " Fuzzy search in 
 Plug 'haya14busa/vim-asterisk'           " *-improved

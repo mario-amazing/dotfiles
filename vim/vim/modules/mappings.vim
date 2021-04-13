@@ -222,6 +222,10 @@ cmap <c-r> <Plug>(unite_cmdmatch_complete)
   nnoremap <F5> :call RemoveBreakpoints()<CR>
   nnoremap <silent><leader>b :call ToggleBreakpoint(line('.'))<CR>
 
+" markup
+nnoremap <silent><F8> :let w:v=winsaveview()<cr>ggVG=:call winrestview(w:v)<cr>
+xmap S# <Plug>(operator-sandwich-add)i#{<cr>}<cr>
+
 " #Git
 nnoremap          <Leader>gg :Git<space>
 nnoremap <silent> <Leader>gs :Gtabedit :<CR>
@@ -444,7 +448,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 
-nmap <F9> :Make! %<CR>
+nmap <F9> :%!ruby -r json -e 'puts JSON.pretty_generate(JSON.parse(ARGF.read))'<CR><CR>
 nmap <F6> :Make  %<CR>
 
 " augroup TmpWorkaroundWithEsearch
