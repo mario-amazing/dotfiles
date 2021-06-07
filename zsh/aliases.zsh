@@ -1,6 +1,10 @@
+# Additional aliases
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/rails
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/bundler/README.md
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/docker-compose/README.md
+
 # Common
 alias vim='vim'
-alias be='bundle exec'
 alias x='exit'
 alias v='nvim'
 alias sv="sudo nvim"
@@ -16,7 +20,7 @@ alias o='open'
 #Ctags
 # alias ctg='ctags -R --exclude=.git --exclude=log --exclude=*.js -f tmp/tags *'
 # alias ctg="ctags -R --languages=ruby --exclude=.git --exclude=log --exclude='*.js' `bundle show --paths` ."
-alias ctags="`brew --prefix`/bin/ctags"
+# alias ctags="`brew --prefix`/bin/ctags"
 alias ctg="ctags -R --languages=ruby --exclude=.git --exclude=log --exclude='*.js' ."
 alias rtg="ripper-tags -R --extra=q --exclude=.git --exclude=log"
 
@@ -82,29 +86,12 @@ alias gl="git log --date-order --date=iso --graph --full-history --all --pretty=
 
 alias ss="spring stop && pkill spring"
 
-# alias rg='bundle exec rails g'
-alias rgi="bundle exec rails generate i18n"
-alias rgsc="bundle exec rails generate scaffold"
-alias rgmg="bundle exec rails generate migration"
-alias rgmo="bundle exec rails generate model"
-alias rgma="bundle exec rails generate mailer"
-alias rgco="bundle exec rails generate controller"
-alias rgo="bundle exec rails generate observer"
-
-alias drgsc="bundle exec rails d scaffold"
-alias drgmg="bundle exec rails d migration"
-alias drgmo="bundle exec rails d model"
-alias drgma="bundle exec rails d mailer"
-alias drgco="bundle exec rails d controller"
-
 alias sudo apt-get install='sudo apt-get install -y'
 alias sudo apt-get add-apt-repository='sudo apt-get add-apt-repository -y'
 alias f=fg
 alias si='sudo apt-get install -y'
 alias sp='sudo apt-get purge'
-alias bi='bundle init --gemspec=~/.gemspec_template'
-alias bl='bundle install'
-alias bgi='gem install'
+# alias bi='bundle install'
 
 alias ez="nvim ~/.zshrc"
 alias ea="nvim ~/.zsh/aliases.zsh"
@@ -113,39 +100,28 @@ alias ep="nvim ~/.pryrc"
 alias ee="nvim .env"
 alias eph="nvim ~/.pryrc_helpers.rb"
 
-alias rc='bundle exec rails c'
-alias drc='dotenv bundle exec rails c'
-alias rs='bundle exec rails s'
+# alias rc='bundle exec rails c'
+# alias drc='dotenv bundle exec rails c'
+# alias rs='bundle exec rails s'
 alias rsb='bundle exec rails s -b 0.0.0.0'
 
-alias rdb='bundle exec rake db:migrate'
-alias rdbr='bundle exec rake db:rollback'
-rdbrs () { bundle exec rake db:rollback STEP=$1 ;}
-alias rr='bundle exec rails routes'
-alias rrg='bundle exec rails routes | grep'
-alias rs2='ruby script/server -u'
-alias rc2='ruby script/console'
-alias be='bundle exec'
+# alias rdm='bundle exec rake db:migrate'
+# alias rdr='bundle exec rake db:rollback'
+# rdrs () { bundle exec rake db:rollback STEP=$1 ;}
+# alias rr='bundle exec rails routes'
+# alias rrg='bundle exec rails routes | grep'
+# alias be='bundle exec'
 alias re='bundle exec rspec'
 alias rf='bundle exec rspec --only-failures'
-alias bre='bundle exec bin/rspec'
 alias guard='bundle exec guard'
-alias ru='bundle exec rubocop'
-alias rua='bundle exec rubocop -A'
+alias rub='bundle exec rubocop -P'
+alias ruba='bundle exec rubocop -A'
 
-# docker
-alias dc='docker-compose'
-alias dcu='docker-compose up'
-alias dcd='docker-compose down'
+alias dck='docker-compose kill'
 alias dbr='docker build -t tout_bot:latest .; docker run -d --restart="always" --name tb tout_bot:latest'
 alias ds='docker stop $(docker ps -aq)'
 alias dca='docker stop $(docker ps -aq); docker rm $(docker ps -aq); docker rmi $(docker images -q)'
 alias dvc='docker volume rm $(docker volume ls -q)'
-alias de='docker exec -it'
-alias dl='docker-compose logs -f --tail=0'
-
-#go
-alias gor='go run'
 
 # python
 alias py='ipython3'

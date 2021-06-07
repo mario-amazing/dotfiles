@@ -1,0 +1,20 @@
+export ZSH="/root/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+
+plugins=(
+  dotenv
+  rails
+  bundler
+  docker-compose
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# Aliases
+source ~/.zsh/aliases.zsh
+
+export EDITOR=nvim
+export LANG=en_US.utf-8
+
+setopt hist_ignore_all_dups

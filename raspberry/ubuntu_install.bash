@@ -19,31 +19,6 @@ remove_pachages(){
   done
 }
 
-init_settings() {
-  sudo add-apt-repository -y "deb http://archive.canonical.com/ubuntu $(lsb_release -sc) partner"
-  sudo add-apt-repository -y "deb-src http://archive.canonical.com/ubuntu $(lsb_release -sc) partner"
-  install_pachages curl
-}
-
-install_git() {
-  install_pachages git
-  git config --global color.ui true
-  git config --global user.name  "$1"
-  git config --global user.email "$2"
-  git config --global push.default current
-  git config --global core.excludesfile ~/.gitignore_global
-  git config --global help.autoCorrect -1
-  copy $SELF_DIR/gitignore_global $HOME/.gitignore_global
-}
-
-install_heroku() {
-  wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-}
-
-install_tmux() {
-  copy "$SELF_DIR/tmux.conf" "$HOME/.tmux.conf"
-}
-
 install_vim() {
   sudo add-apt-repository -y ppa:neovim-ppa/unstable
   sudo apt-get update
@@ -77,24 +52,6 @@ install_zsh() {
   chsh -s `which zsh`
 }
 
-install_terminator() {
-  sudo add-apt-repository -y ppa:gnome-terminator/nightly
-  sudo apt-get update ; install_pachages terminator
-  mkdir $HOME/.config/terminator -p
-  copy $SELF_DIR/terminator/config $HOME/.config/terminator/
-}
-
-install_term_colors() {
-  cd /tmp
-  local target_dir=base16
-  git clone https://github.com/chriskempson/base16-builder.git "$target_dir"
-  cd "$target_dir"
-  ./base16
-  bash "chmod +x output/gnome-terminal/base16-eighties.dark.sh"
-  bash "./output/gnome-terminal/base16-eighties.dark.sh"
-  cd "$SELF_DIR"
-}
-
 install_ruby() {
   ln -vsf "$ROOT_DIR/pry/pryrc" "$HOME/.pryrc"
   ln -vsf "$ROOT_DIR/pry/pryrc_helpers.rb" "$HOME/.pryrc_helpers.rb"
@@ -119,12 +76,6 @@ install_gems() {
   gem install neovim
   gem install rmagick
   gem install shutup
-}
-
-install_numix(){
-  sudo add-apt-repository -y ppa:numix/ppa
-  sudo apt-get update ; install_pachages numix-gtk-theme numix-icon-theme-circle numix-wallpaper-*
-  install_pachages unity-tweak-tool gnome-tweak-tool
 }
 
 install_homebridge(){
@@ -185,53 +136,29 @@ install_programs(){
   # cd "$SELF_DIR"
 }
 
-install_steam() {
-  install_pachages steam
-  sudo add-apt-repository -y ppa:xorg-edgers/ppa
-  install_pachages xserver-xorg-core xserver-xorg-video-intel libcheese7 libcheese-gtk23 libclutter-1.0-0 libclutter-gtk-1.0-0 libcogl15 libclutter-gst-2.0-0 gstreamer1.0-clutter     #libs for font
-}
-
-fix_logs(){
-  sudo bash -c "echo 'vm.swappiness=0'>> /etc/sysctl.conf"
-  sudo bash -c "echo 'SUSPEND_MODULES="xhci-hcd"'>> /etc/pm/config.d/unload_module"
-  sudo bash -c "echo 'blacklist btusb'>> /etc/modprobe.d/blacklist.conf"
-  gsettings set com.canonical.desktop.interface scrollbar-mode normal  #Normal scroll
-  gsettings set org.gnome.settings-daemon.plugins.power button-power shutdown
-  gsettings set org.gnome.settings-daemon.plugins.power critical-battery-action nothing
-  gsettings set org.gnome.settings-daemon.plugins.power percentage-low 25
-  gsettings set org.gnome.settings-daemon.plugins.power percentage-critical 5
-  gsettings set org.compiz.integrated show-hud "['']"
-  gsettings set org.gnome.settings-daemon.plugins.media-keys terminator "<Alt>t"
-}
-
-remove_programs(){
-  remove_pachages zeitgeist zeitgeist-core zeitgeist-datahub gnome-orca unity-webapps-common
-  remove_pachages rhythmbox totem totem-common
-  remove_pachages empathy empathy-common nautilus-sendto-empathy  #center fast message
-  # remove_pachages thunderbird
-}
-
-tmp_configs() {
-  sudo bash -c "echo '127.0.0.1  localhost www1.centerv.by www.centerv.by crm1.centerv.by centerv.by centerv.by.local'>> /etc/hosts"
-}
-
 finish_fix() {
   sudo apt-get autoremove -y
 }
 
-# init_settings
+install_docker() {
+ curl -fsSL https://get.docker.com -o get-docker.sh
+ sudo sh get-docker.sh
+ sudo usermod -aG docker ${USER}
+ sdocker-compose versionudo systemctl enable docker
+ # docker-compose
+ sudo apt-get install -y libffi-dev libssl-dev
+ sudo apt install -y python3-dev
+ sudo apt-get install -y python3 python3-pip python3-testresources
+
+ sudo pip3 install docker-compose
+ # python3 -m pip install -IU docker-compose
+}
+
+# NOTE WIFI https://oastic.com/posts/how-to-set-up-wifi-on-ubuntu-running-on-the-raspberry-pi-4/
+#
 # install_vim
-# install_steam
-# install_git
 # install_fonts
-# install_heroku
 # install_gems
-# install_numix
-# install_term_colors
-# install_terminator
-# remove_programs
-# fix_logs
-# tmp_configs
 # finish_fix
 
 # Fixed
