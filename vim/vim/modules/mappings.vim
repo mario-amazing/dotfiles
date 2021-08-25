@@ -230,7 +230,7 @@ xmap S# <Plug>(operator-sandwich-add)i#{<cr>}<cr>
 nnoremap          <Leader>gg :Git<space>
 nnoremap <silent> <Leader>gs :Gtabedit :<CR>
 nnoremap <silent> <Leader>gd :call GdiffInTab()<CR>
-nnoremap <silent> <Leader>gc :Gcommit<CR>
+nnoremap <silent> <Leader>gc :Git commit<CR>
 nnoremap <silent> <Leader>gl :Glog<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gb :NERDTreeClose<Bar>Gblame<CR>
@@ -386,7 +386,7 @@ cabbrev pls Unite neobundle/search
 "   augroup END
 " endif
 
-nnoremap <silent> <Leader>rp :RainbowParenthesesToggle<CR>
+nnoremap <silent> <Leader>ct :ColorToggle<CR>
 nnoremap <silent> <Leader>fc :call ToggleFoldColumn()<CR>
 nnoremap          <Leader>ig :IndentGuidesToggle<CR>
 " nmap <leader>ig :IndentLinesToggle<CR>

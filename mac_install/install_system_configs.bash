@@ -9,6 +9,7 @@ install_system_configs() {
 
   add_empty_speaces_to_dock
   disable_dock_notifications_bounce
+  disable_app_store_notifacations
   # sudo bash -c "echo '127.0.0.1  localhost www.some.domain'>> /etc/hosts"
 }
 
@@ -22,6 +23,10 @@ add_empty_speaces_to_dock() {
 disable_dock_notifications_bounce() {
   defaults write com.apple.dock no-bouncing -bool TRUE
   killall Dock
+}
+
+disable_app_store_notifacations() {
+  defaults write com.apple.appstored LastUpdateNotification -date "2029-12-12 12:00:00 +0000"
 }
 
 install_system_configs

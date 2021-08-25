@@ -205,7 +205,7 @@ Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 " ruby
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 " Plug 'vim-rails-snips'
 Plug     'sandeepravi/refactor-rails.vim', { 'for': 'ruby' }
 Plug 'vim-scripts/ruby-matchit', { 'for': 'ruby' }

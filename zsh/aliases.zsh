@@ -40,9 +40,11 @@ alias gcmf='git commit -m "Minor fix"'
 alias gcmfs='git commit -m "Minor fixes"'
 alias gcrf='git commit -m "Fix rubocop"'
 alias gcfr='git commit -m "Fix rubocop"'
+alias gcwc='git commit -m "Webpacker compile"'
 alias gp='git push'
 alias gs='git status -s'
 alias gcl='git clone'
+alias wcp='RAILS_ENV=production RACK_ENV=production NODE_ENV=production rails webpacker:clobber | RAILS_ENV=production RACK_ENV=production NODE_ENV=production rails webpacker:compile'
 
 alias gsh='git stash --include-untracked'
 alias gsha="git stash apply"
@@ -136,7 +138,7 @@ alias cdw='eval cd $WORK_PATH'
 alias cdd='cd ~/Documents/dotfiles'
 
 # projects
-alias cdt='eval cd $WORK_PATH/tour_bot'
+alias cdww='eval cd $WORK_PATH/workstation'
 alias cdtm='eval cd $WORK_PATH/this_moment'
 
 # alias run_fidor='osascript $WORK_PATH/fidor/scripts/fidor_services.scpt'
