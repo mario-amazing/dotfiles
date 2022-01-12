@@ -138,7 +138,11 @@ alias cdw='eval cd $WORK_PATH'
 alias cdd='cd ~/Documents/dotfiles'
 
 # projects
-alias cdww='eval cd $WORK_PATH/workstation'
+alias cds='eval cd ~/Documents/Github/socialchorus'
+alias cdsw='eval cd ~/Documents/Github/socialchorus/workstation'
+alias cdsh='eval cd ~/Documents/Github/socialchorus/hermes'
+alias cdsk='eval cd ~/Documents/Github/socialchorus/kai'
+alias cdspo='eval cd ~/Documents/Github/socialchorus/pony'
 alias cdtm='eval cd $WORK_PATH/this_moment'
 
 # alias run_fidor='osascript $WORK_PATH/fidor/scripts/fidor_services.scpt'

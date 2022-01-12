@@ -23,6 +23,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases
 source ~/.zsh/aliases.zsh
+source ~/.zsh/kuberaliases.zsh
 
 # HYPHEN_INSENSITIVE="true"
 
@@ -38,6 +39,7 @@ export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups
 setopt share_history
+
 
 zstyle ':completion:*' rehash true
 
@@ -59,7 +61,11 @@ zstyle ':completion:*' rehash true
 
 # export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
-unalias sc # Svitla rails plugin
+# Svitla
+export DOCKER_CLI_EXPERIMENTAL=enabled
+# export GITHUB_TOKEN=$(cut -d= -f1  ~/.ssh/id_rsa.pub)
+export GITHUB_TOKEN=$(cat ~/.ssh/id_rsa.pub)
+unalias sc # rails plugin
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

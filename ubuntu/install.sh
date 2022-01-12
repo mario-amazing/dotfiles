@@ -32,6 +32,8 @@ install_git() {
   git config --global push.default current
   git config --global core.excludesfile ~/.gitignore_global
   git config --global help.autoCorrect -1
+  git config --global blame.date format:%d-%m-%Y %H:%M
+  git config --global blame.coloring highlightRecent
   copy $SELF_DIR/gitignore_global $HOME/.gitignore_global
 }
 

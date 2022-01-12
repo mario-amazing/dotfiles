@@ -51,6 +51,8 @@ install_rbenv() {
   echo_title "!!!RBENV INSTALATION!!!"
   echo_info "!!!IN A PROJECT USE: bundle install --path vendor/bundle!!!"
 
+  install_ruby_rbenv_configs
+
   brew install rbenv
   rbenv install "$RUBY_VERSION"
   rbenv global "$RUBY_VERSION"
@@ -65,6 +67,13 @@ install_ruby_rvm_configs(){
 
   mkdir -p "$HOME/.rvm/gemsets"
   ln -vsf "$ROOT_DIR/global.gems" "$HOME/.rvm/gemsets/global.gems"
+}
+
+install_ruby_rbenv_configs(){
+  echo_title "!!!RUBY RVM CONFIGS INSTALATION!!!"
+
+  mkdir -p "$HOME/.rbenv"
+  ln -vsf "$ROOT_DIR/global.gems" "$HOME/.rbenv/default-gems"
 }
 
 install_ruby_configs() {
@@ -84,6 +93,5 @@ install_rvm_gems() {
 install_rbenv_gems() {
   gem install ${DEFAULT_GEMS[*]} --no-rdoc --no-ri
 }
-
 
 install_ruby

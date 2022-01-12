@@ -231,9 +231,9 @@ nnoremap          <Leader>gg :Git<space>
 nnoremap <silent> <Leader>gs :Gtabedit :<CR>
 nnoremap <silent> <Leader>gd :call GdiffInTab()<CR>
 nnoremap <silent> <Leader>gc :Git commit<CR>
-nnoremap <silent> <Leader>gl :Glog<CR>
-nnoremap <silent> <leader>gb :Gblame<CR>
-nnoremap <silent> <leader>gb :NERDTreeClose<Bar>Gblame<CR>
+nnoremap <silent> <Leader>gl :Gc log<CR>
+nnoremap <silent> <leader>gb :Git blame<CR>
+nnoremap <silent> <leader>gb :NERDTreeClose<Bar>Git blame<CR>
 " nnoremap <silent> <Leader>gv :Gitv<CR>
 nnoremap <silent> <Leader>gv :GV<CR>
 nnoremap <silent> <Leader>dp :diffput<CR>
