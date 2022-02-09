@@ -2,7 +2,7 @@
 alias k='kubectl'
  
 # What environment am I in?
-alias gc='kubectl config get-contexts'
+alias kgc='kubectl config get-contexts'
  
 function uc() {
     # Set my context to the domain environment

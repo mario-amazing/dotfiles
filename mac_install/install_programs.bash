@@ -30,6 +30,7 @@ install_programs(){
   brew install overmind
   brew install imagemagick
   brew install --cask chromedriver
+  brew install kubectl
 
   brew install mysql
   brew services start mysql
