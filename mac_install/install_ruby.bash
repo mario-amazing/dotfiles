@@ -2,7 +2,6 @@
 
 SELF_DIR=`realpath $(dirname $BASH_SOURCE)`
 ROOT_DIR=`dirname "$SELF_DIR"`
-RUBY_VERSION="2.7.1"
 
 source $SELF_DIR/display.bash
 
@@ -41,6 +40,8 @@ install_rvm() {
   \curl -sSL https://get.rvm.io | bash -s stable --rails
   source "$HOME/.rvm/scripts/rvm"
   rvm pkg install openssl
+
+  RUBY_VERSION="3.0.1" # TODO remove
   rvm install "$RUBY_VERSION"
   rvm use "$RUBY_VERSION" --default
 
@@ -54,6 +55,9 @@ install_rbenv() {
   install_ruby_rbenv_configs
 
   brew install rbenv
+  git clone https://github.com/rbenv/rbenv-default-gems.git $HOME/.rbenv/plugins/rbenv-default-gems
+
+  RUBY_VERSION=$(rbenv install -l | grep -v - | tail -1)
   rbenv install "$RUBY_VERSION"
   rbenv global "$RUBY_VERSION"
   rbenv rehash
@@ -91,7 +95,7 @@ install_rvm_gems() {
 }
 
 install_rbenv_gems() {
-  gem install ${DEFAULT_GEMS[*]} --no-rdoc --no-ri
+  gem install ${DEFAULT_GEMS[*]} --no-document
 }
 
 install_ruby

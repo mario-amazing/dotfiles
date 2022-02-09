@@ -8,10 +8,12 @@ source $SELF_DIR/display.bash
 install_programs(){
   echo_title "!!!PROGRAMS INSTALATION!!!"
 
+  softwareupdate --install-rosetta
+  install_python
   install_postgresql
   install_redis
   # install_chromedriver
-  install_qt_5_5
+  # install_qt_5_5
   install_spacemax
 
   brew install rg
@@ -23,11 +25,11 @@ install_programs(){
   brew install nodejs
   brew install md5sha1sum
   brew install capybara-webkit
-  brew install tmux
+  # brew install tmux
   brew install cmake
   brew install overmind
   brew install imagemagick
-  brew cask install chromedriver
+  brew install --cask chromedriver
 
   brew install mysql
   brew services start mysql
@@ -101,8 +103,6 @@ install_python() {
   pip install --upgrade msgpack
 
   pip3 install --upgrade python-language-server
-
 }
-
 
 install_programs

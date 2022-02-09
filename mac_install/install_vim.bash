@@ -10,7 +10,7 @@ install_vim() {
 
   brew install vim neovim
   brew install the_silver_searcher
-  brew cask install mactex # fix latexmk checkhealth error
+  brew install --cask mactex # fix latexmk checkhealth error
 
   brew install npm
   npm install -g neovim
@@ -33,6 +33,5 @@ install_vim() {
   nvim +PlugUpdate +qa
   nvim +UpdateRemotePlugins +qa
 }
-
 
 install_vim

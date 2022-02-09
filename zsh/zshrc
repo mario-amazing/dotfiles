@@ -64,7 +64,7 @@ zstyle ':completion:*' rehash true
 # Svitla
 export DOCKER_CLI_EXPERIMENTAL=enabled
 # export GITHUB_TOKEN=$(cut -d= -f1  ~/.ssh/id_rsa.pub)
-export GITHUB_TOKEN=$(cat ~/.ssh/id_rsa.pub)
+# export GITHUB_TOKEN=$(cat ~/.ssh/id_rsa.pub)
 unalias sc # rails plugin
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
