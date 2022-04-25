@@ -270,7 +270,7 @@ Plug 'guileen/vim-node-dict'
 
 " Search
 """""""""""""""""""""""
-Plug 'eugen0329/vim-esearch', { 'branch': 'development' }         " Project-wide search
+Plug 'eugen0329/vim-esearch'         " Project-wide search
 Plug 'eugen0329/vim-concertina'
 Plug 'haya14busa/incsearch.vim'          " Incrementally highlight all pattern matches
 Plug 'haya14busa/incsearch-fuzzy.vim'    " Fuzzy search in 
