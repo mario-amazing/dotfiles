@@ -23,7 +23,7 @@ install_programs(){
   brew install ctags
   brew install gpg
   brew install nodejs
-  brew install md5sha1sum
+  # brew install md5sha1sum
   brew install capybara-webkit
   # brew install tmux
   brew install cmake

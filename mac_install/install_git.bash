@@ -14,6 +14,7 @@ install_git() {
   read -e -p "$(echo -e ${LGREEN}Enter Your git name: ${NORMAL})"  gitname
   read -e -p "$(echo -e ${LGREEN}Enter Your git email: ${NORMAL})"  gitemail
 
+  # Split to default user .gitconfig and manual setup
   git config --global user.name ${gitname}
   git config --global user.email ${gitemail}
   git config --global color.ui true

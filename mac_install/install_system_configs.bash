@@ -7,10 +7,15 @@ source $SELF_DIR/display.bash
 install_system_configs() {
   echo_title "!!!CONFIG INSTALATION!!!"
 
+  remove_all_from_dock
   add_empty_speaces_to_dock
   disable_dock_notifications_bounce
   disable_app_store_notifacations
   # sudo bash -c "echo '127.0.0.1  localhost www.some.domain'>> /etc/hosts"
+}
+
+remove_all_from_dock() {
+  defaults write com.apple.dock persistent-apps -array
 }
 
 add_empty_speaces_to_dock() {
