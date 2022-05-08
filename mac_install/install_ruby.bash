@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SELF_DIR=`realpath $(dirname $BASH_SOURCE)`
+SELF_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)
 ROOT_DIR=`dirname "$SELF_DIR"`
 
 source $SELF_DIR/display.bash
@@ -45,7 +45,7 @@ install_rvm() {
   rvm install "$RUBY_VERSION"
   rvm use "$RUBY_VERSION" --default
 
-  # install_rvm_gems
+  # manual_install_rvm_gems
 }
 
 install_rbenv() {
@@ -56,14 +56,15 @@ install_rbenv() {
 
   brew install rbenv
   git clone https://github.com/rbenv/rbenv-default-gems.git $HOME/.rbenv/plugins/rbenv-default-gems
+  ln -vsf "$ROOT_DIR/global.gems" "$HOME/.rbenv/default-gems"
 
   RUBY_VERSION=$(rbenv install -l | grep -v - | tail -1)
   rbenv install "$RUBY_VERSION"
   rbenv global "$RUBY_VERSION"
   rbenv rehash
 
-  ln -vsf "$ROOT_DIR/rbenv_bundle_config" "$HOME/.bundle/config"
-  install_rbenv_gems
+  # ln -vsf "$ROOT_DIR/rbenv_bundle_config" "$HOME/.bundle/config"
+  # manual_install_rbenv_gems
 }
 
 install_ruby_rvm_configs(){
@@ -74,10 +75,10 @@ install_ruby_rvm_configs(){
 }
 
 install_ruby_rbenv_configs(){
-  echo_title "!!!RUBY RVM CONFIGS INSTALATION!!!"
+  echo_title "!!!RUBY RBENV CONFIGS INSTALATION!!!"
 
   mkdir -p "$HOME/.rbenv"
-  ln -vsf "$ROOT_DIR/global.gems" "$HOME/.rbenv/default-gems"
+
 }
 
 install_ruby_configs() {
@@ -90,11 +91,11 @@ install_ruby_configs() {
   ln -vsf "$ROOT_DIR/gemrc" "$HOME/.gemrc"
 }
 
-install_rvm_gems() {
+manual_install_rvm_gems() {
   rvm @global do gem install ${DEFAULT_GEMS[*]}
 }
 
-install_rbenv_gems() {
+manual_install_rbenv_gems() {
   gem install ${DEFAULT_GEMS[*]} --no-document
 }
 

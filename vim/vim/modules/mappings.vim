@@ -207,7 +207,9 @@ cmap <c-r> <Plug>(unite_cmdmatch_complete)
   " nnoremap <C-f><C-m> :Unite -winheight=10 -buffer-name=recent buffer file_mru<CR>
 
   nnoremap <C-f>m     :CtrlPMRUFiles<CR>
-  nnoremap <C-f><C-m> :CtrlPMRUFiles<CR>
+  " nnoremap <C-f><C-m> :CtrlPMRUFiles<CR> <C-m> same as <CR>
+  nnoremap <C-f><CR> :CtrlPMRUFiles<CR>
+
   " nnoremap <C-f>m     :Unite -winheight=10 -buffer-name=recent -unique -start-insert buffer neomru/file<CR>
   " nnoremap <C-f><C-m> :Unite -winheight=10 -buffer-name=recent -unique -start-insert buffer neomru/file<CR>
 
@@ -231,11 +233,11 @@ nnoremap          <Leader>gg :Git<space>
 nnoremap <silent> <Leader>gs :Gtabedit :<CR>
 nnoremap <silent> <Leader>gd :call GdiffInTab()<CR>
 nnoremap <silent> <Leader>gc :Git commit<CR>
-nnoremap <silent> <Leader>gl :Gc log<CR>
+nnoremap <silent> <Leader>gl :GV<CR>
 nnoremap <silent> <leader>gb :Git blame<CR>
 nnoremap <silent> <leader>gb :NERDTreeClose<Bar>Git blame<CR>
 " nnoremap <silent> <Leader>gv :Gitv<CR>
-nnoremap <silent> <Leader>gv :GV<CR>
+nnoremap <silent> <Leader>gv :GV!<CR>
 nnoremap <silent> <Leader>dp :diffput<CR>
 
 

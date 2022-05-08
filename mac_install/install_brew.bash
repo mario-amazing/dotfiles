@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SELF_DIR=`realpath $(dirname $BASH_SOURCE)`
+SELF_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)
 source $SELF_DIR/display.bash
 
 install_brew() {
