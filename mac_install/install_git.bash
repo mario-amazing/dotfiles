@@ -9,12 +9,13 @@ install_git() {
   echo_title "!!!GIT INSTALATION!!!"
 
   ln -vsf "$ROOT_DIR/gitignore_global" "$HOME/.gitignore_global"
-  brew install git
 
-  read -e -p "$(echo -e ${LGREEN}Enter Your git name: ${NORMAL})"  gitname
-  read -e -p "$(echo -e ${LGREEN}Enter Your git email: ${NORMAL})"  gitemail
+  read -e -p "$(echo ${LGREEN}Enter Your git name: ${NORMAL})" gitname
+  gitname="${gitname:=mario_amazing}"
 
-  # Split to default user .gitconfig and manual setup
+  read -e -p "$(echo ${LGREEN}Enter Your git email: ${NORMAL})" gitemail
+  gitemail="${gitemail:=marian1amazing@gmail.com}"
+
   git config --global user.name ${gitname}
   git config --global user.email ${gitemail}
   git config --global color.ui true
@@ -25,6 +26,5 @@ install_git() {
 
   git config --global help.autoCorrect -1
 }
-
 
 install_git

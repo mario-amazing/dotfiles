@@ -6,7 +6,7 @@ source $SELF_DIR/display.bash
 install_brew() {
   echo_title "!!!BREW INSTALATION!!!"
 
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   brew update && brew upgrade
 }
 
