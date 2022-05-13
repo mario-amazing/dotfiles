@@ -158,7 +158,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Tools
 """""""""""""""
 Plug 'MattesGroeger/vim-bookmarks'
-Plug 'jgdavey/tslime.vim' " Send command from vim to a running tmux session
 Plug 'tpope/vim-projectionist'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'eugen0329/vim-hud'
@@ -194,11 +193,6 @@ Plug 'natebosch/vim-lsc'
 " Plug 'hrsh7th/deoplete-vim-lsc' " autocomplete with lsp
 Plug 'deoplete-plugins/deoplete-jedi'
 
-" elixir
-Plug 'elixir-lang/vim-elixir'
-Plug 'c-brenn/phoenix.vim'
-" Plug 'avdgaag/vim-phoenix'
-" Plug 'slashmili/alchemist.vm'
 " python
 " Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
@@ -210,10 +204,8 @@ Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug     'sandeepravi/refactor-rails.vim', { 'for': 'ruby' }
 Plug 'vim-scripts/ruby-matchit', { 'for': 'ruby' }
 Plug 'tmhedberg/matchit'
-Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-rake'
 Plug 'thoughtbot/vim-rspec'
-Plug 'xmisao/rubyjump.vim', { 'for': 'ruby' } " Quick jump to method, class, module defenitions in buffers
 " markdown
 Plug 'shime/vim-livedown' " Markdown live preview
 Plug 'plasticboy/vim-markdown', { 'depends' : 'godlygeek/tabular'}

@@ -44,6 +44,8 @@ if filereadable(expand(".vimrc.local"))
   source .vimrc.local
 endif
 
+" luafile ~/.vim/lua/modules/init.lua
+
 " function! JumpToCSS()
 "   let id_pos = searchpos("id", "nb", line('.'))[1]
 "   let class_pos = searchpos("class", "nb", line('.'))[1]

@@ -56,14 +56,6 @@ cmap <c-r> <Plug>(unite_cmdmatch_complete)
   nnoremap <Leader>e  :call RailsCommands(g:rails_commands, g:rails_edit_mappings, 'CtrlP %s')<CR>
   " nnoremap <leader>rr :!rake<CR>
 
-  " ,search
-  " nnoremap <C-f><C-d> :<C-u>CtrlPNerdTree<CR>
-  nnoremap <C-f><C-d> :<C-u>CtrlPNerdTree<CR>
-  nnoremap <leader>rc :CtrlPControllers<CR>
-  nnoremap <leader>rm :CtrlPModels<CR>
-  nnoremap <leader>rs :CtrlPSpecs<CR>
-  nnoremap <leader>rv :CtrlPViews<CR>
-
   let g:vim_search_pulse_disable_auto_mappings = 1
   nnoremap               <Leader>fl   :Unite -buffer-name=search\ line -start-insert line<CR>
   nnoremap               <C-f>l       :Unite -buffer-name=search\ line -start-insert line<CR>
