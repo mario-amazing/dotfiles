@@ -32,14 +32,18 @@ source ~/.zsh/kuberaliases.zsh
 export EDITOR=nvim
 export LANG=en_US.utf-8
 
+# More setoptions -> https://linux.die.net/man/1/zshoptions
+setopt auto_list
+setopt hist_ignore_all_dups
+setopt share_history
+setopt auto_menu
+setopt share_history
+setopt hist_reduce_blanks
 export HOMEBREW_AUTO_UPDATE_SECS=604800
 export HISTSIZE=200000
 export SAVEHIST=200000
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=$HISTSIZE
-setopt hist_ignore_all_dups
-setopt share_history
-
 
 zstyle ':completion:*' rehash true
 
