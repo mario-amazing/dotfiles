@@ -10,29 +10,62 @@ install_programs(){
 
   softwareupdate --install-rosetta
 
-  install_python
-  install_postgresql
-  install_redis
-  # install_chromedriver
-  # install_qt_5_5
-
-  brew install coreutils # command -> realpath
+  brew install git
+  brew install fd # friendly find
   brew install rg
-  brew install ag
+  # brew install ag
+  # brew install md5sha1sum
+
+  brew install fzf
+  $(brew --prefix)/opt/fzf/install --no-bash --completion --key-bindings --update-rc
+
+  brew install cmake
+  brew install ctags
+  brew install coreutils # command -> realpath
   brew install thefuck
   brew install htop
-  brew install ctags
-  brew install gpg
+
+  install_python
   brew install nodejs
-  # brew install md5sha1sum
-  brew install cmake
+  brew install yarn
   brew install overmind
   brew install imagemagick
-  brew install --cask chromedriver
   brew install kubectl
 
-  brew install mysql
-  # brew services start mysql
+  brew install postgresql
+  brew install redis
+  # brew install mysql
+
+  ##======= Fonts
+  brew tap homebrew/cask-fonts
+  brew install --cask font-sauce-code-pro-nerd-font
+  brew install --cask font-fontawesome
+
+  ##======= UI Applications
+  brew install --cask telegram
+  brew install --cask slack
+  brew install --cask skype
+  brew install --cask zoom
+  brew install --cask viber
+  brew install --cask discord
+
+  brew install --cask google-chrome
+
+  brew install --cask dropbox
+  brew install --cask transmission
+  brew install --cask tiles
+
+  brew install --cask iterm2
+  brew install --cask tableplus
+  brew install --cask visual-studio-code
+  brew install --cask docker
+  brew install --cask postman
+
+  brew install --cask steam
+  brew install --cask appcleaner
+
+  # brew install --cask chromedriver
+  # install_qt_5_5
 }
 
 install_qt_5_5() {
@@ -44,18 +77,16 @@ install_qt_5_5() {
   cd ${ROOT_DIR}
 }
 
-install_postgresql() {
-  brew install postgresql
-  # pg_ctl -D /usr/local/var/postgres start && brew services start postgresql
+start_postgresql() {
+  pg_ctl -D /usr/local/var/postgres start && brew services start postgresql
 }
 
-install_chromedriver() {
-  cp "tools/chromedriver" "/usr/local/bin/chromedriver"
+start_redis() {
+  brew services start redis
 }
 
-install_redis() {
-  brew install redis
-  # brew services start redis
+start_mysql() {
+  brew services start mysql
 }
 
 install_python() {
