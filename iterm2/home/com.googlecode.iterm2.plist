@@ -440,7 +440,7 @@
 	<key>DimOnlyText</key>
 	<false/>
 	<key>DisableFullscreenTransparency</key>
-	<false/>
+	<true/>
 	<key>DoubleClickPerformsSmartSelection</key>
 	<true/>
 	<key>FlashTabBarInFullscreen</key>
@@ -466,7 +466,7 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NeverWarnAboutMeta</key>
-	<true/>
+	<false/>
 	<key>NeverWarnAboutMeta_selection</key>
 	<integer>0</integer>
 	<key>NeverWarnAboutShortLivedSessions_03F79720-5921-4721-964C-C5742BD3C990</key>
@@ -659,7 +659,7 @@
 				<real>0.87806010246276855</real>
 			</dict>
 			<key>Application Keypad Allowed</key>
-			<true/>
+			<false/>
 			<key>BM Growl</key>
 			<true/>
 			<key>Background Color</key>
@@ -771,6 +771,8 @@
 			<real>1</real>
 			<key>Idle Code</key>
 			<integer>0</integer>
+			<key>Initial Use Transparency</key>
+			<false/>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -1972,6 +1974,10 @@
 	<integer>1</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
+	<key>TmuxUsesDedicatedProfile</key>
+	<false/>
+	<key>TmuxWarnBeforePausing</key>
+	<false/>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<true/>
 	<key>URLHandlersByGuid</key>
@@ -1982,6 +1988,8 @@
 		<string>03F79720-5921-4721-964C-C5742BD3C990</string>
 	</dict>
 	<key>UseBorder</key>
+	<false/>
+	<key>UseTmuxStatusBar</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
@@ -1996,6 +2004,8 @@
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>1</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
+	<false/>
+	<key>metalMaximizeThroughput</key>
 	<false/>
 </dict>
 </plist>
