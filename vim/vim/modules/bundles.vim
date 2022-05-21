@@ -9,9 +9,6 @@ call plug#begin('~/.vim/bundle')
 
 " #UI
 Plug 'itchyny/lightline.vim'
-" Plug 'vim-airline/vim-airline'
-" Plug 'powerline/powerline'
-" Plug 'ryanoasis/vim-webdevicons'
 
 " tree
 """""""""""""""
@@ -20,7 +17,6 @@ Plug 'jistr/vim-nerdtree-tabs',           { 'on': ['NERDTreeTabsToggle', 'NERDTr
 Plug 'eugen0329/vim-nerdtree-smart-open', { 'on': ['NERDTreeTabsToggle', 'NERDTreeFind', 'NERDTreeClose'] }
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'justinmk/vim-gtfo'
-" Plug 'voronkovich/ctrlp-nerdtree.vim'
 
 if !has('nvim')
   " Plug 'google/vim-maktaba'
@@ -151,7 +147,15 @@ Plug  'Shougo/unite.vim'
 Plug 'majutsushi/tagbar' ", {'on':'TagbarToggle'}
 Plug 'Shougo/unite-outline'
 Plug 'MaryHal/unite-unicode'
-Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'nvim-lua/plenary.nvim' " requirement for telescope.nvim
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'tami5/sqlite.lua' " requirement for telescope-frecency.nvim
+Plug 'nvim-telescope/telescope-frecency.nvim' " resently used files
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } " fuzzy search
+Plug 'kyazdani42/nvim-web-devicons'
+
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 

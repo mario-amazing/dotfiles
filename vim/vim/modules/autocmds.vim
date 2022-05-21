@@ -32,6 +32,7 @@ augroup FiletypeAutocommands
   " autocmd! BufWritePost *.py Neomake
   " let g:neomake_python_enabled_makers = ['flake8']
 
+  autocmd FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
 
   au FileType coffee setlocal foldmethod=indent
 

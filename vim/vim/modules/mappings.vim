@@ -52,8 +52,6 @@ cmap <c-r> <Plug>(unite_cmdmatch_complete)
 
   " nnoremap <F9>       :call GenerateCtags()<CR>
   nnoremap <F2>       :TagbarToggle<CR>
-  nnoremap <Leader>fb :CtrlPLine<CR>
-  nnoremap <Leader>e  :call RailsCommands(g:rails_commands, g:rails_edit_mappings, 'CtrlP %s')<CR>
   " nnoremap <leader>rr :!rake<CR>
 
   let g:vim_search_pulse_disable_auto_mappings = 1
@@ -194,13 +192,10 @@ cmap <c-r> <Plug>(unite_cmdmatch_complete)
   endfor
 
   " ,MRU
-  nnoremap <C-f> <Nop>
-  " nnoremap <C-f>m     :Unite -winheight=10 -buffer-name=recent buffer file_mru<CR>
-  " nnoremap <C-f><C-m> :Unite -winheight=10 -buffer-name=recent buffer file_mru<CR>
-
-  nnoremap <C-f>m     :CtrlPMRUFiles<CR>
-  " nnoremap <C-f><C-m> :CtrlPMRUFiles<CR> <C-m> same as <CR>
-  nnoremap <C-f><CR> :CtrlPMRUFiles<CR>
+  nnoremap <silent><C-p>       :Telescope find_files<CR>
+  nnoremap <silent><c-f><CR>   :Telescope frecency<cr>
+  nnoremap <silent><C-f><C-t>  :Telescope filetypes<CR>
+  " builtin.live_grep
 
   " nnoremap <C-f>m     :Unite -winheight=10 -buffer-name=recent -unique -start-insert buffer neomru/file<CR>
   " nnoremap <C-f><C-m> :Unite -winheight=10 -buffer-name=recent -unique -start-insert buffer neomru/file<CR>
@@ -227,8 +222,9 @@ nnoremap <silent> <Leader>gd :call GdiffInTab()<CR>
 nnoremap <silent> <Leader>gc :Git commit<CR>
 nnoremap <silent> <Leader>gl :GV<CR>
 nnoremap <silent> <leader>gb :Git blame<CR>
+nnoremap <silent> <leader>gh :lua require'telescope.builtin'.git_stash{}<CR>
 nnoremap <silent> <leader>gb :NERDTreeClose<Bar>Git blame<CR>
-" nnoremap <silent> <Leader>gv :Gitv<CR>
+" ↓ logs current file
 nnoremap <silent> <Leader>gv :GV!<CR>
 nnoremap <silent> <Leader>dp :diffput<CR>
 

@@ -1,3 +1,4 @@
+" Debugging what plugins were run during text typing. Run after typing :au TextChangedI
 fu! s:load(module)
   exec 'source ' fnameescape(expand('~/.vim/modules/' . a:module . '.vim'))
 endfu
@@ -34,30 +35,8 @@ augroup load_plugins_on_insert
         \| au! load_plugins_on_insert
 augroup END
 
-if has('gui_running')
-  set background=light
-  colorscheme solarized
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Pomicons\ Book
-endif
-
 if filereadable(expand(".vimrc.local"))
   source .vimrc.local
 endif
 
-" luafile ~/.vim/lua/modules/init.lua
-
-" function! JumpToCSS()
-"   let id_pos = searchpos("id", "nb", line('.'))[1]
-"   let class_pos = searchpos("class", "nb", line('.'))[1]
-
-"   if class_pos > 0 || id_pos > 0
-"     if class_pos < id_pos
-"       execute ":vim '#".expand('<cword>')."' **/*.css"
-"     elseif class_pos > id_pos
-"       execute ":vim '.".expand('<cword>')."' **/*.css"
-"     endif
-"   endif
-" endfunction
-
-" nnoremap <F9> :call JumpToCSS()<CR>
-" let g:webdevicons_enable_ctrlp = 1
+luafile ~/.vim/modules/init.lua

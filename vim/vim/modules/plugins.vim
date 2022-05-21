@@ -24,10 +24,10 @@ nnoremap <S-l> :SidewaysRight<CR>
 let g:bookmark_save_per_working_dir = 1
 
 
-let g:bookmark_sign = ' ⮩'
+let g:bookmark_sign = ' '
 " let g:bookmark_sign = ' 🗹'
 " let g:bookmark_annotation_sign = ' '
-let g:bookmark_annotation_sign = ' …'
+let g:bookmark_annotation_sign = ' '
 let g:bookmark_show_toggle_warning = 0
 let g:bookmark_center = 1
 
@@ -213,47 +213,6 @@ let g:clang_format#style_options = {
 " ,ultiSnips
 
 let g:UltiSnipsEditSplit="horizontal"
-
-" ,ctrlp
-" let g:ctrlp_reuse_window = 'netrw\|help\|quickfix\|nerdtree'
-" let g:ctrlp_reuse_window = 'nerdtree'
-" let g:ctrlp_open_single_match = ['buffer tags', 'buffer']
-" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-" E - jump to the window
-let g:ctrlp_switch_buffer = 'Et'
-let g:ctrlp_use_caching = 0
-" let g:ctrlp_user_command = 'ag %s -U -l --nocolor -g ""'
-
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-let g:ctrlp_use_caching = 0
-
-
-" let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'package.json', 'bower.json', 'main.c', 'main.cpp']
-let g:ctrlp_root_markers = ['Gemfile', '.git', '.meteor', 'Rakefile', 'main.c', 'main.cpp', 'package.json']
-" let g:ctrlp_root_markers = ['Gemfile', 'Makefile', '.git', '.meteor', 'Rakefile', 'package.json', 'bower.json', 'index.html', 'main.c', 'main.cpp']
-
-" let g:ctrlp_lazy_update = 350
-let g:ctrlp_clear_cache_on_exit = 0
-" let g:ctrlp_match_window = 'bottom,order:btt,min:9,max:10,results:30'
-
-
-fu! CloseQuickfix()
-  cclos
-  lclose
-endfu
-let g:ctrlp_buffer_func = {
-  \ 'enter': 'CloseQuickfix',
-  \ }
-" \ 'exit':  'Function_Name_2',
-
-
-" ,fuzzyFinder
-" nnoremap <silent> <C-p> :call fuf#givenfile#launch('', 0, '>>>', split(system('ag -l --nocolor -g ""'), "\n"))<CR>
-
-" ,javascript
-" ,vim-monster
-"
 
 " ,rails
 let g:rails_ctags_arguments = '-f tmp/tags'

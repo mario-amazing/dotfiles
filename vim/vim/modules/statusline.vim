@@ -241,8 +241,7 @@ fu! s:fname(...)
   let name = substitute(name, $HOME, '~', '')
   " let fname = expand('%:t')
   let fname = expand('%')
-  return fname == 'ControlP' ? get(g:lightline, 'ctrlp_item', '_') :
-        \ fname == '__Tagbar__' ? get(g:lightline, 'fname', '') :
+  return fname == '__Tagbar__' ? get(g:lightline, 'fname', '') :
         \ fname =~ '__Gundo\|NERD_tree' ? '' :
         \ exists('w:quickfix_title') ? w:quickfix_title :
         \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
@@ -260,22 +259,6 @@ fu! s:fnameactive()
   return s:fname(name)
 endfu
 
-fu! s:ctrlps1(focus, byfname, regex, prev, item, next, marked)
-  let g:lightline.ctrlp_regex = a:regex
-  let g:lightline.ctrlp_prev = a:prev
-  let g:lightline.ctrlp_item = a:item
-  let g:lightline.ctrlp_next = a:next
-  return lightline#statusline(0)
-endfu
-
-let g:ctrlp_status_func = {
-  \ 'prog': s:SID.'ctrlps2',
-  \ 'main': s:SID.'ctrlps1',
-  \ }
-fu! s:ctrlps2(str)
-  return lightline#statusline(0)
-endfu
-
 fu! s:tagbar(current, sort, fname, ...) abort
     let g:lightline.fname = a:fname
   return lightline#statusline(0)
@@ -289,7 +272,6 @@ fu! s:mode()
     call lightline#link('R')
   endif
   return fname == '__Tagbar__' ? 'Tagbar' :
-        \ fname == 'ControlP' ? 'CtrlP' :
         \ fname == '__Gundo__' ? 'Gundo' :
         \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
         \ fname =~ 'NERD_tree' ? 'NERDTree' :
