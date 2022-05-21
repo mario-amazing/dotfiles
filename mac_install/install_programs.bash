@@ -50,6 +50,7 @@ install_programs(){
   brew install --cask discord
 
   brew install --cask google-chrome
+  brew install --cask vlc
 
   brew install --cask dropbox
   brew install --cask transmission
