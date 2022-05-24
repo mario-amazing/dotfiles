@@ -95,22 +95,10 @@ cmap <c-r> <Plug>(unite_cmdmatch_complete)
 
   " ,motion
   nnoremap <C-t> :tabnew<CR>
+
   nnoremap <silent> <C-i> <C-i>zz
   nnoremap <silent> <C-o> <C-o>zz
-  map <C-\>123123123 <Plug>(easymotion-prefix)
-  " nmap <C-g>/ <Plug>(easymotion-sn)
-  " nmap <C-g>l <Plug>(easymotion-iskeyword-w)
-  " nmap <C-g>h <Plug>(easymotion-iskeyword-b)
-  " nmap <C-g><C-l> <Plug>(easymotion-iskeyword-w)
-  " nmap <C-g><C-h> <Plug>(easymotion-iskeyword-b)
-  nmap gh <Plug>(easymotion-iskeyword-b)
-  nmap gl <Plug>(easymotion-iskeyword-w)
-  nmap gj <Plug>(easymotion-j)
-  nmap gk <Plug>(easymotion-k)
-  xmap gh <Plug>(easymotion-iskeyword-b)
-  xmap gl <Plug>(easymotion-iskeyword-w)
-  xmap gj <Plug>(easymotion-j)
-  xmap gk <Plug>(easymotion-k)
+
   nmap <C-g> %
 
   " map <Plug>(smartword-basic-w)  <Plug>CamelCaseMotion_w
@@ -213,6 +201,9 @@ cmap <c-r> <Plug>(unite_cmdmatch_complete)
 
 " markup
 nnoremap <silent><F8> :let w:v=winsaveview()<cr>ggVG=:call winrestview(w:v)<cr>
+
+let g:sandwich_no_default_key_mappings = 1
+let g:operator_sandwich_no_default_key_mappings = 1
 xmap S# <Plug>(operator-sandwich-add)i#{<cr>}<cr>
 
 " #Git
@@ -259,10 +250,23 @@ vmap ' <Plug>VSurround'
 nmap d" <Plug>Dsurround"
 nmap dt <Plug>Dsurroundt
 nmap d' <Plug>Dsurround'
+
+" vvv https://github.com/terryma/vim-expand-region
+let g:expand_region_text_objects = {
+      \ 'iw'  :0,
+      \ 'iW'  :0,
+      \ 'i"'  :1,
+      \ 'i''' :1,
+      \ 'i]'  :1,
+      \ 'ib'  :1,
+      \ 'iB'  :1,
+      \ 'il'  :0,
+      \ 'ip'  :0,
+      \ 'ie'  :0,
+      \ }
 vmap v      <Plug>(expand_region_expand)
 vmap <C-v>  <Plug>(expand_region_shrink)
-call expand_region#custom_text_objects('ruby', { 'im' :0, 'am' :0, })
-call expand_region#custom_text_objects({'iv':0, 'av':0, })
+
 omap aa <Plug>SidewaysArgumentTextobjA
 xmap aa <Plug>SidewaysArgumentTextobjA
 omap ia <Plug>SidewaysArgumentTextobjI
@@ -394,9 +398,7 @@ inoremap <silent><C-c> <Esc>
 nnoremap <C-c> <Esc>
 nnoremap <C-s> :write<CR>
 nmap <S-u> :<C-u>redo<CR><Plug>(RepeatRedo)
-" nnoremap <S-u> :redo<CR>
-nnoremap ; :
-vnoremap ; :
+
 nnoremap <silent> <S-q> :call Quit()<CR>
 noremap  <silent>  <C-q> :call CloseSomething()<CR>
 nnoremap <silent> z<S-m> :call g:FoldEverything()<CR>
@@ -621,12 +623,6 @@ endfunction
 
 
 "lsp
-" Plug 'natebosch/vim-lsc'
-let g:lsc_enable_autocomplete  = v:false
-let g:lsc_reference_highlights = v:false
-let g:lsc_enable_diagnostics   = v:false
-let g:lsc_trace_level          = 'off'
-
 let g:lsc_auto_map = {
     \ 'GoToDefinition': ['gd', '<C-]>'],
     \ 'GoToDefinitionSplit': ['<C-W>]', '<C-W><C-]>', 'gs'],
@@ -642,10 +638,6 @@ let g:lsc_auto_map = {
     \ 'SignatureHelp': '',
     \ 'Completion': '',
     \}
-let g:lsc_server_commands = {
- \ 'ruby': { 'command': 'solargraph stdio', 'log_level': -1, 'suppress_stderr': v:true },
- \ 'python': { 'command': 'pyls', 'log_level': -1, 'suppress_stderr': v:true }
- \}
 
 let g:smartgf_strategies = [function('TryURI'), function('TryPlainGF'), function('TryRailsCFile'), function('TryCTag'), function('TryFootnote')]
 

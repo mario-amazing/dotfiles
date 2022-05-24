@@ -1,6 +1,10 @@
 set nocompatible
 call plug#begin('~/.vim/bundle')
 
+" Colorschemes
+"""""""""""""""
+Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
+
 " #UI
 Plug 'itchyny/lightline.vim'
 
@@ -12,14 +16,7 @@ Plug 'eugen0329/vim-nerdtree-smart-open', { 'on': ['NERDTreeTabsToggle', 'NERDTr
 
 " Motion
 """""""""""
-Plug 'Lokaltog/vim-easymotion', {'on': []}           " highlight jumb target
-augroup load_em
-  au!
-  au CursorMoved call plug#load(vim-easymotion)
-        \| au! load_em
-augroup END
-
-Plug 'rhysd/clever-f.vim'                " f{char} improved
+Plug 'ggandor/lightspeed.nvim' " easymotion(s/S) + f{char} improved
 Plug 'bkad/CamelCaseMotion'
 
 " Git
@@ -41,7 +38,7 @@ augroup END
 
 " UI
 """""""""""""""""""
-Plug     'nathanaelkane/vim-indent-guides' " 'Yggdroot/indentLine'
+Plug 'nathanaelkane/vim-indent-guides' " 'Yggdroot/indentLine'
 Plug 'Valloric/MatchTagAlways', { 'for': ['erb', 'html', 'xml'] }
 
 
@@ -133,12 +130,15 @@ Plug 'majutsushi/tagbar' ", {'on':'TagbarToggle'}
 Plug 'Shougo/unite-outline'
 Plug 'MaryHal/unite-unicode'
 
-Plug 'nvim-lua/plenary.nvim' " requirement for telescope.nvim
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'tami5/sqlite.lua' " requirement for telescope-frecency.nvim
-Plug 'nvim-telescope/telescope-frecency.nvim' " resently used files
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } " fuzzy search
-Plug 'kyazdani42/nvim-web-devicons'
+if has('nvim')
+  " telescop
+  Plug 'nvim-lua/plenary.nvim' " requirement for telescope.nvim
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'tami5/sqlite.lua' " requirement for telescope-frecency.nvim
+  Plug 'nvim-telescope/telescope-frecency.nvim' " resently used files
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } " fuzzy search
+  Plug 'kyazdani42/nvim-web-devicons'
+endif
 
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -164,6 +164,8 @@ Plug 'wesQ3/vim-windowswap'  " swap two windows
 Plug     'AndrewRadev/undoquit.vim'
 Plug     'tpope/vim-eunuch'                " unix bash-like utils
 Plug     'vim-scripts/LargeFile'
+
+Plug 'chrisbra/Colorizer' " show color by code
 
 " Plug     'tpope/vim-dispatch'
 " Plug     'radenling/vim-dispatch-neovim'
@@ -219,8 +221,6 @@ Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 " slim
 Plug     'slim-template/vim-slim'
-"coffeescript
-Plug     'kchmck/vim-coffee-script'
 " monit
 Plug 'tmatilai/vim-monit'
 " javascript
@@ -230,7 +230,6 @@ Plug 'digitaltoad/vim-pug'
 Plug 'moll/vim-node'
 " yaml, ansible
 Plug 'chase/vim-ansible-yaml'
-Plug 'munen/find_yaml_key'
 Plug 'lmeijvogel/vim-yaml-helper'
 " flex/bison
 Plug 'justinmk/vim-syntax-extra', {'for': ['flex', 'lex', 'bison']}
@@ -276,25 +275,7 @@ Plug 'vim-scripts/LanguageTool'
 Plug 'wellle/tmux-complete.vim'
 Plug 'Shougo/neco-vim'                     " vimscript completion
 Plug 'carlitux/deoplete-ternjs'
-Plug     'othree/csscomplete.vim'
+Plug 'othree/csscomplete.vim'
 
-" Colorschemes
-"""""""""""""""
-Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
-
-" Visual
-"""""""""""""""
-Plug 'chrisbra/Colorizer'
-Plug 'flazz/vim-colorschemes'
-Plug 'wesgibbs/vim-irblack'
-
-Plug 'vim-scripts/xterm-color-table.vim'
-Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'jdkanani/vim-material-theme'
-
-Plug 'jordwalke/flatlandia'
-Plug 'gcavallanti/vim-noscrollbar'         " Project-wide search
-
-Plug 'prabirshrestha/async.vim'
 call plug#end()
 filetype plugin indent on
