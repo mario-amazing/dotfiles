@@ -1,4 +1,3 @@
-" Debugging what plugins were run during text typing. Run after typing :au TextChangedI
 fu! s:load(module)
   exec 'source ' fnameescape(expand('~/.vim/modules/' . a:module . '.vim'))
 endfu
@@ -12,7 +11,6 @@ else
   call s:load('completion')
 endif
 
-call s:load('eugin_options')
 call s:load('options')
 
 call s:load('autocmds')
@@ -40,3 +38,8 @@ if filereadable(expand(".vimrc.local"))
 endif
 
 luafile ~/.vim/modules/init.lua
+
+" ======== Tips:
+" :au TextChangedI #(Run after typing) Debugging what plugins were run during text typing.
+" :verbose vmap , # Show mapping for
+" vim -u test_vimrc # Run vim with test_vimrc as source file

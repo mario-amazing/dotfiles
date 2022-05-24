@@ -1,9 +1,3 @@
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
 set nocompatible
 call plug#begin('~/.vim/bundle')
 
@@ -15,14 +9,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree',               { 'on': ['NERDTreeTabsToggle', 'NERDTreeFind', 'NERDTreeClose'] }
 Plug 'jistr/vim-nerdtree-tabs',           { 'on': ['NERDTreeTabsToggle', 'NERDTreeFind', 'NERDTreeClose'] }
 Plug 'eugen0329/vim-nerdtree-smart-open', { 'on': ['NERDTreeTabsToggle', 'NERDTreeFind', 'NERDTreeClose'] }
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'justinmk/vim-gtfo'
-
-if !has('nvim')
-  " Plug 'google/vim-maktaba'
-  " Plug 'google/vim-coverage'
-  " Plug 'google/vim-glaive'
-endif
 
 " Motion
 """""""""""
@@ -34,7 +20,6 @@ augroup load_em
 augroup END
 
 Plug 'rhysd/clever-f.vim'                " f{char} improved
-" Plug 'kana/vim-smartword'
 Plug 'bkad/CamelCaseMotion'
 
 " Git
@@ -300,74 +285,16 @@ Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 " Visual
 """""""""""""""
 Plug 'chrisbra/Colorizer'
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Plug 'ryanoasis/vim-devicons'
-
-" Plug 'KabbAmine/yowish.vim'
-" Plug     'jonathanfilip/vim-lucius'
-" Plug 'voronianski/oceanic-next-color-scheme'
-" Plug 'vim-scripts/lilypink'
-" Plug     'gmoe/vim-espresso'
-" Plug 'zeis/vim-kolor'
-" Plug 'nanotech/jellybeans.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'wesgibbs/vim-irblack'
-" Plug 'altercation/vim-colors-solarized'
+
 Plug 'vim-scripts/xterm-color-table.vim'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'jdkanani/vim-material-theme'
-" Plug 'jordwalke/VimCleanColors'
-" Plug 'cschlueter/vim-wombat'
-" Plug 'vim-scripts/Mustang2'
-" Plug 'croaker/mustang-vim'
-" Plug 'desertink.vim'
-" Plug 'joedicastro/vim-molokai256'
+
 Plug 'jordwalke/flatlandia'
-" Plug 'vivkin/flatland.vim'
-" Plug 'abra/vim-abra'
-" Plug 'ajh17/Spacegray.vim'
-" Plug 'cdmedia/itg_flat_vim'
-" Plug 'chriskempson/base16-vim'
-" Plug 'desert-warm-256'
-" Plug 'edkolev/tmuxline.vim'
-" Plug 'gosukiwi/vim-atom-dark'
-" Plug 'mbbill/desertEx'
-" Plug 'trusktr/seti.vim'
-
-" Plug 'thinca/vim-ref'
-" Plug 'lucapette/vim-ruby-doc'
-" Plug 'tyru/open-browser.vim'
-" Plug 'ap/vim-css-color'
-" Plug 'lornix/vim-scrollbar'
-" Plug 'severin-lemaignan/vim-minimap'
-
-" Plug 'maksimr/vim-jsbeautify'
-" Plug 'mattn/googletranslate-vim'
-" Plug 'maksimr/vim-translator'
-
-" Plug 'kopischke/vim-stay'
-" Plug 'tclem/vim-arduino'
 Plug 'gcavallanti/vim-noscrollbar'         " Project-wide search
-" Plug 'vim-scrollbar-win'         " Project-wide search
-" Plug 'junegunn/vim-oblique'         " Project-wide search
-" Plug 'junegunn/vim-pseudocl'
-" Plug 'blueyed/vim-diminactive'         " Project-wide search
-
-
-
-" Plug 'lambdalisue/vim-diffa'
-" Plug 'lambdalisue/vim-gita'
-" Plug 'lambdalisue/gina.vim'
-" https://github.com/NLKNguyen/pipe-mysql.vim
-" Plug     'thinca/vim-quickrun'
-" Plug 'krisajenkins/vim-pipe'
-
-" Plug 'metakirby5/codi.vim'
 
 Plug 'prabirshrestha/async.vim'
-" Plug 'gorkunov/smartgf.vim'
-" Plug 'jsfaint/gen_tags.vim'
-" Plug 'thinca/vim-themis'         " Project-wide search
 call plug#end()
 filetype plugin indent on
-
