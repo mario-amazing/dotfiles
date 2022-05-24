@@ -1,3 +1,5 @@
+# type -a md # check alias for md
+#
 # Additional aliases
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/rails
 # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/bundler/README.md
@@ -89,12 +91,12 @@ alias gl="git log --date-order --date=iso --graph --full-history --all --pretty=
 
 alias ss="spring stop && pkill spring"
 
-alias sudo apt-get install='sudo apt-get install -y'
-alias sudo apt-get add-apt-repository='sudo apt-get add-apt-repository -y'
-alias f=fg
-alias si='sudo apt-get install -y'
-alias sp='sudo apt-get purge'
-# alias bi='bundle install'
+# ubuntu
+# alias sudo apt-get install='sudo apt-get install -y'
+# alias sudo apt-get add-apt-repository='sudo apt-get add-apt-repository -y'
+# alias f=fg
+# alias si='sudo apt-get install -y'
+# alias sp='sudo apt-get purge'
 
 alias ez="nvim ~/.zshrc"
 alias ea="nvim ~/.zsh/aliases.zsh"
@@ -139,18 +141,11 @@ alias cdw='eval cd $WORK_PATH'
 alias cdd='cd ~/Documents/dotfiles'
 
 # projects
-alias cds='eval cd ~/Documents/Github/socialchorus'
-alias cdsw='eval cd ~/Documents/Github/socialchorus/workstation'
-alias cdsh='eval cd ~/Documents/Github/socialchorus/hermes'
-alias cdsma='eval cd ~/Documents/Github/socialchorus/marco'
-alias cdshed='eval cd ~/Documents/Github/socialchorus/hedwig'
-alias cdsk='eval cd ~/Documents/Github/socialchorus/kai'
-alias cdspo='eval cd ~/Documents/Github/socialchorus/pony'
-alias cdspa='eval cd ~/Documents/Github/socialchorus/patron'
-alias cdspas='eval cd ~/Documents/Github/socialchorus/patronus'
-alias cdsg='eval cd ~/Documents/Github/socialchorus/governor'
-alias cdsb='eval cd ~/Documents/Github/socialchorus/bossanova'
 alias cdtm='eval cd $WORK_PATH/this_moment'
+
+# solaprgraph
+alias soi='ln -s ~/.solargraph/src/enhance-rails-intellisense-in-solargraph/rails.rb $PWD/config/definitions.rb'
+alias sop='git -C ~/.solargraph/src/enhance-rails-intellisense-in-solargraph pull'
 
 # alias run_fidor='osascript $WORK_PATH/fidor/scripts/fidor_services.scpt'
 

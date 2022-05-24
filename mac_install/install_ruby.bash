@@ -89,6 +89,9 @@ install_ruby_configs() {
   ln -vsf "$ROOT_DIR/irbrc" "$HOME/.irbrc"
   ln -vsf "$ROOT_DIR/gemspec_template" "$HOME/.gemspec_template"
   ln -vsf "$ROOT_DIR/gemrc" "$HOME/.gemrc"
+
+  mkdir -p "$HOME/.solargraph"
+  git clone https://gist.github.com/castwide/28b349566a223dfb439a337aea29713e ~/.solargraph/src/enhance-rails-intellisense-in-solargraph
 }
 
 manual_install_rvm_gems() {
