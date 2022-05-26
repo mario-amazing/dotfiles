@@ -65,12 +65,8 @@ zstyle ':completion:*' rehash true
 
 # export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
-# Svitla
-export DOCKER_CLI_EXPERIMENTAL=enabled
-export GITHUB_DEFAULT_BRANCH=develop_fly
-# export GITHUB_TOKEN=$(cut -d= -f1  ~/.ssh/id_rsa.pub)
-# export GITHUB_TOKEN=$(cat ~/.ssh/id_rsa.pub)
-unalias sc # rails plugin
+# ruby
+export SOLARGRAPH_GLOBAL_CONFIG="$HOME/.solargraph/config.yml"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

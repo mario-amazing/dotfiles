@@ -180,8 +180,10 @@ endif
 " Languages
 """""""""""""""
 " lsp
-Plug 'natebosch/vim-lsc'
-" Plug 'hrsh7th/deoplete-vim-lsc' " autocomplete with lsp
+if has('nvim')
+  Plug 'williamboman/nvim-lsp-installer' " autoinstall lsp clients
+  Plug 'neovim/nvim-lspconfig'
+endif
 Plug 'deoplete-plugins/deoplete-jedi'
 
 " python

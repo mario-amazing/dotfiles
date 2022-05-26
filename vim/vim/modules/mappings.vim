@@ -621,23 +621,11 @@ function! MatchUnderCursor(pat)
   return ""
 endfunction
 
-
 "lsp
-let g:lsc_auto_map = {
-    \ 'GoToDefinition': ['gd', '<C-]>'],
-    \ 'GoToDefinitionSplit': ['<C-W>]', '<C-W><C-]>', 'gs'],
-    \ 'FindReferences': 'gr',
-    \ 'NextReference': '',
-    \ 'PreviousReference': '',
-    \ 'FindImplementations': '',
-    \ 'FindCodeActions': '',
-    \ 'Rename': 'gR',
-    \ 'ShowHover': '<leader>k',
-    \ 'DocumentSymbol': '',
-    \ 'WorkspaceSymbol': '',
-    \ 'SignatureHelp': '',
-    \ 'Completion': '',
-    \}
+nnoremap <silent> gd :Telescop lsp_definitions<cr>
+nnoremap <silent> gr :Telescop lsp_references<cr>
+nnoremap <silent> <space>e :Telescop diagnostics<cr>
+
 
 let g:smartgf_strategies = [function('TryURI'), function('TryPlainGF'), function('TryRailsCFile'), function('TryCTag'), function('TryFootnote')]
 
