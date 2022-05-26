@@ -61,7 +61,10 @@ Plug     'vim-scripts/cmdline-completion'
 """""""""""""""""""""""""""
 " , {'on': '<Plug>(expand_region_expand)'}
 Plug 'kana/vim-textobj-user'         " User defined textobjects
-Plug 'terryma/vim-expand-region'     " Easier way to select textobjects
+Plug 'terryma/vim-expand-region'     " Easier way to select textobjects(vvv)
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 Plug 'whatyouhide/vim-textobj-xmlattr', { 'for': ['html', 'xml'] }
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 Plug 'kana/vim-textobj-line'
