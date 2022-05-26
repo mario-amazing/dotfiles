@@ -113,7 +113,7 @@ let g:unite_source_menu_menus.conf.command_candidates = [
         \ [ 'init.lua', 'split ~/.vim/modules/init.lua' ],
         \ [ 'misc', 'split ~/.vim/modules/misc.vim' ],
         \ [ 'unite', 'split ~/.vim/modules/unite.vim' ],
-        \ [ 'colors', 'split ~/.vim/modules/colors.vim' ],
+        \ [ 'colors', 'split ~/.vim/modules/colors.lua' ],
         \ [ 'helpers', 'split ~/.vim/modules/helpers.vim' ],
         \ [ 'optins', 'split ~/.vim/modules/options.vim' ],
         \ [ 'plugins', 'split ~/.vim/modules/plugins.vim' ],

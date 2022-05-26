@@ -55,7 +55,7 @@ install_rbenv() {
   install_ruby_rbenv_configs
 
   brew install rbenv
-  git clone https://github.com/rbenv/rbenv-default-gems.git $HOME/.rbenv/plugins/rbenv-default-gems
+  brew install rbenv-default-gems
   ln -vsf "$ROOT_DIR/global.gems" "$HOME/.rbenv/default-gems"
 
   RUBY_VERSION=$(rbenv install -l | grep -v - | tail -1)

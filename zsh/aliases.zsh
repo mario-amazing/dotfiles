@@ -6,6 +6,7 @@
 # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/docker-compose/README.md
 
 # Common
+alias f=fg
 alias vim='vim'
 alias x='exit'
 alias v='nvim'
@@ -94,7 +95,6 @@ alias ss="spring stop && pkill spring"
 # ubuntu
 # alias sudo apt-get install='sudo apt-get install -y'
 # alias sudo apt-get add-apt-repository='sudo apt-get add-apt-repository -y'
-# alias f=fg
 # alias si='sudo apt-get install -y'
 # alias sp='sudo apt-get purge'
 

@@ -12,10 +12,6 @@ let g:vim_markdown_conceal = 1
 
 let g:markdown_fenced_languages = ['sql']
 
-" ,clever-f
-let g:clever_f_smart_case = 1
-let g:clever_f_fix_key_direction = 1
-
 " ,sideways
 nnoremap <S-h> :SidewaysLeft<CR>
 nnoremap <S-l> :SidewaysRight<CR>
@@ -25,8 +21,6 @@ let g:bookmark_save_per_working_dir = 1
 
 
 let g:bookmark_sign = ' '
-" let g:bookmark_sign = ' 🗹'
-" let g:bookmark_annotation_sign = ' '
 let g:bookmark_annotation_sign = ' '
 let g:bookmark_show_toggle_warning = 0
 let g:bookmark_center = 1
