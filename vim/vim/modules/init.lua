@@ -1,3 +1,5 @@
+-- # TODO disable '' pairs
+-- NOTE ignore in search files from .gitignore
 require('telescope').setup{
   defaults = {
     mappings = {
@@ -6,15 +8,17 @@ require('telescope').setup{
         ["<C-j>"] = require('telescope.actions').move_selection_next,
         ["<C-k>"] = require('telescope.actions').move_selection_previous
       }
-    }
+    },
+    file_ignore_patterns = {'.git/*'},
   },
   pickers = {
     find_files = {
       theme = "dropdown",
+      hidden = true,
     }
   },
 }
-require('telescope').load_extension("frecency")
+-- require('telescope').load_extension("frecency")
 require('telescope').load_extension('fzf')
 
 

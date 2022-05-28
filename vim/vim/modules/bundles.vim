@@ -136,7 +136,6 @@ if has('nvim')
   Plug 'nvim-lua/plenary.nvim' " requirement for telescope.nvim
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'tami5/sqlite.lua' " requirement for telescope-frecency.nvim
-  Plug 'nvim-telescope/telescope-frecency.nvim' " resently used files
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } " fuzzy search
   Plug 'kyazdani42/nvim-web-devicons'
 endif

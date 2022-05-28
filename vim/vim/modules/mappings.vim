@@ -176,7 +176,7 @@ nnoremap <silent> <Leader>ft :NvimTreeFindFile<CR>
 
   " ,MRU
   nnoremap <silent><C-p>       :Telescope find_files<CR>
-  nnoremap <silent><c-f><CR>   :Telescope frecency<cr>
+  nnoremap <silent><c-f><CR>   :Telescope oldfiles<cr>
   nnoremap <silent><C-f><C-t>  :Telescope filetypes<CR>
   " builtin.live_grep
 
