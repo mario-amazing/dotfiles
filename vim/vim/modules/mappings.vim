@@ -41,13 +41,10 @@ cmap <c-r> <Plug>(unite_cmdmatch_complete)
 " imap     <C-k>  <Plug>(neocomplete_start_unite_complete)
 
 " #Navigation
-  " ,tree
-  " let NERDTreeMapJumpNextSibling = "\<C-w>j"
-  " let NERDTreeMapJumpPrevSibling = "\<C-w>k"
-  nnoremap <silent> <Leader>t  :NERDTreeTabsToggle<CR>
-  " nnoremap <silent> <Leader>t  <plug>NERDTreeMirrorToggle<CR>
-  nnoremap <silent> <Leader>ft :NERDTreeFind<CR>
-  " nnoremap <silent> <Leader>ft :NERDTreeTabsFind<CR>
+" ,tree
+nnoremap <silent> <Leader>t  :NvimTreeToggle<CR>
+nnoremap <silent> <Leader>ft :NvimTreeFindFile<CR>
+
   nnoremap <C-r>      :Unite -buffer-name=outline -start-insert outline<CR>
 
   " nnoremap <F9>       :call GenerateCtags()<CR>
@@ -173,8 +170,6 @@ cmap <c-r> <Plug>(unite_cmdmatch_complete)
         \['k',      ':cal WindowSwap#MarkWindowSwap(h<bar>winc k<bar>cal WindowSwap#DoWindowSwap()<cr>'],
         \['t', ':exe "tabm"tabpagenr()<CR>'],
         \['T', ':exe "tabm"tabpagenr()-2<CR>']]
-    call submode#enter_with('layout', 'n', 's', '<C-w>'.s:set[0],        s:set[1].':cal lightline#update()<CR>')
-    call submode#enter_with('layout', 'n', 's', '<C-w><C-'.s:set[0].'>', s:set[1].':cal lightline#update()<CR>')
     call        submode#map('layout', 'n', 's', s:set[0],                s:set[1])
     call        submode#map('layout', 'n', 's', '<C-'.s:set[0].'>',      s:set[1])
   endfor
@@ -209,12 +204,12 @@ xmap S# <Plug>(operator-sandwich-add)i#{<cr>}<cr>
 " #Git
 nnoremap          <Leader>gg :Git<space>
 nnoremap <silent> <Leader>gs :Gtabedit :<CR>
-nnoremap <silent> <Leader>gd :call GdiffInTab()<CR>
+nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gc :Git commit<CR>
 nnoremap <silent> <Leader>gl :GV<CR>
 nnoremap <silent> <leader>gb :Git blame<CR>
 nnoremap <silent> <leader>gh :lua require'telescope.builtin'.git_stash{}<CR>
-nnoremap <silent> <leader>gb :NERDTreeClose<Bar>Git blame<CR>
+nnoremap <silent> <leader>gb :NvimTreeClose<cr><cmd>Git blame<cr>
 " ↓ logs current file
 nnoremap <silent> <Leader>gv :GV!<CR>
 nnoremap <silent> <Leader>dp :diffput<CR>
@@ -365,26 +360,8 @@ cabbrev pli NeoBundleCheck
 cabbrev pls Unite neobundle/search
 
 
-" imap <c-v> <plug>EasyClipInsertModePaste
-" cmap <c-v> <plug>EasyClipCommandModePaste
-
-" if has('gui_running')
-"   inoremap <C-v> <C-r><C-o>*
-"   cnoremap <C-v> <C-r><C-o>*
-" else
-"   inoremap <C-v> <C-r><C-o>0
-"   " cnoremap <C-v> <C-r><C-o>0
-"   augroup GuiPasteMappings
-"     au!
-"     au GUIEnter * inoremap <C-v> <C-r><C-o>* | cnoremap <C-v> <C-r><C-o>*
-"   augroup END
-" endif
-
 nnoremap <silent> <Leader>ct :ColorToggle<CR>
-nnoremap <silent> <Leader>fc :call ToggleFoldColumn()<CR>
 nnoremap          <Leader>ig :IndentGuidesToggle<CR>
-" nmap <leader>ig :IndentLinesToggle<CR>
-" nnoremap          <Leader>sc :SyntasticCheck<CR>
 
 " #Misc
 nnoremap j gj
@@ -400,8 +377,6 @@ nnoremap <C-s> :write<CR>
 nmap <S-u> :<C-u>redo<CR><Plug>(RepeatRedo)
 
 nnoremap <silent> <S-q> :call Quit()<CR>
-noremap  <silent>  <C-q> :call CloseSomething()<CR>
-nnoremap <silent> z<S-m> :call g:FoldEverything()<CR>
 
 map ё `| map й q| map ц w| map у e| map к r| map е t| map н y| map г u| map ш i| map щ o| map з p| map х [| map ъ ]
 map ф a| map ы s| map в d| map а f| map п g| map р h| map о j| map л k| map д l| map ж ;| map э '| map я z| map ч x

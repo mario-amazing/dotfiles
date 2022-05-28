@@ -10,9 +10,7 @@ Plug 'nvim-lualine/lualine.nvim'
 
 " tree
 """""""""""""""
-Plug 'scrooloose/nerdtree',               { 'on': ['NERDTreeTabsToggle', 'NERDTreeFind', 'NERDTreeClose'] }
-Plug 'jistr/vim-nerdtree-tabs',           { 'on': ['NERDTreeTabsToggle', 'NERDTreeFind', 'NERDTreeClose'] }
-Plug 'eugen0329/vim-nerdtree-smart-open', { 'on': ['NERDTreeTabsToggle', 'NERDTreeFind', 'NERDTreeClose'] }
+Plug 'kyazdani42/nvim-tree.lua'
 
 " Motion
 """""""""""

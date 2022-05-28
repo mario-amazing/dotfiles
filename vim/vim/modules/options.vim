@@ -7,6 +7,7 @@ elseif executable('ag')
 endif
 
 set mouse=a
+set guicursor=
 
 set autoread
 
@@ -43,8 +44,6 @@ set foldenable
 set foldmethod=marker
 set foldlevel=9000
 set foldcolumn=0
-set foldtext=CustomFoldText()
-"set foldnestmax=1
 set foldminlines=2
 "set foldlevelstart=1
 "au WinEnter * set foldcolumn=

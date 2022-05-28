@@ -18,5 +18,5 @@ require'lspconfig'.solargraph.setup{
 vim.diagnostic.config({
 	underline = false,
 	virtual_text = false,
-	signs = true,
+	signs = false,
 })

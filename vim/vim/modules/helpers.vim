@@ -128,49 +128,6 @@ function! GAalign()
   endif
 endfunction
 
-" function! s:align()
-"   let p = '^\s*|\s.*\s|\s*$'
-"   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-"     let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-"     let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-"     Tabularize/|/l1
-"     normal! 0
-"     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-"   endif
-" endfunction
-
-if has('nvim')
-  fu! CheckSyntax()
-    " exe 'Neomake'
-    " if exists('w:s_err_count')
-    "   unlet w:s_err_count
-    " endif
-    " if exists('w:s_err_count')
-    "   unlet w:s_warn_count
-    " endif
-  endfu
-  fu! PostMake(...)
-    " let w:s_err_count  = l:loclist.E
-    " let w:s_warn_count = l:loclist.W
-    let w:s_err_count  = get(l:loclist, 'E', 0)
-    let w:s_warn_count = get(l:loclist, 'W', 0)
-    call lightline#update()
-  endfu
-  " call s:extend_makers()
-else
-  fu! CheckSyntax()
-    if !exists(':SyntasticCheck')
-      return
-    endif
-    exe 'SyntasticCheck'
-    let loclist = g:SyntasticLoclist.current()
-    let w:s_errors     = loclist.errors()
-    let w:s_warnings   = loclist.warnings()
-    let w:s_err_count  = len(w:s_errors)
-    let w:s_warn_count = len(w:s_warnings)
-  endfu
-endif
-
 fu! RmSwp()
   let swp_path = &directory . substitute(expand('%:p'), '\/', '%', 'g') . '.swp'
   if filereadable(swp_path)

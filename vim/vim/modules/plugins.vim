@@ -46,20 +46,6 @@ let g:notes_suffix = '.txt'
 " Exchange
 au VimEnter * hi ExchangeRegion cterm=bold ctermfg=7 ctermbg=240
 
-" ,webdev icons
-let g:NERDTreeDirArrowExpandable = ' '
-let g:NERDTreeDirArrowCollapsible = ' '
-" https://github.com/scrooloose/nerdtree/issues/928
-let g:NERDTreeNodeDelimiter = "\u00a0"
-
-
-let NERDTreeIgnore = []
-let NERDTreeIgnore += ['__pycache__', '.ropeproject']
-
-" hi YellowFG ctermfg=3
-
-
-
 " ,indexed-search
 let  g:indexed_search_mappings = 0
 
@@ -92,7 +78,7 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 au VimEnter,Colorscheme * hi IndentGuidesOdd  ctermbg=237   guibg=gray
 au VimEnter,Colorscheme * hi IndentGuidesEven ctermbg=236 guibg=darkgray
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'qf']
+let g:indent_guides_exclude_filetypes = ['help', 'NvimTree', 'qf']
 
 " ,Notes
 let g:notes_directories = ['~/Dropbox/Notes']
@@ -102,7 +88,6 @@ let g:notes_directories = ['~/Dropbox/Notes']
 let g:indentLine_char = '⋮'   " another versions ┆│┊︙¦⋮⋮ ''
 let g:indentLine_faster = 1
 let g:indentLine_concealcursor = ''
-" let g:indentLine_fileTypeExclude = ['nerdtree', 'help']
 nmap <leader>ig :IndentLinesToggle<CR>
 " let g:indentLine_showFirstIndentLevel = 1
 " let g:indentLine_enabled = 0
@@ -111,11 +96,6 @@ let g:indentLine_fileType = ['html', 'eruby']
 " let g:indentLine_conceallevel = 1
 " let g:indentLine_leadingSpaceChar = '·'
 " let g:indentLine_leadingSpaceEnabled = 1
-
-" ,NERDTree
-let g:NERDTreeHijackNetrw = 0
-let NERDTreeMinimalUI=1
-
 
 " pymode
 let g:pymode_lint_ignore = ["E402", "E201","E202", "E701", "E731"]
