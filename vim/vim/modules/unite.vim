@@ -15,7 +15,7 @@ let g:unite_prompt = '>>> '
 let g:unite_marked_icon = '✓'
 let g:unite_split_rule = 'botright'
 let g:unite_data_directory='~/.vim/tmp/cache/unite'
-let g:unite_force_overwrite_statusline = 0
+" let g:unite_force_overwrite_statusline = 0
 
 
 augroup UniteSettings
@@ -118,7 +118,6 @@ let g:unite_source_menu_menus.conf.command_candidates = [
         \ [ 'helpers', 'split ~/.vim/modules/helpers.vim' ],
         \ [ 'optins', 'split ~/.vim/modules/options.vim' ],
         \ [ 'plugins', 'split ~/.vim/modules/plugins.vim' ],
-        \ [ 'statusline', 'split ~/.vim/modules/statusline.vim' ],
         \ [ 'mappings', 'split ~/.vim/modules/mappings.vim' ],
         \ [ 'bundles', 'split ~/.vim/modules/bundles.vim' ],
         \ [ 'autocmds', 'split ~/.vim/modules/autocmds.vim' ],

@@ -6,7 +6,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 
 " #UI
-Plug 'itchyny/lightline.vim'
+Plug 'nvim-lualine/lualine.nvim'
 
 " tree
 """""""""""""""

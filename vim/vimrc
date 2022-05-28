@@ -14,7 +14,7 @@ endif
 call s:load('options')
 
 call s:load('autocmds')
-call s:load('statusline')
+" call s:load('statusline')
 call s:load('unite')
 
 call s:load('helpers')
@@ -40,6 +40,7 @@ endif
 luafile ~/.vim/modules/init.lua
 luafile ~/.vim/modules/colors.lua
 luafile ~/.vim/modules/lsp.lua
+luafile ~/.vim/modules/lualine.lua
 
 " ======== Tips:
 " :au TextChangedI #(Run after typing) Debugging what plugins were run during text typing.

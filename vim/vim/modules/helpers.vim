@@ -150,10 +150,8 @@ if has('nvim')
     " endif
   endfu
   fu! PostMake(...)
-    " let loclist = extend(neomake#statusline#LoclistCounts(), {'E':0, 'W':0})
     " let w:s_err_count  = l:loclist.E
     " let w:s_warn_count = l:loclist.W
-    let loclist = neomake#statusline#LoclistCounts()
     let w:s_err_count  = get(l:loclist, 'E', 0)
     let w:s_warn_count = get(l:loclist, 'W', 0)
     call lightline#update()
