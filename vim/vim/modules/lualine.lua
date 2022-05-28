@@ -1,10 +1,12 @@
+-- TODO hide tabs if only one
+-- https://github.com/nvim-lualine/lualine.nvim/issues/395
+--
 require('lualine').setup {
  options = {
     icons_enabled = true,
-    -- theme  = 'gruvbox_dark',
     -- theme  = 'gruvbox-material',
-    theme  = 'wombat',
     -- theme  = 'seoul256',
+    theme  = 'wombat',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     globalstatus = true,
@@ -17,6 +19,16 @@ require('lualine').setup {
     lualine_y = {'progress'},
     lualine_z = {{'location', padding = 1}}
   },
-  tabline = {},
+  tabline = {
+    lualine_a = {
+      {
+        'tabs',
+        max_length = vim.o.columns,
+        mode = 2,
+        tabs_color = { active = 'lualine_b_normal' },
+        separator = { left = '', right = '' },
+      },
+    },
+  },
   extensions = {}
 }
