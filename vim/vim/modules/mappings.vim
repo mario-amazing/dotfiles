@@ -98,17 +98,6 @@ nnoremap <silent> <Leader>ft :NvimTreeFindFile<CR>
 
   nmap <C-g> %
 
-  " map <Plug>(smartword-basic-w)  <Plug>CamelCaseMotion_w
-  " map <Plug>(smartword-basic-b)  <Plug>CamelCaseMotion_b
-  " map <Plug>(smartword-basic-e)  <Plug>CamelCaseMotion_e
-  " nmap w  <Plug>(smartword-w)
-  " nmap b  <Plug>(smartword-b)
-  " nmap e  <Plug>(smartword-e)
-  " nmap ge  <Plug>(smartword-ge)
-  " xmap w  <Plug>(smartword-w)
-  " xmap b  <Plug>(smartword-b)
-  " xmap e  <Plug>(smartword-e)
-  " xmap ge  <Plug>(smartword-ge)
   map <S-W> <Plug>CamelCaseMotion_w
   map <S-B> <Plug>CamelCaseMotion_b
   map <S-E> <Plug>CamelCaseMotion_e
@@ -361,7 +350,6 @@ cabbrev pls Unite neobundle/search
 
 
 nnoremap <silent> <Leader>ct :ColorToggle<CR>
-nnoremap          <Leader>ig :IndentGuidesToggle<CR>
 
 " #Misc
 nnoremap j gj

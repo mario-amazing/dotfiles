@@ -1,0 +1,3 @@
+" Resolve merge conflicts
+https://github.com/rhysd/conflict-marker.vim
+ct for theirs, co for ours, cn for none and cb for both

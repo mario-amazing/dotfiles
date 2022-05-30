@@ -18,12 +18,11 @@ nnoremap <S-l> :SidewaysRight<CR>
 
 " ,Bookmarks
 let g:bookmark_save_per_working_dir = 1
-
-
 let g:bookmark_sign = ' '
 let g:bookmark_annotation_sign = ' '
 let g:bookmark_show_toggle_warning = 0
 let g:bookmark_center = 1
+
 
 " itchyny/vim-parenmatch
 let g:parenmatch_highlight = 0
@@ -39,9 +38,6 @@ call unite#custom#profile('source/vim_bookmarks', 'context', {
   \   'keep_focus': 0,
   \   'no_quit': 0,
   \ })
-
-" ,notes
-let g:notes_suffix = '.txt'
 
 " Exchange
 au VimEnter * hi ExchangeRegion cterm=bold ctermfg=7 ctermbg=240
@@ -71,17 +67,6 @@ let g:tagbar_type_ruby = {
     \ ]
 \ }
 let g:tagbar_autofocus = 1
-
-" ,IndenGuides
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-au VimEnter,Colorscheme * hi IndentGuidesOdd  ctermbg=237   guibg=gray
-au VimEnter,Colorscheme * hi IndentGuidesEven ctermbg=236 guibg=darkgray
-let g:indent_guides_exclude_filetypes = ['help', 'NvimTree', 'qf']
-
-" ,Notes
-let g:notes_directories = ['~/Dropbox/Notes']
 
 
 " ,IndentLine
@@ -127,18 +112,7 @@ let g:syntastic_warning_symbol = ' ●'
 let g:syntastic_style_error_symbol   = ' ◉'
 let g:syntastic_style_warning_symbol = ' ○'
 
-let g:neomake_error_sign   = { 'text': ' ●', 'texthl': 'SyntasticErrorSign', }
-let g:neomake_warning_sign = { 'text': ' ●', 'texthl': 'SyntasticWarningSign', }
-let g:neomake_vim_enabled_makers = ['vint']
 " ,gitgutter
-" let g:gitgutter_sign_added = ' ➕'
-" let g:gitgutter_sign_removed = ' ➖'
-" let g:gitgutter_sign_modified = ' ∆'
-" let g:gitgutter_sign_modified_removed = ' ≁'
-" let g:gitgutter_sign_modified = ' ∼'
-" let g:gitgutter_sign_modified_removed = ' ≁'
-" let g:gitgutter_sign_modified = ' ∆'
-" let g:gitgutter_sign_modified_removed = ' ∆'
 let g:gitgutter_sign_added =    ' ˖'
 let g:gitgutter_sign_removed =  ' -'
 let g:gitgutter_sign_modified = ' ▵'
@@ -154,15 +128,6 @@ let g:over_command_line_prompt = ':'
 let g:user_emmet_mode='iv'
 
 
-" ,Matchtagalways
-let g:mta_filetypes = {
-    \ 'html' : 1,
-    \ 'xhtml' : 1,
-    \ 'xml' : 1,
-    \ 'jinja' : 1,
-    \ 'eruby' : 1,
-    \}
-
 " ,Vim-ruby
 let ruby_operators = 1
 let ruby_spellcheck_strings = 1
@@ -172,20 +137,7 @@ let g:rubycomplete_use_bundler = 1
 let g:rubycomplete_classes_in_global = 1
 
 
-" ,clang formatter
-let g:clang_format#command = 'clang-format-3.8'
-let g:clang_format#style_options = {
-      \ "IndentWidth" : 4,
-      \ "UseTab" : "Never",
-      \ "BasedOnStyle" : "LLVM",
-      \ "BreakBeforeBraces" : "Linux",
-      \ "AlwaysBreakTemplateDeclarations" : "true",
-      \ "AllowShortFunctionsOnASingleLine" : "false",
-      \ "AllowShortIfStatementsOnASingleLine" : "false"
-      \ }
-
 " ,ultiSnips
-
 let g:UltiSnipsEditSplit="horizontal"
 
 " ,rails
@@ -194,30 +146,6 @@ let g:rails_ctags_arguments = '-f tmp/tags'
 " ,gitv
 let g:Gitv_DoNotMapCtrlKey = 1
 
-" ,scratch
-let g:scratch_no_mappings = 1
-
-" #Highlight
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
 
 let g:textobj#quote#matchit = 1
 
@@ -269,14 +197,6 @@ autocmd FileType python syn keyword TODO contained TODO FIXME XXX NOTE contained
 autocmd BufWritePost *.py silent! !ctags -R --python-kinds=-i --languages=python 2&gt; /dev/null &amp;
 " autocmd BufNewFile,BufRead fugitive* setlocal bufhidden=delete
 "
-let g:languagetool_jar = '/home/eugen/.vim/bundle/LanguageTool/LanguageTool-3.1/languagetool-commandline.jar'
-
-let g:goog_user_conf = {
-      \ 'langpair': 'en|ru',
-      \ 'cmd': 'node',
-      \ 'v_key': 'T'
-      \ }
-
 
 let g:switch_custom_definitions =
     \ [
@@ -287,15 +207,11 @@ let g:switch_custom_definitions =
     \ ]
 
 let g:easytags_dynamic_files = 1
-" let g:easytags_always_enabled = 1
 let g:easytags_auto_highlight = 0
 let g:easytags_autorecurse = 1
 let g:easytags_async = 0
-
 let g:easytags_events = []
 let g:easytags_file = 'tmp/tags'
-" let g:easytags_syntax_keyword = 'always'
-"
 let g:easytags_opts = ['--sort=yes', '--append=yes']
 
 
@@ -315,139 +231,9 @@ if !exists('g:rails_projections')
   let g:rails_projections = {}
 endif
 
-" call extend(g:rails_gem_projections, {
-"       \   'sidekiq': {
-"       \     'app/workers/*_worker.rb': {
-"       \       'command': 'worker',
-"       \       'template': [
-"       \        'class {camelcase|capitalize|colons}Worker',
-"       \        '  include Sidekiq::Worker',
-"       \        '',
-"       \        '  def perform',
-"       \        '  end',
-"       \        'end',
-"       \        ]
-"       \     },
-"       \   },
-"       \ })
-
-" call extend(g:rails_projections, {
-" \ "config/projections.json": {
-" \   "command": "projections"
-" \ },
-" \ "app/serializers/*_serializer.rb": {
-" \   "command": "serializer",
-" \   "affinity": "model",
-" \   "test": "spec/serializers/%s_spec.rb",
-" \   "related": "app/models/%s.rb",
-" \   "template": "class %SSerializer < ActiveModel::Serializer\nend"
-" \ },
-" \ "app/services/*.rb": {
-" \   "command": "service",
-" \   "affinity": "model",
-" \   "alternate": ["spec/services/%s_spec.rb", "unit/services/%s_spec.rb"],
-" \   "template": "class %S\n\n  def perform\n  end\nend"
-" \ },
-" \ "app/presenters/*_presenter.rb": {
-" \   "command": "presenter",
-" \   "affinity": "model",
-" \   "alternate": ["spec/presenters/%s_presenter_spec.rb", "unit/presenters/%s_presenter_spec.rb"],
-" \   "related": "app/models/%s.rb",
-" \   "template": "class %SPresenter < SimpleDelegator\n  def self.wrap(collection)\n    collection.map{open} |object| new object {close}\n  end\n\nend"
-" \ },
-" \ "spec/factories/*s.rb": {
-" \   "command": "factory",
-" \   "affinity": "model",
-" \   "related": "app/models/%s.rb",
-" \   "template": "FactoryGirl.define do\n  factory :%s do\n  end\nend"
-" \ },
-" \ "spec/presenters/*_presenter.rb": {
-" \   "command": "specpresenter",
-" \   "affinity": "presenter",
-" \   "alternate": ["app/presenters/%s_presenter.rb"],
-" \   "related": "app/models/%s.rb",
-" \   "template": "require 'rails_helper'\n\nRSpec.describe %SPresenter, type: :presenter do\n\nend"
-" \ },
-" \ "features/cukes/*.feature": {
-" \   "alternate": ["features/step_definitions/%s_steps.rb", "features/steps/%s_steps.rb"],
-" \ },
-" \ "spec/controllers/*_controller_spec.rb": {
-" \   "command": "speccontroller",
-" \   "affinity": "controller",
-" \   "related": "app/controllers/%s.rb",
-" \   "template": "require 'rails_helper'\n\nRSpec.describe %SController, type: :controller do\n\nend"
-" \ },
-" \ "spec/serializers/*_serializer_spec.rb": {
-" \   "command": "specserializer",
-" \   "affinity": "serializer",
-" \   "related": "app/serializers/%s.rb",
-" \   "template": "require 'rails_helper'\n\nRSpec.describe %SSerializer, type: :serializer do\n\nend"
-" \ },
-" \ "spec/models/*_spec.rb": {
-" \   "command": "spec",
-" \   "affinity": "model",
-" \   "related": "app/models/%s.rb",
-" \   "template": "require 'rails_helper'\n\nRSpec.describe %S, type: :model do\n\nend"
-" \ },
-" \ "spec/services/*_spec.rb": {
-" \   "command": "specservice",
-" \   "affinity": "service",
-" \   "related": "app/services/%s.rb",
-" \   "template": "require 'rails_helper'\n\nRSpec.describe %S do\n\nend"
-" \ },
-" \ "spec/workers/*_spec.rb": {
-" \   "command": "specworker",
-" \   "affinity": "worker",
-" \   "related": "app/workers/%s.rb",
-" \   "template": "require 'rails_helper'\n\nRSpec.describe %S, type: :worker do\n\nend"
-" \ },
-" \ "spec/features/*_spec.rb": {
-" \   "command": "specfeature",
-" \   "template": "require 'rails_helper'\n\nRSpec.feature '%S', type: :feature do\n\nend"
-" \ },
-" \ "spec/helpers/*_helper_spec.rb": {
-" \   "command": "spechelper",
-" \   "related": "app/helpers/%_helper.rb",
-" \   "affinity": "helper",
-" \   "template": "require 'rails_helper'\n\nRSpec.describe ApplicationHelper, type: :helper do\n\nend"
-" \ },
-" \ "lib/tasks/*.rake": {
-" \   "command": "rake",
-" \   "template": ["namespace :%s do\n  desc '%s'\n  task %s: :environment do\n\n  end\nend"],
-" \ },
-" \ })
-" \ "config/*.rb": { "command": "config"  },
-" \ "spec/support/*.rb": { "command": "support" },
-
-" let g:rails_gem_projections = {
-" \ "carrierwave": {
-" \   "app/uploaders/*_uploader.rb": {
-" \   "command": "uploader",
-" \   "template": "class %SUploader < CarrierWave::Uploader::Base\nend"
-" \   }
-" \ },
-" \ "resque": {
-" \   "app/workers/*_job.rb": {
-" \   "command": "worker",
-" \   "template": "class %SJob\n\n  \n@queue = :main\ndef self.perform\n  end\nend"
-" \   }
-" \ },
-" \ }
-
-" let g:esearch#out#win#open = 'if @% !=# "" | edit | endif'
-let g:esearch#cmdline#dir_icon = " "
-let g:esearch#cmdline#help_prompt = 0
-let g:esearch#substitute#swapchoice = 'q'
 
 let g:ruby_refactoring_map_keys = 0
 
-
-
-      " \   'backend':    'nvim',
-let g:test = []
-au User ESearchOutputFinishQFList call lightline#update()
-let g:esearch#out#win#context_syntax_highlight = 1
-" set ut=300
 
 let g:diminactive_use_colorcolumn = 0
 
@@ -478,19 +264,7 @@ let g:codi#rightalign = 0
 autocmd BufNewFile,BufRead *.docx.erb let b:eruby_subtype = 'html'
 autocmd BufNewFile,BufRead .env.* set syntax=sh
 " au BufReadPost *.docx.erb let b:eruby_subtype = 'html'
-"
-" ORGMODE
-let g:org_plugins = ['|', 'Navigator', 'EditStructure', 'EditCheckbox', '|', 'Hyperlinks', '|', 'Todo', 'TagsProperties', 'Date', 'Agenda', 'Misc', '|', 'Export']
 
-
-" Rspec
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
-let g:tslime_always_current_session = 1
-
-
-" \ 'batch_size': 3000,
-" let g:esearch#out#win#open = "if has_key(b:, 'esearch') | call esearch#backend#{b:esearch.backend}#abort(bufnr('%')) | end | enew"
-" let  g:esearch#adapter#git#options = '-C 3'
 
 " tablemode
 let g:table_mode_map_prefix = '<Leader>T'
@@ -552,18 +326,8 @@ if executable('ripper-tags')
       \ }
 endif
 
-" nvim-r
-let g:R_assign = 0 " dont't replace _ with <-
-
-" \ 'adapter':    'git',
-" let g:esearch = { 'adapter': 'rg'}
-let g:esearch = { 'backend': 'nvim',  'adapter': 'rg'}
-" let g:esearch = { 'backend': 'nvim',  'adapter': 'ag'}
-" let g:esearch = {
-" \ 'adapter' : 'ag',
-" \ 'out': 'qflist',
-" \ 'use': ['visual', 'last', 'hlsearch']
-" \}
+"esearch
+let g:esearch = { 'backend': 'nvim', 'adapters': {'rg': {'options': '--hidden'}}}
 call   esearch#map('<C-f><C-f>','esearch')
 call   esearch#map('<C-f>f',    'esearch')
 call   esearch#map('<C-f>w',    'esearch-word-under-cursor')

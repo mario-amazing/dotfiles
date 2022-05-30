@@ -18,12 +18,11 @@ require('telescope').setup{
     }
   },
 }
--- require('telescope').load_extension("frecency")
 require('telescope').load_extension('fzf')
 
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "ruby", "lua", "javascript", 'dockerfile', 'html', 'json' },
+  ensure_installed = { "ruby", "lua", "javascript", 'dockerfile', 'html', 'json', 'vim' },
   highlight = { enable = true },
 }
 

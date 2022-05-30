@@ -1,10 +1,5 @@
-if executable('rg')
-  set grepprg=rg\ --sort=path\ --column\ --smart-case\ --nocolor\ --follow\ $*
-  set grepformat=%f:%l:%c:%m
-elseif executable('ag')
-  set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow\ $*
-  set grepformat=%f:%l:%c:%m
-endif
+set grepprg=rg\ --sort=path\ --column\ --smart-case\ --nocolor\ --follow\ $*
+set grepformat=%f:%l:%c:%m
 
 set mouse=a
 set guicursor=
@@ -61,10 +56,7 @@ set ts=2 sw=2 sts=2
 set timeoutlen=1000 ttimeoutlen=40
 
 set list
-" set listchars=tab:▷ ,trail:·,nbsp:⍽
-" set listchars=tab:▷ ,trail:·
 set listchars=trail:·,tab:\ \ 
-" set smartcase
 set smarttab
 
 " stop remove my tabs before comments!11
@@ -105,12 +97,8 @@ set novisualbell           " don't beep
 set noerrorbells         " don't beep
 
 set clipboard=unnamedplus
-" set clipboard=unnamed
-
-"}}}
 
 " ,Wild menus {{{
-
 set wildmenu
 set wcm=<Tab>
 menu Settings.paste-toggle       :call toggle_paster_mode()<CR>

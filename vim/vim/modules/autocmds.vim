@@ -3,6 +3,12 @@ if !has("autocmd")
 endif
 if &t_Co > 2 || has("gui_running") | syntax on | endif
 
+augroup PluginFixes
+  au!
+  au FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
+augroup END
+
+
 augroup FiletypeAutocommands
   au!
   au FileType html,eruby,css,scss,sass setlocal iskeyword+=-
@@ -28,11 +34,6 @@ augroup FiletypeAutocommands
   au FileType css,scss setlocal foldmethod=syntax
   au FileType python setlocal ts=4 sw=4 sts=4 foldmethod=indent
   au FileType Jenkinsfile setlocal ts=4 sw=4 sts=4 foldmethod=syntax
-
-  " autocmd! BufWritePost *.py Neomake
-  " let g:neomake_python_enabled_makers = ['flake8']
-
-  au FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
 
   au FileType coffee setlocal foldmethod=indent
 
@@ -62,8 +63,6 @@ augroup FiletypeAutocommands
 
   au BufReadPre,BufNewFile *.jsx set conceallevel=0
 
-
-  " au FileType html let b:current_syntax = 'html'
   " t: Auto-wrap text using textwidth
   au FileType html,eruby,slim setlocal formatoptions-=t
   au BufNewFile,BufRead *.slim set iskeyword-=. foldmethod=indent
@@ -71,20 +70,11 @@ augroup FiletypeAutocommands
   au FileType qf setlocal nolist
 
   au FileType make setlocal list listchars=tab:▷ ,trail:·
-  au FileType notes setlocal foldmethod=indent
   au filetype qf nnoremap <buffer>o <CR>
-  " au filetype ruby au BufWritePost <buffer> call GenerateCtags()
 
-  " au BufReadPre ControlP  cclose | lclose
-  " au BufReadPre,BufEnter ControlP  let g:a = 1
   au BufEnter ControlP let g:a = 1  
   au BufLeave ControlP let g:a = 1  
   au BufEnter * let g:a = expand('%')
-  " au BufLeave * let g:a = expand('%')
-
-  " autocmd! BufWritePost * Neomake
-  "
-  " autocmd BufWritePost * GenCtags
 augroup END
 
 

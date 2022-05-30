@@ -1,98 +1,3 @@
-fu! s:extend_makers()
-  let g:neomake_ruby_mri_maker = neomake#makers#ft#ruby#mri()
-  call extend(g:neomake_ruby_mri_maker, {'postprocess': function('PostMake')})
-endfu
-
-let g:rails_commands = {
-      \ 'h': [ 'Ehelper', 'app/helpers' ],
-      \ 'm': {
-        \ 'o': [ 'model',      'app/models' ],
-        \ 'i': [ 'migration',  'db/migrate' ],
-        \ 'a': [ 'mailer',     'app/mailers' ]
-        \ },
-      \ 'c': [ 'controller',   'app/controllers' ],
-      \ 's': [ 'stylesheet',   'app/assets/stylesheets' ],
-      \ 'v': [ 'view',         'app/views' ],
-      \ 'l': [ 'locale',       'config/locales' ]
-      \ }
-let g:rails_edit_mappings = {
-      \ "\<S-t>": 'T',
-      \ "\<S-s>": 'S',
-      \ "\<S-e>": 'E',
-      \}
-
-let g:rails_edit_default = 'S'
-
-fu! RailsCommands(commands, mappings, runner)
-  let commands = a:commands
-  let edit_target = ''
-  let edit_at = g:rails_edit_default
-  while 1
-      redraw
-      echo (edit_at == g:rails_edit_default ? '('.edit_at.')': edit_at). 'edit >>> ' . edit_target
-      let edit_target = nr2char(getchar())
-
-      let mapping = get(a:mappings, edit_target, '') 
-      if !empty(mapping)
-        if edit_at == mapping
-          let g:rails_edit_default = mapping
-        else
-          let edit_at = mapping
-        endif
-        continue
-      endif
-
-      let a = get(commands, edit_target)
-      if type(a) == type([])
-        let rails_command = a[0]
-        let target_path = get(a, 1, '')
-        break
-      elseif type(a) == type({})
-        let commands = a
-        unlet a
-      elseif edit_target == "\<C-c>" || edit_target == "\<Esc>"
-        redraw
-        echo 'Cancelled'
-        return -1
-      else
-        redraw
-        echohl ErrorMsg | echo 'No such handler =(' | echohl None
-        return -1
-      endif
-  endwhile
-
-  let rails_command = toupper(edit_at) . rails_command
-  try
-    exe rails_command
-  catch
-    if target_path == ''
-      call feedkeys(':' . rails_command . "\<space>", 'n')
-    else
-      exe printf(a:runner, target_path)
-    endif
-  endtry
-endfu
-
-fu! Cleanup()
-  retab
-  while 1
-    redraw
-    let choice = nr2char(getchar())
-    if tolower(choice) == 'q'
-      break
-    elseif choice == 'r'
-      %s/\n\{3,}/\r\r/e
-      echo 'Remove repeated lines'
-    elseif choice == 'e'
-      %s/\s\+$//e
-      echo 'Remove empty lines'
-    elseif choice == 'c'
-      g/\v^\s*#/d
-      echo 'Remove comments'
-    endif
-  endwhile
-endfu
-
 fu! TrimWhiteSpace()
   %s/\s\+$//e
   %s/\n\{3,}/\r\r/e
@@ -128,19 +33,8 @@ function! GAalign()
   endif
 endfunction
 
-fu! RmSwp()
-  let swp_path = &directory . substitute(expand('%:p'), '\/', '%', 'g') . '.swp'
-  if filereadable(swp_path)
-    let rm_cmd = 'rm '.shellescape(swp_path)
-    call system(rm_cmd)
-    echo rm_cmd
-  else
-    echo '.swp file not found'
-  endif
-endfu
 
 fu! GenerateCtags()
-
   return ''
   let p = 'tmp/tags'
 
@@ -157,23 +51,8 @@ fu! GenerateCtags()
   " exe 'silent Dispatch! ctags -R --tag-relative=yes --languages=Ruby --append=yes --exclude=.git --exclude=log '.tpath .' *'
   exe 'silent Dispatch! ripper-tags -R --tag-relative=yes  --append=yes --exclude=.git --exclude=log '.tpath .' *'
 endfu
-
 au BufWritePost * if &ft ==# 'ruby' | call GenerateCtags() |endif
 
-fu! RemoveFugitiveIndexFiles(l1, l2)
-  for l in range(a:l1, a:l2)
-    let filename = matchstr(getline(l),'^#\t\zs.\+\ze$')
-    " let filename = matchstr(getline(l),'^#\t\zs.\{-\}\ze\%( ([^()[:digit:]]\+)\)\=$')
-    if empty(filename) | continue | endif
-
-    let choice = input('Remove file "' . filename . '"? (y/N) ')
-    if choice[0] == 'y'
-      call delete(filename)
-      edit
-    end
-  endfor
-  return 'redraw!'
-endfu
 
 fu! Exists(files)
   let r = []
@@ -230,43 +109,13 @@ fu! MoveToNextTab()
   exe "b".l:cur_buf
 endfunc
 
-" Simple re-format for minified Javascript
-command! UnMinify call UnMinify()
-function! UnMinify()
-    %s/{\ze[^\r\n]/{\r/g
-    %s/){/) {/g
-    %s/};\?\ze[^\r\n]/\0\r/g
-    %s/;\ze[^\r\n]/;\r/g
-    %s/[^\s]\zs[=&|]\+\ze[^\s]/ \0 /g
-    normal ggVG=
-endfunction
-
-
-
-function! g:BMWorkDirFileLocation()
-    let filename = 'bookmarks'
-    let location = ''
-    if isdirectory('.git')
-        " Current work dir is git's work tree
-        let location = getcwd().'/.git'
-    else
-        " Look upwards (at parents) for a directory named '.git'
-        let location = finddir('.git', '.;')
-    endif
-    if len(location) > 0
-        return location.'/'.filename
-    else
-        return getcwd().'/.'.filename
-    endif
-endfunction
-
 
 let g:python_bp_line="__import__('ipdb').set_trace()"
 let g:ruby_bp_line="require 'pry'; binding.pry"
 let g:eruby_bp_line="<% require 'pry'; binding.pry %>"
 let g:js_bp_line="debugger // eslint-disable-line"
 
-func! BpString()
+func! BreakPointString()
     if &filetype == "ruby"
       return g:ruby_bp_line
     elseif &filetype == "eruby" || &filetype == "eruby.html"
@@ -279,12 +128,12 @@ func! BpString()
 endfunc
 
 func! RemoveBreakpoints()
-    exe 'silent! g/'.BpString().'/d'
+    exe 'silent! g/'.BreakPointString().'/d'
 endf
 
 fun! ToggleBreakpoint(lnum)
     let line = getline(a:lnum)
-    let pb_string = BpString()
+    let pb_string = BreakPointString()
     if strridx(line, pb_string) != -1
         normal dd
     else

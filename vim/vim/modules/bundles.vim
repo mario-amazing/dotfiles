@@ -8,61 +8,59 @@ Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 " #UI
 Plug 'nvim-lualine/lualine.nvim'
 
-" tree
+" Tree
 """""""""""""""
 Plug 'kyazdani42/nvim-tree.lua'
 
 " Motion
 """""""""""
 Plug 'ggandor/lightspeed.nvim' " easymotion(s/S) + f{char} improved
-Plug 'bkad/CamelCaseMotion'
+Plug 'bkad/CamelCaseMotion' " navigation inside word with different cases
+
+" Telescop
+"""""""""""""""
+Plug 'nvim-lua/plenary.nvim' " requirement for telescope.nvim
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'tami5/sqlite.lua' " requirement for telescope-frecency.nvim
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } " fuzzy search
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Git
 """""""""""""""
-Plug 'tpope/vim-fugitive'
-
-Plug 'junegunn/gv.vim', {'on': []}
+Plug 'tpope/vim-fugitive' " main git commands
+Plug 'junegunn/gv.vim', {'on': []} " git commit helper
 Plug 'rhysd/conflict-marker.vim', {'on': []}
-Plug 'tpope/vim-git', {'on': []}
-Plug 'tommcdo/vim-fugitive-blame-ext', {'on': []}
-Plug 'airblade/vim-gitgutter', {'on': []}
+Plug 'airblade/vim-gitgutter', {'on': []} " Add git line status(+/-/▵) to the left of a line
 
+" optimization -> plugins loading, after nvim started
 augroup load_git_plugins
   au!
-  au User Fugitive call plug#load('gv.vim', 'conflict-marker.vim', 'vim-git', 'vim-fugitive-blame-ext', 'vim-gitgutter')
-        \| au! load_git_plugins
+  au User Fugitive call plug#load('gv.vim', 'conflict-marker.vim', 'vim-gitgutter') | au! load_git_plugins
 augroup END
 
 
 " UI
 """""""""""""""""""
-Plug 'nathanaelkane/vim-indent-guides' " 'Yggdroot/indentLine'
-Plug 'Valloric/MatchTagAlways', { 'for': ['erb', 'html', 'xml'] }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 
 " Snippets
 """""""""""""""
-
-
 Plug 'honza/vim-snippets'
 Plug 'mattn/emmet-vim', {'for': ['html', 'eruby', 'slim', 'css', 'sass', 'scss']}
+
 
 " #Cmdline
 Plug     'osyo-manga/vim-over'
 Plug     'osyo-manga/vital-over'
 Plug     'vim-scripts/cmdline-completion'
-" Plug     'thinca/vim-prettyprint'
-" Plug 'majkinetor/unite-cmdmatch', { 'depends':  'Shougo/unite.vim', 'mappings' : [['c', '<Plug>(unite_cmdmatch_complete)']] }
-" Plug 'junegunn/vim-pseudocl'
+
 
 " Textobjects
 """""""""""""""""""""""""""
 " , {'on': '<Plug>(expand_region_expand)'}
 Plug 'kana/vim-textobj-user'         " User defined textobjects
 Plug 'terryma/vim-expand-region'     " Easier way to select textobjects(vvv)
-
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
 Plug 'whatyouhide/vim-textobj-xmlattr', { 'for': ['html', 'xml'] }
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 Plug 'kana/vim-textobj-line'
@@ -99,27 +97,12 @@ Plug 'kana/vim-smartchr'          " Automatic closing of quotes, parenthesis, br
 " Plug 'chrisbra/NrrwRgn'              " Edit selection in a newly created separate buffer
 " Plug 'Raimondi/delimitMate'          " Automatic closing of quotes, parenthesis, brackets
 
-" #Format
-Plug 'Chiel92/vim-autoformat', {'on': 'Autoformat'  }
-Plug 'rhysd/vim-clang-format', {'on': 'ClangFormat' }
-" Plug 'maksimr/vim-jsbeautify'
-
-" #Note taking
-" Plug 'xolox/vim-notes', { 'depends': 'xolox/vim-misc' }
-" Plug 'vim-scripts/utl.vim'
-
 
 " # Languages support
-
 
   " Plug     'octol/vim-cpp-enhanced-highlight'
 
 " #Syntax
-if has('nvim')
-  " Plug     'benekastah/neomake'
-else
-  " Plug     'scrooloose/syntastic'
-endif
 Plug 'chr4/nginx.vim'
 
 
@@ -130,18 +113,6 @@ Plug  'Shougo/unite.vim'
 Plug 'majutsushi/tagbar' ", {'on':'TagbarToggle'}
 Plug 'Shougo/unite-outline'
 Plug 'MaryHal/unite-unicode'
-
-if has('nvim')
-  " telescop
-  Plug 'nvim-lua/plenary.nvim' " requirement for telescope.nvim
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'tami5/sqlite.lua' " requirement for telescope-frecency.nvim
-  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } " fuzzy search
-  Plug 'kyazdani42/nvim-web-devicons'
-endif
-
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 
 " Tools
@@ -180,14 +151,12 @@ endif
 " Languages
 """""""""""""""
 " lsp
-if has('nvim')
-  Plug 'williamboman/nvim-lsp-installer' " autoinstall lsp clients
-  Plug 'neovim/nvim-lspconfig'
-endif
+Plug 'williamboman/nvim-lsp-installer' " autoinstall lsp clients
+Plug 'neovim/nvim-lspconfig'
+
 Plug 'deoplete-plugins/deoplete-jedi'
 
 " python
-" Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 " ruby
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
@@ -202,41 +171,23 @@ Plug 'thoughtbot/vim-rspec'
 " markdown
 Plug 'shime/vim-livedown' " Markdown live preview
 Plug 'plasticboy/vim-markdown', { 'depends' : 'godlygeek/tabular'}
-" org
-Plug 'jceb/vim-orgmode'
-" go
-Plug 'fatih/vim-go', { 'for' : ['go'] }
 " html
 Plug     'othree/html5.vim'
 " css
 Plug     'cakebaker/scss-syntax.vim'
 Plug     'hail2u/vim-css3-syntax'
-" R-lang
-Plug 'jalvesaq/Nvim-R'
-" viml
-Plug 'tpope/vim-scriptease'
-Plug 'kana/vim-vspec'         " Project-wide search
-" terraform
-Plug 'hashivim/vim-terraform'
 " latex
 Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 " slim
 Plug     'slim-template/vim-slim'
-" monit
-Plug 'tmatilai/vim-monit'
 " javascript
 Plug     'jelera/vim-javascript-syntax'
 Plug     'othree/javascript-libraries-syntax.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'moll/vim-node'
-" yaml, ansible
-Plug 'chase/vim-ansible-yaml'
+" yaml
 Plug 'lmeijvogel/vim-yaml-helper'
-" flex/bison
-Plug 'justinmk/vim-syntax-extra', {'for': ['flex', 'lex', 'bison']}
-" thrift
-Plug 'solarnz/thrift.vim'
 
 " Databases
 """""""""""""""""""""""
@@ -274,7 +225,6 @@ Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neco-syntax'
 Plug 'ujihisa/neco-look'
 Plug 'vim-scripts/LanguageTool'
-Plug 'wellle/tmux-complete.vim'
 Plug 'Shougo/neco-vim'                     " vimscript completion
 Plug 'carlitux/deoplete-ternjs'
 Plug 'othree/csscomplete.vim'
