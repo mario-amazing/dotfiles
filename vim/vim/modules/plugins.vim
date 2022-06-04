@@ -29,16 +29,6 @@ let g:parenmatch_highlight = 0
 let loaded_matchparen = 1
 hi link ParenMatch  MatchParen
 
-hi BookmarkSign cterm=bold ctermbg=7 ctermfg=39
-hi BookmarkAnnotationSign  ctermbg=7 ctermfg=83
-call unite#custom#profile('source/vim_bookmarks', 'context', {
-  \   'winheight': 10,
-  \   'direction': 'botright',
-  \   'start_insert': 0,
-  \   'keep_focus': 0,
-  \   'no_quit': 0,
-  \ })
-
 " Exchange
 au VimEnter * hi ExchangeRegion cterm=bold ctermfg=7 ctermbg=240
 

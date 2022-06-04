@@ -7,7 +7,6 @@ call s:load('bundles')
 call s:load('ncompletion')
 
 call s:load('autocmds')
-call s:load('unite')
 
 call s:load('helpers')
 call s:load('plugins')

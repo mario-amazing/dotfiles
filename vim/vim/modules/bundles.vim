@@ -85,10 +85,6 @@ Plug 'junegunn/vim-easy-align'       " Text align lines symbols(ga)
 
 " Fuzzy menus
 """""""""""""""
-Plug 'Shougo/neomru.vim'         " Most recently used files/buffers
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/unite-outline'
-Plug 'MaryHal/unite-unicode'
 Plug 'majutsushi/tagbar' ", {'on':'TagbarToggle'} (F2)
 
 

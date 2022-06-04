@@ -2,19 +2,6 @@
 let g:mapleader = ','
 let g:user_emmet_leader_key = '<Leader>'
 
-" #Completion
-cmap <c-r> <Plug>(unite_cmdmatch_complete)
-
-
-  nnoremap <C-r>      :Unite -buffer-name=outline -start-insert outline<CR>
-
-  " nnoremap <F9>       :call GenerateCtags()<CR>
-  " nnoremap <leader>rr :!rake<CR>
-
-  let g:vim_search_pulse_disable_auto_mappings = 1
-  nnoremap               <Leader>fl   :Unite -buffer-name=search\ line -start-insert line<CR>
-  nnoremap               <C-f>l       :Unite -buffer-name=search\ line -start-insert line<CR>
-
 
   nnoremap <leader>yg  :<C-u>call feedkeys(':YamlGoToKey '.@", 'n')<CR>
   nnoremap <leader>yy  :<C-u>call <SID>read_path()<CR>
@@ -93,9 +80,6 @@ cmap <c-r> <Plug>(unite_cmdmatch_complete)
   nnoremap <silent><c-f><CR>   :Telescope oldfiles<cr>
   nnoremap <silent><C-f><C-t>  :Telescope filetypes<CR>
   " builtin.live_grep
-
-  " nnoremap <C-f>m     :Unite -winheight=10 -buffer-name=recent -unique -start-insert buffer neomru/file<CR>
-  " nnoremap <C-f><C-m> :Unite -winheight=10 -buffer-name=recent -unique -start-insert buffer neomru/file<CR>
 
 
   " Breakpoints
