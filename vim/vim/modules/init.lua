@@ -10,6 +10,7 @@ require('telescope').setup{
       }
     },
     file_ignore_patterns = {'.git/*'},
+    prompt_prefix = "🔎 ",
   },
   pickers = {
     find_files = {
