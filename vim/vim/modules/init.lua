@@ -19,11 +19,15 @@ require('telescope').setup{
   },
 }
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('vim_bookmarks')
 
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = { "ruby", "lua", "javascript", 'dockerfile', 'html', 'json', 'vim' },
   highlight = { enable = true },
+
+  -- extension nvim-ts-context-commentstring(comment by treesitter line type)(html with js and css)
+  context_commentstring = { enable = true }
 }
 
 

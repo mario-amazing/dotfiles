@@ -16,7 +16,7 @@ require'lspconfig'.solargraph.setup{
 
 -- linter visual config
 vim.diagnostic.config({
-	underline = false,
-	virtual_text = false,
-	signs = false,
+  underline = false,
+  virtual_text = false,
+  signs = false,
 })

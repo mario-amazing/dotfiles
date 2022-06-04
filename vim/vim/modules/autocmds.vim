@@ -56,7 +56,7 @@ augroup FiletypeAutocommands
 
 
   au FileType * setlocal conceallevel=0
-  au FileType markdown setlocal conceallevel=2 
+  au FileType markdown setlocal conceallevel=2
 
   au BufRead,BufNewFile *.slim set ft=slim
 

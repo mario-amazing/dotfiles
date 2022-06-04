@@ -12,16 +12,8 @@ fu! ExitFugitive(cmd) abort
   endtry
 endfu
 
-xnoremap p pgvy
-let g:pasta_paste_after_mapping = ',p'
-
-fu! TogglePasterMode()
-  if &paste | set nopaste | else | set paste | endif | echo ''
-endf
-
-fu! ToggleMouseMode()
-  if &mouse == 'a' | set mouse= | echo '' | else | set mouse=a | echo 'Mouse enabled' | endif
-endf
+" Not override clipboard on paste ( currently overrides with vim-pasta)
+" xnoremap p pgvy
 
 set previewheight=50
 au BufEnter ?* call PreviewHeightWorkAround()

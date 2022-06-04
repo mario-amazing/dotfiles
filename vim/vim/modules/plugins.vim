@@ -18,8 +18,8 @@ nnoremap <S-l> :SidewaysRight<CR>
 
 " ,Bookmarks
 let g:bookmark_save_per_working_dir = 1
-let g:bookmark_sign = ' '
-let g:bookmark_annotation_sign = ' '
+let g:bookmark_sign = ' '
+let g:bookmark_annotation_sign = ' ﮉ'
 let g:bookmark_show_toggle_warning = 0
 let g:bookmark_center = 1
 
@@ -45,7 +45,7 @@ au VimEnter * hi ExchangeRegion cterm=bold ctermfg=7 ctermbg=240
 " ,indexed-search
 let  g:indexed_search_mappings = 0
 
-" ,sitch
+" ,switch
 let g:switch_mapping = '-'
 
 " ,undoquit
@@ -137,17 +137,11 @@ let g:rubycomplete_use_bundler = 1
 let g:rubycomplete_classes_in_global = 1
 
 
-" ,ultiSnips
-let g:UltiSnipsEditSplit="horizontal"
-
 " ,rails
 let g:rails_ctags_arguments = '-f tmp/tags'
 
 " ,gitv
 let g:Gitv_DoNotMapCtrlKey = 1
-
-
-let g:textobj#quote#matchit = 1
 
 
 let g:EclimCompletionMethod = 'omnifunc'
@@ -197,14 +191,6 @@ autocmd FileType python syn keyword TODO contained TODO FIXME XXX NOTE contained
 autocmd BufWritePost *.py silent! !ctags -R --python-kinds=-i --languages=python 2&gt; /dev/null &amp;
 " autocmd BufNewFile,BufRead fugitive* setlocal bufhidden=delete
 "
-
-let g:switch_custom_definitions =
-    \ [
-    \   {
-    \     '\<update_attribute\>': 'update_attributes',
-    \     '\<update_attributes\>': 'update_attribute'
-    \   }
-    \ ]
 
 let g:easytags_dynamic_files = 1
 let g:easytags_auto_highlight = 0

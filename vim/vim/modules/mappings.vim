@@ -1,84 +1,19 @@
-" Helpers
-function! s:incsearch_fuzzy(...) abort
-  return extend(copy({'converters': [incsearch#config#fuzzy#converter(), incsearch#config#fuzzyspell#converter() ]}), get(a:, 1, {}))
-endfunction
-fu! s:alias(to, from)
-  exe 'nmap '.a:from.' '.a:to
-  exe 'nnoremap '.a:to.' <Nop>'
-endfu
-fu! s:map_ctrl(map, keys, cmd)
-  let key_pos = len(a:keys)-2
-  exe a:map.' <silent> '.a:keys.' '.a:cmd
-  exe a:map.' <silent> '.a:keys[:key_pos].'<C-'.a:keys[key_pos+1].'> '.a:cmd
-endfu
-
-if has('nvim')
-  call s:alias('[shftf2]', '<S-F2>')
-  call s:alias('[shftf3]', '<S-F3>')
-else
-  call s:alias('[shftf2]', '<Esc>[1;2Q')
-  call s:alias('[shftf3]', '<Esc>[1;2R')
-endif
-
-
-
-function! s:incsearch_noregex_converter(pattern) abort
-  return '\V' . escape(a:pattern, '\')
-endfunction
-
-function! s:incsearch_config() abort
-  return {'converters': [function('s:incsearch_noregex_converter')]}
-endfunction
 
 let g:mapleader = ','
 let g:user_emmet_leader_key = '<Leader>'
 
 " #Completion
-cmap     <C-P> <Plug>CmdlineCompletionForward
-cmap     <C-N> <Plug>CmdlineCompletionBackward
-" cmap     <c-o> <Plug>(unite_cmdmatch_complete)
 cmap <c-r> <Plug>(unite_cmdmatch_complete)
-" imap     <C-k>  <Plug>(neocomplete_start_unite_complete)
 
-" #Navigation
-" ,tree
-nnoremap <silent> <Leader>t  :NvimTreeToggle<CR>
-nnoremap <silent> <Leader>ft :NvimTreeFindFile<CR>
 
   nnoremap <C-r>      :Unite -buffer-name=outline -start-insert outline<CR>
 
   " nnoremap <F9>       :call GenerateCtags()<CR>
-  nnoremap <F2>       :TagbarToggle<CR>
   " nnoremap <leader>rr :!rake<CR>
 
   let g:vim_search_pulse_disable_auto_mappings = 1
   nnoremap               <Leader>fl   :Unite -buffer-name=search\ line -start-insert line<CR>
   nnoremap               <C-f>l       :Unite -buffer-name=search\ line -start-insert line<CR>
-
-
-  noremap <silent><expr> / incsearch#go(<SID>incsearch_config())
-  " map                    /            <Plug>(incsearch-forward)
-  map                    ?            <Plug>(incsearch-backward)
-  map                    g/           <Plug>(incsearch-stay)
-  map     <silent>       #            <Plug>(incsearch-nohl0)<Plug>(asterisk-z#)<Plug>(anzu-echo-search-status)<Plug>Pulse
-  map     <silent>       *            <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)<Plug>(anzu-echo-search-status)<Plug>Pulse
-  map     <silent>       g*           <Plug>(incsearch-nohl0)<Plug>(asterisk-gz*)<Plug>(anzu-echo-search-status)<Plug>Pulse
-  map     <silent>       g#           <Plug>(incsearch-nohl0)<Plug>(asterisk-gz#)<Plug>(anzu-echo-search-status)<Plug>Pulse
-  map                    N            <Plug>(incsearch-nohl)<Plug>(anzu-N)zz<Plug>Pulse
-  map                    n            <Plug>(incsearch-nohl)<Plug>(anzu-n)zz<Plug>Pulse
-  nnoremap               <CR>         :nohl<Bar>AnzuClearSearchStatus<CR>:<Esc>
-  noremap <silent><expr> z/           incsearch#go(<SID>incsearch_fuzzy())
-  noremap <silent><expr> z?           incsearch#go(<SID>incsearch_fuzzy({'command': '?'}))
-  noremap <silent><expr> zg?          incsearch#go(<SID>incsearch_fuzzy({'is_stay': 1}))
-  " nnoremap               /            :<C-U>if get(v:, 'hlsearch', 0)<Bar>call feedkeys("/\<C-R>/")<Bar>else<Bar>call feedkeys('/')<CR>
-  vmap                   /            *
-  augroup IncsearchAu
-    au!
-    au User IncSearchLeave  AnzuUpdateSearchStatus
-    au VimEnter * exe 'IncSearchNoreMap <C-p> <Over>(buffer-complete)' | exe 'IncSearchNoreMap <C-n> <Over>(buffer-complete-prev)'
-  augroup END
-  nmap  [shftf3] <S-n>
-  nnoremap <F3> n
 
 
   nnoremap <leader>yg  :<C-u>call feedkeys(':YamlGoToKey '.@", 'n')<CR>
@@ -132,16 +67,6 @@ nnoremap <silent> <Leader>ft :NvimTreeFindFile<CR>
     " noremap <silent> <C-h> :<C-u>winc h<CR>
   endif
 
-  " move blocks vim-textmanip
-  " execute "set <A-j>=\ej"
-  " execute "set <A-k>=\ek"
-  " execute "set <A-h>=\eh"
-  " execute "set <A-l>=\el"
-  xmap <A-j> <Plug>(textmanip-move-down)
-  xmap <A-k> <Plug>(textmanip-move-up)
-  xmap <A-h> <Plug>(textmanip-move-left)
-  xmap <A-l> <Plug>(textmanip-move-right)
-
   " let g:tmux_navigator_no_mappings = 1
 
   " call submode#leave_with('layout', 'n', '', '<Esc>')
@@ -172,12 +97,6 @@ nnoremap <silent> <Leader>ft :NvimTreeFindFile<CR>
   " nnoremap <C-f>m     :Unite -winheight=10 -buffer-name=recent -unique -start-insert buffer neomru/file<CR>
   " nnoremap <C-f><C-m> :Unite -winheight=10 -buffer-name=recent -unique -start-insert buffer neomru/file<CR>
 
-  " ,Bookmarks
-  nmap <Space><Space> <Plug>BookmarkToggle
-  nmap <Space>i <Plug>BookmarkAnnotate
-  nmap <Space>a <Plug>BookmarkShowAll
-  nmap <Space>j <Plug>BookmarkNext
-  nmap <Space>k <Plug>BookmarkPrev
 
   " Breakpoints
   nnoremap <F5> :call RemoveBreakpoints()<CR>
@@ -186,6 +105,7 @@ nnoremap <silent> <Leader>ft :NvimTreeFindFile<CR>
 " markup
 nnoremap <silent><F8> :let w:v=winsaveview()<cr>ggVG=:call winrestview(w:v)<cr>
 
+" sandwich
 let g:sandwich_no_default_key_mappings = 1
 let g:operator_sandwich_no_default_key_mappings = 1
 xmap S# <Plug>(operator-sandwich-add)i#{<cr>}<cr>
@@ -207,26 +127,8 @@ nnoremap <silent> <Leader>dp :diffput<CR>
 " #Vimtex
 let g:vimtex_compiler_progname = 'nvr'
 
-" #Editing
-let g:UltiSnipsExpandTrigger="<Tab>"
-" let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" imap <expr><tab>
-"   \ getline(line('.')) !~# '^\s*$' && getline(line('.'))[col('.')-1] != ' ' && !empty(UltiSnips#SnippetsInCurrentScope()) ? "\<C-R>=UltiSnips#ExpandSnippetOrJump()\<cr>" :
-"   \ emmet#isExpandable() ? "\<Plug>(emmet-expand-abbr)" :
-"   \ "\<tab>"
-
-
-
-nmap <leader>u :<C-u>UltiSnipsEdit<CR>
 
 xnoremap <Leader>ree :Rextract<space>
-
-
-xmap <C-j> <Plug>(vertical_move_down)
-xmap <C-k> <Plug>(vertical_move_up)
 
 vmap c <Plug>Commentary
 vmap " <Plug>VSurround"
@@ -251,11 +153,6 @@ let g:expand_region_text_objects = {
 vmap v      <Plug>(expand_region_expand)
 vmap <C-v>  <Plug>(expand_region_shrink)
 
-omap aa <Plug>SidewaysArgumentTextobjA
-xmap aa <Plug>SidewaysArgumentTextobjA
-omap ia <Plug>SidewaysArgumentTextobjI
-xmap ia <Plug>SidewaysArgumentTextobjI
-
 vnoremap <Leader>t, :Tabularize/,\zs<CR>
 vnoremap <Leader>t: :Tabularize/:\zs<CR>
 vnoremap <Leader>t= :Tabularize/=<CR>
@@ -275,27 +172,11 @@ imap <C-h> <BS>
 xmap <leader>n <Plug>NrrwrgnDo
 nmap <leader>n <Plug>NrrwrgnDo
 
-nmap <M-k> <Plug>(textmanip-move-up)==
-nmap <M-j> <Plug>(textmanip-move-down)==
-vmap <M-k> <Plug>(textmanip-move-up)==
-vmap <M-j> <Plug>(textmanip-move-down)==
-
-nmap <M-h> <Plug>(textmanip-move-left)
-nmap <M-l> <Plug>(textmanip-move-right)
-vmap <M-h> <Plug>(textmanip-move-left)
-vmap <M-l> <Plug>(textmanip-move-right)
-
-map <M-S-j> <Plug>(textmanip-duplicate-down)
-map <M-S-k> <Plug>(textmanip-duplicate-up)
-vmap <M-S-j> <Plug>(textmanip-duplicate-down)
-vmap <M-S-k> <Plug>(textmanip-duplicate-up)
-
 nnoremap <Leader>f<S-s> :%S/
 vnoremap <Leader>f<S-s> :S/
 nnoremap <silent> <Leader>fs :OverCommandLine<CR>%s/
 vnoremap <silent> <Leader>fs :OverCommandLine<CR>s/
 
-nmap <Leader>mc  :Unite -start-insert menu:conf<CR>
 " nmap <Leader>rrc :source $MYVIMRC<CR>
 cabbrev trw :call TrimWhiteSpace()
 nmap <silent> [shftf2] :call feedkeys(':Rename '.expand('%:t'), 'n')<CR>
@@ -335,19 +216,14 @@ cabbrev Tab Tabularize
 
 command! -bang -nargs=0 Q call ExitFugitive('q<bang>')
 cabbrev ga   Git add
-cabbrev gcm  Git commit -m
-cabbrev gcam Git commit --amend -m
+cabbrev gc  Git commit -m
+cabbrev gca Git commit --amend -m
 cabbrev gco  Git checkout
 cabbrev gcof Git checkout "%:p:h"
 
 if has('nvim')
   tnoremap <Esc><Esc> <C-\><C-n>
 endif
-
-cabbrev plu NeoBundleUpdate
-cabbrev pli NeoBundleCheck
-cabbrev pls Unite neobundle/search
-
 
 nnoremap <silent> <Leader>ct :ColorToggle<CR>
 

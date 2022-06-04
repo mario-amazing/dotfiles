@@ -100,33 +100,19 @@ let g:unite_source_menu_menus.conf = {
       \ 'description' : 'Config modules'
       \}
 
-" let g:unite_source_menu_menus.sheet = {
-"       \ 'description' : 'Cheatsheets'
-"       \}
-
-
-" let g:unite_source_menu_menus..command_candidates = [
-"   \ [ 'faker', 'split ~/.vim/cheat/faker' ],
-" ]
-
 let g:unite_source_menu_menus.conf.command_candidates = [
         \ [ 'init.lua', 'split ~/.vim/modules/init.lua' ],
         \ [ 'lsp', 'split ~/.vim/modules/lsp.lua' ],
+        \ [ 'to_learn', 'split ~/.vim/modules/to_learn.txt' ],
         \ [ 'colors', 'split ~/.vim/modules/colors.lua' ],
+        \ [ 'options', 'split ~/.vim/modules/options.lua' ],
+        \ [ 'mappings.lua', 'split ~/.vim/modules/mappings.lua' ],
         \ [ 'misc', 'split ~/.vim/modules/misc.vim' ],
         \ [ 'unite', 'split ~/.vim/modules/unite.vim' ],
         \ [ 'helpers', 'split ~/.vim/modules/helpers.vim' ],
-        \ [ 'optins', 'split ~/.vim/modules/options.vim' ],
         \ [ 'plugins', 'split ~/.vim/modules/plugins.vim' ],
         \ [ 'mappings', 'split ~/.vim/modules/mappings.vim' ],
         \ [ 'bundles', 'split ~/.vim/modules/bundles.vim' ],
         \ [ 'autocmds', 'split ~/.vim/modules/autocmds.vim' ],
-        \ [ 'completion', 'split ~/.vim/modules/completion.vim' ],
         \ [ 'ncompletion', 'split ~/.vim/modules/ncompletion.vim' ],
-        \ [ 'smartinput', 'split ~/.vim/modules/smartinput.vim' ],
       \ ]
-
-" call unite#custom#profile('default', 'context', {
-" \ 'start_insert': 1,
-" \ 'immediately': 1,
-" \ })

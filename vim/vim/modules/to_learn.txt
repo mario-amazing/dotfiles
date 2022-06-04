@@ -1,3 +1,39 @@
+" Bookmarks
+nmap <Space><Space> <Plug>BookmarkToggle
+nmap <Space>i <Plug>BookmarkAnnotate
+nmap <Space>a <Plug>BookmarkShowAll
+nmap <Space>j <Plug>BookmarkNext
+nmap <Space>k <Plug>BookmarkPrev
+
+
 " Resolve merge conflicts
 https://github.com/rhysd/conflict-marker.vim
 ct for theirs, co for ours, cn for none and cb for both
+
+
+" Visual substitute
+nnoremap <silent> <Leader>fs :OverCommandLine<CR>%s/
+vnoremap <silent> <Leader>fs :OverCommandLine<CR>s/
+
+
+" Multi cursor: https://github.com/mg979/vim-visual-multi
+select words with Ctrl-N (like Ctrl-d in Sublime Text/VS Code)
+create cursors vertically with Ctrl-Down/Ctrl-Up
+select one character at a time with Shift-Arrows
+press n/N to get next/previous occurrence
+press [/] to select next/previous cursor
+press q to skip current and get next occurrence
+press Q to remove current cursor/selection
+start insert mode with i,a,I,A
+
+
+" Plug 'tpope/vim-speeddating'
+CTRL-A/CTRL-X to increment dates, times, and more
+Sat, 01 Jan 2000 00:16:03 -0001
+
+
+" Plug 'AndrewRadev/sideways.vim'
+Move an item in a delimiter-separated list left or right(S-h/S-l)
+
+"Plug 'junegunn/vim-easy-align'
+Text align lines symbols(ga )

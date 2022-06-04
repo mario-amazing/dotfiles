@@ -21,7 +21,7 @@ Plug 'bkad/CamelCaseMotion' " navigation inside word with different cases
 """""""""""""""
 Plug 'nvim-lua/plenary.nvim' " requirement for telescope.nvim
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'tami5/sqlite.lua' " requirement for telescope-frecency.nvim
+Plug 'tom-anders/telescope-vim-bookmarks.nvim' " bookmarks telescop visual
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } " fuzzy search
 Plug 'kyazdani42/nvim-web-devicons'
 
@@ -35,84 +35,61 @@ Plug 'airblade/vim-gitgutter', {'on': []} " Add git line status(+/-/▵) to the 
 " optimization -> plugins loading, after nvim started
 augroup load_git_plugins
   au!
-  au User Fugitive call plug#load('gv.vim', 'conflict-marker.vim', 'vim-gitgutter') | au! load_git_plugins
+  au User Fugitive call plug#load('gv.vim', 'conflict-marker.vim', 'vim-gitgutter')
+        \| au! load_git_plugins
+  " NOTE au! -> clear group load_git_plugins, prevent multi loading
 augroup END
 
 
 " UI
 """""""""""""""""""
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " highlight syntax
 
 
 " Snippets
 """""""""""""""
-Plug 'honza/vim-snippets'
-Plug 'mattn/emmet-vim', {'for': ['html', 'eruby', 'slim', 'css', 'sass', 'scss']}
+" # TODO add snippets
+Plug 'mattn/emmet-vim', {'for': ['html', 'eruby', 'slim', 'css', 'sass', 'scss']} " html tags expand div>h1
 
 
 " #Cmdline
-Plug     'osyo-manga/vim-over'
-Plug     'osyo-manga/vital-over'
-Plug     'vim-scripts/cmdline-completion'
+Plug 'osyo-manga/vim-over' " Visual substitute
 
 
 " Textobjects
 """""""""""""""""""""""""""
-" , {'on': '<Plug>(expand_region_expand)'}
-Plug 'kana/vim-textobj-user'         " User defined textobjects
 Plug 'terryma/vim-expand-region'     " Easier way to select textobjects(vvv)
-Plug 'whatyouhide/vim-textobj-xmlattr', { 'for': ['html', 'xml'] }
-Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
-Plug 'kana/vim-textobj-line'
-Plug 'mattn/vim-textobj-url'
-Plug 'glts/vim-textobj-comment'
-Plug 'reedes/vim-textobj-quote'
-Plug 'thinca/vim-textobj-between'
-" Plug 'lucapette/vim-textobj-underscore'
-Plug 'Julian/vim-textobj-variable-segment'
-Plug 'kana/vim-textobj-entire'
 
-" #Editing assistants
-Plug 'terryma/vim-multiple-cursors'
-Plug 'vim-utils/vim-vertical-move'   " Move 'up' or 'down' without changing the cursor column. Cursor *always* stays in the same column.
-Plug 'tpope/vim-abolish'             " Working with word cases
-Plug 'tpope/vim-commentary'          " Comment/uncomment code
-Plug 'tpope/vim-surround'            " Manage code surroundings(quotes, parenthesis, brackets, *ml-tags etc.)
-Plug 'machakann/vim-sandwich'
+
+" Editing assistants
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " multi coursors
+
+Plug 'AndrewRadev/switch.vim'        " Switch segments of text with predefined replacements(-)
+Plug 'tpope/vim-abolish'             " Working with word Cases(crs/crm/cru)
+Plug 'AndrewRadev/splitjoin.vim'     " Split/Join(gS/gJ)
+Plug 'AndrewRadev/sideways.vim'      " Move an item in a delimiter-separated list left or right(S-h/S-l)
 Plug 'tpope/vim-speeddating'         " CTRL-A/CTRL-X to increment dates, times, and more
-Plug 'sickill/vim-pasta'             " Smart paste
-" Plug 'svermeulen/vim-easyclip'
-Plug 'tpope/vim-repeat'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'AndrewRadev/switch.vim'        " Switch segments of text with predefined replacements
-Plug 'AndrewRadev/sideways.vim'      " Move an item in a delimiter-separated list left or right
-Plug 'godlygeek/tabular'             " Text align by regexp
-Plug 'junegunn/vim-easy-align'
-Plug 'tommcdo/vim-exchange'          " Swap two pieces of code
-Plug 't9md/vim-textmanip'            " Drag visual text blocks
-" Plug 'tpope/vim-endwise'             " Automatic closing code blocks
-Plug 'SirVer/ultisnips', { 'on': [] }
-Plug 'kana/vim-smartinput' , { 'on': [] }         " Automatic closing of quotes, parenthesis, brackets
-Plug 'kana/vim-smartchr'          " Automatic closing of quotes, parenthesis, brackets
-" Plug 'chrisbra/NrrwRgn'              " Edit selection in a newly created separate buffer
-" Plug 'Raimondi/delimitMate'          " Automatic closing of quotes, parenthesis, brackets
+Plug 'mroavi/vim-pasta'              " smart paste, override (p and p)!!!
+Plug 'fedepujol/move.nvim'           " Move lines and blocks
 
+Plug 'tpope/vim-commentary'          " Comment/uncomment code
+Plug 'JoosepAlviste/nvim-ts-context-commentstring' " treesitter context comments
 
-" # Languages support
+Plug 'tpope/vim-surround'            " Manage code surroundings(quotes, parenthesis, brackets, *ml-tags etc.)
+Plug 'machakann/vim-sandwich'        " Add #{} surround to ruby string
 
-  " Plug     'octol/vim-cpp-enhanced-highlight'
-
-" #Syntax
-Plug 'chr4/nginx.vim'
+Plug 'godlygeek/tabular'             " Text align lines by regexp
+Plug 'junegunn/vim-easy-align'       " Text align lines symbols(ga)
+" TODO Add autopair with nvim-cmp
 
 
 " Fuzzy menus
 """""""""""""""
-Plug     'Shougo/neomru.vim'         " Most recently used files/buffers
-Plug  'Shougo/unite.vim'
-Plug 'majutsushi/tagbar' ", {'on':'TagbarToggle'}
+Plug 'Shougo/neomru.vim'         " Most recently used files/buffers
+Plug 'Shougo/unite.vim'
 Plug 'Shougo/unite-outline'
 Plug 'MaryHal/unite-unicode'
+Plug 'majutsushi/tagbar' ", {'on':'TagbarToggle'} (F2)
 
 
 " Tools
@@ -128,28 +105,31 @@ Plug 'tpope/vim-rsi'
 Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeEnable'}
 Plug 'jordwalke/VimCloser' " Make Vim close tabs the way every other editor does - by switching to the next tab to the left.
 Plug 'tpope/vim-obsession'
-Plug     'kana/vim-submode'
-Plug     'xolox/vim-misc'
-Plug     'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'kana/vim-submode'
+Plug 'xolox/vim-misc'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'wesQ3/vim-windowswap'  " swap two windows
-Plug     'AndrewRadev/undoquit.vim'
-Plug     'tpope/vim-eunuch'                " unix bash-like utils
-Plug     'vim-scripts/LargeFile'
+Plug 'AndrewRadev/undoquit.vim'
+Plug 'tpope/vim-eunuch'                " unix bash-like utils
+Plug 'vim-scripts/LargeFile'
 
 Plug 'chrisbra/Colorizer' " show color by code
 
 " Plug     'tpope/vim-dispatch'
 " Plug     'radenling/vim-dispatch-neovim'
 "
-Plug     'christoomey/vim-tmux-navigator'
-" Plug 't9md/vim-choosewin'            " easymotion-like choosing window
-Plug     'kopischke/vim-fetch'           " gf with lnum:col included
+Plug 'christoomey/vim-tmux-navigator'
+"    Plug 't9md/vim-choosewin'            " easymotion-like choosing window
+Plug 'kopischke/vim-fetch'           " gf with lnum:col included
 if has('nvim')
   Plug 'itchyny/vim-parenmatch'
 endif
 
 " Languages
 """""""""""""""
+" #Syntax
+Plug 'chr4/nginx.vim'
+
 " lsp
 Plug 'williamboman/nvim-lsp-installer' " autoinstall lsp clients
 Plug 'neovim/nvim-lspconfig'
@@ -158,55 +138,53 @@ Plug 'deoplete-plugins/deoplete-jedi'
 
 " python
 Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
-" ruby
+"    ruby
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
-" Plug 'vim-rails-snips'
-Plug     'sandeepravi/refactor-rails.vim', { 'for': 'ruby' }
+Plug 'sandeepravi/refactor-rails.vim', { 'for': 'ruby' }
 Plug 'vim-scripts/ruby-matchit', { 'for': 'ruby' }
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-rake'
 Plug 'thoughtbot/vim-rspec'
-" markdown
+"    markdown
 Plug 'shime/vim-livedown' " Markdown live preview
 Plug 'plasticboy/vim-markdown', { 'depends' : 'godlygeek/tabular'}
-" html
-Plug     'othree/html5.vim'
-" css
-Plug     'cakebaker/scss-syntax.vim'
-Plug     'hail2u/vim-css3-syntax'
-" latex
+"    html
+Plug 'othree/html5.vim'
+"    css
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'hail2u/vim-css3-syntax'
+"    latex
 Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-" slim
-Plug     'slim-template/vim-slim'
-" javascript
-Plug     'jelera/vim-javascript-syntax'
-Plug     'othree/javascript-libraries-syntax.vim'
+"    slim
+Plug 'slim-template/vim-slim'
+"    javascript
+Plug 'jelera/vim-javascript-syntax'
+Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'moll/vim-node'
-" yaml
+"    yaml
 Plug 'lmeijvogel/vim-yaml-helper'
 
-" Databases
+"    Databases
 """""""""""""""""""""""
-" Plug 'vim-scripts/dbext.vim' " Provides database access to many dbms (Oracle, Sybase, Microsoft, MySQL, DBI,..)
+"    Plug 'vim-scripts/dbext.vim' " Provides database access to many dbms (Oracle, Sybase, Microsoft, MySQL, DBI,..)
 Plug 'lifepillar/pgsql.vim'
 Plug 'rafcamlet/show-me-db'
 
-" Dictionaries
+"    Dictionaries
 """""""""""""""
 Plug 'asins/vim-dict'
 Plug 'tracyone/dict'
 Plug 'guileen/vim-node-dict'
 
-" Search
+"    Search
 """""""""""""""""""""""
 Plug 'eugen0329/vim-esearch'         " Project-wide search
 Plug 'eugen0329/vim-concertina'
-Plug 'haya14busa/incsearch.vim'          " Incrementally highlight all pattern matches
-Plug 'haya14busa/incsearch-fuzzy.vim'    " Fuzzy search in 
+Plug 'haya14busa/incsearch-fuzzy.vim'    " Fuzzy search in
 Plug 'haya14busa/vim-asterisk'           " *-improved
 Plug 'osyo-manga/vim-anzu'               " Search position info
 

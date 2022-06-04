@@ -21,7 +21,6 @@ install_vim() {
   ln -vsf "$ROOT_DIR/vim/vimrc" "$HOME/.vimrc"
   ln -vsf "$ROOT_DIR/vim/vim/colors" "$HOME/.vim"
   ln -vsf "$ROOT_DIR/vim/vim/modules" "$HOME/.vim"
-  ln -vsf "$ROOT_DIR/vim/vim/ultisnips" "$HOME/.vim"
   ln -vsf "$ROOT_DIR/vim/vim/syntax" "$HOME/.vim"
   cp -r "$ROOT_DIR/vim/vim/tmp" "$HOME/.vim"
 
