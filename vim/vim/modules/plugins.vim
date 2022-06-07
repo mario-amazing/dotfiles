@@ -24,11 +24,6 @@ let g:bookmark_show_toggle_warning = 0
 let g:bookmark_center = 1
 
 
-" itchyny/vim-parenmatch
-let g:parenmatch_highlight = 0
-let loaded_matchparen = 1
-hi link ParenMatch  MatchParen
-
 " Exchange
 au VimEnter * hi ExchangeRegion cterm=bold ctermfg=7 ctermbg=240
 

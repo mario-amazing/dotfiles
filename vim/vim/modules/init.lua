@@ -64,3 +64,5 @@ require'nvim-tree'.setup {
   view = { mappings = { list = list } },
   filters = { dotfiles = true },
 }
+
+require('nvim-autopairs').setup{}

@@ -80,7 +80,8 @@ Plug 'machakann/vim-sandwich'        " Add #{} surround to ruby string
 
 Plug 'godlygeek/tabular'             " Text align lines by regexp
 Plug 'junegunn/vim-easy-align'       " Text align lines symbols(ga)
-" TODO Add autopair with nvim-cmp
+Plug 'windwp/nvim-autopairs'
+" !!!!!!TODO CHECK nvim-cmp complition!!!
 
 
 " Fuzzy menus
@@ -114,12 +115,8 @@ Plug 'chrisbra/Colorizer' " show color by code
 " Plug     'tpope/vim-dispatch'
 " Plug     'radenling/vim-dispatch-neovim'
 "
-Plug 'christoomey/vim-tmux-navigator'
 "    Plug 't9md/vim-choosewin'            " easymotion-like choosing window
 Plug 'kopischke/vim-fetch'           " gf with lnum:col included
-if has('nvim')
-  Plug 'itchyny/vim-parenmatch'
-endif
 
 " Languages
 """""""""""""""
@@ -182,7 +179,6 @@ Plug 'eugen0329/vim-esearch'         " Project-wide search
 Plug 'eugen0329/vim-concertina'
 Plug 'haya14busa/incsearch-fuzzy.vim'    " Fuzzy search in
 Plug 'haya14busa/vim-asterisk'           " *-improved
-Plug 'osyo-manga/vim-anzu'               " Search position info
 
 " Autocomplete
 """""""""""""""""""
