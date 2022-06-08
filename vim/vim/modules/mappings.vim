@@ -1,4 +1,3 @@
-
 let g:mapleader = ','
 let g:user_emmet_leader_key = '<Leader>'
 
@@ -37,43 +36,6 @@ let g:user_emmet_leader_key = '<Leader>'
   nnoremap g9 9gt
   nnoremap g0 10gt
 
-  " jump window
-  if has('nvim') 
-    noremap <silent> <C-k> <C-w><C-k>
-    noremap <silent> <C-j> <C-w><C-j>
-    noremap <silent> <C-l> <C-w><C-l>
-    noremap <silent> <C-h> <C-w><C-h>
-  else
-    nnoremap <silent> <C-k> <C-w><C-k>
-    nnoremap <silent> <C-j> <C-w><C-j>
-    nnoremap <silent> <C-l> <C-w><C-l>
-    nnoremap <silent> <C-h> <C-w><C-h>
-    " noremap <silent> <C-k> :<C-u>winc k<CR>
-    " noremap <silent> <C-j> :<C-u>winc j<CR>
-    " noremap <silent> <C-l> :<C-u>winc l<Bar>mode<CR>
-    " noremap <silent> <C-h> :<C-u>winc h<CR>
-  endif
-
-  " let g:tmux_navigator_no_mappings = 1
-
-  " call submode#leave_with('layout', 'n', '', '<Esc>')
-  " call submode#leave_with('layout', 'n', '', '<C-c>')
-  for s:set in [
-        \['n',      ':cal MoveToNextTab()<CR>'],
-        \['p',      ':cal MoveToPrevTab()<CR>'],
-        \['H',      ':winc H<CR>'],
-        \['L',      ':winc L<CR>'],
-        \['J',      ':winc J<CR>'],
-        \['K',      ':winc K<CR>'],
-        \['h',      ':cal WindowSwap#MarkWindowSwap()<Bar>winc h<Bar>cal WindowSwap#DoWindowSwap()<CR>'],
-        \['l',      ':cal WindowSwap#MarkWindowSwap()<Bar>winc l<Bar>cal WindowSwap#DoWindowSwap()<CR>'],
-        \['j',      ':cal WindowSwap#MarkWindowSwap()<Bar>winc j<Bar>cal WindowSwap#DoWindowSwap()<CR>'],
-        \['k',      ':cal WindowSwap#MarkWindowSwap(h<bar>winc k<bar>cal WindowSwap#DoWindowSwap()<cr>'],
-        \['t', ':exe "tabm"tabpagenr()<CR>'],
-        \['T', ':exe "tabm"tabpagenr()-2<CR>']]
-    call        submode#map('layout', 'n', 's', s:set[0],                s:set[1])
-    call        submode#map('layout', 'n', 's', '<C-'.s:set[0].'>',      s:set[1])
-  endfor
 
   " ,MRU
   nnoremap <silent><C-p>       :Telescope find_files<CR>
@@ -161,11 +123,7 @@ vnoremap <Leader>f<S-s> :S/
 nnoremap <silent> <Leader>fs :OverCommandLine<CR>%s/
 vnoremap <silent> <Leader>fs :OverCommandLine<CR>s/
 
-" nmap <Leader>rrc :source $MYVIMRC<CR>
 cabbrev trw :call TrimWhiteSpace()
-nmap <silent> [shftf2] :call feedkeys(':Rename '.expand('%:t'), 'n')<CR>
-let g:vcoolor_map = '<F4>'
-" let g:vcool_ins_rgb_map = '<F4>'
 
 " #insert mode motions
 inoremap <C-d> <Delete>
@@ -192,9 +150,6 @@ cnoreabbrev qq q!
 cnoreabbrev qqq qa!
 cnoreabbrev q Q
 cnoreabbrev qq Q!
-cnoreabbrev m Make
-" cnoreabbrev a A
-" cnoreabbrev r R
 cabbrev Tab Tabularize
 
 
@@ -209,22 +164,13 @@ if has('nvim')
   tnoremap <Esc><Esc> <C-\><C-n>
 endif
 
-nnoremap <silent> <Leader>ct :ColorToggle<CR>
-
 " #Misc
-nnoremap j gj
-nnoremap k gk
-nnoremap <C-y> 2<C-y>
-nnoremap <C-e> 2<C-e>
-nnoremap z<S-e> <nop>
 nnoremap <silent><C-w>o     :res<CR>
 nnoremap <silent><C-w><C-o> :res<CR>
 inoremap <silent><C-c> <Esc>
 nnoremap <C-c> <Esc>
 nnoremap <C-s> :write<CR>
 nmap <S-u> :<C-u>redo<CR><Plug>(RepeatRedo)
-
-nnoremap <silent> <S-q> :call Quit()<CR>
 
 map ё `| map й q| map ц w| map у e| map к r| map е t| map н y| map г u| map ш i| map щ o| map з p| map х [| map ъ ]
 map ф a| map ы s| map в d| map а f| map п g| map р h| map о j| map л k| map д l| map ж ;| map э '| map я z| map ч x
@@ -233,13 +179,6 @@ map Н Y| map Г U| map Ш I| map Щ O| map З P| map Х {| map Ъ }| map Ф A| 
 map О J| map Л K| map Д L| map Ж :| map Э "| map Я Z| map Ч X| map С C| map М V| map И B| map Т N| map Ь M| map Б <
 map Ю >
 
-map q: <nop>
-" avoid Entering Ex mode.  Type "visual" to go to Normal mode.
-nmap gQ Q
-
-" set langmap=ёйцукенгшщзхъфывапролджэячсмитьбю;`qwertyuiop[]asdfghjkl\;'zxcvbnm\,.,ЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>
-" set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
-" set langmap=ёйцукенгшщзхъфывапролджэячсмитьбю;`qwertyuiop[]asdfghjkl\;'zxcvbnm\,.,ЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>
 set spelllang=ru_yo,en_us
 
 
@@ -264,14 +203,7 @@ nmap ga <Plug>(EasyAlign)
 
 
 nmap <F9> :%!ruby -r json -e 'puts JSON.pretty_generate(JSON.parse(ARGF.read))'<CR><CR>
-nmap <F6> :Make  %<CR>
 
-" augroup TmpWorkaroundWithEsearch
-"   au!
-"   au VimEnter * unmap <Leader>ff
-" augroup END
-
-" nmap <leader>rr <Plug>(quickrun)
 
 nnoremap yn :let @+ = substitute(expand("%"), '^'.getcwd().'/', '', '')<CR>
 nnoremap yN :let @+ = expand("%:t")<CR>
@@ -444,11 +376,6 @@ function! MatchUnderCursor(pat)
   return ""
 endfunction
 
-"lsp
-nnoremap <silent> gd :Telescop lsp_definitions<cr>
-nnoremap <silent> gr :Telescop lsp_references<cr>
-nnoremap <silent> <space>e :Telescop diagnostics<cr>
-
 
 let g:smartgf_strategies = [function('TryURI'), function('TryPlainGF'), function('TryRailsCFile'), function('TryCTag'), function('TryFootnote')]
 
@@ -547,10 +474,3 @@ endfu
 
 imap  <C-l> <C-o>:<C-u>call ParseLinks()<CR><Right>
 nmap <C-l> :<C-u>call ParseLinks()<CR><Right>
-
-inoreabbrev <expr> <bar><bar>
-          \ <SID>isAtStartOfLine('\|\|') ?
-          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
-inoreabbrev <expr> __
-          \ <SID>isAtStartOfLine('__') ?
-          \ '<c-o>:silent! TableModeDisable<cr>' : '__'

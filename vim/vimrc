@@ -14,9 +14,9 @@ call s:load('mappings')
 
 call s:load('misc')
 
-luafile ~/.vim/modules/init.lua
-luafile ~/.vim/modules/options.lua
 luafile ~/.vim/modules/colors.lua
+luafile ~/.vim/modules/options.lua
+luafile ~/.vim/modules/init.lua
 luafile ~/.vim/modules/lsp.lua
 luafile ~/.vim/modules/lualine.lua
 luafile ~/.vim/modules/mappings.lua

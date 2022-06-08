@@ -33,10 +33,6 @@ let  g:indexed_search_mappings = 0
 " ,switch
 let g:switch_mapping = '-'
 
-" ,undoquit
-nnoremap <c-w>c :call undoquit#SaveWindowQuitHistory()<cr><c-w>c
-let g:windowswap_map_keys = 0
-
 " ,Delimmate
 let delimitMate_expand_space = 1
 

@@ -91,37 +91,18 @@ Plug 'majutsushi/tagbar' ", {'on':'TagbarToggle'} (F2)
 
 " Tools
 """""""""""""""
-Plug 'MattesGroeger/vim-bookmarks'
-Plug 'tpope/vim-projectionist'
-Plug 'AndrewRadev/linediff.vim'
-Plug 'eugen0329/vim-hud'
-Plug 'KabbAmine/vCoolor.vim'
-Plug 'Konfekt/FastFold' " Speed up Vim by updating folds only when called-for.
-" Plug 'sk1418/HowMuch' " A Vim plugin to calculate visual selected expressions
-Plug 'tpope/vim-rsi'
-Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeEnable'}
-Plug 'jordwalke/VimCloser' " Make Vim close tabs the way every other editor does - by switching to the next tab to the left.
-Plug 'tpope/vim-obsession'
-Plug 'kana/vim-submode'
-Plug 'xolox/vim-misc'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'wesQ3/vim-windowswap'  " swap two windows
+" TODO add folding plug
+Plug 'kopischke/vim-fetch'         " gf with lnum:col included(:e test.rb:42,69)
+Plug 'MattesGroeger/vim-bookmarks' " Bookmarks with space
 Plug 'AndrewRadev/undoquit.vim'
-Plug 'tpope/vim-eunuch'                " unix bash-like utils
-Plug 'vim-scripts/LargeFile'
 
-Plug 'chrisbra/Colorizer' " show color by code
-
-" Plug     'tpope/vim-dispatch'
-" Plug     'radenling/vim-dispatch-neovim'
-"
-"    Plug 't9md/vim-choosewin'            " easymotion-like choosing window
-Plug 'kopischke/vim-fetch'           " gf with lnum:col included
+Plug 'winston0410/cmd-parser.nvim' " requiremet for nvim-colorizer
+Plug 'norcalli/nvim-colorizer.lua' " Shows color by code
 
 " Languages
 """""""""""""""
 " #Syntax
-Plug 'chr4/nginx.vim'
+" Plug 'chr4/nginx.vim'
 
 " lsp
 Plug 'williamboman/nvim-lsp-installer' " autoinstall lsp clients

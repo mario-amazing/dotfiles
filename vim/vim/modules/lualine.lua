@@ -1,6 +1,8 @@
 -- TODO hide tabs if only one
 -- https://github.com/nvim-lualine/lualine.nvim/issues/395
 --
+-- If need searchMatchesCount
+-- https://github.com/nvim-lualine/lualine.nvim/issues/186#issuecomment-968392445
 require('lualine').setup {
  options = {
     icons_enabled = true,

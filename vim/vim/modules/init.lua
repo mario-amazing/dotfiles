@@ -59,10 +59,12 @@ local list = {
   { key = "t",action = "tabnew" },
 }
 
-require'nvim-tree'.setup {
+require('nvim-tree').setup {
   update_focused_file = { update_cwd = true },
   view = { mappings = { list = list } },
   filters = { dotfiles = true },
 }
 
 require('nvim-autopairs').setup{}
+
+-- require('colorizer').setup() -- uncomment for default enabled

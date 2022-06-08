@@ -5,6 +5,8 @@ nmap <Space>a <Plug>BookmarkShowAll
 nmap <Space>j <Plug>BookmarkNext
 nmap <Space>k <Plug>BookmarkPrev
 
+" undoquit.vim -> Undo closed tabs
+<c-w>u restore closed window
 
 " Resolve merge conflicts
 https://github.com/rhysd/conflict-marker.vim
@@ -35,5 +37,5 @@ Sat, 01 Jan 2000 00:16:03 -0001
 " Plug 'AndrewRadev/sideways.vim'
 Move an item in a delimiter-separated list left or right(S-h/S-l)
 
-"Plug 'junegunn/vim-easy-align'
+"Plug 'junegunn/vim-easy-align' https://github.com/junegunn/vim-easy-align
 Text align lines symbols(ga )
