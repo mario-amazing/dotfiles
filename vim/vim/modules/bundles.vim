@@ -110,8 +110,6 @@ Plug 'neovim/nvim-lspconfig'
 
 Plug 'deoplete-plugins/deoplete-jedi'
 
-" python
-Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 "    ruby
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'vim-ruby/vim-ruby'

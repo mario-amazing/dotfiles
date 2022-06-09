@@ -63,14 +63,6 @@ let g:indentLine_fileType = ['html', 'eruby']
 " let g:indentLine_leadingSpaceChar = '·'
 " let g:indentLine_leadingSpaceEnabled = 1
 
-" pymode
-let g:pymode_lint_ignore = ["E402", "E201","E202", "E701", "E731"]
-let g:pymode_breakpoint_cmd = python_bp_line
-let g:pymode_options_colorcolumn = 0
-let g:pymode_options_max_line_length = 180
-let g:pymode_rope = 0
-let g:pymode_doc = 0
-
 " ,Syntastic
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_checkers = ['tidy']
@@ -167,11 +159,6 @@ let g:javascript_conceal_super      = "Ω"
 
 let g:used_javascript_libs = 'jquery,angularjs,angularui'
 
-
-autocmd FileType python syn keyword TODO contained TODO FIXME XXX NOTE contained containedin=pythoncomment
-autocmd BufWritePost *.py silent! !ctags -R --python-kinds=-i --languages=python 2&gt; /dev/null &amp;
-" autocmd BufNewFile,BufRead fugitive* setlocal bufhidden=delete
-"
 
 let g:easytags_dynamic_files = 1
 let g:easytags_auto_highlight = 0
