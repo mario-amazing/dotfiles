@@ -23,8 +23,9 @@ require('telescope').load_extension('vim_bookmarks')
 
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "ruby", "lua", "javascript", 'dockerfile', 'html', 'json', 'vim' },
+  ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", "css", "scss", "regex", "yaml" },
   highlight = { enable = true },
+  -- indent = { enable = true }, -- Experimental
 
   -- extension nvim-ts-context-commentstring(comment by treesitter line type)(html with js and css)
   context_commentstring = { enable = true }
@@ -70,6 +71,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 
 require('nvim-autopairs').setup{}
+
+
+require('gitsigns').setup()
 
 
 -- require('colorizer').setup() -- uncomment for default enabled

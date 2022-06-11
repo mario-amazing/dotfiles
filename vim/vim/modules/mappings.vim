@@ -49,7 +49,7 @@ xmap S# <Plug>(operator-sandwich-add)i#{<cr>}<cr>
 " #Git
 nnoremap          <Leader>gg :Git<space>
 nnoremap <silent> <Leader>gs :Gtabedit :<CR>
-nnoremap <silent> <Leader>gd :Gdiff<CR>
+nnoremap <silent> <Leader>gd :Gitsigns diffthis<CR>
 nnoremap <silent> <Leader>gc :Git commit<CR>
 nnoremap <silent> <Leader>gl :GV<CR>
 nnoremap <silent> <leader>gb :Git blame<CR>

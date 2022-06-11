@@ -27,14 +27,13 @@ Plug 'kyazdani42/nvim-web-devicons'
 " Git
 """""""""""""""
 Plug 'tpope/vim-fugitive' " main git commands
-Plug 'junegunn/gv.vim', {'on': []} " git commit helper
+Plug 'junegunn/gv.vim' " git commit helper
 Plug 'rhysd/conflict-marker.vim', {'on': []}
-Plug 'airblade/vim-gitgutter', {'on': []} " Add git line status(+/-/▵) to the left of a line
+Plug 'lewis6991/gitsigns.nvim' " Add git line status(|/=/~) to the left of a line and Git diff
 
-" optimization -> plugins loading, after nvim started
 augroup load_git_plugins
   au!
-  au User Fugitive call plug#load('gv.vim', 'conflict-marker.vim', 'vim-gitgutter')
+  au User Fugitive call plug#load('conflict-marker.vim')
         \| au! load_git_plugins
   " NOTE au! -> clear group load_git_plugins, prevent multi loading
 augroup END
@@ -105,8 +104,6 @@ Plug 'norcalli/nvim-colorizer.lua' " Shows color by code
 Plug 'williamboman/nvim-lsp-installer' " autoinstall lsp clients
 Plug 'neovim/nvim-lspconfig'
 
-Plug 'deoplete-plugins/deoplete-jedi'
-
 "    ruby
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'vim-ruby/vim-ruby'
@@ -116,60 +113,25 @@ Plug 'tpope/vim-rake'
 "    markdown
 Plug 'shime/vim-livedown' " Markdown live preview
 "    html
-" TODO add HTML
-"    css
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'hail2u/vim-css3-syntax'
-"    latex
-Plug 'lervag/vimtex'
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-"    slim
-Plug 'slim-template/vim-slim'
-"    javascript
-Plug 'jelera/vim-javascript-syntax'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'digitaltoad/vim-pug'
-Plug 'moll/vim-node'
+" TODO add HTML ????
 "    yaml
 Plug 'lmeijvogel/vim-yaml-helper'
-
-"    Databases
-"""""""""""""""""""""""
-"    Plug 'vim-scripts/dbext.vim' " Provides database access to many dbms (Oracle, Sybase, Microsoft, MySQL, DBI,..)
-Plug 'lifepillar/pgsql.vim'
-Plug 'rafcamlet/show-me-db'
-
-"    Dictionaries
-"""""""""""""""
-Plug 'asins/vim-dict'
-Plug 'tracyone/dict'
-Plug 'guileen/vim-node-dict'
 
 "    Search
 """""""""""""""""""""""
 Plug 'eugen0329/vim-esearch'         " Project-wide search
 Plug 'eugen0329/vim-concertina'
-Plug 'haya14busa/incsearch-fuzzy.vim'    " Fuzzy search in
 Plug 'haya14busa/vim-asterisk'           " *-improved
 
 " Autocomplete
 """""""""""""""""""
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'Shougo/context_filetype.vim'
-Plug 'Shougo/echodoc'
-Plug 'Shougo/neoinclude.vim'
-Plug 'Shougo/neco-syntax'
-Plug 'ujihisa/neco-look'
-Plug 'vim-scripts/LanguageTool'
-Plug 'Shougo/neco-vim'                     " vimscript completion
-Plug 'carlitux/deoplete-ternjs'
-Plug 'othree/csscomplete.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+Plug 'Shougo/neoinclude.vim' " for deoplete, It has file/include source and extends tag sources in neocomplete/deoplete/ncm.
+Plug 'Shougo/neco-syntax' " for deoplete
+Plug 'ujihisa/neco-look' " for deoplete
+Plug 'Shougo/neco-vim'   " for deoplete
+Plug 'carlitux/deoplete-ternjs' " for deoplete
 
 call plug#end()
-filetype plugin indent on
+" filetype plugin indent on

@@ -14,7 +14,6 @@ augroup OmniFunctions
   au!
   au FileType css setlocal omnifunc=csscomplete#CompleteCSS
   au FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  " au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   au FileType python setlocal omnifunc=pythoncomplete#Complete
   au FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
   au FileType ruby setlocal omnifunc=rubycomplete#Complete
