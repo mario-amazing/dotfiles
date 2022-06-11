@@ -1,0 +1,46 @@
+-- breakpoints
+local python_bp_line="__import__('ipdb').set_trace()"
+local ruby_bp_line="require 'pry'; binding.pry"
+local eruby_bp_line="<% require 'pry'; binding.pry %>"
+local js_bp_line="debugger // eslint-disable-line"
+
+function _G.BreakPointString()
+  local ft = vim.bo.filetype
+
+  if ft == "ruby" then return ruby_bp_line end
+  if ft == "eruby" or ft == "eruby.html" then return eruby_bp_line end
+  if ft == "javascript" or ft == "typescript" or ft == "typescriptreact" then return js_bp_line end
+  if ft == "python" then return python_bp_line end
+end
+
+function _G.RemoveBreakpoints()
+  vim.api.nvim_command('silent! g/'..BreakPointString()..'/d')
+end
+
+function _G.ToggleBreakpoint()
+  local line_text = vim.api.nvim_get_current_line()
+  local bp_string = BreakPointString()
+
+  if string.find(line_text, bp_string) == nil then
+    local lnum = vim.api.nvim_win_get_cursor(0)[1]
+
+    vim.fn.append(lnum-1, bp_string)
+    vim.cmd('normal k')
+    vim.cmd('normal =')
+  else
+    vim.cmd('normal dd')
+  end
+end
+
+
+-- nvim-tree
+local is_toggled = false
+function _G.toggle_full_width()
+  print(is_toggled)
+  if is_toggled then
+    require'nvim-tree'.resize(30)
+  else
+    require'nvim-tree'.resize(100)
+  end
+  is_toggled = not is_toggled
+end

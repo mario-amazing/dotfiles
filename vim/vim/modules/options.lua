@@ -25,8 +25,8 @@ set.list = true
 
 set.scrolloff = 1
 
-set.backupdir = "~/.vim/tmp/backup//" -- backups
-set.directory = "~/.vim/tmp/swap//"   -- swapfiles
+set.backupdir = vim.env.HOME.."/.vim/tmp/backup//"  -- backups
+set.directory = vim.env.HOME.."/.vim/tmp/swap//"   -- swapfiles
 set.swapfile = false
 set.backup = true
 

@@ -1,16 +1,8 @@
 " ,vCoolor
 let g:vcoolor_disable_mappings = 1
 let g:vcoolor_lowercase = 1
-" let g:vcoolor_custom_picker = 'zenity --title "Vim colorsel" --color-selection --show-palette --color '
 let g:vcoolor_custom_picker = 'yad --title "Vim colorsel" --color-selection --show-palette --color '
 
-
-" ,instant
-let g:instant_markdown_autostart = 0
-" markdown
-let g:vim_markdown_conceal = 1
-
-let g:markdown_fenced_languages = ['sql']
 
 " ,sideways
 nnoremap <S-h> :SidewaysLeft<CR>

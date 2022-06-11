@@ -12,7 +12,6 @@ let g:user_emmet_leader_key = '<Leader>'
   endfu
 
   " ,motion
-  nnoremap <C-t> :tabnew<CR>
 
   nnoremap <silent> <C-i> <C-i>zz
   nnoremap <silent> <C-o> <C-o>zz
@@ -23,6 +22,7 @@ let g:user_emmet_leader_key = '<Leader>'
   map <S-B> <Plug>CamelCaseMotion_b
   map <S-E> <Plug>CamelCaseMotion_e
 
+  nnoremap <C-t> :tabnew<CR>
   nnoremap <Tab>    gt
   nnoremap <S-Tab>  gT
   nnoremap g1 1gt
@@ -37,16 +37,6 @@ let g:user_emmet_leader_key = '<Leader>'
   nnoremap g0 10gt
 
 
-  " ,MRU
-  nnoremap <silent><C-p>       :Telescope find_files<CR>
-  nnoremap <silent><c-f><CR>   :Telescope oldfiles<cr>
-  nnoremap <silent><C-f><C-t>  :Telescope filetypes<CR>
-  " builtin.live_grep
-
-
-  " Breakpoints
-  nnoremap <F5> :call RemoveBreakpoints()<CR>
-  nnoremap <silent><leader>b :call ToggleBreakpoint(line('.'))<CR>
 
 " markup
 nnoremap <silent><F8> :let w:v=winsaveview()<cr>ggVG=:call winrestview(w:v)<cr>

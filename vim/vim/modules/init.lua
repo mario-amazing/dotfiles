@@ -1,4 +1,3 @@
--- # TODO disable '' pairs
 -- NOTE ignore in search files from .gitignore
 require('telescope').setup{
   defaults = {
@@ -38,7 +37,25 @@ require('lightspeed').setup {
 }
 
 
--- # TODO add sync across all of the tabs https://github.com/kyazdani42/nvim-tree.lua/issues/457
+-- nvim-tree
+local list = {
+  { key = "<Tab>", action = "" },
+  { key = "w",     action = "preview" },
+
+  { key = "<C-t>", action = "" },
+  { key = "t",     action = "tabnew" },
+
+  { key = "<S-A>", action = "toggle_full_width", action_cb = toggle_full_width },
+}
+
+require('nvim-tree').setup {
+  update_focused_file = { update_cwd = true },
+  view = { mappings = { list = list } },
+  filters = { dotfiles = true },
+  git = { ignore = false }
+}
+
+-- TODO add sync across all of the tabs https://github.com/kyazdani42/nvim-tree.lua/issues/457
 --
 -- TODO Check this discussion: (auto close if last buffer is Nvim-tree)
 -- https://github.com/kyazdani42/nvim-tree.lua/discussions/1115
@@ -51,20 +68,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end
 })
 
-local list = {
-  { key = "<Tab>", action = "" },
-  { key = "w",action = "preview" },
-
-  { key = "<C-t>", action = "" },
-  { key = "t",action = "tabnew" },
-}
-
-require('nvim-tree').setup {
-  update_focused_file = { update_cwd = true },
-  view = { mappings = { list = list } },
-  filters = { dotfiles = true },
-}
 
 require('nvim-autopairs').setup{}
+
 
 -- require('colorizer').setup() -- uncomment for default enabled

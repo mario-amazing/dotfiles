@@ -1,4 +1,3 @@
-set nocompatible
 call plug#begin('~/.vim/bundle')
 
 " Colorschemes
@@ -62,8 +61,6 @@ Plug 'terryma/vim-expand-region'     " Easier way to select textobjects(vvv)
 
 
 " Editing assistants
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " multi coursors
-
 Plug 'AndrewRadev/switch.vim'        " Switch segments of text with predefined replacements(-)
 Plug 'tpope/vim-abolish'             " Working with word Cases(crs/crm/cru)
 Plug 'AndrewRadev/splitjoin.vim'     " Split/Join(gS/gJ)
@@ -114,16 +111,12 @@ Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
-Plug 'sandeepravi/refactor-rails.vim', { 'for': 'ruby' }
-Plug 'vim-scripts/ruby-matchit', { 'for': 'ruby' }
-Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-rake'
-Plug 'thoughtbot/vim-rspec'
+" Plug 'thoughtbot/vim-rspec' ???????? check if need
 "    markdown
 Plug 'shime/vim-livedown' " Markdown live preview
-Plug 'plasticboy/vim-markdown', { 'depends' : 'godlygeek/tabular'}
 "    html
-Plug 'othree/html5.vim'
+" TODO add HTML
 "    css
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'

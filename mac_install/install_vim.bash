@@ -14,6 +14,7 @@ install_vim() {
 
   brew install npm
   npm install -g neovim
+  npm install -g livedown # shime/vim-livedown
 
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   mkdir -p "$HOME/.vim"
