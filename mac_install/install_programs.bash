@@ -66,6 +66,7 @@ install_programs(){
   brew install --cask steam
   brew install --cask appcleaner
 
+  brew install --cask basictex
   # brew install --cask chromedriver
   # install_qt_5_5
 }

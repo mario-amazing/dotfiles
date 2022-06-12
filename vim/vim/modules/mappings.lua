@@ -1,4 +1,6 @@
 -- Common
+-- xnoremap p pgvy -- Not override clipboard on paste (currently fixed/overrides with vim-pasta)
+-- quit
 vim.api.nvim_set_keymap('n', '<S-q>', ':q<CR>', { silent = true})
 -- jump window
 vim.api.nvim_set_keymap('', '<C-k>', '<C-w><C-k>', { noremap = true, silent = true })
@@ -26,9 +28,6 @@ vim.api.nvim_set_keymap('n', '<Space>k', '<Plug>BookmarkPrev', {})
 -- Navigation nvim-tree
 vim.api.nvim_set_keymap('n', '<Leader>t', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>ft', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
-
--- Tagbar
-vim.api.nvim_set_keymap('n', '<F2>', ':TagbarToggle<CR>', { noremap = true, silent = true })
 
 -- Telescope
 vim.api.nvim_set_keymap('n', '<C-p>', ':Telescope find_files<CR>', {})
@@ -64,3 +63,7 @@ vim.api.nvim_set_keymap('n', '<leader>b', ':lua ToggleBreakpoint()<CR>', { norem
 
 -- shime/vim-livedown
 vim.api.nvim_set_keymap('n', '<leader>lp', ':LivedownToggle<CR>', {})
+
+-- sideways
+vim.api.nvim_set_keymap('n', '<S-h>', ':SidewaysLeft<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<S-l>', ':SidewaysRight<CR>', { noremap = true })

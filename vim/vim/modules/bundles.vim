@@ -2,7 +2,7 @@ call plug#begin('~/.vim/bundle')
 
 " Colorschemes
 """""""""""""""
-Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
+Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'} " colorcheme
 
 " #UI
 Plug 'nvim-lualine/lualine.nvim'
@@ -78,11 +78,6 @@ Plug 'godlygeek/tabular'             " Text align lines by regexp
 Plug 'junegunn/vim-easy-align'       " Text align lines symbols(ga)
 Plug 'windwp/nvim-autopairs'
 " !!!!!!TODO CHECK nvim-cmp complition!!!
-
-
-" Fuzzy menus
-"""""""""""""""
-Plug 'majutsushi/tagbar' ", {'on':'TagbarToggle'} (F2)
 
 
 " Tools
