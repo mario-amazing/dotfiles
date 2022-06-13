@@ -7,8 +7,8 @@
 
 # Common
 alias f=fg
-alias vim='vim'
 alias x='exit'
+alias vim='nvim'
 alias v='nvim'
 alias sv="sudo nvim"
 alias s='subl'
@@ -100,7 +100,7 @@ alias ss="spring stop && pkill spring"
 
 alias ez="nvim ~/.zshrc"
 alias ea="nvim ~/.zsh/aliases.zsh"
-alias ev="nvim ~/.vimrc"
+alias ev="nvim ~/.config/nvim/init.lua"
 alias ep="nvim ~/.pryrc"
 alias ee="nvim .env"
 alias eph="nvim ~/.pryrc_helpers.rb"
