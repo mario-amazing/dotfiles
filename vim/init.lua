@@ -10,10 +10,10 @@ require('colors')
 require('options')
 require('plugins')
 require('helpers')
+require('mappings')
 require('init')
 require('lsp')
 require('lualine_nvim')
-require('mappings')
 
 -- ======== Tips:
 -- lua config https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/

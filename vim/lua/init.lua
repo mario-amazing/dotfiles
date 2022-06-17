@@ -23,8 +23,8 @@ require('telescope').load_extension('vim_bookmarks')
 
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", "css", "scss", "regex", "yaml" },
   highlight = { enable = true },
+  ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", "css", "scss", "regex", "yaml" },
   -- indent = { enable = true }, -- Experimental
 
   -- extension nvim-ts-context-commentstring(comment by treesitter line type)(html with js and css)
@@ -70,6 +70,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 
+-- You can use treesitter to check for a pair.
 require('nvim-autopairs').setup{}
 
 

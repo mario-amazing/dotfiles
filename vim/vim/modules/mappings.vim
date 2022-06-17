@@ -1,7 +1,3 @@
-let g:mapleader = ','
-let g:user_emmet_leader_key = '<Leader>'
-
-
   nnoremap <leader>yg  :<C-u>call feedkeys(':YamlGoToKey '.@", 'n')<CR>
   nnoremap <leader>yy  :<C-u>call <SID>read_path()<CR>
   fu! s:read_path()
@@ -12,59 +8,19 @@ let g:user_emmet_leader_key = '<Leader>'
   endfu
 
   " ,motion
-
   nnoremap <silent> <C-i> <C-i>zz
   nnoremap <silent> <C-o> <C-o>zz
-
-  nmap <C-g> %
 
   map <S-W> <Plug>CamelCaseMotion_w
   map <S-B> <Plug>CamelCaseMotion_b
   map <S-E> <Plug>CamelCaseMotion_e
 
-  nnoremap <C-t> :tabnew<CR>
-  nnoremap <Tab>    gt
-  nnoremap <S-Tab>  gT
-  nnoremap g1 1gt
-  nnoremap g2 2gt
-  nnoremap g3 3gt
-  nnoremap g4 4gt
-  nnoremap g5 5gt
-  nnoremap g6 6gt
-  nnoremap g7 7gt
-  nnoremap g8 8gt
-  nnoremap g9 9gt
-  nnoremap g0 10gt
-
-
-
-" markup
-nnoremap <silent><F8> :let w:v=winsaveview()<cr>ggVG=:call winrestview(w:v)<cr>
 
 " sandwich
 let g:sandwich_no_default_key_mappings = 1
 let g:operator_sandwich_no_default_key_mappings = 1
 xmap S# <Plug>(operator-sandwich-add)i#{<cr>}<cr>
 
-" #Git
-nnoremap          <Leader>gg :Git<space>
-nnoremap <silent> <Leader>gs :Gtabedit :<CR>
-nnoremap <silent> <Leader>gd :Gitsigns diffthis<CR>
-nnoremap <silent> <Leader>gc :Git commit<CR>
-nnoremap <silent> <Leader>gl :GV<CR>
-nnoremap <silent> <leader>gb :Git blame<CR>
-nnoremap <silent> <leader>gh :lua require'telescope.builtin'.git_stash{}<CR>
-nnoremap <silent> <leader>gb :NvimTreeClose<cr><cmd>Git blame<cr>
-" ↓ logs current file
-nnoremap <silent> <Leader>gv :GV!<CR>
-nnoremap <silent> <Leader>dp :diffput<CR>
-
-
-" #Vimtex
-let g:vimtex_compiler_progname = 'nvr'
-
-
-xnoremap <Leader>ree :Rextract<space>
 
 vmap c <Plug>Commentary
 vmap " <Plug>VSurround"
@@ -73,19 +29,6 @@ nmap d" <Plug>Dsurround"
 nmap dt <Plug>Dsurroundt
 nmap d' <Plug>Dsurround'
 
-" vvv https://github.com/terryma/vim-expand-region
-let g:expand_region_text_objects = {
-      \ 'iw'  :0,
-      \ 'iW'  :0,
-      \ 'i"'  :1,
-      \ 'i''' :1,
-      \ 'i]'  :1,
-      \ 'ib'  :1,
-      \ 'iB'  :1,
-      \ 'il'  :0,
-      \ 'ip'  :0,
-      \ 'ie'  :0,
-      \ }
 vmap v      <Plug>(expand_region_expand)
 vmap <C-v>  <Plug>(expand_region_shrink)
 
@@ -136,10 +79,7 @@ cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-g>  <C-c>
-cnoreabbrev qq q!
-cnoreabbrev qqq qa!
-cnoreabbrev q Q
-cnoreabbrev qq Q!
+
 cabbrev Tab Tabularize
 
 
@@ -149,18 +89,6 @@ cabbrev gc  Git commit -m
 cabbrev gca Git commit --amend -m
 cabbrev gco  Git checkout
 cabbrev gcof Git checkout "%:p:h"
-
-if has('nvim')
-  tnoremap <Esc><Esc> <C-\><C-n>
-endif
-
-" #Misc
-nnoremap <silent><C-w>o     :res<CR>
-nnoremap <silent><C-w><C-o> :res<CR>
-inoremap <silent><C-c> <Esc>
-nnoremap <C-c> <Esc>
-nnoremap <C-s> :write<CR>
-nmap <S-u> :<C-u>redo<CR><Plug>(RepeatRedo)
 
 map ё `| map й q| map ц w| map у e| map к r| map е t| map н y| map г u| map ш i| map щ o| map з p| map х [| map ъ ]
 map ф a| map ы s| map в d| map а f| map п g| map р h| map о j| map л k| map д l| map ж ;| map э '| map я z| map ч x
@@ -237,7 +165,6 @@ fu! TryRailsCFile() abort
   endtry
 endfu
 
-let s:openers =  ['xdg-open', 'open', 'gnome-open', 'kde-open']
 fu! TryURI() abort
   " https://github.com/itchyny/vim-highlighturl/blob/master/autoload/highlighturl.vim 
   let pattern = '\v\c%(%(h?ttps?|ftp|file|ssh|git)://|[a-z]+\@[a-z]+.[a-z]+:)%('
@@ -266,14 +193,8 @@ fu! TryURI() abort
   endwhile
   """""""""""""""""""""""
 
-  for opener in s:openers
-    if executable(opener)
-      call system(opener . ' ' . shellescape(cfile))
-      return 1
-    endif
-  endfor
-
-  return 0
+  call system('open' . ' ' . shellescape(cfile))
+  return 1
 endfu
 
 fu! TryPlainGF() abort
@@ -373,94 +294,3 @@ nmap <silent> gf :<C-u>call SmartGF()<CR>
 xmap <silent> gf :<C-u>call SmartGF()<CR>gv
 nmap <silent> gn :tnext<CR>
 xmap <silent> gn :tnext<CR>
-
-function! s:isAtStartOfLine(mapping)
-  let text_before_cursor = getline('.')[0 : col('.')-1]
-  let mapping_pattern = '\V' . escape(a:mapping, '\')
-  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
-  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
-endfunction
-
-fu! ParseLinks() abort
-  " echo mode()
-  " return
-  let input_link = input('Input link: ')
-  let input_link = substitute(input_link, '^\s\+\|\s\+$', '', 'g')
-
-  if empty(input_link)
-    return
-  endif
-
-  " search links section start from the end of an open buffer
-  let last_line = line('$')
-  let ln = last_line
-  while ln > 0
-    let line = getline(ln)
-
-    if line ==# '---'
-      let ln += 1
-      break
-    endif
-    let ln -= 1
-  endwhile
-
-  " insert links block boundary if not found
-  if ln ==# 0
-    call append(last_line, '---')
-    " let last_line += 1
-  endif
-
-  let links = []
-
-  " collect all links
-  let last_line = line('$')
-  while ln <= last_line
-    call add(links, getline(ln))
-    let ln += 1
-  endwhile
-
-  " extract links
-  let parsed_links = []
-  let link_pos = ''
-  for l in links
-    let n = substitute(l, '^\[\(\d\+\)\].*', '\1', '')
-    let link = substitute(l, '^\(\[\d\+\]\) \(.*\)', '\2', '')
-    call add(parsed_links, { 'n': n, 'link': link })
-
-    if link ==# input_link
-      let link_pos = '[' . n . ']'
-    endif
-  endfor
-
-  " try to setup link reference
-  if empty(link_pos)
-    " return ''
-    if empty(parsed_links)
-      let new_nr = 1
-    else
-      let new_nr = str2nr(parsed_links[len(parsed_links) - 1].n) + 1
-    endif
-    call append(line('$'), '[' . new_nr . '] ' . input_link)
-    let link_pos = '[' . new_nr . ']'
-  endif
-
-  let ln = line('.')
-  let col = col('.')
-
-  let was_nil = len(getline('.')) < col('.')
-  let was_len = len(getline('.'))
-  " call cursor(ln, col)
-  " exe 'norm! a' . link_pos . "\<Esc>"
-  exe 'norm! a'.link_pos
-  if was_nil
-    " call cursor(ln, len(line(.)) + 1)
-    " echo len(getline('.')) + len(link_pos)
-    call cursor(ln, was_len + len(link_pos) + 1)
-    " call cursor(ln, len(getline('.')) + len(link_pos) + 2, -1)
-  endif
-  " return link_pos
-  return link_pos
-endfu
-
-imap  <C-l> <C-o>:<C-u>call ParseLinks()<CR><Right>
-nmap <C-l> :<C-u>call ParseLinks()<CR><Right>

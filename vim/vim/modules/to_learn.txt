@@ -1,3 +1,6 @@
+" Commands in terminal
+:term pry
+
 " Bookmarks
 nmap <Space><Space> <Plug>BookmarkToggle
 nmap <Space>i <Plug>BookmarkAnnotate
@@ -33,3 +36,6 @@ Text align lines symbols(ga )
 
 " LivePreview markdown - shime/vim-livedown
 <Leader>lp - Live privew Toggle README
+
+" wellle/targets.vim - Select inside({[]})
+vi( va(

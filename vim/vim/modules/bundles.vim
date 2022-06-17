@@ -27,7 +27,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 " Git
 """""""""""""""
 Plug 'tpope/vim-fugitive' " main git commands
-Plug 'junegunn/gv.vim' " git commit helper
 Plug 'rhysd/conflict-marker.vim', {'on': []}
 Plug 'lewis6991/gitsigns.nvim' " Add git line status(|/=/~) to the left of a line and Git diff
 
@@ -57,6 +56,7 @@ Plug 'osyo-manga/vim-over' " Visual substitute
 " Textobjects
 """""""""""""""""""""""""""
 Plug 'terryma/vim-expand-region'     " Easier way to select textobjects(vvv)
+Plug 'wellle/targets.vim'            " Select inside({[]}) vi( va(
 
 
 " Editing assistants

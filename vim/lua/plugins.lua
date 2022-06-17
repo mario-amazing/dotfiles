@@ -1,3 +1,6 @@
+-- Common
+vim.g.mapleader = ','
+
 -- splitjoin
 vim.g.splitjoin_ruby_trailing_comma = 1
 vim.g.splitjoin_ruby_curly_braces = 0
@@ -27,3 +30,23 @@ vim.g.pasta_disabled_filetypes = {'esearch'}
 
 -- gitv
 vim.g.Gitv_DoNotMapCtrlKey = 1
+
+-- lightspeed
+vim.g.lightspeed_no_default_keymaps  =true
+
+--emmet
+vim.g.user_emmet_leader_key = '<Leader>'
+
+-- " vvv https://github.com/terryma/vim-expand-region
+vim.g.expand_region_text_objects = {
+  ['iw'] = 0,
+  ['iW'] = 0,
+  ['i"'] = 1,
+  ["i'"] = 1,
+  ['i]'] = 1,
+  ['ib'] = 1,
+  ['iB'] = 1,
+  ['il'] = 0,
+  ['ip'] = 0,
+  ['ie'] = 0,
+}
