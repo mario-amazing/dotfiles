@@ -1,8 +1,6 @@
 vim.cmd 'source ~/.vim/modules/bundles.vim'
 vim.cmd 'source ~/.vim/modules/ncompletion.vim'
 vim.cmd 'source ~/.vim/modules/autocmds.vim'
-vim.cmd 'source ~/.vim/modules/helpers.vim'
-vim.cmd 'source ~/.vim/modules/plugins.vim'
 vim.cmd 'source ~/.vim/modules/mappings.vim'
 vim.cmd 'source ~/.vim/modules/misc.vim'
 
@@ -10,8 +8,8 @@ require('colors')
 require('options')
 require('plugins')
 require('helpers')
-require('mappings')
 require('init')
+require('mappings')
 require('lsp')
 require('lualine_nvim')
 

@@ -101,7 +101,6 @@ Plug 'neovim/nvim-lspconfig'
 
 "    ruby
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
-Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-rake'
 " Plug 'thoughtbot/vim-rspec' ???????? check if need

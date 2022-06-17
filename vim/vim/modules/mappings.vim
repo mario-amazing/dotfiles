@@ -7,14 +7,6 @@
     call setreg('"', substitute(getreg('"'), "\<C-j>", '', 'g'), 'V')
   endfu
 
-  " ,motion
-  nnoremap <silent> <C-i> <C-i>zz
-  nnoremap <silent> <C-o> <C-o>zz
-
-  map <S-W> <Plug>CamelCaseMotion_w
-  map <S-B> <Plug>CamelCaseMotion_b
-  map <S-E> <Plug>CamelCaseMotion_e
-
 
 " sandwich
 let g:sandwich_no_default_key_mappings = 1
