@@ -1,47 +1,27 @@
-  nnoremap <leader>yg  :<C-u>call feedkeys(':YamlGoToKey '.@", 'n')<CR>
-  nnoremap <leader>yy  :<C-u>call <SID>read_path()<CR>
-  fu! s:read_path()
-    redir @">
-    YamlGetFullPath
-    redir END
-    call setreg('"', substitute(getreg('"'), "\<C-j>", '', 'g'), 'V')
-  endfu
+nnoremap <leader>yg  :<C-u>call feedkeys(':YamlGoToKey '.@", 'n')<CR>
+nnoremap <leader>yy  :<C-u>call <SID>read_path()<CR>
+fu! s:read_path()
+  redir @">
+  YamlGetFullPath
+  redir END
+  call setreg('"', substitute(getreg('"'), "\<C-j>", '', 'g'), 'V')
+endfu
 
-
-" sandwich
-let g:sandwich_no_default_key_mappings = 1
-let g:operator_sandwich_no_default_key_mappings = 1
-xmap S# <Plug>(operator-sandwich-add)i#{<cr>}<cr>
-
-
-vmap c <Plug>Commentary
-vmap " <Plug>VSurround"
-vmap ' <Plug>VSurround'
-nmap d" <Plug>Dsurround"
-nmap dt <Plug>Dsurroundt
-nmap d' <Plug>Dsurround'
-
-vmap v      <Plug>(expand_region_expand)
-vmap <C-v>  <Plug>(expand_region_shrink)
 
 vnoremap <Leader>t, :Tabularize/,\zs<CR>
 vnoremap <Leader>t: :Tabularize/:\zs<CR>
 vnoremap <Leader>t= :Tabularize/=<CR>
+
 nnoremap > >>
 nnoremap < <<
 vnoremap < <gv
 vnoremap > >gv
 vnoremap = =gv
+nnoremap = ==
+
 vnoremap <C-a> <C-a>gv
 vnoremap <C-x> <C-x>gv
-nnoremap = ==
 vnoremap <S-y> ygv
-
-imap <C-h> <BS>
-imap <C-h> <BS>
-
-xmap <leader>n <Plug>NrrwrgnDo
-nmap <leader>n <Plug>NrrwrgnDo
 
 nnoremap <Leader>f<S-s> :%S/
 vnoremap <Leader>f<S-s> :S/
@@ -96,14 +76,6 @@ let g:endwise_no_mappings = 1
 
 " au VimEnter * call Aaaaa()
 
-" fu! Aaaaa()
-"   " exe "imap <C-X><CR> ".maparg('<CR>', 'i')."<Plug>AlwaysEnd"
-"   exe "inoremap <CR> ".maparg('<CR>', 'i')."<Plug>DiscretionaryEnd"
-" endfu
-"
-"
-"
-nmap gx <Plug>(openbrowser-open)
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -117,6 +89,7 @@ nmap <F9> :%!ruby -r json -e 'puts JSON.pretty_generate(JSON.parse(ARGF.read))'<
 
 nnoremap yn :let @+ = substitute(expand("%"), '^'.getcwd().'/', '', '')<CR>
 nnoremap yN :let @+ = expand("%:t")<CR>
+" python
 nnoremap yp :let @+ = tr(expand('%:r'), '/', '.')<CR>
 nnoremap ypi :let @+ = "import " . tr(expand('%:r'), '/', '.')<CR>
 nnoremap ypf :let @+ = "from " . tr(expand('%:r'), '/', '.') . " import "<CR>

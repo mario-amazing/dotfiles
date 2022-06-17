@@ -62,6 +62,13 @@ vim.keymap.set('n', '<A-h>', '<cmd>MoveHChar(-1)<CR>', { silent = true })  --  '
 vim.keymap.set('v', '<A-l>', '<cmd>MoveHBlock(1)<CR>', { silent = true })  --  '<A-l>'
 vim.keymap.set('v', '<A-h>', '<cmd>MoveHBlock(-1)<CR>', { silent = true }) --  '<A-h>'
 
+-- vim-surround
+vim.keymap.set('v', '"',  '<Plug>VSurround"')
+vim.keymap.set('v', "'",  "<Plug>VSurround'")
+vim.keymap.set('n', 'd"', '<Plug>Dsurround"')
+vim.keymap.set('n', 'dt', '<Plug>Dsurroundt')
+vim.keymap.set('n', "d'", "<Plug>Dsurround'")
+
 -- Bookmarks
 vim.keymap.set('n', '<Space><Space>', '<Plug>BookmarkToggle')
 vim.keymap.set('n', '<Space>i', '<Plug>BookmarkAnnotate')
@@ -116,3 +123,13 @@ vim.keymap.set('n', '<S-l>', '<cmd>SidewaysRight<CR>')
 vim.keymap.set('', '<S-W>', '<Plug>CamelCaseMotion_w')
 vim.keymap.set('', '<S-B>', '<Plug>CamelCaseMotion_b')
 vim.keymap.set('', '<S-E>', '<Plug>CamelCaseMotion_e')
+
+-- sandwich
+vim.keymap.set('x', 'S#', '<Plug>(operator-sandwich-add)i#{<cr>}<cr>')
+
+-- vim-expand-region
+vim.keymap.set('v', 'v',     '<Plug>(expand_region_expand)')
+vim.keymap.set('v', '<C-v>', '<Plug>(expand_region_shrink)')
+
+-- vim-commentary
+vim.keymap.set('v', 'c',  '<Plug>Commentary')
