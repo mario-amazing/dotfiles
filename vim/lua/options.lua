@@ -17,6 +17,8 @@ set.ignorecase = true -- search(/) without case
 
 set.number = true -- line numbers
 
+set.spelllang='ru_yo,en_us' -- languages words will be recognized
+
 set.ts = 2
 set.sw = 2
 set.sts = 2

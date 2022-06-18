@@ -19,20 +19,6 @@ fu! GenerateCtags()
 endfu
 " au BufWritePost * if &ft ==# 'ruby' | call GenerateCtags() |endif
 
-fu! ExitFugitive(cmd) abort
-  try
-    if !exists(':Gedit') | exe 'silent ' . a:cmd | return | endif
-    if (&diff == 0 || getbufvar('#', '&diff') == 0) " && (bufname('%') !~ '^fugitive:' && bufname('#') !~ '^fugitive:')
-        exe a:cmd
-    else
-        exe a:cmd
-        Gedit :
-    endif
-  catch
-    echohl ErrorMsg | echo v:exception | echohl None
-  endtry
-endfu
-
 function! IndentWithI()
   if getline('.') =~ '^\s*$'
     return '"_cc'
@@ -75,12 +61,12 @@ endfu
 
 autocmd BufWritePost * call RegenerateTags()
 
-" esearch
+" vim-esearch
 let g:esearch = { 'backend': 'nvim', 'adapters': {'rg': {'options': '--hidden'}}}
-call   esearch#map('<C-f><C-f>','esearch')
-call   esearch#map('<C-f>f',    'esearch')
-call   esearch#map('<C-f>w',    'esearch-word-under-cursor')
-call   esearch#map('<C-f><C-w>','esearch-word-under-cursor')
+" call   esearch#map('<C-f><C-f>','esearch')
+" call   esearch#map('<C-f>f',    'esearch')
+" call   esearch#map('<C-f>w',    'esearch-word-under-cursor')
+" call   esearch#map('<C-f><C-w>','esearch-word-under-cursor')
 
 "   Keymap |     What it does
 " ---------+---------------------------------------------------------------------------------------------
@@ -107,3 +93,163 @@ let g:esearch.win_map = [
 let g:esearch_sort_by_path = {'adapters': {'rg': {'options': '--sort path'}}}
 let g:esearch_sort_by_date = {'adapters': {'rg': {'options': '--sort modified'}}}
 let g:EsearchAddAfter = {n -> {'after': b:esearch.after + n, 'backend': 'system'}}
+
+
+""""""""""" SmartGF """""""""
+fu! TryCTag() abort
+  try
+    let cword = expand('<cword>')
+    if empty(cword)
+      return 0
+    endif
+
+    exec "tag " . cword
+    return 1
+  catch /E73:/ " tag stack is empty
+    return 0
+  catch /E433:/ " no tags file
+    return 0
+  catch /E426:/ " no tag  found
+    return 0
+  endtry
+endfu
+
+fu! TryRailsCFile() abort
+  if !exists('*rails#cfile')
+    return 0
+  endif
+
+  try
+    exec 'find ' . rails#cfile()
+    return 1
+  catch /E345:/ " E345: Can't find file in path
+    return 0
+  catch /Not in a Rails app/
+    return 0
+  endtry
+endfu
+
+fu! TryURI() abort
+  " https://github.com/itchyny/vim-highlighturl/blob/master/autoload/highlighturl.vim 
+  let pattern = '\v\c%(%(h?ttps?|ftp|file|ssh|git)://|[a-z]+\@[a-z]+.[a-z]+:)%('
+        \.'%([&:#*@~%_\-=?!+;/.0-9A-Za-z]*%(%([.,][&:#*@~%_\-=?!+;/0-9A-Za-z]+)+|:\d+))?'
+        \.'%(\([&:#*@~%_\-=?!+;/.0-9A-Za-z]*\))?%(\[[&:#*@~%_\-=?!+;/.0-9A-Za-z]*\])?'
+        \.'%(\{%([&:#*@~%_\-=?!+;/.0-9A-Za-z]*|\{[&:#*@~%_\-=?!+;/.0-9A-Za-z]*\})\})?'
+        \.')*[-/0-9A-Za-z]*'
+
+  " This hack is required to capture uri with params after question mark
+  """""""""""""""""""""""
+  let curcol = col('.')
+  let line = getline('.')
+  let endpos = 0
+  while 1
+    " Find next uri start position. Is required to capture file ignoring some
+    " chars in ahead like native gf do
+    let startpos = match(line, expand("<cfile>"), endpos)
+    " Find next uri including uri params end position
+    let endpos =  matchend(line, pattern, startpos)
+    if endpos ==# -1 | return 0 | endif
+
+    if curcol <= endpos
+      let cfile = matchstr(line, pattern, startpos)
+      break
+    endif
+  endwhile
+  """""""""""""""""""""""
+
+  call system('open' . ' ' . shellescape(cfile))
+  return 1
+endfu
+
+fu! TryPlainGF() abort
+  try
+    norm! gf
+    return 1
+
+  catch /E446:/ " No file name under cursor
+    return 0
+  catch /E447:/ " Can't find file "" in path
+    return 0
+  endtry
+endfu
+
+fu! SmartGF() abort
+  for Strategy in g:smartgf_strategies
+    if Strategy()
+      return
+    endif
+  endfor
+  unsilent echo "Can't find file or tag"
+endfu
+
+fu! TryFootnote() abort
+  let pattern='\(\[\d\+\]\)'
+
+  let curcol = col('.')
+  let line = getline('.')
+  let endpos = 0
+
+  let footnote = MatchUnderCursor(pattern)
+  if empty(footnote)
+    let footnote = matchstr(line, pattern, col('.')-1)
+    if empty(footnote) | return 0 | endif
+  endif
+
+  " search links section start from the end of an open buffer
+  let last_line = line('$')
+  let ln = last_line
+  while ln > 0
+    let line = getline(ln)
+
+    if line ==# '---'
+      let ln += 1
+      break
+    endif
+    let ln -= 1
+  endwhile
+
+  if ln ==# 0
+    return 0
+  endif
+
+  let links = []
+  let last_line = line('$')
+  while ln <= last_line
+    call add(links, getline(ln))
+    let ln += 1
+  endwhile
+
+
+  let link_pos = ''
+  for l in links
+    let n = matchstr(l, '^\(\[\d\+\]\)')
+    if n ==# footnote
+      let link = substitute(l, '^\(\[\d\+\]\) \(.*\)', '\2', '')
+
+      for opener in s:openers
+        if executable(opener)
+          call system(opener . ' ' . shellescape(link))
+          return 1
+        endif
+      endfor
+    endif
+  endfor
+endfu
+
+
+function! MatchUnderCursor(pat)
+  let line = getline(".")
+  let lastend = 0
+  while lastend >= 0
+    let beg = match(line,'\C'.a:pat,lastend)
+    let end = matchend(line,'\C'.a:pat,lastend)
+    if beg < col(".") && end >= col(".")
+      return matchstr(line,'\C'.a:pat,lastend)
+    endif
+    let lastend = end
+  endwhile
+  return ""
+endfunction
+
+let g:smartgf_strategies = [function('TryURI'), function('TryPlainGF'), function('TryRailsCFile'), function('TryCTag'), function('TryFootnote')]
+""""""""""" SmartGF """""""""

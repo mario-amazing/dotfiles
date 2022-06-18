@@ -27,16 +27,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 " Git
 """""""""""""""
 Plug 'tpope/vim-fugitive' " main git commands
-Plug 'rhysd/conflict-marker.vim', {'on': []}
+Plug 'rhysd/conflict-marker.vim'
 Plug 'lewis6991/gitsigns.nvim' " Add git line status(|/=/~) to the left of a line and Git diff
-
-augroup load_git_plugins
-  au!
-  au User Fugitive call plug#load('conflict-marker.vim')
-        \| au! load_git_plugins
-  " NOTE au! -> clear group load_git_plugins, prevent multi loading
-augroup END
-
 
 " UI
 """""""""""""""""""
@@ -74,7 +66,6 @@ Plug 'JoosepAlviste/nvim-ts-context-commentstring' " treesitter context comments
 Plug 'tpope/vim-surround'            " Manage code surroundings(quotes, parenthesis, brackets, *ml-tags etc.)
 Plug 'machakann/vim-sandwich'        " Add #{} surround to ruby string
 
-Plug 'godlygeek/tabular'             " Text align lines by regexp
 Plug 'junegunn/vim-easy-align'       " Text align lines symbols(ga)
 Plug 'windwp/nvim-autopairs'
 " !!!!!!TODO CHECK nvim-cmp complition!!!
@@ -103,7 +94,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-rake'
-" Plug 'thoughtbot/vim-rspec' ???????? check if need
 "    markdown
 Plug 'shime/vim-livedown' " Markdown live preview
 "    html

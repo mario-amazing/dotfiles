@@ -659,7 +659,7 @@
 				<real>0.87806010246276855</real>
 			</dict>
 			<key>Application Keypad Allowed</key>
-			<false/>
+			<true/>
 			<key>BM Growl</key>
 			<true/>
 			<key>Background Color</key>

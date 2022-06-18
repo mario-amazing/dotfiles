@@ -8,6 +8,9 @@ nmap <Space>a <Plug>BookmarkShowAll
 nmap <Space>j <Plug>BookmarkNext
 nmap <Space>k <Plug>BookmarkPrev
 
+" TrimWhiteSpace
+trw
+
 " undoquit.vim -> Undo closed tabs
 <c-w>u restore closed window
 
@@ -24,6 +27,7 @@ vnoremap <silent> <Leader>fs :OverCommandLine<CR>s/
 " Plug 'tpope/vim-speeddating'
 CTRL-A/CTRL-X to increment dates, times, and more
 Sat, 01 Jan 2000 00:16:03 -0001
+" same with numbers variables
 
 
 " Plug 'AndrewRadev/sideways.vim'
