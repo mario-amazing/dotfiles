@@ -1,4 +1,119 @@
 local map = vim.keymap.set
+-- git
+map('', '<Leader>gg',  ':Git<space>')
+map('', '<Leader>gs',  '<cmd>Gtabedit :<CR>', { silent = true })
+map('', '<Leader>gc',  '<cmd>Git commit<CR>', { silent = true })
+map('', '<Leader>gp',  '<cmd>Git push<CR>', { silent = true })
+map('', '<Leader>gd',  '<cmd>Gitsigns diffthis<CR> ', { silent = true })
+map('', '<Leader>gl',  '<cmd>Telescope git_commits<CR>', { silent = true })
+map('', '<leader>gb',  '<cmd>Git blame<CR> ', { silent = true })
+map('', '<leader>gh',  '<cmd>Telescope git_stash<CR>', { silent = true })
+map('', '<leader>gb',  '<cmd>NvimTreeClose<cr><cmd>Git blame<cr> ', { silent = true })
+map('', '<Leader>gfl', '<cmd>Telescope git_bcommits<CR> ', { silent = true }) -- logs current file
+map('', '<Leader>dp',  '<cmd>diffput<CR> ', { silent = true })
+
+-- SmartGF
+map('n', 'gf', ':<C-u>call SmartGF()<CR>', { silent = true })
+map('x', 'gf', ':<C-u>call SmartGF()<CR>gv', { silent = true })
+map('n', 'gn', ':tnext<CR>', { silent = true })
+map('x', 'gn', ':tnext<CR>', { silent = true })
+
+-- move.nvim
+map('n', '<A-j>', '<cmd>MoveLine(1)<CR>', { silent = true })
+map('n', '<A-k>', '<cmd>MoveLine(-1)<CR>', { silent = true })
+map('v', '<A-j>', '<cmd>MoveBlock(1)<CR>', { silent = true })
+map('v', '<A-k>', '<cmd>MoveBlock(-1)<CR>', { silent = true })
+map('n', '<A-l>', '<cmd>MoveHChar(1)<CR>', { silent = true })
+map('n', '<A-h>', '<cmd>MoveHChar(-1)<CR>', { silent = true })
+map('v', '<A-l>', '<cmd>MoveHBlock(1)<CR>', { silent = true })
+map('v', '<A-h>', '<cmd>MoveHBlock(-1)<CR>', { silent = true })
+
+-- vim-surround
+map('v', '"',  '<Plug>VSurround"')
+map('v', "'",  "<Plug>VSurround'")
+map('n', 'd"', '<Plug>Dsurround"')
+map('n', 'dt', '<Plug>Dsurroundt')
+map('n', "d'", "<Plug>Dsurround'")
+
+-- Bookmarks
+map('n', '<Space><Space>', '<Plug>BookmarkToggle')
+map('n', '<Space>i',       '<Plug>BookmarkAnnotate')
+map('n', '<Space>a',       '<cmd>Telescope vim_bookmarks all<CR>')
+map('n', '<Space>j',       '<Plug>BookmarkNext')
+map('n', '<Space>k',       '<Plug>BookmarkPrev')
+
+-- Navigation nvim-tree
+map('n', '<Leader>t',  '<cmd>NvimTreeToggle<CR>', { silent = true })
+map('n', '<Leader>ft', '<cmd>NvimTreeFindFile<CR>', { silent = true })
+
+-- Telescope
+map('n', '<C-p>',      '<cmd>Telescope find_files<CR>')
+map('n', '<C-f><C-m>', '<cmd>Telescope oldfiles<cr>')
+map('n', '<C-f><C-t>', '<cmd>Telescope filetypes<CR>')
+map('n', '<Leader>mc', '<cmd>Telescope find_files cwd=~/.config/nvim/lua<CR>')
+-- LSP
+map('n', 'gd',       '<cmd>Telescop lsp_definitions<cr>', { silent = true })
+map('n', 'gr',       '<cmd>Telescop lsp_references<cr>', { silent = true })
+map('n', '<space>e', '<cmd>Telescop diagnostics<cr>', { silent = true })
+
+-- Search by asterisk(*)
+map('n', 'n',    'nzz')
+map('n', 'N',    'Nzz')
+map('',  '*',    '<Plug>(asterisk-gz*)', { silent = true })
+map('n', '<CR>', '<cmd>nohl<CR><cmd><Esc>')
+
+-- nvim-colorizer
+map('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { silent = true})
+
+-- undoquit.vim
+map('n', '<C-w>u', '<cmd>Undoquit', { silent = true})
+
+-- lightspeed
+map('n', 'gs', '<Plug>Lightspeed_s', { silent = true })
+map('n', 'gS', '<Plug>Lightspeed_S', { silent = true })
+map('n', 'f',  '<Plug>Lightspeed_f', { silent = true })
+map('n', 'F',  '<Plug>Lightspeed_F', { silent = true })
+
+-- Breakpoints
+map('n', '<F5>',      '<cmd>lua RemoveBreakpoints()<CR>', {silent = true })
+map('n', '<leader>b', '<cmd>lua ToggleBreakpoint()<CR>', { silent = true})
+
+-- shime/vim-livedown
+map('n', '<leader>lp', '<cmd>LivedownToggle<CR>')
+
+-- sideways
+map('n', '<S-h>', '<cmd>SidewaysLeft<CR>')
+map('n', '<S-l>', '<cmd>SidewaysRight<CR>')
+
+-- CamelCaseMotion
+map('', '<S-W>', '<Plug>CamelCaseMotion_w')
+map('', '<S-B>', '<Plug>CamelCaseMotion_b')
+map('', '<S-E>', '<Plug>CamelCaseMotion_e')
+
+-- sandwich
+map('x', 'S#', '<Plug>(operator-sandwich-add)i#{<cr>}<cr>')
+
+-- vim-expand-region
+map('v', 'v',     '<Plug>(expand_region_expand)')
+map('v', '<C-v>', '<Plug>(expand_region_shrink)')
+
+-- vim-commentary
+map('v', 'c',  '<Plug>Commentary')
+
+-- vim-easy-align
+map({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)')
+
+-- vim-esearch
+map('n', '<C-f><C-f>', '<plug>(esearch)')
+map('n', '<C-f>f',     '<plug>(esearch)')
+map('n', '<C-f><C-w>', '<plug>(operator-esearch-prefill)iw') -- search word under cursor
+map('n', '<C-f>w',     '<plug>(operator-esearch-prefill)iw')
+
+-- vim-yaml-helper
+map('n', '<leader>yg', function() return vim.cmd('YamlGoToKey ' .. vim.fn.getreg('*')) end) -- goto key from buffer
+map('n', '<leader>yy', '<cmd>YamlGetFullPath<CR>')
+
+
 -- Common
 -- NOTE xnoremap p pgvy -- Not override clipboard on paste (currently fixed/overrides with vim-pasta)
 -- Misc
@@ -74,120 +189,6 @@ vim.cmd('cabbrev gca  Git commit --amend -m')
 vim.cmd('cabbrev gcan Git commit --amend --no-edit<CR>')
 vim.cmd('cabbrev gco  Git checkout')
 vim.cmd('cabbrev gcof Git checkout "%:p:h"')
-
--- git
-map('', '<Leader>gg',  ':Git<space>')
-map('', '<Leader>gs',  '<cmd>Gtabedit :<CR>', { silent = true })
-map('', '<Leader>gc',  '<cmd>Git commit<CR>', { silent = true })
-map('', '<Leader>gp',  '<cmd>Git push<CR>', { silent = true })
-map('', '<Leader>gd',  '<cmd>Gitsigns diffthis<CR> ', { silent = true })
-map('', '<Leader>gl',  '<cmd>Telescope git_commits<CR>', { silent = true })
-map('', '<leader>gb',  '<cmd>Git blame<CR> ', { silent = true })
-map('', '<leader>gh',  '<cmd>Telescope git_stash<CR>', { silent = true })
-map('', '<leader>gb',  '<cmd>NvimTreeClose<cr><cmd>Git blame<cr> ', { silent = true })
-map('', '<Leader>gfl', '<cmd>Telescope git_bcommits<CR> ', { silent = true }) -- logs current file
-map('', '<Leader>dp',  '<cmd>diffput<CR> ', { silent = true })
-
--- SmartGF
-map('n', 'gf', ':<C-u>call SmartGF()<CR>', { silent = true })
-map('x', 'gf', ':<C-u>call SmartGF()<CR>gv', { silent = true })
-map('n', 'gn', ':tnext<CR>', { silent = true })
-map('x', 'gn', ':tnext<CR>', { silent = true })
-
--- move.nvim
-map('n', '<A-j>', '<cmd>MoveLine(1)<CR>', { silent = true })
-map('n', '<A-k>', '<cmd>MoveLine(-1)<CR>', { silent = true })
-map('v', '<A-j>', '<cmd>MoveBlock(1)<CR>', { silent = true })
-map('v', '<A-k>', '<cmd>MoveBlock(-1)<CR>', { silent = true })
-map('n', '<A-l>', '<cmd>MoveHChar(1)<CR>', { silent = true })
-map('n', '<A-h>', '<cmd>MoveHChar(-1)<CR>', { silent = true })
-map('v', '<A-l>', '<cmd>MoveHBlock(1)<CR>', { silent = true })
-map('v', '<A-h>', '<cmd>MoveHBlock(-1)<CR>', { silent = true })
-
--- vim-surround
-map('v', '"',  '<Plug>VSurround"')
-map('v', "'",  "<Plug>VSurround'")
-map('n', 'd"', '<Plug>Dsurround"')
-map('n', 'dt', '<Plug>Dsurroundt')
-map('n', "d'", "<Plug>Dsurround'")
-
--- Bookmarks
-map('n', '<Space><Space>', '<Plug>BookmarkToggle')
-map('n', '<Space>i',       '<Plug>BookmarkAnnotate')
-map('n', '<Space>a',       '<cmd>Telescope vim_bookmarks all<CR>')
-map('n', '<Space>j',       '<Plug>BookmarkNext')
-map('n', '<Space>k',       '<Plug>BookmarkPrev')
-
--- Navigation nvim-tree
-map('n', '<Leader>t',  '<cmd>NvimTreeToggle<CR>', { silent = true })
-map('n', '<Leader>ft', '<cmd>NvimTreeFindFile<CR>', { silent = true })
-
--- Telescope
-map('n', '<C-p>',      '<cmd>Telescope find_files<CR>')
-map('n', '<C-f><C-m>', '<cmd>Telescope oldfiles<cr>')
-map('n', '<C-f><C-t>', '<cmd>Telescope filetypes<CR>')
-map('n', '<Leader>mc', '<cmd>Telescope find_files cwd=~/.vim/modules<CR>')
--- LSP
-map('n', 'gd',       '<cmd>Telescop lsp_definitions<cr>', { silent = true })
-map('n', 'gr',       '<cmd>Telescop lsp_references<cr>', { silent = true })
-map('n', '<space>e', '<cmd>Telescop diagnostics<cr>', { silent = true })
-
--- Search by asterisk(*)
-map('n', 'n',    'nzz')
-map('n', 'N',    'Nzz')
-map('',  '*',    '<Plug>(asterisk-gz*)', { silent = true })
-map('n', '<CR>', '<cmd>nohl<CR><cmd><Esc>')
-
--- nvim-colorizer
-map('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { silent = true})
-
--- undoquit.vim
-map('n', '<C-w>u', '<cmd>Undoquit', { silent = true})
-
--- lightspeed
-map('n', 'gs', '<Plug>Lightspeed_s', { silent = true })
-map('n', 'gS', '<Plug>Lightspeed_S', { silent = true })
-map('n', 'f',  '<Plug>Lightspeed_f', { silent = true })
-map('n', 'F',  '<Plug>Lightspeed_F', { silent = true })
-
--- Breakpoints
-map('n', '<F5>',      '<cmd>lua RemoveBreakpoints()<CR>', {silent = true })
-map('n', '<leader>b', '<cmd>lua ToggleBreakpoint()<CR>', { silent = true})
-
--- shime/vim-livedown
-map('n', '<leader>lp', '<cmd>LivedownToggle<CR>')
-
--- sideways
-map('n', '<S-h>', '<cmd>SidewaysLeft<CR>')
-map('n', '<S-l>', '<cmd>SidewaysRight<CR>')
-
--- CamelCaseMotion
-map('', '<S-W>', '<Plug>CamelCaseMotion_w')
-map('', '<S-B>', '<Plug>CamelCaseMotion_b')
-map('', '<S-E>', '<Plug>CamelCaseMotion_e')
-
--- sandwich
-map('x', 'S#', '<Plug>(operator-sandwich-add)i#{<cr>}<cr>')
-
--- vim-expand-region
-map('v', 'v',     '<Plug>(expand_region_expand)')
-map('v', '<C-v>', '<Plug>(expand_region_shrink)')
-
--- vim-commentary
-map('v', 'c',  '<Plug>Commentary')
-
--- vim-easy-align
-map({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)')
-
--- vim-esearch
-map('n', '<C-f><C-f>', '<plug>(esearch)')
-map('n', '<C-f>f',     '<plug>(esearch)')
-map('n', '<C-f><C-w>', '<plug>(operator-esearch-prefill)iw') -- search word under cursor
-map('n', '<C-f>w',     '<plug>(operator-esearch-prefill)iw')
-
--- vim-yaml-helper
-map('n', '<leader>yg', function() return vim.cmd('YamlGoToKey ' .. vim.fn.getreg('*')) end) -- goto key from buffer
-map('n', '<leader>yy', '<cmd>YamlGetFullPath<CR>')
 
 -- ru mappings
 vim.cmd("map ё `| map й q| map ц w| map у e| map к r| map е t| map н y| map г u| map ш i| map щ o| map з p| map х [| map ъ ]")
