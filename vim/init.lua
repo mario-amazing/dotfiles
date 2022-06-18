@@ -1,7 +1,6 @@
 vim.cmd 'source ~/.vim/modules/bundles.vim'
 vim.cmd 'source ~/.vim/modules/ncompletion.vim'
 vim.cmd 'source ~/.vim/modules/autocmds.vim'
-vim.cmd 'source ~/.vim/modules/mappings.vim'
 vim.cmd 'source ~/.vim/modules/misc.vim'
 
 require('colors')
