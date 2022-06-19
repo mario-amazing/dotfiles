@@ -19,7 +19,6 @@ install_vim() {
 
   ln -vsf "$ROOT_DIR/vim/vimrc" "$HOME/.vimrc"
   ln -vsf "$ROOT_DIR/vim/vim/modules" "$HOME/.vim"
-  cp -r "$ROOT_DIR/vim/vim/tmp" "$HOME/.vim"
 
   mkdir -p ~/.config/nvim
   ln -vsf "$ROOT_DIR/vim/init.lua" "$HOME/.config/nvim/init.lua"
