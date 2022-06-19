@@ -23,6 +23,7 @@ install_vim() {
   mkdir -p ~/.config/nvim
   ln -vsf "$ROOT_DIR/vim/init.lua" "$HOME/.config/nvim/init.lua"
   ln -vsf "$ROOT_DIR/vim/lua" "$HOME/.config/nvim/lua"
+  mkdir -p "$HOME/.config/nvim/tmp/backup"
 
   nvim +PlugInstall +qa
   nvim +PlugUpdate +qa

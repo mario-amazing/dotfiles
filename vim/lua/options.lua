@@ -27,8 +27,9 @@ set.list = true
 
 set.scrolloff = 1
 
-set.swapfile = false
+set.backupdir = vim.env.HOME.."/.config/nvim/tmp/backup//"  -- backups
 set.backup = true
+set.swapfile = false
 
 set.hidden = false -- When off a buffer is unloaded (including loss of undo information) when it is abandoned.
 
