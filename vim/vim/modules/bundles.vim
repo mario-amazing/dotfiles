@@ -118,4 +118,4 @@ Plug 'Shougo/neco-vim'   " for deoplete
 Plug 'carlitux/deoplete-ternjs' " for deoplete
 
 call plug#end()
-" filetype plugin indent on
+filetype plugin indent on
