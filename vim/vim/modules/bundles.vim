@@ -47,8 +47,9 @@ Plug 'osyo-manga/vim-over' " Visual substitute
 
 " Textobjects
 """""""""""""""""""""""""""
-Plug 'terryma/vim-expand-region'     " Easier way to select textobjects(vvv)
-Plug 'wellle/targets.vim'            " Select inside({[]}) vi( va(
+Plug 'terryma/vim-expand-region' " Easier way to select textobjects(vvv)
+Plug 'wellle/targets.vim'        " Select inside({[]}) vi( va(
+Plug 'andymass/vim-matchup'      " extends vim's % key
 
 
 " Editing assistants

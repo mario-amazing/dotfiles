@@ -27,6 +27,8 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", "css", "scss", "regex", "yaml" },
   -- indent = { enable = true }, -- Experimental
 
+  -- extension vim-matchup
+  matchup = { enable = true },
   -- extension nvim-ts-context-commentstring(comment by treesitter line type)(html with js and css)
   context_commentstring = { enable = true }
 }
