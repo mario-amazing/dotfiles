@@ -10,6 +10,7 @@ install_vim() {
 
   brew install vim neovim
 
+  brew install ripgrep # ripgrep source for cmp-rg
   brew install npm
   npm install -g neovim
   npm install -g livedown # shime/vim-livedown

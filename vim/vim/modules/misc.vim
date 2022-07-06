@@ -4,7 +4,7 @@ fu! TrimWhiteSpace()
   retab
 endf
 
-" old tags
+""""""""""" old tags """""""""
 fu! GenerateCtags()
   if !RailsDetect()
     return ''
@@ -27,8 +27,10 @@ function! IndentWithI()
   endif
 endfunction
 " nnoremap <expr> i IndentWithI()
+""""""""""" old tags """""""""
 
-" tags
+
+""""""""""" tags """""""""
 let g:filetype_tag_generate_commands = {
   \ 'ruby': "ripper-tags -R --exclude=vendor",
   \}
@@ -60,8 +62,10 @@ fu! RegenerateTags() abort
 endfu
 
 autocmd BufWritePost * call RegenerateTags()
+""""""""""" tags """""""""
 
-" vim-esearch
+
+""""""""""" vim-esearch """""""""
 let g:esearch = { 'backend': 'nvim', 'adapters': {'rg': {'options': '--hidden'}}}
 " call   esearch#map('<C-f><C-f>','esearch')
 " call   esearch#map('<C-f>f',    'esearch')
@@ -93,6 +97,7 @@ let g:esearch.win_map = [
 let g:esearch_sort_by_path = {'adapters': {'rg': {'options': '--sort path'}}}
 let g:esearch_sort_by_date = {'adapters': {'rg': {'options': '--sort modified'}}}
 let g:EsearchAddAfter = {n -> {'after': b:esearch.after + n, 'backend': 'system'}}
+""""""""""" vim-esearch """""""""
 
 
 """"""""""" SmartGF """""""""
