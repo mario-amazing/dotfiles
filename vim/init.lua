@@ -4,8 +4,8 @@ vim.cmd 'source ~/.vim/modules/autocmds.vim'
 vim.cmd 'source ~/.vim/modules/misc.vim'
 
 require('colors')
-require('options')
-require('plugins')
+require('set-s')
+require('let-s')
 require('helpers')
 require('init')
 require('mappings')

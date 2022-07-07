@@ -24,6 +24,7 @@ set.sw = 2
 set.sts = 2
 
 set.list = true
+set.listchars = "tab:▷ ,trail:·"
 
 set.scrolloff = 1
 
