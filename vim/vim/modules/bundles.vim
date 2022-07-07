@@ -84,6 +84,7 @@ Plug 'norcalli/nvim-colorizer.lua' " Shows color by code
 
 " Languages
 """""""""""""""
+Plug 'lyokha/vim-xkbswitch'
 " #Syntax
 " Plug 'chr4/nginx.vim'
 

@@ -15,6 +15,11 @@ install_vim() {
   npm install -g neovim
   npm install -g livedown # shime/vim-livedown
 
+  # vim-xkbswitch
+  curl -fLOo /usr/local/bin https://raw.githubusercontent.com/myshov/libxkbswitch-macosx/master/bin/libxkbswitch.dylib
+  curl -fLOo /usr/local/bin https://raw.githubusercontent.com/myshov/xkbswitch-macosx/master/bin/xkbswitch
+  chmod +x /usr/local/bin/xkbswitch
+
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   mkdir -p ~/.vim
 

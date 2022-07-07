@@ -55,5 +55,9 @@ vim.g.expand_region_text_objects = {
 vim.g.sandwich_no_default_key_mappings = 1
 vim.g.operator_sandwich_no_default_key_mappings = 1
 
+-- vim-xkbswitch
+vim.g.XkbSwitchEnabled = 1
+vim.g.XkbSwitchLib = '/usr/local/bin/libxkbswitch.dylib'
+
 -- vim-yaml-helper
 -- let g:vim_yaml_helper#always_get_root = 1 -- add root path to yaml copy
