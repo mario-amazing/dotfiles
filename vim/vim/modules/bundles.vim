@@ -84,7 +84,7 @@ Plug 'norcalli/nvim-colorizer.lua' " Shows color by code
 
 " Languages
 """""""""""""""
-Plug 'lyokha/vim-xkbswitch'
+Plug 'lyokha/vim-xkbswitch' " auto change language to en
 " #Syntax
 " Plug 'chr4/nginx.vim'
 

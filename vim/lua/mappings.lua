@@ -18,15 +18,17 @@ map('x', 'gf', ':<C-u>call SmartGF()<CR>gv', { silent = true })
 map('n', 'gn', ':tnext<CR>', { silent = true })
 map('x', 'gn', ':tnext<CR>', { silent = true })
 
+
 -- move.nvim
-map('n', '<A-j>', '<cmd>MoveLine(1)<CR>', { silent = true })
-map('n', '<A-k>', '<cmd>MoveLine(-1)<CR>', { silent = true })
-map('v', '<A-j>', '<cmd>MoveBlock(1)<CR>', { silent = true })
-map('v', '<A-k>', '<cmd>MoveBlock(-1)<CR>', { silent = true })
-map('n', '<A-l>', '<cmd>MoveHChar(1)<CR>', { silent = true })
-map('n', '<A-h>', '<cmd>MoveHChar(-1)<CR>', { silent = true })
-map('v', '<A-l>', '<cmd>MoveHBlock(1)<CR>', { silent = true })
-map('v', '<A-h>', '<cmd>MoveHBlock(-1)<CR>', { silent = true })
+-- NOTE preferred ':' than <cmd> in visual mode
+map('n', '<A-j>', ':MoveLine(1)<CR>', { silent = true })
+map('n', '<A-k>', ':MoveLine(-1)<CR>', { silent = true })
+map('v', '<A-j>', ':MoveBlock(1)<CR>', { silent = true })
+map('v', '<A-k>', ':MoveBlock(-1)<CR>', { silent = true })
+map('n', '<A-l>', ':MoveHChar(1)<CR>', { silent = true })
+map('n', '<A-h>', ':MoveHChar(-1)<CR>', { silent = true })
+map('v', '<A-l>', ':MoveHBlock(1)<CR>', { silent = true })
+map('v', '<A-h>', ':MoveHBlock(-1)<CR>', { silent = true })
 
 -- vim-surround
 map('v', '"',  '<Plug>VSurround"')
@@ -78,7 +80,7 @@ map('n', 'F',  '<Plug>Lightspeed_F', { silent = true })
 map('n', '<F5>',      '<cmd>lua RemoveBreakpoints()<CR>', {silent = true })
 map('n', '<leader>b', '<cmd>lua ToggleBreakpoint()<CR>', { silent = true})
 
--- shime/vim-livedown
+-- shime/vim-livedown(preview)
 map('n', '<leader>lp', '<cmd>LivedownToggle<CR>')
 
 -- sideways
@@ -190,7 +192,7 @@ vim.cmd('cabbrev gcan Git commit --amend --no-edit<CR>')
 vim.cmd('cabbrev gco  Git checkout')
 vim.cmd('cabbrev gcof Git checkout "%:p:h"')
 
--- ru mappings
+-- ru mappings -> fixed with vim-xkbswitch lang swithcer
 vim.cmd("map ё `| map й q| map ц w| map у e| map к r| map е t| map н y| map г u| map ш i| map щ o| map з p| map х [| map ъ ]")
 vim.cmd("map ф a| map ы s| map в d| map а f| map п g| map р h| map о j| map л k| map д l| map ж ;| map э '| map я z| map ч x")
 vim.cmd("map с c| map м v| map и b| map т n| map ь m| map б ,| map ю .|")

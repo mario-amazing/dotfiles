@@ -1,5 +1,6 @@
 -- :LspInfo # check lsp instalation in file
 -- :LspInstallInfo # check instaled lcp clients
+-- NOTE lsp log file -> ~/.cache/nvim/lsp.log
 
 -- TODO add react client
 require("nvim-lsp-installer").setup {}
