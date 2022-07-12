@@ -27,7 +27,8 @@ install_programs(){
   brew install htop
 
   install_python
-  brew install nodejs
+  install_node_with_manager
+  brew install npm
   brew install yarn
   brew install overmind
   brew install imagemagick
@@ -90,6 +91,13 @@ start_redis() {
 
 start_mysql() {
   brew services start mysql
+}
+
+install_node_with_manager() {
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  nvm install node
+  ln -vsf "$ROOT_DIR/default-npm-packages" "$NVM_DIR/default-packages"
+  echo_info "!!!Inside project folder run => nvm use!!!"
 }
 
 install_python() {

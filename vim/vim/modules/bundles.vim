@@ -89,7 +89,6 @@ Plug 'lyokha/vim-xkbswitch' " auto change language to en
 " Plug 'chr4/nginx.vim'
 
 " lsp
-Plug 'williamboman/nvim-lsp-installer' " autoinstall lsp clients
 Plug 'neovim/nvim-lspconfig'
 
 "    ruby

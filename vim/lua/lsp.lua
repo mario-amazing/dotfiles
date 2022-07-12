@@ -1,9 +1,7 @@
 -- :LspInfo # check lsp instalation in file
--- :LspInstallInfo # check instaled lcp clients
 -- NOTE lsp log file -> ~/.cache/nvim/lsp.log
+vim.lsp.set_log_level("error")
 
--- TODO add react client
-require("nvim-lsp-installer").setup {}
 -- TODO completion
 require'lspconfig'.solargraph.setup{
   settings = {
