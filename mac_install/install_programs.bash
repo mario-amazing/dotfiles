@@ -57,6 +57,7 @@ install_programs(){
   brew install --cask dropbox
   brew install --cask transmission
   brew install --cask tiles
+  brew install --cask keycastr
 
   brew install --cask iterm2
   brew install --cask tableplus

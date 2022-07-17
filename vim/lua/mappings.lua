@@ -11,13 +11,13 @@ map('', '<leader>gh',  '<cmd>Telescope git_stash<CR>', { silent = true })
 map('', '<leader>gb',  '<cmd>NvimTreeClose<cr><cmd>Git blame<cr> ', { silent = true })
 map('', '<Leader>gfl', '<cmd>Telescope git_bcommits<CR> ', { silent = true }) -- logs current file
 map('', '<Leader>dp',  '<cmd>diffput<CR> ', { silent = true })
+map('n', '<leader>lg', '<cmd>LazyGit<CR>', {silent = false})
 
 -- SmartGF
 map('n', 'gf', ':<C-u>call SmartGF()<CR>', { silent = true })
 map('x', 'gf', ':<C-u>call SmartGF()<CR>gv', { silent = true })
 map('n', 'gn', ':tnext<CR>', { silent = true })
 map('x', 'gn', ':tnext<CR>', { silent = true })
-
 
 -- move.nvim
 -- NOTE preferred ':' than <cmd> in visual mode
@@ -124,8 +124,14 @@ map('n', '<C-s>', '<cmd>write<CR>')
 map({'n', 'i'}, '<C-c>', '<Esc>', { silent = true })
 map('i', '<C-d>', '<Delete>')
 map('n', '<S-u>', '<cmd>redo<CR>')
+
 -- TODO add https://github.com/voldikss/vim-floaterm :term pry !!!!!!!!!!
-map('t', '<Esc><Esc>', '<C-\\><C-n>')
+-- vim-floaterm
+map('n', '<A-t>', '<CMD>FloatermToggle<CR>')
+map('t', '<A-t>', '<C-\\><C-n><CMD>FloatermToggle<CR>')
+-- NOTE lazygit uses <esc> and floaterm uses <C-\\><C-n>
+map('t', '<Esc>', function() return vim.bo.filetype == "floaterm" and "<C-\\><C-n>" or "<Esc>" end, {expr = true})
+
 -- scroll moves
 map('n', 'j',     'gj')          -- scroll by long line
 map('n', 'k',     'gk')
@@ -133,14 +139,17 @@ map('n', '<C-y>', '2<C-y>')  -- Scroll screen up
 map('n', '<C-e>', '2<C-e>')  -- Scroll screen down
 map('n', '<C-i>', '<C-i>zz', { silent = true })
 map('n', '<C-o>', '<C-o>zz', { silent = true })
+
 -- markup
 map('n', '<F8>', '<cmd>let w:v=winsaveview()<cr>ggVG=<cmd>call winrestview(w:v)<cr>', { silent = true })
 map('n', 'i', 'IndentWithI()', { expr = true})
+
 -- jump window
 map('', '<C-k>', '<C-w><C-k>', { silent = true })
 map('', '<C-j>', '<C-w><C-j>', { silent = true })
 map('', '<C-l>', '<C-w><C-l>', { silent = true })
 map('', '<C-h>', '<C-w><C-h>', { silent = true })
+
 -- tabs
 map('n', '<C-t>',   '<cmd>tabnew<CR>', { silent = true })
 map('n', '<Tab>',   'gt', { silent = true })
@@ -155,6 +164,7 @@ map('n', 'g7',      '7gt', { silent = true })
 map('n', 'g8',      '8gt', { silent = true })
 map('n', 'g9',      '9gt', { silent = true })
 map('n', 'g0',      '10gt', { silent = true })
+
 -- indentation
 map('n', '>', '>>',  { silent = true })
 map('n', '<', '<<',  { silent = true })
@@ -162,11 +172,13 @@ map('v', '<', '<gv', { silent = true })
 map('v', '>', '>gv', { silent = true })
 map('v', '=', '=gv', { silent = true })
 map('n', '=', '==',  { silent = true })
+
 -- substitute
 map('n', '<Leader>f<S-s>', '<cmd>%S/')
 map('v', '<Leader>f<S-s>', '<cmd>S/')
 map('n', '<Leader>fs', '<cmd>OverCommandLine<CR>%s/', { silent = true })
 map('v', '<Leader>fs', '<cmd>OverCommandLine<CR>s/',  { silent = true })
+
 -- name of file
 map('n', 'yn', "<cmd>let @+ = substitute(expand('%'), '^'.getcwd().'/', '', '')<CR>")
 map('n', 'yN', '<cmd>let @+ = expand("%:t")<CR>')
@@ -182,8 +194,10 @@ map('c', '<C-d>', '<Delete>')
 map('c', '<M-b>', '<S-Left>')
 map('c', '<M-f>', '<S-Right>')
 map('c', '<M-d>', '<S-right><Delete>')
+
 --markup
 vim.cmd('cabbrev trw :call TrimWhiteSpace()')
+
 --git
 vim.cmd('cabbrev ga   Git add')
 vim.cmd('cabbrev gc   Git commit -m')

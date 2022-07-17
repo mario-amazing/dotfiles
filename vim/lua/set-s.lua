@@ -49,11 +49,14 @@ set.clipboard = 'unnamed'
 set.virtualedit = 'onemore'
 set.conceallevel = 1
 
-set.tagbsearch = false
-
 set.previewheight = 20
 
 set.confirm = true
-set.tags = set.tags + './tmp/tags'
-set.tags = set.tags + './.tags'
-set.tagcase = 'match'
+
+set.conceallevel = 0 -- disable hiding " in json file
+
+set.smartcase = true
+set.tagbsearch = false
+
+-- vim-gutentags
+set.tags = set.tags + 'tags,.git/tags'

@@ -1,6 +1,5 @@
 vim.cmd 'source ~/.vim/modules/bundles.vim'
 vim.cmd 'source ~/.vim/modules/ncompletion.vim'
-vim.cmd 'source ~/.vim/modules/autocmds.vim'
 vim.cmd 'source ~/.vim/modules/misc.vim'
 
 require('colors')
@@ -11,6 +10,7 @@ require('init')
 require('mappings')
 require('lsp')
 require('lualine_nvim')
+require('autocmds')
 
 -- ======== Tips:
 -- lua config https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/

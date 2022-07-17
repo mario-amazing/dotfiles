@@ -76,7 +76,28 @@ vim.api.nvim_create_autocmd("BufEnter", {
 require('nvim-autopairs').setup{}
 
 
-require('gitsigns').setup()
+require('gitsigns').setup({
+  keymaps = {
+    noremap = true,
+    ['n <leader>hn'] = '<cmd>Gitsigns next_hunk<CR>',
+    ['n <leader>hp'] = '<cmd>Gitsigns prev_hunk<CR>',
+  },
+})
 
 
--- require('colorizer').setup() -- uncomment for default enabled
+-- nvim-colorizer.lua
+require('colorizer').setup(
+  {'css', 'javascript'},
+  {
+    RGB      = true;         -- #RGB hex codes
+    RRGGBB   = true;         -- #RRGGBB hex codes
+    names    = true;         -- "Name" codes like Blue
+    RRGGBBAA = true;         -- #RRGGBBAA hex codes
+    rgb_fn   = true;         -- CSS rgb() and rgba() functions
+    hsl_fn   = true;         -- CSS hsl() and hsla() functions
+    css      = true;         -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+    css_fn   = true;         -- Enable all CSS *functions*: rgb_fn, hsl_fn
+})
+
+
+require('neoscroll').setup()

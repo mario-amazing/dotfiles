@@ -1,4 +1,4 @@
-" vim.api.nvim_exec([[
+vim.api.nvim_exec([[
   augroup PluginFixes
     au!
     au FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
@@ -28,4 +28,4 @@
     au VimEnter,WinEnter,BufWinEnter,BufEnter * setlocal cursorline
     au BufLeave,WinLeave * setlocal nocursorline
   augroup END
-" ]], true)
+]], true)

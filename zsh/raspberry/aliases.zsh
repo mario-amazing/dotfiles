@@ -14,8 +14,6 @@ alias kl='kill -9'
 alias o='open'
 
 #Ctags
-# alias ctg='ctags -R --exclude=.git --exclude=log --exclude=*.js -f tmp/tags *'
-# alias ctg="ctags -R --languages=ruby --exclude=.git --exclude=log --exclude='*.js' `bundle show --paths` ."
 alias ctg="ctags -R --languages=ruby --exclude=.git --exclude=log --exclude='*.js' ."
 alias rtg="ripper-tags -R --extra=q"
 

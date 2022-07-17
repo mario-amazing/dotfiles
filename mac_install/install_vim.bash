@@ -12,6 +12,8 @@ install_vim() {
 
   brew install ripgrep # ripgrep source for cmp-rg
 
+  brew install lazygit
+
   # vim-xkbswitch
   curl -fLOo /usr/local/bin https://raw.githubusercontent.com/myshov/libxkbswitch-macosx/master/bin/libxkbswitch.dylib
   curl -fLOo /usr/local/bin https://raw.githubusercontent.com/myshov/xkbswitch-macosx/master/bin/xkbswitch

@@ -14,7 +14,8 @@ Plug 'kyazdani42/nvim-tree.lua'
 " Motion
 """""""""""
 Plug 'ggandor/lightspeed.nvim' " easymotion(s/S) + f{char} improved
-Plug 'bkad/CamelCaseMotion' " navigation inside word with different cases
+Plug 'bkad/CamelCaseMotion' " navigation inside word with different cases. Reverse alternative => https://github.com/chaoren/vim-wordmotion
+Plug 'karb94/neoscroll.nvim' " smooth scroll zt, zz, zb, <C-u> <C-d> etc
 
 " Telescop
 """""""""""""""
@@ -26,6 +27,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " Git
 """""""""""""""
+Plug 'kdheepak/lazygit.nvim' " UI for git
 Plug 'tpope/vim-fugitive' " main git commands
 Plug 'rhysd/conflict-marker.vim'
 Plug 'lewis6991/gitsigns.nvim' " Add git line status(|/=/~) to the left of a line and Git diff
@@ -51,6 +53,8 @@ Plug 'terryma/vim-expand-region' " Easier way to select textobjects(vvv)
 Plug 'wellle/targets.vim'        " Select inside({[]}) vi( va(
 Plug 'andymass/vim-matchup'      " extends vim's % key
 
+" Tags
+Plug 'ludovicchabant/vim-gutentags'
 
 " Editing assistants
 Plug 'AndrewRadev/switch.vim'        " Switch segments of text with predefined replacements(-)
@@ -74,7 +78,7 @@ Plug 'windwp/nvim-autopairs'
 
 " Tools
 """""""""""""""
-" TODO add folding plug
+Plug 'voldikss/vim-floaterm'
 Plug 'kopischke/vim-fetch'         " gf with lnum:col included(:e test.rb:42,69)
 Plug 'MattesGroeger/vim-bookmarks' " Bookmarks with space
 Plug 'AndrewRadev/undoquit.vim'
