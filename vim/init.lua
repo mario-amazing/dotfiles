@@ -2,6 +2,8 @@ vim.cmd 'source ~/.vim/modules/bundles.vim'
 vim.cmd 'source ~/.vim/modules/ncompletion.vim'
 vim.cmd 'source ~/.vim/modules/misc.vim'
 
+
+require('impatient')-- .enable_profile() -- profiling with :LuaCacheProfile
 require('colors')
 require('set-s')
 require('let-s')

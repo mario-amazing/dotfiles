@@ -31,6 +31,7 @@ function _G.ToggleBreakpoint()
     vim.cmd('normal dd')
   end
 end
+-- breakpoints
 
 
 -- nvim-tree
@@ -44,3 +45,20 @@ function _G.toggle_full_width()
   end
   is_toggled = not is_toggled
 end
+
+
+-- SmartGF
+function VimBundlePackage()
+  local type = vim.fn.expand('%:t')
+  if ( type ~= 'bundles.vim' and type ~= 'plugins.lua' ) then return false end
+
+  local pattern = "['\"][^/]*/[^'\"]*['\"]"
+  local line_text = vim.api.nvim_get_current_line()
+  startpos, endpos = string.find(line_text, pattern)
+  if startpos == nil then return false end
+  url = "https://github.com/" .. string.sub(line_text, startpos+1, endpos-1)
+
+  vim.fn.system('open' .. ' ' .. url)
+  return true
+end
+-- SmartGF

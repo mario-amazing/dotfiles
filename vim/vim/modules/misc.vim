@@ -239,5 +239,5 @@ function! MatchUnderCursor(pat)
   return ""
 endfunction
 
-let g:smartgf_strategies = [function('TryURI'), function('TryPlainGF'), function('TryRailsCFile'), function('TryCTag'), function('TryFootnote')]
+let g:smartgf_strategies = [function('TryURI'), function('luaeval', ['VimBundlePackage()']),  function('TryPlainGF'), function('TryRailsCFile'), function('TryCTag'), function('TryFootnote')]
 """"""""""" SmartGF """""""""

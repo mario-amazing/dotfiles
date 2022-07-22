@@ -125,7 +125,6 @@ map({'n', 'i'}, '<C-c>', '<Esc>', { silent = true })
 map('i', '<C-d>', '<Delete>')
 map('n', '<S-u>', '<cmd>redo<CR>')
 
--- TODO add https://github.com/voldikss/vim-floaterm :term pry !!!!!!!!!!
 -- vim-floaterm
 map('n', '<A-t>', '<CMD>FloatermToggle<CR>')
 map('t', '<A-t>', '<C-\\><C-n><CMD>FloatermToggle<CR>')

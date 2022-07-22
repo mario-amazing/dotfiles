@@ -1,6 +1,9 @@
 " Commands in terminal
 :term pry
 
+" Float term
+<A-t>
+
 " Bookmarks
 nmap <Space><Space> <Plug>BookmarkToggle
 nmap <Space>i <Plug>BookmarkAnnotate
@@ -8,7 +11,7 @@ nmap <Space>a <Plug>BookmarkShowAll
 nmap <Space>j <Plug>BookmarkNext
 nmap <Space>k <Plug>BookmarkPrev
 
-" TrimWhiteSpace
+" TrimWhiteSpace in command line
 trw
 
 " undoquit.vim -> Undo closed tabs
@@ -34,7 +37,7 @@ Sat, 01 Jan 2000 00:16:03 -0001
 Move an item in a delimiter-separated list left or right(S-h/S-l)
 
 
-"Plug 'junegunn/vim-easy-align' https://github.com/junegunn/vim-easy-align
+" Plug 'junegunn/vim-easy-align' https://github.com/junegunn/vim-easy-align
 Text align lines symbols(ga )
 
 
