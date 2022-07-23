@@ -4,7 +4,7 @@ set.grepprg = "rg --sort=path --column --smart-case --nocolor --follow $*"
 set.grepformat = "%f:%l:%c:%m"
 
 set.mouse = 'a'
-set.guicursor = '' -- disable blinking
+set.guicursor = 'a:blinkon0' -- disable blinking
 
 set.equalalways = false -- max size for the active window by default
 set.winheight = 999 -- Minimal number of lines for the current window.

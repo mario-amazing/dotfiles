@@ -50,7 +50,7 @@ map('n', '<Leader>ft', '<cmd>NvimTreeFindFile<CR>', { silent = true })
 
 -- Telescope
 map('n', '<C-p>',      '<cmd>Telescope find_files<CR>')
-map('n', '<C-f><C-m>', '<cmd>Telescope oldfiles<cr>')
+map('n', '<C-m><C-r>', '<cmd>Telescope oldfiles<cr>')
 map('n', '<C-f><C-t>', '<cmd>Telescope filetypes<CR>')
 map('n', '<Leader>mc', '<cmd>Telescope find_files cwd=~/.config/nvim/lua<CR>')
 -- LSP

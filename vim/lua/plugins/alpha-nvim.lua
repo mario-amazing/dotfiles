@@ -3,16 +3,8 @@ local alpha = require("alpha")
 require("alpha.term")
 local dashboard = require("alpha.themes.dashboard")
 
--- Terminal header
--- dashboard.section.terminal.command = "cat | lolcat --seed=5 ~/.config/nvim/static/startimg.cat"
--- dashboard.section.terminal.width = 27
--- dashboard.section.terminal.height = 10
-
 local header = {
     type = "text",
-    -- command = "lolcat --seed=1 -F 0.08 ~/.config/nvim/static/startimg.cat",
-    -- height = 10,
-    -- width = 27,
     val = {
         [[       T E      E T H E   ]],
         [[      A  Q    F         U ]],
@@ -43,11 +35,11 @@ local buttons = {
   val = {
     button("l", "   Load session", ':SessionLoadLast<CR>'),
     button("s", "   Select sessions", ":Telescope persisted<CR>"),
-    button("o", "滑  Open tree", ':NvimTreeToggle<CR>'),
+    button("t", "滑  Open tree", ':NvimTreeToggle<CR>'),
     button("n", "   New file", ":ene <BAR> startinsert <CR>"),
-    button("f", "   Find file", ":Telescope find_files hidden=true path_display=smart<CR>"),
+    button("p", "   Find file(Ctrl-p)", ":Telescope find_files hidden=true path_display=smart<CR>"),
     button("r", "   Recently used files", ":Telescope oldfiles<CR>"),
-    button("t", "   Find text", "<plug>(esearch)"),
+    button("f", "   Find text", "<plug>(esearch)"),
     button("u", "   Update plugins", ":PlugUpdate<CR>"),
     button("q", "   Quit Neovim", ":qa!<CR>"),
   },
@@ -78,7 +70,6 @@ local footer = {
   val = footer(),
   opts = {
     position = "center",
-    -- hl = "Directory",
     hl = "Grey",
   },
 }
