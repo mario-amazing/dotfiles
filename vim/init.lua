@@ -4,6 +4,7 @@ vim.cmd 'source ~/.vim/modules/misc.vim'
 
 
 require('impatient')-- .enable_profile() -- profiling with :LuaCacheProfile
+require('plugins/alpha-nvim')
 require('colors')
 require('set-s')
 require('let-s')

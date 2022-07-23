@@ -6,10 +6,10 @@ Plug 'lewis6991/impatient.nvim' " cache startup lua plugins
 Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'} " colorcheme
 
 " #UI
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " highlight syntax
 Plug 'nvim-lualine/lualine.nvim'
-
-" Tree
-"""""""""""""""
+Plug 'goolord/alpha-nvim'       " startup window
+Plug 'olimorris/persisted.nvim' " manage sessions
 Plug 'kyazdani42/nvim-tree.lua'
 
 " Motion
@@ -33,26 +33,17 @@ Plug 'tpope/vim-fugitive' " main git commands
 Plug 'rhysd/conflict-marker.vim'
 Plug 'lewis6991/gitsigns.nvim' " Add git line status(|/=/~) to the left of a line and Git diff
 
-" UI
-"""""""""""""""""""
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " highlight syntax
-
-
 " Snippets
 """""""""""""""
 " # TODO add snippets
 Plug 'mattn/emmet-vim', {'for': ['html', 'eruby', 'slim', 'css', 'sass', 'scss']} " html tags expand div>h1
-
-
-" #Cmdline
-Plug 'osyo-manga/vim-over' " Visual substitute
-
 
 " Textobjects
 """""""""""""""""""""""""""
 Plug 'terryma/vim-expand-region' " Easier way to select textobjects(vvv)
 Plug 'wellle/targets.vim'        " Select inside({[]}) vi( va(
 Plug 'andymass/vim-matchup'      " extends vim's % key
+Plug 'osyo-manga/vim-over'       " Visual substitute
 
 " Tags
 Plug 'ludovicchabant/vim-gutentags'
@@ -90,8 +81,9 @@ Plug 'norcalli/nvim-colorizer.lua' " Shows color by code
 " Languages
 """""""""""""""
 Plug 'lyokha/vim-xkbswitch' " auto change language to en
-" #Syntax
-" Plug 'chr4/nginx.vim'
+
+" nginx
+Plug 'chr4/nginx.vim'
 
 " lsp
 Plug 'neovim/nvim-lspconfig'

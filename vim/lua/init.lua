@@ -20,6 +20,7 @@ require('telescope').setup{
 }
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('vim_bookmarks')
+require("telescope").load_extension("persisted")
 
 
 require('nvim-treesitter.configs').setup {
@@ -101,3 +102,6 @@ require('colorizer').setup(
 
 
 require('neoscroll').setup()
+
+
+require("persisted").setup()

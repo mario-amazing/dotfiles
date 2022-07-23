@@ -58,6 +58,10 @@ map('n', 'gd',       '<cmd>Telescop lsp_definitions<cr>', { silent = true })
 map('n', 'gr',       '<cmd>Telescop lsp_references<cr>', { silent = true })
 map('n', '<space>e', '<cmd>Telescop diagnostics<cr>', { silent = true })
 
+-- persisted.nvim
+map('n', '<Leader>sl', '<cmd>SessionLoadLast<cr>', { silent = true })
+map('n', '<Leader>ss', '<cmd>Telescope persisted<cr>', { silent = true })
+
 -- Search by asterisk(*)
 map('n', 'n',    'nzz')
 map('n', 'N',    'Nzz')
