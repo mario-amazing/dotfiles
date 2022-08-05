@@ -97,7 +97,7 @@ start_mysql() {
 install_node_with_manager() {
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
   nvm install node
-  ln -vsf "$ROOT_DIR/default-npm-packages" "$NVM_DIR/default-packages"
+  ln -vsf "$ROOT_DIR/config/default-npm-packages" "$NVM_DIR/default-packages"
   echo_info "!!!Inside project folder run => nvm use!!!"
 }
 

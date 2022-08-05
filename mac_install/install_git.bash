@@ -8,7 +8,7 @@ source $SELF_DIR/display.bash
 install_git() {
   echo_title "!!!GIT INSTALATION!!!"
 
-  ln -vsf "$ROOT_DIR/gitignore_global" "$HOME/.gitignore_global"
+  ln -vsf "$ROOT_DIR/config/gitignore_global" "$HOME/.gitignore_global"
 
   read -e -p "$(echo ${LGREEN}Enter Your git name: ${NORMAL})" gitname
   gitname="${gitname:=mario_amazing}"

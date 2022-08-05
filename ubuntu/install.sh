@@ -34,7 +34,7 @@ install_git() {
   git config --global help.autoCorrect -1
   git config --global blame.date format:%d-%m-%Y %H:%M
   git config --global blame.coloring highlightRecent
-  copy $SELF_DIR/gitignore_global $HOME/.gitignore_global
+  copy $SELF_DIR/config/gitignore_global $HOME/.gitignore_global
 }
 
 install_heroku() {
@@ -106,8 +106,8 @@ install_ruby() {
   rbenv global 2.3.0
   rbenv alias --auto
 
-  copy "$SELF_DIR/pryrc" "$HOME/.pryrc"
-  copy "$SELF_DIR/irbrc" "$HOME/.irbrc"
+  copy "$SELF_DIR/config/pryrc" "$HOME/.pryrc"
+  copy "$SELF_DIR/config/irbrc" "$HOME/.irbrc"
 
   install_pachages postgresql postgresql-contrib
 }

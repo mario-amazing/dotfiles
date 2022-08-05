@@ -8,7 +8,6 @@ require('telescope').setup{
         ["<C-k>"] = require('telescope.actions').move_selection_previous
       }
     },
-    file_ignore_patterns = {'.git/*'},
     prompt_prefix = "🔎 ",
   },
   pickers = {

@@ -14,7 +14,7 @@ install_vim() {
 
   brew install lazygit
   mkdir -p "$HOME/.config/lazygit"
-  ln -vsf "$ROOT_DIR/lazygit_config.yml" "$HOME/.config/lazygit/config.yml"
+  ln -vsf "$ROOT_DIR/config/lazygit_config.yml" "$HOME/.config/lazygit/config.yml"
 
   # vim-xkbswitch
   curl -fLOo /usr/local/bin https://raw.githubusercontent.com/myshov/libxkbswitch-macosx/master/bin/libxkbswitch.dylib
