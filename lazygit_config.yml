@@ -1,0 +1,3 @@
+gui:
+  splitDiff: 'always'
+  showFileTree: false

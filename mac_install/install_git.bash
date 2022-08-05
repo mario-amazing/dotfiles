@@ -21,7 +21,7 @@ install_git() {
   git config --global color.ui true
   git config --global push.default current
   git config --global core.excludesfile ~/.gitignore_global
-  git config --global core.editor vim
+  git config --global core.editor nvim
   git config --global branch.autosetuprebase always
 
   git config --global help.autoCorrect -1
