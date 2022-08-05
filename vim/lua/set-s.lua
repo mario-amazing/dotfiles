@@ -60,3 +60,6 @@ set.tagbsearch = false
 
 -- vim-gutentags
 set.tags = set.tags + 'tags,.git/tags'
+
+-- nvim-cmp
+set.completeopt = { 'menu', 'menuone', 'noselect' }

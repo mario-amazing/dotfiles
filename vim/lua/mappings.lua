@@ -13,6 +13,16 @@ map('', '<Leader>gfl', '<cmd>Telescope git_bcommits<CR> ', { silent = true }) --
 map('', '<Leader>dp',  '<cmd>diffput<CR> ', { silent = true })
 map('n', '<leader>lg', '<cmd>LazyGit<CR>', {silent = false})
 
+-- LSP
+vim.api.nvim_set_keymap('n', '<space>p', ':lua vim.lsp.diagnostic.goto_prev()<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<space>n', ':lua vim.lsp.diagnostic.goto_next()<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<space>a', ':lua vim.lsp.diagnostic.code_action()<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<space>d', ':lua vim.lsp.buf.definition()<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<space>f', ':lua vim.lsp.buf.formatting()<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<space>h', ':lua vim.lsp.buf.hover()<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<space>m', ':lua vim.lsp.buf.rename()<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<space>r', ':lua vim.lsp.buf.references()<CR>', {noremap = true, silent = true})
+
 -- SmartGF
 map('n', 'gf', ':<C-u>call SmartGF()<CR>', { silent = true })
 map('x', 'gf', ':<C-u>call SmartGF()<CR>gv', { silent = true })
@@ -50,7 +60,7 @@ map('n', '<Leader>ft', '<cmd>NvimTreeFindFile<CR>', { silent = true })
 
 -- Telescope
 map('n', '<C-p>',      '<cmd>Telescope find_files<CR>')
-map('n', '<C-m><C-r>', '<cmd>Telescope oldfiles<cr>')
+map('n', '<C-f><C-m>', '<cmd>Telescope oldfiles<cr>')
 map('n', '<C-f><C-t>', '<cmd>Telescope filetypes<CR>')
 map('n', '<Leader>mc', '<cmd>Telescope find_files cwd=~/.config/nvim/lua<CR>')
 -- LSP

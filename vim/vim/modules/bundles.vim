@@ -25,6 +25,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'tom-anders/telescope-vim-bookmarks.nvim' " bookmarks telescop visual
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } " fuzzy search
 Plug 'kyazdani42/nvim-web-devicons'
+" TODO think about add projects https://github.com/nvim-telescope/telescope-project.nvim or https://github.com/cljoly/telescope-repo.nvim
 
 " Git
 """""""""""""""
@@ -33,15 +34,10 @@ Plug 'tpope/vim-fugitive' " main git commands
 Plug 'rhysd/conflict-marker.vim'
 Plug 'lewis6991/gitsigns.nvim' " Add git line status(|/=/~) to the left of a line and Git diff
 
-" Snippets
-"""""""""""""""
-" # TODO add snippets
-Plug 'mattn/emmet-vim', {'for': ['html', 'eruby', 'slim', 'css', 'sass', 'scss']} " html tags expand div>h1
-
 " Textobjects
 """""""""""""""""""""""""""
 Plug 'terryma/vim-expand-region' " Easier way to select textobjects(vvv)
-Plug 'wellle/targets.vim'        " Select inside({[]}) vi( va(
+Plug 'wellle/targets.vim'        " Select inside({[]}) vi( va( vi' va'
 Plug 'andymass/vim-matchup'      " extends vim's % key
 Plug 'osyo-manga/vim-over'       " Visual substitute
 
@@ -87,11 +83,14 @@ Plug 'chr4/nginx.vim'
 
 " lsp
 Plug 'neovim/nvim-lspconfig'
+Plug 'onsails/lspkind-nvim' " kind of autocomplite
+Plug 'weilbith/nvim-code-action-menu', { 'on': 'CodeActionMenu' } " action float window
 
 "    ruby
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-rake'
+Plug 'tpope/vim-endwise' ", { 'for': ['ruby', 'eruby', 'lua'] }  Auto add end in the end
 "    markdown
 Plug 'shime/vim-livedown' " Markdown live preview
 "    html
@@ -107,13 +106,22 @@ Plug 'haya14busa/vim-asterisk'           " *-improved
 
 " Autocomplete
 """""""""""""""""""
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-Plug 'Shougo/neoinclude.vim' " for deoplete, It has file/include source and extends tag sources in neocomplete/deoplete/ncm.
-Plug 'Shougo/neco-syntax' " for deoplete
-Plug 'ujihisa/neco-look' " for deoplete
-Plug 'Shougo/neco-vim'   " for deoplete
-Plug 'carlitux/deoplete-ternjs' " for deoplete
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-calc'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'ray-x/cmp-treesitter'
+Plug 'lukas-reineke/cmp-rg'
+Plug 'quangnguyen30192/cmp-nvim-tags'
+" Snippets
+"""""""""""""""
+Plug 'mattn/emmet-vim', {'for': ['html', 'eruby', 'slim', 'css', 'sass', 'scss']} " html tags expand div>h1
+Plug 'AndrewRadev/tagalong.vim'
 
 call plug#end()
 filetype plugin indent on

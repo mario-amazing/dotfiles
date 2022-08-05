@@ -38,7 +38,7 @@ local buttons = {
     button("t", "滑  Open tree", ':NvimTreeToggle<CR>'),
     button("n", "   New file", ":ene <BAR> startinsert <CR>"),
     button("p", "   Find file(Ctrl-p)", ":Telescope find_files hidden=true path_display=smart<CR>"),
-    button("r", "   Recently used files", ":Telescope oldfiles<CR>"),
+    button("m", "   MRU", ":Telescope oldfiles<CR>"),
     button("f", "   Find text", "<plug>(esearch)"),
     button("u", "   Update plugins", ":PlugUpdate<CR>"),
     button("q", "   Quit Neovim", ":qa!<CR>"),

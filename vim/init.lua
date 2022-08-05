@@ -1,7 +1,5 @@
 vim.cmd 'source ~/.vim/modules/bundles.vim'
-vim.cmd 'source ~/.vim/modules/ncompletion.vim'
 vim.cmd 'source ~/.vim/modules/misc.vim'
-
 
 require('impatient')-- .enable_profile() -- profiling with :LuaCacheProfile
 require('plugins/alpha-nvim')
@@ -14,6 +12,7 @@ require('mappings')
 require('lsp')
 require('lualine_nvim')
 require('autocmds')
+require('completion')
 
 -- ======== Tips:
 -- lua config https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/

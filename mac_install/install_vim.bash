@@ -32,7 +32,6 @@ install_vim() {
 
   nvim +PlugInstall +qa
   nvim +PlugUpdate +qa
-  nvim +UpdateRemotePlugins +qa
 }
 
 install_vim

@@ -7,7 +7,7 @@
 " Bookmarks
 nmap <Space><Space> <Plug>BookmarkToggle
 nmap <Space>i <Plug>BookmarkAnnotate
-nmap <Space>a <Plug>BookmarkShowAll
+nmap <Space>s <Plug>BookmarkShowAll
 nmap <Space>j <Plug>BookmarkNext
 nmap <Space>k <Plug>BookmarkPrev
 
@@ -44,5 +44,5 @@ Text align lines symbols(ga )
 " LivePreview markdown - shime/vim-livedown
 <Leader>lp - Live privew Toggle README
 
-" wellle/targets.vim - Select inside({[]})
-vi( va(
+" wellle/targets.vim - Select inside({['"]})
+vi( va( vi' va"
