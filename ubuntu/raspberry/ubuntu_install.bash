@@ -56,7 +56,6 @@ install_ruby() {
   ln -vsf "$ROOT_DIR/pry/pryrc" "$HOME/.pryrc"
   ln -vsf "$ROOT_DIR/pry/pryrc_helpers.rb" "$HOME/.pryrc_helpers.rb"
   ln -vsf "$ROOT_DIR/irbrc" "$HOME/.irbrc"
-  ln -vsf "$ROOT_DIR/gemspec_template" "$HOME/.gemspec_template"
   ln -vsf "$ROOT_DIR/gemrc" "$HOME/.gemrc"
 
   install_pachages curl g++, gcc, autoconf, automake, bison, libc6-dev, libffi-dev, libgdbm-dev, libncurses5-dev, libsqlite3-dev, libtool, libyaml-dev, make, pkg-config, sqlite3, zlib1g-dev, libgmp-dev, libreadline-dev, libssl-dev

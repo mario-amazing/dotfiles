@@ -87,7 +87,6 @@ install_ruby_configs() {
   ln -vsf "$ROOT_DIR/pry/pryrc" "$HOME/.pryrc"
   ln -vsf "$ROOT_DIR/pry/pryrc_helpers.rb" "$HOME/.pryrc_helpers.rb"
   ln -vsf "$ROOT_DIR/irbrc" "$HOME/.irbrc"
-  ln -vsf "$ROOT_DIR/gemspec_template" "$HOME/.gemspec_template"
   ln -vsf "$ROOT_DIR/gemrc" "$HOME/.gemrc"
 
   # https://solargraph.org/guides/rails

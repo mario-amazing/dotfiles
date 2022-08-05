@@ -108,7 +108,6 @@ install_ruby() {
 
   copy "$SELF_DIR/pryrc" "$HOME/.pryrc"
   copy "$SELF_DIR/irbrc" "$HOME/.irbrc"
-  copy "$SELF_DIR/gemspec_template" "$HOME/.gemspec_template"
 
   install_pachages postgresql postgresql-contrib
 }
