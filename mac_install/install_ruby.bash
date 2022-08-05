@@ -63,7 +63,6 @@ install_rbenv() {
   rbenv global "$RUBY_VERSION"
   rbenv rehash
 
-  # ln -vsf "$ROOT_DIR/rbenv_bundle_config" "$HOME/.bundle/config"
   # manual_install_rbenv_gems
 }
 
