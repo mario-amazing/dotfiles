@@ -11,6 +11,7 @@ install_programs(){
   softwareupdate --install-rosetta
 
   brew install git
+  brew install git-delta
   brew install wget
   brew install fd # friendly find
   brew install rg

@@ -25,6 +25,14 @@ install_git() {
   git config --global branch.autosetuprebase always
 
   git config --global help.autoCorrect -1
+
+  # delta
+  git config --global core.pager delta
+  git config --global delta.features decorations
+  git config --global delta.syntax-theme Dracula
+  git config --global delta.navigate true # use n and N to move between diff sections
+  git config --global delta.decorations.file-style omit
+  git config --global delta.decorations.hunk-header-style 'file line-number syntax'
 }
 
 install_git
