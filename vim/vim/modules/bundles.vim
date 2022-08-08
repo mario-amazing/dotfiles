@@ -11,6 +11,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'goolord/alpha-nvim'       " startup window
 Plug 'olimorris/persisted.nvim' " manage sessions
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'folke/which-key.nvim'     " possible key bindings
 
 " Motion
 """""""""""
@@ -121,7 +122,7 @@ Plug 'quangnguyen30192/cmp-nvim-tags'
 " Snippets
 """""""""""""""
 Plug 'mattn/emmet-vim', {'for': ['html', 'eruby', 'slim', 'css', 'sass', 'scss']} " html tags expand div>h1
-Plug 'AndrewRadev/tagalong.vim'
+Plug 'AndrewRadev/tagalong.vim' " auto rename closing tags
 
 call plug#end()
 filetype plugin indent on

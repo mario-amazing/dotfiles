@@ -55,6 +55,7 @@ install_programs(){
   brew install --cask google-chrome
   brew install --cask vlc
 
+  brew install --cask tunnelbear
   brew install --cask dropbox
   brew install --cask transmission
   brew install --cask tiles
@@ -98,7 +99,7 @@ start_mysql() {
 install_node_with_manager() {
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
   nvm install node
-  ln -vsf "$ROOT_DIR/config/default-npm-packages" "$NVM_DIR/default-packages"
+  ln -vsf "$ROOT_DIR/config/nvm_default_packages" "$NVM_DIR/default-packages"
   echo_info "!!!Inside project folder run => nvm use!!!"
 }
 

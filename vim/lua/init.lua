@@ -104,3 +104,7 @@ require('neoscroll').setup()
 
 
 require("persisted").setup()
+
+
+-- which-key.nvim
+require("which-key").setup()
