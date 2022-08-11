@@ -83,6 +83,7 @@ map('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { silent = true})
 
 -- undoquit.vim
 map('n', '<C-w>u', '<cmd>Undoquit', { silent = true})
+map('n', '<C-w><C-u>', '<cmd>Undoquit', { silent = true})
 
 -- lightspeed
 map('n', 'gs', '<Plug>Lightspeed_s', { silent = true })
@@ -134,6 +135,7 @@ map('n', '<leader>yy', '<cmd>YamlGetFullPath<CR>')
 -- NOTE xnoremap p pgvy -- Not override clipboard on paste (currently fixed/overrides with vim-pasta)
 -- Misc
 map('n', '<S-q>', '<cmd>q<CR>', { silent = true})
+map('n', '<leader>q', '<cmd>qa<CR>', { silent = true})
 map('n', '<C-s>', '<cmd>write<CR>')
 map({'n', 'i'}, '<C-c>', '<Esc>', { silent = true })
 map('i', '<C-d>', '<Delete>')
