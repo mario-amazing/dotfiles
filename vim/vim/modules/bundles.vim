@@ -11,7 +11,6 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'goolord/alpha-nvim'       " startup window
 Plug 'olimorris/persisted.nvim' " manage sessions
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'folke/which-key.nvim'     " possible key bindings
 
 " Motion
 """""""""""
@@ -83,6 +82,8 @@ Plug 'lyokha/vim-xkbswitch' " auto change language to en
 Plug 'chr4/nginx.vim'
 
 " lsp
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'onsails/lspkind-nvim' " kind of autocomplite
 Plug 'weilbith/nvim-code-action-menu', { 'on': 'CodeActionMenu' } " action float window
@@ -114,7 +115,6 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-calc'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'ray-x/cmp-treesitter'
 Plug 'lukas-reineke/cmp-rg'

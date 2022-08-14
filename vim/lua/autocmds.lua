@@ -1,10 +1,4 @@
 vim.api.nvim_exec([[
-  augroup PluginFixes
-    au!
-    au FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
-  augroup END
-
-
   augroup FiletypeAutocommands
     au!
     au FileType arduino setlocal commentstring=//%s

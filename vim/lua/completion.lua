@@ -1,3 +1,6 @@
+-- TODO add 2 symbols complition
+-- TODO fix vsnip
+-- TODO fix mapping
 vim.api.nvim_exec([[
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
@@ -33,25 +36,28 @@ cmp.setup({
     ['<C-n>'] = cmp.mapping.select_next_item(),
 
     ["<Tab>"] = cmp.mapping.confirm({ select = true }),
-     ["<S-Tab>"] = cmp.mapping(function()
-       if cmp.visible() then
-         cmp.select_prev_item()
-       elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-         feedkey("<Plug>(vsnip-jump-prev)", "")
-       end
-     end, { "i", "s" }),
+    ["<S-Tab>"] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+        feedkey("<Plug>(vsnip-jump-prev)", "")
+      end
+    end, { "i", "s" }),
     ['<C-e>'] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
-['<CR>'] = cmp.mapping.confirm({ select = true })
+    ['<CR>'] = cmp.mapping.confirm({ select = true })
   },
   -- extention lspkind
   formatting = {
     format = lspkind.cmp_format({
-      mode = 'symbol_text',
-      maxwidth = 50,
-
-      before = function (entry, vim_item)
-        return vim_item
-      end
+      menu = ({
+        nvim_lsp   = "[lsp]",
+        vsnip      = "[snip]",
+        buffer     = "[buff]",
+        path       = "[path]",
+        treesitter = "[treesitter]",
+        tags       = "[tags]",
+        rg         = "[rg]",
+      })
     })
   },
 
@@ -60,7 +66,6 @@ cmp.setup({
     { name = 'vsnip' },
     { name = 'buffer' },
     { name = 'path' },
-    { name = 'calc' },
     { name = 'treesitter' },
     { name = 'tags' },
     { name = 'rg' },

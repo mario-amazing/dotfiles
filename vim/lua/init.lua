@@ -73,7 +73,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 
 -- You can use treesitter to check for a pair.
-require('nvim-autopairs').setup{}
+require('nvim-autopairs').setup({
+  disable_filetype = { "TelescopePrompt" , "vim" },
+})
 
 
 require('gitsigns').setup({
@@ -104,7 +106,3 @@ require('neoscroll').setup()
 
 
 require("persisted").setup()
-
-
--- which-key.nvim
-require("which-key").setup()

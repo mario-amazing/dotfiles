@@ -4,7 +4,7 @@ local ruby_bp_line="require 'pry'; binding.pry"
 local eruby_bp_line="<% require 'pry'; binding.pry %>"
 local js_bp_line="debugger // eslint-disable-line"
 
-function _G.BreakPointString()
+function BreakPointString()
   local ft = vim.bo.filetype
 
   if ft == "ruby" then return ruby_bp_line end
@@ -13,11 +13,11 @@ function _G.BreakPointString()
   if ft == "python" then return python_bp_line end
 end
 
-function _G.RemoveBreakpoints()
+function RemoveBreakpoints()
   vim.api.nvim_command('silent! g/'..BreakPointString()..'/d')
 end
 
-function _G.ToggleBreakpoint()
+function ToggleBreakpoint()
   local line_text = vim.api.nvim_get_current_line()
   local bp_string = BreakPointString()
 
@@ -35,15 +35,14 @@ end
 
 
 -- nvim-tree
-local is_toggled = false
-function _G.toggle_full_width()
-  print(is_toggled)
-  if is_toggled then
+local nvimTree_toggled = false
+function toggle_full_width()
+  if nvimTree_toggled then
     require'nvim-tree'.resize(30)
   else
     require'nvim-tree'.resize(100)
   end
-  is_toggled = not is_toggled
+  nvimTree_toggled = not nvimTree_toggled
 end
 
 

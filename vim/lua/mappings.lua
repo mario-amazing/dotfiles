@@ -13,16 +13,6 @@ map('', '<Leader>gfl', '<cmd>Telescope git_bcommits<CR> ', { silent = true }) --
 map('', '<Leader>dp',  '<cmd>diffput<CR> ', { silent = true })
 map('n', '<leader>lg', '<cmd>LazyGit<CR>', {silent = false})
 
--- LSP
-vim.api.nvim_set_keymap('n', '<space>p', ':lua vim.lsp.diagnostic.goto_prev()<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<space>n', ':lua vim.lsp.diagnostic.goto_next()<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<space>a', ':lua vim.lsp.diagnostic.code_action()<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<space>d', ':lua vim.lsp.buf.definition()<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<space>f', ':lua vim.lsp.buf.formatting()<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<space>h', ':lua vim.lsp.buf.hover()<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<space>m', ':lua vim.lsp.buf.rename()<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<space>r', ':lua vim.lsp.buf.references()<CR>', {noremap = true, silent = true})
-
 -- SmartGF
 map('n', 'gf', ':<C-u>call SmartGF()<CR>', { silent = true })
 map('x', 'gf', ':<C-u>call SmartGF()<CR>gv', { silent = true })
@@ -49,8 +39,8 @@ map('n', "d'", "<Plug>Dsurround'")
 
 -- Bookmarks
 map('n', '<Space><Space>', '<Plug>BookmarkToggle')
-map('n', '<Space>i',       '<Plug>BookmarkAnnotate')
-map('n', '<Space>a',       '<cmd>Telescope vim_bookmarks all<CR>')
+map('n', '<Space>e',       '<Plug>BookmarkAnnotate')
+map('n', '<Space>s',       '<cmd>Telescope vim_bookmarks all<CR>')
 map('n', '<Space>j',       '<Plug>BookmarkNext')
 map('n', '<Space>k',       '<Plug>BookmarkPrev')
 
@@ -66,7 +56,17 @@ map('n', '<Leader>mc', '<cmd>Telescope find_files cwd=~/.config/nvim/lua<CR>')
 -- LSP
 map('n', 'gd',       '<cmd>Telescop lsp_definitions<cr>', { silent = true })
 map('n', 'gr',       '<cmd>Telescop lsp_references<cr>', { silent = true })
-map('n', '<space>e', '<cmd>Telescop diagnostics<cr>', { silent = true })
+map('n', '<space>d', '<cmd>Telescop diagnostics<cr>', { silent = true })
+map('n', '<space>y', '<cmd>Telescop lsp_document_symbols<cr>', { silent = true })
+map('n', '<space>i', '<cmd>Telescop lsp_incoming_calls<cr>', { silent = true })
+map('n', '<space>o', '<cmd>Telescop lsp_outgoing_calls<cr>', { silent = true })
+--
+map('n', '<space>a', '<cmd>lua vim.lsp.diagnostic.code_action()<CR>', { silent = true })
+map('n', '<space>=', '<cmd>lua vim.lsp.buf.formatting()<CR>', { silent = true })
+map('n', '<space>h', '<cmd>lua vim.lsp.buf.hover()<CR>', {silent = true})
+map('n', '<space>n', '<cmd>lua vim.lsp.buf.rename()<CR>', {silent = true})
+map('n', '<space>td', '<cmd>lua ToggleDiagnostics()<CR>', {silent = true})
+
 
 -- persisted.nvim
 map('n', '<Leader>sl', '<cmd>SessionLoadLast<cr>', { silent = true })

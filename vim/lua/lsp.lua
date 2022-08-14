@@ -9,8 +9,15 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
--- Enable completion triggered by <c-x><c-o>
-vim.cmd('setlocal omnifunc=v:lua.vim.lsp.omnifunc')
+-- mason.nvim
+require("mason").setup()
+-- mason-lspconfig.nvim  -- auto install lsp
+-- , "solargraph" -manual install
+require("mason-lspconfig").setup({
+  -- ensure_installed = { "html", "tsserver", "solargraph", "cssls", "dockerls", "jsonls", "yamlls", "vimls", "prettierd" }
+  ensure_installed = { "html", "tsserver", "cssls", "dockerls", "jsonls", "yamlls", "vimls", "prettierd" }
+})
+
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 require'lspconfig'.html.setup {
@@ -36,6 +43,21 @@ require'lspconfig'.yamlls.setup{
   capabilities = capabilities
 }
 
+
+-- ToggleDiagnostics LSP
+vim.diagnostic.disable()
+local diagnostics_active = false
+function ToggleDiagnostics()
+  if diagnostics_active then
+    vim.diagnostic.disable()
+  else
+    vim.diagnostic.enable()
+  end
+  diagnostics_active = not diagnostics_active
+end
+-- ToggleDiagnostics LSP
+
+
 -- -- TODO completion
 -- require'lspconfig'.solargraph.setup{
 --   settings = {
@@ -46,10 +68,3 @@ require'lspconfig'.yamlls.setup{
 --     },
 --   },
 -- }
-
--- -- linter visual config
--- vim.diagnostic.config({
---   underline = false,
---   virtual_text = false,
---   signs = false,
--- })
