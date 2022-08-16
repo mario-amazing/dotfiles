@@ -16,6 +16,7 @@ set.expandtab = true -- converting tabs to spaces
 set.ignorecase = true -- search(/) without case
 
 set.number = true -- line numbers
+set.signcolumn="yes:1" -- add signcolumn to the left of the numbers
 
 set.spelllang='ru_yo,en_us' -- languages words will be recognized
 
@@ -63,3 +64,4 @@ set.tags = set.tags + 'tags,.git/tags'
 
 -- nvim-cmp
 set.completeopt = { 'menu', 'menuone', 'noselect' }
+

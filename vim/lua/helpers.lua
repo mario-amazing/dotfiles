@@ -4,7 +4,7 @@ local ruby_bp_line="require 'pry'; binding.pry"
 local eruby_bp_line="<% require 'pry'; binding.pry %>"
 local js_bp_line="debugger // eslint-disable-line"
 
-function BreakPointString()
+local function BreakPointString()
   local ft = vim.bo.filetype
 
   if ft == "ruby" then return ruby_bp_line end
@@ -35,15 +35,16 @@ end
 
 
 -- nvim-tree
-local nvimTree_toggled = false
+local nvimTree_full_size_toggled = false
 function toggle_full_width()
-  if nvimTree_toggled then
+  if nvimTree_full_size_toggled then
     require'nvim-tree'.resize(30)
   else
     require'nvim-tree'.resize(100)
   end
-  nvimTree_toggled = not nvimTree_toggled
+  nvimTree_full_size_toggled = not nvimTree_full_size_toggled
 end
+-- nvim-tree
 
 
 -- SmartGF
