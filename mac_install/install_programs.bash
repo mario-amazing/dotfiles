@@ -23,6 +23,7 @@ install_programs(){
 
   brew install cmake
   brew install ctags
+  brew install --HEAD universal-ctags/universal-ctags/universal-ctags
   brew install coreutils # command -> realpath
   brew install thefuck
   brew install htop

@@ -1,17 +1,8 @@
 -- TODO add 2 symbols complition
 -- TODO fix vsnip
 -- TODO fix mapping
-vim.api.nvim_exec([[
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-" autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global=1
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-" autocmd BufRead,BufNewFile *.md setlocal spell
-]], true)
+-- TODO complition in comand line / C-p
+-- TODO config timing before show cmp
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -62,13 +53,13 @@ cmp.setup({
   },
 
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
+    -- { name = 'nvim_lsp' },
+    -- { name = 'tags' },
     { name = 'vsnip' },
-    { name = 'buffer' },
+    -- { name = 'buffer' },
     { name = 'path' },
     { name = 'treesitter' },
-    { name = 'tags' },
-    { name = 'rg' },
+    -- { name = 'rg' },
   }),
 })
 -- Use buffer source for '/'

@@ -12,39 +12,39 @@ function! IndentWithI()
   endif
 endfunction
 
-
+" NOTE Check is gutentags enough !!!!!
 """"""""""" tags """""""""
-let g:filetype_tag_generate_commands = {
-  \ 'ruby': "ripper-tags -R --exclude=vendor",
-  \}
+" let g:filetype_tag_generate_commands = {
+"   \ 'ruby': "ripper-tags -R --exclude=vendor",
+"   \}
 
-function! s:err_handler(job_id, data, event_type)
-  let msg = "? An error occurred generating ctags: " . join(a:data)
-  echom msg
-  let g:ctags_in_progress = 0
-endfunction
+" function! s:err_handler(job_id, data, event_type)
+"   let msg = "? An error occurred generating ctags: " . join(a:data)
+"   echom msg
+"   let g:ctags_in_progress = 0
+" endfunction
 
-function! s:exit_handler(job_id, data, event_type)
-  echom "tags generated"
-  let g:ctags_in_progress = 0
-endfunction
+" function! s:exit_handler(job_id, data, event_type)
+"   echom "tags generated"
+"   let g:ctags_in_progress = 0
+" endfunction
 
-let g:ctags_in_progress = 0
-fu! RegenerateTags() abort
-  if g:ctags_in_progress || &ft != 'ruby'
-    return
-  endif
-  let g:ctags_in_progress = 1
-  let argv = get(g:filetype_tag_generate_commands, &filetype, 'ctags .')
+" let g:ctags_in_progress = 0
+" fu! RegenerateTags() abort
+"   if g:ctags_in_progress || &ft != 'ruby'
+"     return
+"   endif
+"   let g:ctags_in_progress = 1
+"   let argv = get(g:filetype_tag_generate_commands, &filetype, 'ctags .')
 
-  let job_id = jobstart(argv, {
-        \ 'on_stderr': function('s:err_handler'),
-        \ 'on_exit': function('s:exit_handler'),
-        \ })
-  call jobclose(job_id, 'stdin')
-endfu
+"   let job_id = jobstart(argv, {
+"         \ 'on_stderr': function('s:err_handler'),
+"         \ 'on_exit': function('s:exit_handler'),
+"         \ })
+"   call jobclose(job_id, 'stdin')
+" endfu
 
-autocmd BufWritePost * call RegenerateTags()
+" autocmd BufWritePost * call RegenerateTags()
 """"""""""" tags """""""""
 
 
