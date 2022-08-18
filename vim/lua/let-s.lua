@@ -19,7 +19,8 @@ vim.g.switch_mapping = '-'
 -- vim-over
 vim.g.over_command_line_prompt = ':'
 
--- emmet
+-- emmet-vim
+vim.g.user_emmet_leader_key = '<Leader>'
 vim.g.user_emmet_mode='iv' --  modes, in which Emmet mappings will be created(insert/visual)
 
 -- tabular
@@ -33,9 +34,6 @@ vim.g.Gitv_DoNotMapCtrlKey = 1
 
 -- lightspeed
 vim.g.lightspeed_no_default_keymaps  =true
-
---emmet
-vim.g.user_emmet_leader_key = '<Leader>'
 
 -- " vvv https://github.com/terryma/vim-expand-region
 vim.g.expand_region_text_objects = {

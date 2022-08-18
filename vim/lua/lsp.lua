@@ -20,6 +20,7 @@ require("mason-lspconfig").setup({
 
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- NOTE html lsp could raise error when html file has js code
 require'lspconfig'.html.setup {
   filetypes = {"html", "eruby"},
   capabilities = capabilities
