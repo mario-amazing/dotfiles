@@ -1,7 +1,6 @@
 -- TODO add 2 symbols complition
 -- TODO fix vsnip
 -- TODO fix mapping
--- TODO complition in comand line / C-p
 -- TODO config timing before show cmp
 
 local has_words_before = function()
@@ -23,8 +22,8 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+    ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
 
     ["<Tab>"] = cmp.mapping.confirm({ select = true }),
     ["<S-Tab>"] = cmp.mapping(function()
