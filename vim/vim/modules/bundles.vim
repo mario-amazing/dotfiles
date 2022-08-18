@@ -117,7 +117,6 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
-Plug 'ray-x/cmp-treesitter'
 Plug 'lukas-reineke/cmp-rg'
 Plug 'quangnguyen30192/cmp-nvim-tags'
 " Snippets

@@ -12,7 +12,7 @@ end
 -- mason.nvim
 require("mason").setup()
 -- mason-lspconfig.nvim  -- auto install lsp
--- , "solargraph" -manual install
+-- NOTE , "solargraph" -manual install
 require("mason-lspconfig").setup({
   -- ensure_installed = { "html", "tsserver", "solargraph", "cssls", "dockerls", "jsonls", "yamlls", "vimls", "prettierd" }
   ensure_installed = { "html", "tsserver", "cssls", "dockerls", "jsonls", "yamlls", "vimls", "prettierd" }

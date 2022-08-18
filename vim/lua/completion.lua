@@ -45,7 +45,6 @@ cmp.setup({
         vsnip      = "[snip]",
         buffer     = "[buff]",
         path       = "[path]",
-        treesitter = "[treesitter]",
         tags       = "[tags]",
         rg         = "[rg]",
       })
@@ -53,13 +52,12 @@ cmp.setup({
   },
 
   sources = cmp.config.sources({
-    -- { name = 'nvim_lsp' },
-    -- { name = 'tags' },
+    { name = 'nvim_lsp' },
+    { name = 'tags' },
     { name = 'vsnip' },
-    -- { name = 'buffer' },
+    { name = 'buffer' },
     { name = 'path' },
-    { name = 'treesitter' },
-    -- { name = 'rg' },
+    { name = 'rg' },
   }),
 })
 -- Use buffer source for '/'
