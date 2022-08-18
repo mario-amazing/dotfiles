@@ -22,8 +22,8 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-    ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
 
     ["<Tab>"] = cmp.mapping.confirm({ select = true }),
     ["<S-Tab>"] = cmp.mapping(function()
@@ -42,9 +42,9 @@ cmp.setup({
       menu = ({
         nvim_lsp   = "[lsp]",
         vsnip      = "[snip]",
+        tags       = "[tags]",
         buffer     = "[buff]",
         path       = "[path]",
-        tags       = "[tags]",
         rg         = "[rg]",
       })
     })
@@ -52,8 +52,8 @@ cmp.setup({
 
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'tags' },
     { name = 'vsnip' },
+    { name = 'tags' },
     { name = 'buffer' },
     { name = 'path' },
     { name = 'rg' },
@@ -61,6 +61,7 @@ cmp.setup({
 })
 -- Use buffer source for '/'
 cmp.setup.cmdline('/', {
+ mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' }
   }
@@ -68,6 +69,7 @@ cmp.setup.cmdline('/', {
 
 -- Use cmdline & path source for ':'
 cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = 'path' }
   }, {
