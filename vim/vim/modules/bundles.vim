@@ -10,7 +10,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " highlight syntax
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'goolord/alpha-nvim'       " startup window
 Plug 'olimorris/persisted.nvim' " manage sessions
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-tree.lua' " file manager
 
 " Motion
 """""""""""
@@ -61,7 +61,6 @@ Plug 'machakann/vim-sandwich'        " Add #{} surround to ruby string
 
 Plug 'junegunn/vim-easy-align'       " Text align lines symbols(ga)
 Plug 'windwp/nvim-autopairs'
-" !!!!!!TODO CHECK nvim-cmp complition!!!
 
 
 " Tools
@@ -93,11 +92,8 @@ Plug 'tpope/vim-rbenv'  " improve nvim ruby loading
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-rake'
-Plug 'tpope/vim-endwise' ", { 'for': ['ruby', 'eruby', 'lua'] }  Auto add end in the end
 "    markdown
 Plug 'shime/vim-livedown' " Markdown live preview
-"    html
-" TODO add HTML ????
 "    yaml
 Plug 'lmeijvogel/vim-yaml-helper'
 

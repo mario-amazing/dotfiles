@@ -18,5 +18,5 @@ require('completion')
 -- lua config https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 -- icons -> https://www.nerdfonts.com/cheat-sheet
 -- :au TextChangedI #(Run after typing) Debugging what plugins were run during text typing.
--- :verbose vmap , # Show mapping for
+-- :verbose map(vmap, imap) , # Show mapping for
 -- vim -u test_vimrc # Run vim with test_vimrc as source file
