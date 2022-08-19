@@ -1,18 +1,4 @@
-fu! TrimWhiteSpace()
-  %s/\s\+$//e
-  %s/\n\{3,}/\r\r/e
-  retab
-endf
-
-function! IndentWithI()
-  if getline('.') =~ '^\s*$'
-    return '"_cc'
-  else
-    return "i"
-  endif
-endfunction
-
-" NOTE Check is gutentags enough !!!!!
+" TODO Check is gutentags enough !!!!!
 """"""""""" tags """""""""
 " let g:filetype_tag_generate_commands = {
 "   \ 'ruby': "ripper-tags -R --exclude=vendor",

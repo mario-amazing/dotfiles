@@ -139,7 +139,8 @@ map('n', '<leader>q', '<cmd>qa<CR>', { silent = true})
 map('n', '<C-s>', '<cmd>write<CR>')
 map({'n', 'i'}, '<C-c>', '<Esc>', { silent = true })
 map('i', '<C-d>', '<Delete>')
-map('n', '<S-u>', '<cmd>redo<CR>')
+map('n', '<S-u>', "<cmd>redo<CR>")
+
 
 -- vim-floaterm
 map('n', '<A-t>', '<CMD>FloatermToggle<CR>')
@@ -156,8 +157,8 @@ map('n', '<C-i>', '<C-i>zz', { silent = true })
 map('n', '<C-o>', '<C-o>zz', { silent = true })
 
 -- markup
-map('n', '<F8>', '<cmd>let w:v=winsaveview()<cr>ggVG=<cmd>call winrestview(w:v)<cr>', { silent = true })
-map('n', 'i', 'IndentWithI()', { expr = true})
+map('n', '<F8>', function() preserveCursor("normal! ggVG=") end , { silent = true }) -- FullFileIndent
+map('n', 'i', IndentWithI, { expr = true })
 
 -- jump window
 map('', '<C-k>', '<C-w><C-k>', { silent = true })
@@ -211,7 +212,7 @@ map('c', '<M-f>', '<S-Right>')
 map('c', '<M-d>', '<S-right><Delete>')
 
 --markup
-vim.cmd('cabbrev trw :call TrimWhiteSpace()')
+vim.cmd('cabbrev tws :lua TrimWhiteSpace()')
 
 --git
 vim.cmd('cabbrev ga   Git add')

@@ -80,6 +80,7 @@ require('nvim-autopairs').setup({
   disable_filetype = { "TelescopePrompt" , "vim" },
 })
 require('nvim-autopairs').add_rules(require('nvim-autopairs.rules.endwise-ruby')) -- Auto adding end after blocks
+require('nvim-autopairs').add_rules(require('nvim-autopairs.rules.endwise-lua')) -- Auto adding end after blocks
 
 
 require('gitsigns').setup({
