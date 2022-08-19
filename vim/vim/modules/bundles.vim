@@ -88,6 +88,7 @@ Plug 'onsails/lspkind-nvim' " kind of autocomplite
 Plug 'weilbith/nvim-code-action-menu', { 'on': 'CodeActionMenu' } " action float window
 
 "    ruby
+" TODO add snip with eruby <=%
 Plug 'tpope/vim-rbenv'  " improve nvim ruby loading
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
@@ -117,8 +118,8 @@ Plug 'lukas-reineke/cmp-rg'
 Plug 'quangnguyen30192/cmp-nvim-tags'
 " Snippets
 """""""""""""""
-Plug 'mattn/emmet-vim'          " html tags expand div>h1
-Plug 'AndrewRadev/tagalong.vim' " auto rename closing tags
+Plug 'mattn/emmet-vim'        " html tags expand div>h1
+Plug 'windwp/nvim-ts-autotag' " auto rename closing tags
 
 call plug#end()
 filetype plugin indent on

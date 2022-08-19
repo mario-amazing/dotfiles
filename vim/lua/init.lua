@@ -24,13 +24,15 @@ require("telescope").load_extension("persisted")
 
 require('nvim-treesitter.configs').setup {
   highlight = { enable = true },
-  ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", "css", "scss", "regex", "yaml" },
+  ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", 'tsx', "css", "scss", "regex", "yaml" },
   -- indent = { enable = true }, -- Experimental
 
   -- extension vim-matchup
   matchup = { enable = true },
   -- extension nvim-ts-context-commentstring(comment by treesitter line type)(html with js and css)
-  context_commentstring = { enable = true }
+  context_commentstring = { enable = true },
+  -- extension nvim-ts-autotag
+  autotag = { enable = true },
 }
 
 
