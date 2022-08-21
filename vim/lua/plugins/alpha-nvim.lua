@@ -18,15 +18,15 @@ local header = {
         [[         F   ANDEVERYTHING]],
     },
     opts = {
-      hl = "Orange",
+      hl = "GruvboxOrange",
       position = "center",
     },
 }
 
 local function button(sc, txt, keybind, keybind_opts)
   local b = dashboard.button(sc, txt, keybind, keybind_opts)
-  -- b.opts.hl = "Number"
-  b.opts.hl_shortcut = "Keyword"
+  b.opts.hl = "GruvboxFg1"
+  b.opts.hl_shortcut = "GruvboxRed"
   return b
 end
 
@@ -56,7 +56,7 @@ local quote = {
   },
   opts = {
     position = "center",
-    hl = "Grey",
+    hl = "GruvboxGray",
   },
 }
 
@@ -70,7 +70,7 @@ local footer = {
   val = footer(),
   opts = {
     position = "center",
-    hl = "Grey",
+    hl = "GruvboxGray",
   },
 }
 

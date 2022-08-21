@@ -1,12 +1,13 @@
 call plug#begin('~/.vim/bundle')
 Plug 'lewis6991/impatient.nvim' " cache startup lua plugins
 
-" Colorschemes
+" Colorscheme
 """""""""""""""
-Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'} " colorcheme
+" Plug  'ellisonleao/gruvbox.nvim' ,
+Plug 'mario-amazing/gruvbox.nvim', { 'branch':  'add_palette_overriding' }
 
 " #UI
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " highlight syntax
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }  " highlight syntax
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'goolord/alpha-nvim'       " startup window
 Plug 'olimorris/persisted.nvim' " manage sessions
