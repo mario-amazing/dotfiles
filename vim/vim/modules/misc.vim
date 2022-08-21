@@ -66,6 +66,8 @@ let g:esearch.win_map = [
 let g:esearch_sort_by_path = {'adapters': {'rg': {'options': '--sort path'}}}
 let g:esearch_sort_by_date = {'adapters': {'rg': {'options': '--sort modified'}}}
 let g:EsearchAddAfter = {n -> {'after': b:esearch.after + n, 'backend': 'system'}}
+
+highlight link esearchFilename GruvboxGreen
 """"""""""" vim-esearch """""""""
 
 

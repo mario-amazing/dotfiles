@@ -51,7 +51,7 @@ alias wcp='RAILS_ENV=production RACK_ENV=production NODE_ENV=production rails we
 alias gsh='git stash --include-untracked'
 alias gsha="git stash apply"
 alias gshl="git stash list"
-alias gshc="git stash clear"
+alias gshc!="git stash clear"
 
 alias gco='git checkout'
 alias gcom='git checkout master'
