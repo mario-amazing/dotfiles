@@ -33,6 +33,8 @@ require('nvim-treesitter.configs').setup {
   context_commentstring = { enable = true },
   -- extension nvim-ts-autotag
   autotag = { enable = true },
+  -- playground
+  playground = { enable = true },
 }
 
 

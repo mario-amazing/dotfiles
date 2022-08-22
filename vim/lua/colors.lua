@@ -2,6 +2,7 @@
 
 require("gruvbox").setup({
     palette_overrides = {
+      light1 = "#d5c4a1",
       bright_red = "#ea6962",
       bright_green = "#a9b665",
       bright_yellow = "#d8a657",
@@ -13,7 +14,6 @@ require("gruvbox").setup({
     bold = false,
     overrides = {
       Function = { link = "GruvboxAquaBold" },
-      GruvboxFg1 = { link = "GruvboxFg2" }
     }
 })
 vim.cmd([[colorscheme gruvbox]])

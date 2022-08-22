@@ -4,10 +4,11 @@ Plug 'lewis6991/impatient.nvim' " cache startup lua plugins
 " Colorscheme
 """""""""""""""
 " Plug  'ellisonleao/gruvbox.nvim' ,
-Plug 'mario-amazing/gruvbox.nvim', { 'branch':  'add_palette_overriding' }
+Plug 'mario-amazing/gruvbox.nvim', { 'branch':  'add_nvim-tree_group' }
 
 " #UI
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }  " highlight syntax
+Plug 'nvim-treesitter/playground' " :TSPlaygroundToggle  treesitter information 
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'goolord/alpha-nvim'       " startup window
 Plug 'olimorris/persisted.nvim' " manage sessions
