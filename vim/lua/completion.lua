@@ -1,4 +1,3 @@
--- TODO add 2 symbols complition
 -- TODO fix vsnip
 -- TODO fix mapping
 -- TODO config timing before show cmp
@@ -21,6 +20,7 @@ cmp.setup({
     -- disable completion in comments
     return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
   end,
+  completion = { keyword_length = 2 }, -- characters needed to trigger auto-completion.
   snippet = {
     expand = function(args)
       vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` user.
