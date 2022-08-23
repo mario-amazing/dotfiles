@@ -14,6 +14,7 @@ require("gruvbox").setup({
     bold = false,
     overrides = {
       Function = { link = "GruvboxAquaBold" },
+      CmpItemAbbrMatch = { link = "GruvboxOrange" }, -- TODO remove line after fix  https://github.com/hrsh7th/nvim-cmp/issues/1152
     }
 })
 vim.cmd([[colorscheme gruvbox]])

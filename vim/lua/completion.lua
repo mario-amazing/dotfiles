@@ -36,6 +36,15 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
     ['<CR>'] = cmp.mapping.confirm({ select = true })
   },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' },
+    { name = 'tags' },
+    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'rg' },
+  }),
+
   -- extention lspkind
   formatting = {
     format = lspkind.cmp_format({
@@ -49,30 +58,19 @@ cmp.setup({
       })
     })
   },
-
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-    { name = 'tags' },
-    { name = 'buffer' },
-    { name = 'path' },
-    { name = 'rg' },
-  }),
 })
--- Use buffer source for '/'
+
+local cmp_view = { entries = { name = 'wildmenu', separator = ' ' } }
+local cmp_mapping = cmp.mapping.preset.cmdline()
+
 cmp.setup.cmdline('/', {
- mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' }
-  }
+  view = cmp_view,
+  mapping = cmp_mapping,
+  sources = {{ name = 'buffer' }}
 })
 
--- Use cmdline & path source for ':'
 cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
+  view = cmp_view,
+  mapping = cmp_mapping,
+  sources = cmp.config.sources({{ name = 'path' }}, {{ name = 'cmdline' }})
 })

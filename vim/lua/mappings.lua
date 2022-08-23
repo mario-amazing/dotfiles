@@ -67,7 +67,6 @@ map('n', '<space>h', '<cmd>lua vim.lsp.buf.hover()<CR>', {silent = true})
 map('n', '<space>n', '<cmd>lua vim.lsp.buf.rename()<CR>', {silent = true})
 map('n', '<space>td', '<cmd>lua ToggleDiagnostics()<CR>', {silent = true})
 
-
 -- persisted.nvim
 map('n', '<Leader>sl', '<cmd>SessionLoadLast<cr>', { silent = true })
 map('n', '<Leader>ss', '<cmd>Telescope persisted<cr>', { silent = true })
@@ -130,7 +129,6 @@ map('n', '<C-f>w',     '<plug>(operator-esearch-prefill)iw')
 map('n', '<leader>yg', function() return vim.cmd('YamlGoToKey ' .. vim.fn.getreg('*')) end) -- goto key from buffer
 map('n', '<leader>yy', '<cmd>YamlGetFullPath<CR>')
 
-
 -- Common
 -- NOTE xnoremap p pgvy -- Not override clipboard on paste (currently fixed/overrides with vim-pasta)
 -- Misc
@@ -140,7 +138,6 @@ map('n', '<C-s>', '<cmd>write<CR>')
 map({'n', 'i'}, '<C-c>', '<Esc>', { silent = true })
 map('i', '<C-d>', '<Delete>')
 map('n', '<S-u>', "<cmd>redo<CR>")
-
 
 -- vim-floaterm
 map('n', '<A-t>', '<CMD>FloatermToggle<CR>')
@@ -159,6 +156,7 @@ map('n', '<C-o>', '<C-o>zz', { silent = true })
 -- markup
 map('n', '<F8>', function() preserveCursor("normal! ggVG=") end , { silent = true }) -- FullFileIndent
 map('n', 'i', IndentWithI, { expr = true })
+map('n', '<leader>wt', TrimWhiteSpace)
 
 -- jump window
 map('', '<C-k>', '<C-w><C-k>', { silent = true })
@@ -210,9 +208,6 @@ map('c', '<C-d>', '<Delete>')
 map('c', '<M-b>', '<S-Left>')
 map('c', '<M-f>', '<S-Right>')
 map('c', '<M-d>', '<S-right><Delete>')
-
---markup
-vim.cmd('cabbrev tws :lua TrimWhiteSpace()')
 
 --git
 vim.cmd('cabbrev ga   Git add')
