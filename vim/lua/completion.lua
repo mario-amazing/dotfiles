@@ -16,6 +16,11 @@ local cmp = require'cmp'
 local lspkind = require'lspkind'
 
 cmp.setup({
+  enabled = function()
+    local context = require 'cmp.config.context'
+    -- disable completion in comments
+    return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+  end,
   snippet = {
     expand = function(args)
       vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` user.
