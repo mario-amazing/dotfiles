@@ -97,6 +97,9 @@ map('n', '<leader>b', '<cmd>lua ToggleBreakpoint()<CR>', { silent = true})
 -- shime/vim-livedown(preview)
 map('n', '<leader>lp', '<cmd>LivedownToggle<CR>')
 
+-- auto-save.nvim
+map('n', '<leader>at', '<cmd>ASToggle<CR>')
+
 -- sideways
 map('n', '<S-h>', '<cmd>SidewaysLeft<CR>')
 map('n', '<S-l>', '<cmd>SidewaysRight<CR>')
