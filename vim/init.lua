@@ -20,3 +20,4 @@ require('completion')
 -- :au TextChangedI #(Run after typing) Debugging what plugins were run during text typing.
 -- :verbose map(vmap, imap) , # Show mapping for
 -- vim -u test_vimrc # Run vim with test_vimrc as source file
+-- https://github.com/crivotz/nv-ide last config synced on Aug 9, 2022 fe011790251d52fdd8057bf23ebe387cb0a952fa

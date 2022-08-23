@@ -1,6 +1,5 @@
 -- TODO fix vsnip
 -- TODO fix mapping
--- TODO config timing before show cmp
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -21,6 +20,9 @@ cmp.setup({
     return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
   end,
   completion = { keyword_length = 2 }, -- characters needed to trigger auto-completion.
+  performance = {
+    debounce = 80, -- default 60
+  },
   snippet = {
     expand = function(args)
       vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` user.
