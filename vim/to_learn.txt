@@ -4,6 +4,10 @@
 " Float term
 <A-t>
 
+" Next/prev git hunk
+<leader>hn Gitsigns next_hunk
+<leader>hp Gitsigns prev_hunk
+
 " Bookmarks
 nmap <Space><Space> <Plug>BookmarkToggle
 nmap <Space>i <Plug>BookmarkAnnotate

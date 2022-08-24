@@ -114,15 +114,15 @@ Plug 'haya14busa/vim-asterisk'           " *-improved
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'lukas-reineke/cmp-rg'
 Plug 'quangnguyen30192/cmp-nvim-tags'
+Plug 'saadparwaiz1/cmp_luasnip'
 " Snippets
 """""""""""""""
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets' " snippets collection
 Plug 'mattn/emmet-vim'        " html tags expand div>h1
 Plug 'windwp/nvim-ts-autotag' " auto rename closing tags
 

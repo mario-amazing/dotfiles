@@ -112,6 +112,10 @@ require('colorizer').setup(
 require('neoscroll').setup()
 
 
+-- friendly-snippets
+require("luasnip.loaders.from_vscode").lazy_load()
+
+
 require("persisted").setup()
 
 
