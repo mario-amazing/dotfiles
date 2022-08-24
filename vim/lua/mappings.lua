@@ -12,6 +12,9 @@ map('', '<leader>gb',  '<cmd>NvimTreeClose<cr><cmd>Git blame<cr> ', { silent = t
 map('', '<Leader>gfl', '<cmd>Telescope git_bcommits<CR> ', { silent = true }) -- logs current file
 map('', '<Leader>dp',  '<cmd>diffput<CR> ', { silent = true })
 map('n', '<leader>lg', '<cmd>LazyGit<CR>', {silent = false})
+-- gitsigns
+map('n', '<leader>hn',  '<cmd>Gitsigns next_hunk<CR>')
+map('n', '<leader>hp',  '<cmd>Gitsigns prev_hunk<CR>')
 
 -- SmartGF
 map('n', 'gf', ':<C-u>call SmartGF()<CR>', { silent = true })

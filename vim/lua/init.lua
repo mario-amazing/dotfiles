@@ -85,13 +85,7 @@ require('nvim-autopairs').add_rules(require('nvim-autopairs.rules.endwise-ruby')
 require('nvim-autopairs').add_rules(require('nvim-autopairs.rules.endwise-lua')) -- Auto adding end after blocks
 
 
-require('gitsigns').setup({
-  keymaps = {
-    noremap = true,
-    ['n <leader>hn'] = '<cmd>Gitsigns next_hunk<CR>',
-    ['n <leader>hp'] = '<cmd>Gitsigns prev_hunk<CR>',
-  },
-})
+require('gitsigns').setup()
 
 
 -- nvim-colorizer.lua
