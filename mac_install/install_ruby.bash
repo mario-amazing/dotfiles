@@ -41,7 +41,7 @@ install_rvm() {
   source "$HOME/.rvm/scripts/rvm"
   rvm pkg install openssl
 
-  RUBY_VERSION="3.0.1" # TODO remove
+  RUBY_VERSION="3.0.1" # TODO remove version -> last
   rvm install "$RUBY_VERSION"
   rvm use "$RUBY_VERSION" --default
 

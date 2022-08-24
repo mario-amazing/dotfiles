@@ -1,4 +1,3 @@
-#TODO  settings, su, sudo update after install
 # SELF_DIR="$(dirname $0)"
 SELF_DIR=$PWD
 

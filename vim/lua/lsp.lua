@@ -60,7 +60,7 @@ end
 -- ToggleDiagnostics LSP
 
 
--- -- TODO completion
+-- -- NOTE example lsp config
 -- require'lspconfig'.solargraph.setup{
 --   settings = {
 --     solargraph = {

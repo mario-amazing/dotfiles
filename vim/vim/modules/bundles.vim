@@ -93,7 +93,6 @@ Plug 'onsails/lspkind-nvim' " kind of autocomplite
 Plug 'weilbith/nvim-code-action-menu', { 'on': 'CodeActionMenu' } " action float window
 
 "    ruby
-" TODO add snip with eruby <=%
 Plug 'tpope/vim-rbenv'  " improve nvim ruby loading
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
