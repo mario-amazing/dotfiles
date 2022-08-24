@@ -1,6 +1,4 @@
--- TODO fix vsnip
 -- TODO fix mapping
--- Fix telescop autocompletion
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -96,3 +94,6 @@ cmp.setup.cmdline(':', {
   mapping = cmp_mapping,
   sources = cmp.config.sources({{ name = 'path' }}, {{ name = 'cmdline' }})
 })
+
+
+cmp.setup.filetype({'TelescopePrompt'}, { enabled = false })
