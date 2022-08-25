@@ -1,4 +1,4 @@
--- TODO fix tsx file speed
+-- TODO fix tsx file speed https://github.com/quangnguyen30192/cmp-nvim-tags/issues/7
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
