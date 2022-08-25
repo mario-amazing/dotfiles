@@ -32,7 +32,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 " Git
 """""""""""""""
 Plug 'kdheepak/lazygit.nvim' " UI for git
-Plug 'tpope/vim-fugitive' " main git commands
+Plug 'dinhhuy258/git.nvim' " main git commands
 Plug 'rhysd/conflict-marker.vim'
 Plug 'lewis6991/gitsigns.nvim' " Add git line status(|/=/~) to the left of a line and Git diff
 

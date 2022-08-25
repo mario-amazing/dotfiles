@@ -114,3 +114,7 @@ require("persisted").setup()
 
 
 require("auto-save").setup({ trigger_events = { "FocusLost", "BufLeave", --[["BufDelete", "UILeave"]] }}) --[[:h events]]
+
+
+-- git.nvim
+require('git').setup()

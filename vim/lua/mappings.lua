@@ -1,17 +1,17 @@
 local map = vim.keymap.set
 -- git
-map('', '<Leader>gg',  ':Git<space>')
-map('', '<Leader>gs',  '<cmd>Gtabedit :<CR>', { silent = true })
-map('', '<Leader>gc',  '<cmd>Git commit<CR>', { silent = true })
-map('', '<Leader>gp',  '<cmd>Git push<CR>', { silent = true })
-map('', '<Leader>gd',  '<cmd>Gitsigns diffthis<CR> ', { silent = true })
-map('', '<Leader>gl',  '<cmd>Telescope git_commits<CR>', { silent = true })
-map('', '<leader>gb',  '<cmd>Git blame<CR> ', { silent = true })
-map('', '<leader>gh',  '<cmd>Telescope git_stash<CR>', { silent = true })
-map('', '<leader>gb',  '<cmd>NvimTreeClose<cr><cmd>Git blame<cr> ', { silent = true })
-map('', '<Leader>gfl', '<cmd>Telescope git_bcommits<CR> ', { silent = true }) -- logs current file
-map('', '<Leader>dp',  '<cmd>diffput<CR> ', { silent = true })
-map('n', '<leader>lg', '<cmd>LazyGit<CR>', {silent = false})
+map('n', '<leader>lg',  '<cmd>LazyGit<CR>', {silent = false})
+map('',  '<Leader>go',  '<cmd>lua require("git.browse").open(false)<CR>', { silent = true }) -- open file on github site
+map('',  '<Leader>gg',  ':Git<space>')
+map('',  '<leader>gb',  '<cmd>NvimTreeClose<cr><cmd>lua require("git.blame").blame()<cr>', { silent = true })
+map('',  '<Leader>dp',  '<cmd>diffput<CR> ', { silent = true })
+map('',  '<Leader>gs',  '<cmd>Gtabedit :<CR>', { silent = true }) -- TODO fix after https://github.com/dinhhuy258/git.nvim/issues/8
+map('',  '<Leader>gc',  '<cmd>Git commit<CR>', { silent = true })
+map('',  '<Leader>gp',  '<cmd>Git push<CR>', { silent = true })
+map('',  '<Leader>gd',  '<cmd>Gitsigns diffthis<CR> ', { silent = true })
+map('',  '<Leader>gl',  '<cmd>Telescope git_commits<CR>', { silent = true })
+map('',  '<leader>gh',  '<cmd>Telescope git_stash<CR>', { silent = true })
+map('',  '<Leader>gfl', '<cmd>Telescope git_bcommits<CR> ', { silent = true }) -- logs current file
 -- gitsigns
 map('n', '<leader>hn',  '<cmd>Gitsigns next_hunk<CR>')
 map('n', '<leader>hp',  '<cmd>Gitsigns prev_hunk<CR>')
