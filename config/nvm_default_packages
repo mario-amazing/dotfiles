@@ -1,0 +1,11 @@
+neovim
+@fsouza/prettierd
+vim-language-server
+yaml-language-server
+dockerfile-language-server-nodejs
+typescript
+typescript-language-server
+vscode-langservers-extracted
+
+# shime/vim-livedown
+livedown

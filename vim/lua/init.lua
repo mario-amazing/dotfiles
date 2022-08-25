@@ -8,7 +8,6 @@ require('telescope').setup{
         ["<C-k>"] = require('telescope.actions').move_selection_previous
       }
     },
-    file_ignore_patterns = {'.git/*'},
     prompt_prefix = "🔎 ",
   },
   pickers = {
@@ -20,15 +19,22 @@ require('telescope').setup{
 }
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('vim_bookmarks')
+require("telescope").load_extension("persisted")
 
 
 require('nvim-treesitter.configs').setup {
   highlight = { enable = true },
-  ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", "css", "scss", "regex", "yaml" },
+  ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", 'tsx', "css", "scss", "regex", "yaml" },
   -- indent = { enable = true }, -- Experimental
 
+  -- extension vim-matchup
+  matchup = { enable = true },
   -- extension nvim-ts-context-commentstring(comment by treesitter line type)(html with js and css)
-  context_commentstring = { enable = true }
+  context_commentstring = { enable = true },
+  -- extension nvim-ts-autotag
+  autotag = { enable = true },
+  -- playground
+  playground = { enable = true },
 }
 
 
@@ -71,10 +77,44 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 
 -- You can use treesitter to check for a pair.
-require('nvim-autopairs').setup{}
+require('nvim-autopairs').setup({
+  -- map_cr = false, -- map <CR> key
+  disable_filetype = { "TelescopePrompt" , "vim" },
+})
+require('nvim-autopairs').add_rules(require('nvim-autopairs.rules.endwise-ruby')) -- Auto adding end after blocks
+require('nvim-autopairs').add_rules(require('nvim-autopairs.rules.endwise-lua')) -- Auto adding end after blocks
 
 
 require('gitsigns').setup()
 
 
--- require('colorizer').setup() -- uncomment for default enabled
+-- nvim-colorizer.lua
+require('colorizer').setup(
+  {'css', 'javascript'},
+  {
+    RGB      = true;         -- #RGB hex codes
+    RRGGBB   = true;         -- #RRGGBB hex codes
+    names    = true;         -- "Name" codes like Blue
+    RRGGBBAA = true;         -- #RRGGBBAA hex codes
+    rgb_fn   = true;         -- CSS rgb() and rgba() functions
+    hsl_fn   = true;         -- CSS hsl() and hsla() functions
+    css      = true;         -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+    css_fn   = true;         -- Enable all CSS *functions*: rgb_fn, hsl_fn
+})
+
+
+require('neoscroll').setup()
+
+
+-- friendly-snippets
+require("luasnip.loaders.from_vscode").lazy_load()
+
+
+require("persisted").setup()
+
+
+require("auto-save").setup({ trigger_events = { "FocusLost", "BufLeave", --[["BufDelete", "UILeave"]] }}) --[[:h events]]
+
+
+-- git.nvim
+require('git').setup()

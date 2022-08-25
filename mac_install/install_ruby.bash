@@ -9,7 +9,7 @@ default_gems() {
   gems_array=()
   while IFS= read -r line; do
     gems_array+=($line)
-  done < "$ROOT_DIR/global.gems"
+  done < "$ROOT_DIR/config/global.gems"
 
   echo ${gems_array[@]}
 }
@@ -41,7 +41,7 @@ install_rvm() {
   source "$HOME/.rvm/scripts/rvm"
   rvm pkg install openssl
 
-  RUBY_VERSION="3.0.1" # TODO remove
+  RUBY_VERSION="3.0.1" # TODO remove version -> last
   rvm install "$RUBY_VERSION"
   rvm use "$RUBY_VERSION" --default
 
@@ -56,14 +56,13 @@ install_rbenv() {
 
   brew install rbenv
   brew install rbenv-default-gems
-  ln -vsf "$ROOT_DIR/global.gems" "$HOME/.rbenv/default-gems"
+  ln -vsf "$ROOT_DIR/config/global.gems" "$HOME/.rbenv/default-gems"
 
   RUBY_VERSION=$(rbenv install -l | grep -v - | tail -1)
   rbenv install "$RUBY_VERSION"
   rbenv global "$RUBY_VERSION"
   rbenv rehash
 
-  # ln -vsf "$ROOT_DIR/rbenv_bundle_config" "$HOME/.bundle/config"
   # manual_install_rbenv_gems
 }
 
@@ -71,7 +70,7 @@ install_ruby_rvm_configs(){
   echo_title "!!!RUBY RVM CONFIGS INSTALATION!!!"
 
   mkdir -p "$HOME/.rvm/gemsets"
-  ln -vsf "$ROOT_DIR/global.gems" "$HOME/.rvm/gemsets/global.gems"
+  ln -vsf "$ROOT_DIR/config/global.gems" "$HOME/.rvm/gemsets/global.gems"
 }
 
 install_ruby_rbenv_configs(){
@@ -84,16 +83,15 @@ install_ruby_rbenv_configs(){
 install_ruby_configs() {
   echo_title "!!!RUBY CONFIGS INSTALATION!!!"
 
-  ln -vsf "$ROOT_DIR/pry/pryrc" "$HOME/.pryrc"
-  ln -vsf "$ROOT_DIR/pry/pryrc_helpers.rb" "$HOME/.pryrc_helpers.rb"
-  ln -vsf "$ROOT_DIR/irbrc" "$HOME/.irbrc"
-  ln -vsf "$ROOT_DIR/gemspec_template" "$HOME/.gemspec_template"
-  ln -vsf "$ROOT_DIR/gemrc" "$HOME/.gemrc"
+  ln -vsf "$ROOT_DIR/config/pry/pryrc" "$HOME/.pryrc"
+  ln -vsf "$ROOT_DIR/config/pry/pryrc_helpers.rb" "$HOME/.pryrc_helpers.rb"
+  ln -vsf "$ROOT_DIR/config/irbrc" "$HOME/.irbrc"
+  ln -vsf "$ROOT_DIR/config/gemrc" "$HOME/.gemrc"
 
   # https://solargraph.org/guides/rails
   mkdir -p "$HOME/.solargraph"
   git clone https://gist.github.com/castwide/28b349566a223dfb439a337aea29713e ~/.solargraph/src/enhance-rails-intellisense-in-solargraph
-  ln -vsf "$ROOT_DIR/solargraph_config.yml" "$HOME/.solargraph/config.yml"
+  ln -vsf "$ROOT_DIR/config/solargraph_config.yml" "$HOME/.solargraph/config.yml"
 }
 
 manual_install_rvm_gems() {

@@ -65,6 +65,17 @@ Dock() {
   defaults write com.apple.dock minimize-to-application -bool true
 }
 
+Keyboard() {
+  # max 15
+  defaults write -g InitialKeyRepeat -float 15.0
+  defaults write NSGlobalDomain InitialKeyRepeat -float 15.0
+
+  # max 2
+  defaults write NSGlobalDomain KeyRepeat -float 2.0
+  defaults write -g KeyRepeat -float 2.0
+}
+
+
 ExtraSettings() {
   # ========== Remove all apps from Dock ==========
   defaults write com.apple.dock persistent-apps -array
@@ -92,6 +103,7 @@ ExtraSettings() {
 
 General
 Dock
+Keyboard
 ExtraSettings
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -100,3 +112,4 @@ ExtraSettings
 for app in "Dock" "Finder" "SystemUIServer"; do
   killall "${app}" > /dev/null 2>&1
 done
+ApplePressAndHoldEnabled

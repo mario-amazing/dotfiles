@@ -8,7 +8,7 @@ source $SELF_DIR/display.bash
 install_git() {
   echo_title "!!!GIT INSTALATION!!!"
 
-  ln -vsf "$ROOT_DIR/gitignore_global" "$HOME/.gitignore_global"
+  ln -vsf "$ROOT_DIR/config/gitignore_global" "$HOME/.gitignore_global"
 
   read -e -p "$(echo ${LGREEN}Enter Your git name: ${NORMAL})" gitname
   gitname="${gitname:=mario_amazing}"
@@ -21,10 +21,18 @@ install_git() {
   git config --global color.ui true
   git config --global push.default current
   git config --global core.excludesfile ~/.gitignore_global
-  git config --global core.editor vim
+  git config --global core.editor nvim
   git config --global branch.autosetuprebase always
 
   git config --global help.autoCorrect -1
+
+  # delta
+  git config --global core.pager delta
+  git config --global delta.features decorations
+  git config --global delta.syntax-theme Dracula
+  git config --global delta.navigate true # use n and N to move between diff sections
+  git config --global delta.decorations.file-style omit
+  git config --global delta.decorations.hunk-header-style 'file line-number syntax'
 }
 
 install_git

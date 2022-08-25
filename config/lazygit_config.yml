@@ -1,0 +1,7 @@
+gui:
+  splitDiff: 'auto'
+  showFileTree: false
+git:
+  paging:
+    colorArg: always
+    pager: delta --paging=never --file-style omit --hunk-header-style omit --keep-plus-minus-markers --diff-so-fancy --no-gitconfig --plus-emph-style "normal darkgreen" --minus-emph-style "normal darkred"

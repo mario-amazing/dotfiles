@@ -11,6 +11,7 @@ install_programs(){
   softwareupdate --install-rosetta
 
   brew install git
+  brew install git-delta
   brew install wget
   brew install fd # friendly find
   brew install rg
@@ -22,12 +23,14 @@ install_programs(){
 
   brew install cmake
   brew install ctags
+  brew install --HEAD universal-ctags/universal-ctags/universal-ctags
   brew install coreutils # command -> realpath
   brew install thefuck
   brew install htop
 
   install_python
-  brew install nodejs
+  install_node_with_manager
+  brew install npm
   brew install yarn
   brew install overmind
   brew install imagemagick
@@ -53,9 +56,11 @@ install_programs(){
   brew install --cask google-chrome
   brew install --cask vlc
 
+  brew install --cask tunnelbear
   brew install --cask dropbox
   brew install --cask transmission
   brew install --cask tiles
+  brew install --cask keycastr
 
   brew install --cask iterm2
   brew install --cask tableplus
@@ -90,6 +95,13 @@ start_redis() {
 
 start_mysql() {
   brew services start mysql
+}
+
+install_node_with_manager() {
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  nvm install node
+  ln -vsf "$ROOT_DIR/config/nvm_default_packages" "$NVM_DIR/default-packages"
+  echo_info "!!!Inside project folder run => nvm use!!!"
 }
 
 install_python() {

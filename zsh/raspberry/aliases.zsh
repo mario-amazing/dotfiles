@@ -14,8 +14,6 @@ alias kl='kill -9'
 alias o='open'
 
 #Ctags
-# alias ctg='ctags -R --exclude=.git --exclude=log --exclude=*.js -f tmp/tags *'
-# alias ctg="ctags -R --languages=ruby --exclude=.git --exclude=log --exclude='*.js' `bundle show --paths` ."
 alias ctg="ctags -R --languages=ruby --exclude=.git --exclude=log --exclude='*.js' ."
 alias rtg="ripper-tags -R --extra=q"
 
@@ -93,7 +91,6 @@ alias sudo apt-get add-apt-repository='sudo apt-get add-apt-repository -y'
 alias f=fg
 alias si='sudo apt-get install -y'
 alias sp='sudo apt-get purge'
-alias bi='bundle init --gemspec=~/.gemspec_template'
 alias bl='bundle install'
 alias bgi='gem install'
 

@@ -21,9 +21,6 @@ alias kl='kill -9'
 alias o='open'
 
 #Ctags
-# alias ctg='ctags -R --exclude=.git --exclude=log --exclude=*.js -f tmp/tags *'
-# alias ctg="ctags -R --languages=ruby --exclude=.git --exclude=log --exclude='*.js' `bundle show --paths` ."
-# alias ctags="`brew --prefix`/bin/ctags"
 alias ctg="ctags -R --languages=ruby --exclude=.git --exclude=log --exclude='*.js' ."
 alias rtg="ripper-tags -R --extra=q --exclude=.git --exclude=log"
 
@@ -33,6 +30,7 @@ alias sk='sudo kill -9'
 # alias ls='ls --color=auto'
 
 # Git
+alias lg='lazygit'
 alias gi='git init'
 alias ga='git add'
 alias gc='git commit -m'
@@ -53,7 +51,7 @@ alias wcp='RAILS_ENV=production RACK_ENV=production NODE_ENV=production rails we
 alias gsh='git stash --include-untracked'
 alias gsha="git stash apply"
 alias gshl="git stash list"
-alias gshc="git stash clear"
+alias gshc!="git stash clear"
 
 alias gco='git checkout'
 alias gcom='git checkout master'
@@ -149,6 +147,8 @@ alias sop='git -C ~/.solargraph/src/enhance-rails-intellisense-in-solargraph pul
 
 # alias run_fidor='osascript $WORK_PATH/fidor/scripts/fidor_services.scpt'
 
+#fix usb iphone
+alias fui='sudo killall -STOP -c usbd'
 #overmind
 alias oc='overmind connect'
 alias ok='overmind kill'

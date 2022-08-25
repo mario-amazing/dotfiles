@@ -1,67 +1,4 @@
-fu! TrimWhiteSpace()
-  %s/\s\+$//e
-  %s/\n\{3,}/\r\r/e
-  retab
-endf
-
-" old tags
-fu! GenerateCtags()
-  if !RailsDetect()
-    return ''
-  endif
-
-  call system("mkdir -p tmp")
-
-  let path = 'tmp/tags'
-  let tpath = filereadable(path) == 0 ? '-f ' . path : '-a ' . path
-
-  call system('ripper-tags -R --tag-relative=yes  --append=yes --exclude=.git --exclude=log '.tpath .' *')
-endfu
-" au BufWritePost * if &ft ==# 'ruby' | call GenerateCtags() |endif
-
-function! IndentWithI()
-  if getline('.') =~ '^\s*$'
-    return '"_cc'
-  else
-    return "i"
-  endif
-endfunction
-" nnoremap <expr> i IndentWithI()
-
-" tags
-let g:filetype_tag_generate_commands = {
-  \ 'ruby': "ripper-tags -R --exclude=vendor",
-  \}
-
-function! s:err_handler(job_id, data, event_type)
-  let msg = "? An error occurred generating ctags: " . join(a:data)
-  echom msg
-  let g:ctags_in_progress = 0
-endfunction
-
-function! s:exit_handler(job_id, data, event_type)
-  echom "tags generated"
-  let g:ctags_in_progress = 0
-endfunction
-
-let g:ctags_in_progress = 0
-fu! RegenerateTags() abort
-  if g:ctags_in_progress || &ft != 'ruby'
-    return
-  endif
-  let g:ctags_in_progress = 1
-  let argv = get(g:filetype_tag_generate_commands, &filetype, 'ctags .')
-
-  let job_id = jobstart(argv, {
-        \ 'on_stderr': function('s:err_handler'),
-        \ 'on_exit': function('s:exit_handler'),
-        \ })
-  call jobclose(job_id, 'stdin')
-endfu
-
-autocmd BufWritePost * call RegenerateTags()
-
-" vim-esearch
+""""""""""" vim-esearch """""""""
 let g:esearch = { 'backend': 'nvim', 'adapters': {'rg': {'options': '--hidden'}}}
 " call   esearch#map('<C-f><C-f>','esearch')
 " call   esearch#map('<C-f>f',    'esearch')
@@ -93,6 +30,9 @@ let g:esearch.win_map = [
 let g:esearch_sort_by_path = {'adapters': {'rg': {'options': '--sort path'}}}
 let g:esearch_sort_by_date = {'adapters': {'rg': {'options': '--sort modified'}}}
 let g:EsearchAddAfter = {n -> {'after': b:esearch.after + n, 'backend': 'system'}}
+
+highlight link esearchFilename GruvboxGreen
+""""""""""" vim-esearch """""""""
 
 
 """"""""""" SmartGF """""""""
@@ -251,5 +191,5 @@ function! MatchUnderCursor(pat)
   return ""
 endfunction
 
-let g:smartgf_strategies = [function('TryURI'), function('TryPlainGF'), function('TryRailsCFile'), function('TryCTag'), function('TryFootnote')]
+let g:smartgf_strategies = [function('TryURI'), function('luaeval', ['VimBundlePackage()']),  function('TryPlainGF'), function('TryRailsCFile'), function('TryCTag'), function('TryFootnote')]
 """"""""""" SmartGF """""""""

@@ -6,3 +6,5 @@ tags
 /* gem.tags */
 vendor/bundle
 definitions.rb
+.vim-bookmarks
+.git/

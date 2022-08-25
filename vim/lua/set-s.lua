@@ -4,7 +4,7 @@ set.grepprg = "rg --sort=path --column --smart-case --nocolor --follow $*"
 set.grepformat = "%f:%l:%c:%m"
 
 set.mouse = 'a'
-set.guicursor = '' -- disable blinking
+set.guicursor = 'a:blinkon0' -- disable blinking
 
 set.equalalways = false -- max size for the active window by default
 set.winheight = 999 -- Minimal number of lines for the current window.
@@ -16,6 +16,7 @@ set.expandtab = true -- converting tabs to spaces
 set.ignorecase = true -- search(/) without case
 
 set.number = true -- line numbers
+set.signcolumn="yes:1" -- add signcolumn to the left of the numbers
 
 set.spelllang='ru_yo,en_us' -- languages words will be recognized
 
@@ -24,6 +25,7 @@ set.sw = 2
 set.sts = 2
 
 set.list = true
+set.listchars = "tab:▷ ,trail:·"
 
 set.scrolloff = 1
 
@@ -48,11 +50,18 @@ set.clipboard = 'unnamed'
 set.virtualedit = 'onemore'
 set.conceallevel = 1
 
-set.tagbsearch = false
-
 set.previewheight = 20
 
 set.confirm = true
-set.tags = set.tags + './tmp/tags'
-set.tags = set.tags + './.tags'
-set.tagcase = 'match'
+
+set.conceallevel = 0 -- disable hiding " in json file
+
+set.smartcase = true
+set.tagbsearch = false
+
+-- vim-gutentags
+set.tags = set.tags + 'tags,.git/tags'
+
+-- nvim-cmp
+set.completeopt = { 'menu', 'menuone', 'noselect' }
+

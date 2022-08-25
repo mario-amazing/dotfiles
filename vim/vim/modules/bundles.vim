@@ -1,20 +1,24 @@
 call plug#begin('~/.vim/bundle')
+Plug 'lewis6991/impatient.nvim' " cache startup lua plugins
 
-" Colorschemes
+" Colorscheme
 """""""""""""""
-Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'} " colorcheme
+" Plug  'ellisonleao/gruvbox.nvim' ,
+Plug 'mario-amazing/gruvbox.nvim', { 'branch':  'add_nvim-tree_group' }
 
 " #UI
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }  " highlight syntax
+Plug 'nvim-treesitter/playground' " :TSPlaygroundToggle  treesitter information 
 Plug 'nvim-lualine/lualine.nvim'
-
-" Tree
-"""""""""""""""
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'goolord/alpha-nvim'       " startup window
+Plug 'olimorris/persisted.nvim' " manage sessions
+Plug 'kyazdani42/nvim-tree.lua' " file manager
 
 " Motion
 """""""""""
 Plug 'ggandor/lightspeed.nvim' " easymotion(s/S) + f{char} improved
-Plug 'bkad/CamelCaseMotion' " navigation inside word with different cases
+Plug 'bkad/CamelCaseMotion' " navigation inside word with different cases. Reverse alternative => https://github.com/chaoren/vim-wordmotion
+Plug 'karb94/neoscroll.nvim' " smooth scroll zt, zz, zb, <C-u> <C-d> etc
 
 " Telescop
 """""""""""""""
@@ -23,33 +27,24 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'tom-anders/telescope-vim-bookmarks.nvim' " bookmarks telescop visual
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } " fuzzy search
 Plug 'kyazdani42/nvim-web-devicons'
+" TODO think about add projects https://github.com/nvim-telescope/telescope-project.nvim or https://github.com/cljoly/telescope-repo.nvim
 
 " Git
 """""""""""""""
-Plug 'tpope/vim-fugitive' " main git commands
+Plug 'kdheepak/lazygit.nvim' " UI for git
+Plug 'dinhhuy258/git.nvim' " main git commands
 Plug 'rhysd/conflict-marker.vim'
 Plug 'lewis6991/gitsigns.nvim' " Add git line status(|/=/~) to the left of a line and Git diff
 
-" UI
-"""""""""""""""""""
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " highlight syntax
-
-
-" Snippets
-"""""""""""""""
-" # TODO add snippets
-Plug 'mattn/emmet-vim', {'for': ['html', 'eruby', 'slim', 'css', 'sass', 'scss']} " html tags expand div>h1
-
-
-" #Cmdline
-Plug 'osyo-manga/vim-over' " Visual substitute
-
-
 " Textobjects
 """""""""""""""""""""""""""
-Plug 'terryma/vim-expand-region'     " Easier way to select textobjects(vvv)
-Plug 'wellle/targets.vim'            " Select inside({[]}) vi( va(
+Plug 'terryma/vim-expand-region' " Easier way to select textobjects(vvv)
+Plug 'wellle/targets.vim'        " Select inside({[]}) vi( va( vi' va'
+Plug 'andymass/vim-matchup'      " extends vim's % key
+Plug 'osyo-manga/vim-over'       " Visual substitute
 
+" Tags
+Plug 'ludovicchabant/vim-gutentags'
 
 " Editing assistants
 Plug 'AndrewRadev/switch.vim'        " Switch segments of text with predefined replacements(-)
@@ -68,12 +63,11 @@ Plug 'machakann/vim-sandwich'        " Add #{} surround to ruby string
 
 Plug 'junegunn/vim-easy-align'       " Text align lines symbols(ga)
 Plug 'windwp/nvim-autopairs'
-" !!!!!!TODO CHECK nvim-cmp complition!!!
 
 
 " Tools
 """""""""""""""
-" TODO add folding plug
+Plug 'voldikss/vim-floaterm'
 Plug 'kopischke/vim-fetch'         " gf with lnum:col included(:e test.rb:42,69)
 Plug 'MattesGroeger/vim-bookmarks' " Bookmarks with space
 Plug 'AndrewRadev/undoquit.vim'
@@ -81,23 +75,30 @@ Plug 'AndrewRadev/undoquit.vim'
 Plug 'winston0410/cmd-parser.nvim' " requiremet for nvim-colorizer
 Plug 'norcalli/nvim-colorizer.lua' " Shows color by code
 
+" TODO substitute to main after merge https://github.com/Pocco81/auto-save.nvim/pull/47
+Plug 'XXiaoA/auto-save.nvim', { 'branch':  'new' }
+
 " Languages
 """""""""""""""
-" #Syntax
-" Plug 'chr4/nginx.vim'
+Plug 'lyokha/vim-xkbswitch' " auto change language to en
+
+" nginx
+Plug 'chr4/nginx.vim'
 
 " lsp
-Plug 'williamboman/nvim-lsp-installer' " autoinstall lsp clients
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'onsails/lspkind-nvim' " kind of autocomplite
+Plug 'weilbith/nvim-code-action-menu', { 'on': 'CodeActionMenu' } " action float window
 
 "    ruby
+Plug 'tpope/vim-rbenv'  " improve nvim ruby loading
 Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-rake'
 "    markdown
 Plug 'shime/vim-livedown' " Markdown live preview
-"    html
-" TODO add HTML ????
 "    yaml
 Plug 'lmeijvogel/vim-yaml-helper'
 
@@ -109,13 +110,20 @@ Plug 'haya14busa/vim-asterisk'           " *-improved
 
 " Autocomplete
 """""""""""""""""""
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-Plug 'Shougo/neoinclude.vim' " for deoplete, It has file/include source and extends tag sources in neocomplete/deoplete/ncm.
-Plug 'Shougo/neco-syntax' " for deoplete
-Plug 'ujihisa/neco-look' " for deoplete
-Plug 'Shougo/neco-vim'   " for deoplete
-Plug 'carlitux/deoplete-ternjs' " for deoplete
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'lukas-reineke/cmp-rg'
+Plug 'quangnguyen30192/cmp-nvim-tags'
+Plug 'saadparwaiz1/cmp_luasnip'
+" Snippets
+"""""""""""""""
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets' " snippets collection
+Plug 'mattn/emmet-vim'        " html tags expand div>h1
+Plug 'windwp/nvim-ts-autotag' " auto rename closing tags
 
 call plug#end()
 filetype plugin indent on

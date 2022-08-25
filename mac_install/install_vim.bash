@@ -10,9 +10,16 @@ install_vim() {
 
   brew install vim neovim
 
-  brew install npm
-  npm install -g neovim
-  npm install -g livedown # shime/vim-livedown
+  brew install ripgrep # ripgrep source for cmp-rg
+
+  brew install lazygit
+  mkdir -p "$HOME/.config/lazygit"
+  ln -vsf "$ROOT_DIR/config/lazygit_config.yml" "$HOME/.config/lazygit/config.yml"
+
+  # vim-xkbswitch
+  curl -fLOo /usr/local/bin https://raw.githubusercontent.com/myshov/libxkbswitch-macosx/master/bin/libxkbswitch.dylib
+  curl -fLOo /usr/local/bin https://raw.githubusercontent.com/myshov/xkbswitch-macosx/master/bin/xkbswitch
+  chmod +x /usr/local/bin/xkbswitch
 
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   mkdir -p ~/.vim
@@ -27,7 +34,6 @@ install_vim() {
 
   nvim +PlugInstall +qa
   nvim +PlugUpdate +qa
-  nvim +UpdateRemotePlugins +qa
 }
 
 install_vim
