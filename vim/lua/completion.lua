@@ -1,4 +1,3 @@
--- TODO fix mapping
 -- TODO fix tsx file speed
 
 local has_words_before = function()
@@ -9,6 +8,7 @@ end
 local cmp = require'cmp'
 local luasnip = require("luasnip")
 local lspkind = require'lspkind'
+local max_item_count = 4
 
 cmp.setup({
   enabled = function()
@@ -16,7 +16,7 @@ cmp.setup({
     -- disable completion in comments
     return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
   end,
-  completion = { keyword_length = 2 }, -- characters needed to trigger auto-completion.
+  completion = { keyword_length = 3 }, -- characters needed to trigger auto-completion. For manual trigger <C-c>
   performance = {
     debounce = 80, -- default 60
   },
@@ -33,10 +33,10 @@ cmp.setup({
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
 
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
+      if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
+      elseif cmp.visible() then
+        cmp.confirm({ select = true })
       elseif has_words_before() then
         cmp.complete()
       else
@@ -45,25 +45,22 @@ cmp.setup({
     end),
 
     ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
+      if luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
         fallback()
       end
     end),
-    ['<C-e>'] = cmp.mapping.abort(),
     ['<C-c>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true })
+    ['<C-e>'] = cmp.mapping.abort(),
   },
   sources = cmp.config.sources({
-    { name = 'luasnip' },
-    { name = 'nvim_lsp' },
-    { name = 'tags' },
-    { name = 'buffer' },
-    { name = 'path' },
-    { name = 'rg' },
+    { name = 'luasnip', max_item_count = max_item_count },
+    { name = 'nvim_lsp', max_item_count = max_item_count  },
+    { name = 'tags', max_item_count = max_item_count  },
+    { name = 'buffer', max_item_count = max_item_count  },
+    { name = 'path', max_item_count = max_item_count },
+    { name = 'rg', max_item_count = max_item_count },
   }),
 
   -- extention lspkind
@@ -83,15 +80,18 @@ cmp.setup({
 
 local cmp_view = { entries = { name = 'wildmenu', separator = ' ' } }
 local cmp_mapping = cmp.mapping.preset.cmdline()
+local cmp_completion = { keyword_length = 1 }
 
 cmp.setup.cmdline('/', {
   view = cmp_view,
+  completion = cmp_completion,
   mapping = cmp_mapping,
   sources = {{ name = 'buffer' }}
 })
 
 cmp.setup.cmdline(':', {
   view = cmp_view,
+  completion = cmp_completion,
   mapping = cmp_mapping,
   sources = cmp.config.sources({{ name = 'path' }}, {{ name = 'cmdline' }})
 })
