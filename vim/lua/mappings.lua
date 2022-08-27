@@ -194,10 +194,10 @@ map('v', '=', '=gv', { silent = true })
 map('n', '=', '==',  { silent = true })
 
 -- substitute
-map('n', '<Leader>f<S-s>', '<cmd>%S/')
-map('v', '<Leader>f<S-s>', '<cmd>S/')
-map('n', '<Leader>fs', '<cmd>OverCommandLine<CR>%s/', { silent = true })
-map('v', '<Leader>fs', '<cmd>OverCommandLine<CR>s/',  { silent = true })
+map('n', '<Leader>f<S-s>', ':%s/')
+map('v', '<Leader>f<S-s>', ':s/')
+map('n', '<Leader>fs', ':OverCommandLine<CR>%s/', { silent = true })
+map('v', '<Leader>fs', ':OverCommandLine<CR>s/',  { silent = true })
 
 -- name of file
 map('n', 'yn', "<cmd>let @+ = substitute(expand('%'), '^'.getcwd().'/', '', '')<CR>")

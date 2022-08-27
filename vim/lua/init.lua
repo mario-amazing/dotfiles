@@ -117,4 +117,4 @@ require("auto-save").setup({ trigger_events = { "FocusLost", "BufLeave", --[["Bu
 
 
 -- git.nvim
-require('git').setup()
+require('git').setup({default_mappings = true})

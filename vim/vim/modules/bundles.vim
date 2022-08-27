@@ -98,7 +98,7 @@ Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-rake'
 "    markdown
-Plug 'shime/vim-livedown' " Markdown live preview
+Plug 'shime/vim-livedown', { 'on': 'LivedownToggle' } " Markdown live preview
 "    yaml
 Plug 'lmeijvogel/vim-yaml-helper'
 
