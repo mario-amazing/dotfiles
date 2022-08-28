@@ -98,3 +98,14 @@ cmp.setup.cmdline(':', {
 
 
 cmp.setup.filetype({'TelescopePrompt'}, { enabled = false })
+
+-- TODO tmp fix untill https://github.com/quangnguyen30192/cmp-nvim-tags/issues/7
+cmp.setup.filetype({'typescriptreact'}, {  sources = {
+    { name = 'luasnip', max_item_count = max_item_count },
+    { name = 'nvim_lsp', max_item_count = max_item_count  },
+    -- { name = 'tags', max_item_count = max_item_count  },
+    { name = 'buffer', max_item_count = max_item_count  },
+    { name = 'path', max_item_count = max_item_count },
+    { name = 'rg', max_item_count = max_item_count },
+  }
+})
