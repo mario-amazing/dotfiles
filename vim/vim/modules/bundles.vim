@@ -1,3 +1,4 @@
+" #TODO verify plugins on: { 'command' } setup
 call plug#begin('~/.vim/bundle')
 Plug 'lewis6991/impatient.nvim' " cache startup lua plugins
 
@@ -52,7 +53,7 @@ Plug 'tpope/vim-abolish'         " Working with word Cases(crs/crm/cru)
 Plug 'AndrewRadev/splitjoin.vim' " Split/Join(gS/gJ)
 Plug 'AndrewRadev/sideways.vim'  " Move an item in a delimiter-separated list left or right(S-h/S-l)
 Plug 'tpope/vim-speeddating'     " CTRL-A/CTRL-X to increment dates, times, and more
-Plug 'mroavi/vim-pasta'          " smart paste, override (p and p)!!!
+Plug 'mroavi/vim-pasta'          " smart paste, override (p and P)!!!
 Plug 'fedepujol/move.nvim'       " Move lines and blocks
 
 Plug 'kylechui/nvim-surround'    " Manage code surroundings(quotes, parenthesis, brackets, *ml-tags etc.)
@@ -100,7 +101,7 @@ Plug 'tpope/vim-rake'
 "    markdown
 Plug 'shime/vim-livedown', { 'on': 'LivedownToggle' } " Markdown live preview
 "    yaml
-Plug 'lmeijvogel/vim-yaml-helper'
+Plug 'lmeijvogel/vim-yaml-helper' " substirute to https://github.com/cuducos/yaml.nvim after https://github.com/nvim-treesitter/nvim-treesitter/issues/1352
 
 "    Search
 """""""""""""""""""""""

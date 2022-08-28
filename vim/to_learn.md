@@ -10,13 +10,15 @@
   <leader>hp Gitsigns prev_hunk
 ```
 
-#### Bookmarks
+#### Bookmarks https://github.com/MattesGroeger/vim-bookmarks#usage
 ```
-  nmap <Space><Space> <Plug>BookmarkToggle
-  nmap <Space>i <Plug>BookmarkAnnotate
-  nmap <Space>s <Plug>BookmarkShowAll
-  nmap <Space>j <Plug>BookmarkNext
-  nmap <Space>k <Plug>BookmarkPrev
+  mm :BookmarkToggle
+  mi :BookmarkAnnotate
+  ma :BookmarkShowAll
+  mc :BookmarkClear
+  mx :BookmarkClearAll
+  mn :BookmarkNext
+  mp :BookmarkPrev
 ```
 
 #### TrimWhiteSpace in command line

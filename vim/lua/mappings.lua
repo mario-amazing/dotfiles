@@ -33,19 +33,8 @@ map('n', '<A-h>', ':MoveHChar(-1)<CR>', { silent = true })
 map('v', '<A-l>', ':MoveHBlock(1)<CR>', { silent = true })
 map('v', '<A-h>', ':MoveHBlock(-1)<CR>', { silent = true })
 
--- -- vim-surround
--- map('v', '"',  '<Plug>VSurround"')
--- map('v', "'",  "<Plug>VSurround'")
--- map('n', 'd"', '<Plug>Dsurround"')
--- map('n', 'dt', '<Plug>Dsurroundt')
--- map('n', "d'", "<Plug>Dsurround'")
-
--- Bookmarks
-map('n', '<Space><Space>', '<Plug>BookmarkToggle')
-map('n', '<Space>e',       '<Plug>BookmarkAnnotate')
-map('n', '<Space>s',       '<cmd>Telescope vim_bookmarks all<CR>')
-map('n', '<Space>j',       '<Plug>BookmarkNext')
-map('n', '<Space>k',       '<Plug>BookmarkPrev')
+-- Bookmarks with telescope-vim-bookmarks.nvim
+map('n', 'ma', '<cmd>Telescope vim_bookmarks all<CR>')
 
 -- Navigation nvim-tree
 map('n', '<Leader>t',  '<cmd>NvimTreeToggle<CR>', { silent = true })
