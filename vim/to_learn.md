@@ -31,7 +31,6 @@
   ct for theirs, co for ours, cn for none and cb for both
 ```
 
-
 #### Visual substitute
 ```
 <Leader>fs :OverCommandLine<CR>%s/
@@ -54,7 +53,6 @@ Move an item in a delimiter-separated list left or right(S-h/S-l)
 Text align lines symbols(ga )
 ```
 
-
 #### LivePreview markdown - shime/vim-livedown
 ```
 <Leader>lp - Live privew Toggle README
@@ -63,4 +61,18 @@ Text align lines symbols(ga )
 #### wellle/targets.vim - Select inside({['"]})
 ```
 vi( va( vi' va"
+```
+
+#### nvim-surround https://github.com/kylechui/nvim-surround#rocket-usage
+```
+    Old text                    Command         New text
+--------------------------------------------------------------------------------
+    local str = |some text|     S'              local str = 'some text' (Visual)
+    surr*ound_words             ysiw)           (surround_words)
+    *make strings               ys$"            "make strings"
+    [delete ar*ound me!]        ds]             delete around me!
+    remove <b>HTML t*ags</b>    dst             remove HTML tags
+    'change quot*es'            cs'"            "change quotes"
+    <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
+    delete(functi*on calls)     dsf             function calls
 ```

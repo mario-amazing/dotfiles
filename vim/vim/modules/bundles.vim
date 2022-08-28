@@ -47,22 +47,22 @@ Plug 'osyo-manga/vim-over'       " Visual substitute
 Plug 'ludovicchabant/vim-gutentags'
 
 " Editing assistants
-Plug 'AndrewRadev/switch.vim'        " Switch segments of text with predefined replacements(-)
-Plug 'tpope/vim-abolish'             " Working with word Cases(crs/crm/cru)
-Plug 'AndrewRadev/splitjoin.vim'     " Split/Join(gS/gJ)
-Plug 'AndrewRadev/sideways.vim'      " Move an item in a delimiter-separated list left or right(S-h/S-l)
-Plug 'tpope/vim-speeddating'         " CTRL-A/CTRL-X to increment dates, times, and more
-Plug 'mroavi/vim-pasta'              " smart paste, override (p and p)!!!
-Plug 'fedepujol/move.nvim'           " Move lines and blocks
+Plug 'AndrewRadev/switch.vim'    " Switch segments of text with predefined replacements(-)
+Plug 'tpope/vim-abolish'         " Working with word Cases(crs/crm/cru)
+Plug 'AndrewRadev/splitjoin.vim' " Split/Join(gS/gJ)
+Plug 'AndrewRadev/sideways.vim'  " Move an item in a delimiter-separated list left or right(S-h/S-l)
+Plug 'tpope/vim-speeddating'     " CTRL-A/CTRL-X to increment dates, times, and more
+Plug 'mroavi/vim-pasta'          " smart paste, override (p and p)!!!
+Plug 'fedepujol/move.nvim'       " Move lines and blocks
 
-Plug 'tpope/vim-commentary'          " Comment/uncomment code
+Plug 'kylechui/nvim-surround'    " Manage code surroundings(quotes, parenthesis, brackets, *ml-tags etc.)
+Plug 'machakann/vim-sandwich'    " Add #{} surround to ruby string
+
+Plug 'junegunn/vim-easy-align'   " Text align lines symbols(ga)
+Plug 'windwp/nvim-autopairs'     " auto pair: { [ ( '
+
+Plug 'tpope/vim-commentary'      " Comment/uncomment code
 Plug 'JoosepAlviste/nvim-ts-context-commentstring' " treesitter context comments
-
-Plug 'tpope/vim-surround'            " Manage code surroundings(quotes, parenthesis, brackets, *ml-tags etc.)
-Plug 'machakann/vim-sandwich'        " Add #{} surround to ruby string
-
-Plug 'junegunn/vim-easy-align'       " Text align lines symbols(ga)
-Plug 'windwp/nvim-autopairs'
 
 
 " Tools

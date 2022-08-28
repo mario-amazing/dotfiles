@@ -33,12 +33,12 @@ map('n', '<A-h>', ':MoveHChar(-1)<CR>', { silent = true })
 map('v', '<A-l>', ':MoveHBlock(1)<CR>', { silent = true })
 map('v', '<A-h>', ':MoveHBlock(-1)<CR>', { silent = true })
 
--- vim-surround
-map('v', '"',  '<Plug>VSurround"')
-map('v', "'",  "<Plug>VSurround'")
-map('n', 'd"', '<Plug>Dsurround"')
-map('n', 'dt', '<Plug>Dsurroundt')
-map('n', "d'", "<Plug>Dsurround'")
+-- -- vim-surround
+-- map('v', '"',  '<Plug>VSurround"')
+-- map('v', "'",  "<Plug>VSurround'")
+-- map('n', 'd"', '<Plug>Dsurround"')
+-- map('n', 'dt', '<Plug>Dsurroundt')
+-- map('n', "d'", "<Plug>Dsurround'")
 
 -- Bookmarks
 map('n', '<Space><Space>', '<Plug>BookmarkToggle')
