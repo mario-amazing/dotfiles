@@ -5,7 +5,7 @@ ROOT_DIR=`dirname "$SELF_DIR"`
 
 source $SELF_DIR/display.bash
 
-install_vim() {
+install_nvim() {
   echo_title "!!!VIM INSTALATION!!!"
 
   brew install vim neovim
@@ -24,12 +24,12 @@ install_vim() {
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   mkdir -p ~/.config/nvim
-  ln -vsf "$ROOT_DIR/vim/init.lua" "$HOME/.config/nvim/init.lua"
-  ln -vsf "$ROOT_DIR/vim/lua" "$HOME/.config/nvim/lua"
+  ln -vsf "$ROOT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
+  ln -vsf "$ROOT_DIR/nvim/lua" "$HOME/.config/nvim/lua"
   mkdir -p "$HOME/.config/nvim/tmp/backup"
 
   nvim +PlugInstall +qa
   nvim +PlugUpdate +qa
 }
 
-install_vim
+install_nvim
