@@ -12,6 +12,7 @@ install_programs(){
 
   brew install git
   brew install git-delta
+  brew install curl
   brew install wget
   brew install fd # friendly find
   brew install rg

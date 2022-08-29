@@ -47,6 +47,9 @@ export SAVEHIST=$HISTSIZE
 
 zstyle ':completion:*' rehash true
 
+# curl
+export PATH="/usr/local/opt/curl/bin:$PATH"
+
 # IF rbenv uncomment
 # if which rbenv &> /dev/null
 # then

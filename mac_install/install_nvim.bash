@@ -6,7 +6,7 @@ ROOT_DIR=`dirname "$SELF_DIR"`
 source $SELF_DIR/display.bash
 
 install_nvim() {
-  echo_title "!!!VIM INSTALATION!!!"
+  echo_title "!!!NVIM INSTALATION!!!"
 
   brew install vim neovim
 
@@ -17,8 +17,8 @@ install_nvim() {
   ln -vsf "$ROOT_DIR/config/lazygit_config.yml" "$HOME/.config/lazygit/config.yml"
 
   # vim-xkbswitch
-  curl -fLOo /usr/local/bin https://raw.githubusercontent.com/myshov/libxkbswitch-macosx/master/bin/libxkbswitch.dylib
-  curl -fLOo /usr/local/bin https://raw.githubusercontent.com/myshov/xkbswitch-macosx/master/bin/xkbswitch
+  curl -fLo /usr/local/bin/libxkbswitch.dylib https://raw.githubusercontent.com/myshov/libxkbswitch-macosx/master/bin/libxkbswitch.dylib
+  curl -fLo /usr/local/bin/xkbswitch          https://raw.githubusercontent.com/myshov/xkbswitch-macosx/master/bin/xkbswitch
   chmod +x /usr/local/bin/xkbswitch
 
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -28,7 +28,6 @@ install_nvim() {
   ln -vsf "$ROOT_DIR/nvim/lua" "$HOME/.config/nvim/lua"
   mkdir -p "$HOME/.config/nvim/tmp/backup"
 
-  nvim +PlugInstall +qa
   nvim +PlugUpdate +qa
 }
 
