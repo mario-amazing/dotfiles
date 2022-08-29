@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/bundle')
+call plug#begin('~/.config/nvim/bundle')
 Plug 'lewis6991/impatient.nvim' " cache startup lua plugins
 
 " Colorscheme

@@ -22,10 +22,6 @@ install_vim() {
   chmod +x /usr/local/bin/xkbswitch
 
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  mkdir -p ~/.vim
-
-  ln -vsf "$ROOT_DIR/vim/vimrc" "$HOME/.vimrc"
-  ln -vsf "$ROOT_DIR/vim/vim/modules" "$HOME/.vim"
 
   mkdir -p ~/.config/nvim
   ln -vsf "$ROOT_DIR/vim/init.lua" "$HOME/.config/nvim/init.lua"
