@@ -188,6 +188,9 @@ map('v', '<Leader>f<S-s>', ':s/')
 map('n', '<Leader>fs', ':OverCommandLine<CR>%s/', { silent = true })
 map('v', '<Leader>fs', ':OverCommandLine<CR>s/',  { silent = true })
 
+-- icon-picker
+map("n", "<Leader>ip", "<cmd>IconPickerInsert<cr>")
+
 -- name of file
 map('n', 'yn', "<cmd>let @+ = substitute(expand('%'), '^'.getcwd().'/', '', '')<CR>")
 map('n', 'yN', '<cmd>let @+ = expand("%:t")<CR>')

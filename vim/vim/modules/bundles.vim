@@ -1,4 +1,3 @@
-" #TODO verify plugins on: { 'command' } setup
 call plug#begin('~/.vim/bundle')
 Plug 'lewis6991/impatient.nvim' " cache startup lua plugins
 
@@ -9,11 +8,14 @@ Plug 'mario-amazing/gruvbox.nvim', { 'branch':  'add_nvim-tree_group' }
 
 " #UI
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }  " highlight syntax
-Plug 'nvim-treesitter/playground' " :TSPlaygroundToggle  treesitter information 
+Plug 'nvim-treesitter/playground' " :TSPlaygroundToggle  treesitter information
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'goolord/alpha-nvim'       " startup window
 Plug 'olimorris/persisted.nvim' " manage sessions
 Plug 'kyazdani42/nvim-tree.lua' " file manager
+
+Plug 'ziontee113/icon-picker.nvim', { 'on': ['IconPickerInsert', 'IconPickerNormal', 'IconPickerYank'] }
+Plug 'stevearc/dressing.nvim' " dependency for icon-picker.nvim
 
 " Motion
 """""""""""
@@ -107,7 +109,7 @@ Plug 'lmeijvogel/vim-yaml-helper' " substirute to https://github.com/cuducos/yam
 """""""""""""""""""""""
 Plug 'eugen0329/vim-esearch'         " Project-wide search
 Plug 'eugen0329/vim-concertina'
-Plug 'haya14busa/vim-asterisk'           " *-improved
+Plug 'haya14busa/vim-asterisk'       " *-improved
 
 " Autocomplete
 """""""""""""""""""

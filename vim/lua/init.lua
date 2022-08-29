@@ -121,3 +121,6 @@ require('git').setup({default_mappings = false})
 
 
 require("nvim-surround").setup()
+
+
+require("icon-picker").setup({ disable_legacy_commands = true })
