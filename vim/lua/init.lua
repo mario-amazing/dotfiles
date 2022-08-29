@@ -78,8 +78,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 -- You can use treesitter to check for a pair.
 require('nvim-autopairs').setup({
-  -- map_cr = false, -- map <CR> key
-  disable_filetype = { "TelescopePrompt" , "vim" },
+  disable_filetype = { "TelescopePrompt" , --[["vim"]] },
 })
 require('nvim-autopairs').add_rules(require('nvim-autopairs.rules.endwise-ruby')) -- Auto adding end after blocks
 require('nvim-autopairs').add_rules(require('nvim-autopairs.rules.endwise-lua')) -- Auto adding end after blocks

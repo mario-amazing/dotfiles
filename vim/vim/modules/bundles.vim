@@ -45,9 +45,7 @@ Plug 'terryma/vim-expand-region' " Easier way to select textobjects(vvv)
 Plug 'wellle/targets.vim'        " Select inside({[]}) vi( va( vi' va'
 Plug 'andymass/vim-matchup'      " extends vim's % key
 Plug 'osyo-manga/vim-over'       " Visual substitute
-
-" Tags
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'windwp/nvim-ts-autotag'    " auto rename closing tags
 
 " Editing assistants
 Plug 'AndrewRadev/switch.vim'    " Switch segments of text with predefined replacements(-)
@@ -62,7 +60,7 @@ Plug 'kylechui/nvim-surround'    " Manage code surroundings(quotes, parenthesis,
 Plug 'machakann/vim-sandwich'    " Add #{} surround to ruby string
 
 Plug 'junegunn/vim-easy-align'   " Text align lines symbols(ga)
-Plug 'windwp/nvim-autopairs'     " auto pair: { [ ( '
+Plug 'windwp/nvim-autopairs'     " auto pair: { [ ( ' Auto adding end after blocks
 
 Plug 'tpope/vim-commentary'      " Comment/uncomment code
 Plug 'JoosepAlviste/nvim-ts-context-commentstring' " treesitter context comments
@@ -126,7 +124,9 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets' " snippets collection
 Plug 'mattn/emmet-vim'        " html tags expand div>h1
-Plug 'windwp/nvim-ts-autotag' " auto rename closing tags
+
+" Tags
+Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 filetype plugin indent on
