@@ -1,5 +1,3 @@
--- TODO fix tsx file speed https://github.com/quangnguyen30192/cmp-nvim-tags/issues/7
-
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -98,14 +96,3 @@ cmp.setup.cmdline(':', {
 
 
 cmp.setup.filetype({'TelescopePrompt'}, { enabled = false })
-
--- TODO tmp fix untill https://github.com/quangnguyen30192/cmp-nvim-tags/issues/7
-cmp.setup.filetype({'typescriptreact'}, {  sources = {
-    { name = 'luasnip', max_item_count = max_item_count },
-    { name = 'nvim_lsp', max_item_count = max_item_count  },
-    -- { name = 'tags', max_item_count = max_item_count  },
-    { name = 'buffer', max_item_count = max_item_count  },
-    { name = 'path', max_item_count = max_item_count },
-    { name = 'rg', max_item_count = max_item_count },
-  }
-})
