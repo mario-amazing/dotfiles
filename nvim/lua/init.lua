@@ -88,9 +88,9 @@ require('gitsigns').setup()
 
 
 -- nvim-colorizer.lua
-require('colorizer').setup(
-  {'css', 'javascript'},
-  {
+require('colorizer').setup({
+  filetypes = {'css', 'javascript'},
+  user_default_options = {
     RGB      = true;         -- #RGB hex codes
     RRGGBB   = true;         -- #RRGGBB hex codes
     names    = true;         -- "Name" codes like Blue
@@ -99,7 +99,7 @@ require('colorizer').setup(
     hsl_fn   = true;         -- CSS hsl() and hsla() functions
     css      = true;         -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
     css_fn   = true;         -- Enable all CSS *functions*: rgb_fn, hsl_fn
-})
+  }})
 
 
 require('neoscroll').setup()
@@ -112,7 +112,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 require("persisted").setup()
 
 
-require("auto-save").setup({ trigger_events = { "FocusLost", "BufLeave", --[["BufDelete", "UILeave"]] }}) --[[:h events]]
+-- require("auto-save").setup({ trigger_events = { "FocusLost", "BufLeave", --[["BufDelete", "UILeave"]] }}) --[[:h events]]
 
 
 -- git.nvim

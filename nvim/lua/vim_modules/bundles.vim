@@ -53,6 +53,8 @@ Plug 'tpope/vim-abolish'         " Working with word Cases(crs/crm/cru)
 Plug 'AndrewRadev/splitjoin.vim' " Split/Join(gS/gJ)
 Plug 'AndrewRadev/sideways.vim'  " Move an item in a delimiter-separated list left or right(S-h/S-l)
 Plug 'tpope/vim-speeddating'     " CTRL-A/CTRL-X to increment dates, times, and more
+" # TODO paste with indent
+" TODO indent ts file in render v ~/work/raz/src/App.js
 Plug 'mroavi/vim-pasta'          " smart paste, override (p and P)!!!
 Plug 'fedepujol/move.nvim'       " Move lines and blocks
 
@@ -74,7 +76,7 @@ Plug 'MattesGroeger/vim-bookmarks' " Bookmarks with space
 Plug 'AndrewRadev/undoquit.vim'
 
 Plug 'winston0410/cmd-parser.nvim' " requiremet for nvim-colorizer
-Plug 'norcalli/nvim-colorizer.lua' " Shows color by code
+Plug 'NvChad/nvim-colorizer.lua' " Shows color by code
 
 " TODO substitute to main after merge https://github.com/Pocco81/auto-save.nvim/pull/47
 Plug 'XXiaoA/auto-save.nvim', { 'branch':  'new' }

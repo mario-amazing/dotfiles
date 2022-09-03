@@ -124,7 +124,17 @@ map('n', '<C-f>w',     '<plug>(operator-esearch-prefill)iw')
 map('n', '<leader>yg', function() return vim.cmd('YamlGoToKey ' .. vim.fn.getreg('*')) end) -- goto key from buffer
 map('n', '<leader>yy', '<cmd>YamlGetFullPath<CR>')
 
--- Common
+-- icon-picker
+map("n", "<Leader>ip", "<cmd>IconPickerInsert<cr>")
+
+-- nvim-surround
+map('v', "'",  "S'", { remap = true })
+map('v', '"',  'S"', { remap = true })
+map('n', "d'", "ds'", { remap = true })
+map('n', 'd"', 'ds"', { remap = true })
+map('n', 'dt', 'dst', { remap = true })
+
+----------------------- COMMON -----------------------
 -- NOTE xnoremap p pgvy -- Not override clipboard on paste (currently fixed/overrides with vim-pasta)
 -- Misc
 map('n', '<S-q>', '<cmd>q<CR>', { silent = true})
@@ -187,9 +197,6 @@ map('n', '<Leader>f<S-s>', ':%s/')
 map('v', '<Leader>f<S-s>', ':s/')
 map('n', '<Leader>fs', ':OverCommandLine<CR>%s/', { silent = true })
 map('v', '<Leader>fs', ':OverCommandLine<CR>s/',  { silent = true })
-
--- icon-picker
-map("n", "<Leader>ip", "<cmd>IconPickerInsert<cr>")
 
 -- name of file
 map('n', 'yn', "<cmd>let @+ = substitute(expand('%'), '^'.getcwd().'/', '', '')<CR>")
