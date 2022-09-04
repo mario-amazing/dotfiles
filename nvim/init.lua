@@ -21,3 +21,4 @@ require('completion')
 -- :au TextChangedI #(Run after typing) Debugging what plugins were run during text typing.
 -- :verbose map(vmap, imap) , # Show mapping for
 -- vim -u test_vimrc # Run vim with test_vimrc as source file
+-- find indent functrion :set indentexpr? -> verbose fu GetRubyIndent

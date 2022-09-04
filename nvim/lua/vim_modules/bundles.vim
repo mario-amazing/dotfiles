@@ -53,9 +53,7 @@ Plug 'tpope/vim-abolish'         " Working with word Cases(crs/crm/cru)
 Plug 'AndrewRadev/splitjoin.vim' " Split/Join(gS/gJ)
 Plug 'AndrewRadev/sideways.vim'  " Move an item in a delimiter-separated list left or right(S-h/S-l)
 Plug 'tpope/vim-speeddating'     " CTRL-A/CTRL-X to increment dates, times, and more
-" # TODO paste with indent
-" TODO indent ts file in render v ~/work/raz/src/App.js
-Plug 'mroavi/vim-pasta'          " smart paste, override (p and P)!!!
+Plug 'hrsh7th/nvim-pasta'        " smart paste, override (p and P)!!!
 Plug 'fedepujol/move.nvim'       " Move lines and blocks
 
 Plug 'kylechui/nvim-surround'    " Manage code surroundings(quotes, parenthesis, brackets, *ml-tags etc.)

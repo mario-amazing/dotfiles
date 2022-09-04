@@ -46,18 +46,20 @@ map('n', '<C-f><C-m>', '<cmd>Telescope oldfiles<cr>')
 map('n', '<C-f><C-t>', '<cmd>Telescope filetypes<CR>')
 map('n', '<Leader>mc', '<cmd>Telescope find_files cwd=~/.config/nvim/lua<CR>')
 -- LSP
-map('n', 'gd',       '<cmd>Telescop lsp_definitions<cr>', { silent = true })
-map('n', 'gr',       '<cmd>Telescop lsp_references<cr>', { silent = true })
-map('n', '<space>d', '<cmd>Telescop diagnostics<cr>', { silent = true })
-map('n', '<space>y', '<cmd>Telescop lsp_document_symbols<cr>', { silent = true })
-map('n', '<space>i', '<cmd>Telescop lsp_incoming_calls<cr>', { silent = true })
-map('n', '<space>o', '<cmd>Telescop lsp_outgoing_calls<cr>', { silent = true })
---
-map('n', '<space>a', '<cmd>lua vim.lsp.diagnostic.code_action()<CR>', { silent = true })
-map('n', '<space>=', '<cmd>lua vim.lsp.buf.formatting()<CR>', { silent = true })
-map('n', '<space>h', '<cmd>lua vim.lsp.buf.hover()<CR>', {silent = true})
-map('n', '<space>n', '<cmd>lua vim.lsp.buf.rename()<CR>', {silent = true})
+map('n', 'gd',        '<cmd>Telescop lsp_definitions<cr>', { silent = true })
+map('n', 'gr',        '<cmd>Telescop lsp_references<cr>', { silent = true })
+map('n', '<space>y',  '<cmd>Telescop lsp_document_symbols<cr>', { silent = true })
+map('n', '<space>i',  '<cmd>Telescop lsp_incoming_calls<cr>', { silent = true })
+map('n', '<space>o',  '<cmd>Telescop lsp_outgoing_calls<cr>', { silent = true })
+map('n', '<space>d',  '<cmd>Telescop diagnostics<cr>', { silent = true })
 map('n', '<space>td', '<cmd>lua ToggleDiagnostics()<CR>', {silent = true})
+--
+map('n', '<space>a', vim.lsp.buf.code_action, { silent = true })
+map('n', '<space>=', vim.lsp.buf.formatting, { silent = true })
+map('n', '<space>h', vim.lsp.buf.hover, {silent = true})
+map('n', '<space>n', vim.lsp.buf.rename, {silent = true})
+-- TODO add vim.diagnostic.open_float float diagnostic
+-- TODO check code_action and show action icon
 
 -- persisted.nvim
 map('n', '<Leader>sl', '<cmd>SessionLoadLast<cr>', { silent = true })
@@ -83,8 +85,8 @@ map('n', 'f',  '<Plug>Lightspeed_f', { silent = true })
 map('n', 'F',  '<Plug>Lightspeed_F', { silent = true })
 
 -- Breakpoints
-map('n', '<F5>',      '<cmd>lua RemoveBreakpoints()<CR>', {silent = true })
-map('n', '<leader>b', '<cmd>lua ToggleBreakpoint()<CR>', { silent = true})
+map('n', '<F5>',      RemoveBreakpoints, {silent = true })
+map('n', '<leader>b', ToggleBreakpoint, { silent = true})
 
 -- shime/vim-livedown(preview)
 map('n', '<leader>lp', '<cmd>LivedownToggle<CR>')
@@ -135,7 +137,10 @@ map('n', 'd"', 'ds"', { remap = true })
 map('n', 'dt', 'dst', { remap = true })
 
 ----------------------- COMMON -----------------------
--- NOTE xnoremap p pgvy -- Not override clipboard on paste (currently fixed/overrides with vim-pasta)
+-- nvim-pasta
+map({ 'n', 'x' }, 'p', require('pasta.mappings').p)
+map({ 'n', 'x' }, 'P', require('pasta.mappings').P)
+
 -- Misc
 map('n', '<S-q>', '<cmd>q<CR>', { silent = true})
 map('n', '<leader>q', '<cmd>qa<CR>', { silent = true})

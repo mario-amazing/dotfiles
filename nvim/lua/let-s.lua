@@ -26,9 +26,6 @@ vim.g.user_emmet_mode='iv' --  modes, in which Emmet mappings will be created(in
 -- tabular
 vim.g.tabular_default_format = "l0"
 
--- pasta
-vim.g.pasta_disabled_filetypes = {'esearch'}
-
 -- gitv
 vim.g.Gitv_DoNotMapCtrlKey = 1
 

@@ -24,6 +24,7 @@ require("telescope").load_extension("persisted")
 
 require('nvim-treesitter.configs').setup {
   highlight = { enable = true },
+  indent = { enable = true }, -- alternative vim.lsp.buf.formatting
   ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", 'tsx', "css", "scss", "regex", "yaml" },
   -- indent = { enable = true }, -- Experimental
 
@@ -77,9 +78,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 
 -- You can use treesitter to check for a pair.
-require('nvim-autopairs').setup({
-  disable_filetype = { "TelescopePrompt" , --[["vim"]] },
-})
+require('nvim-autopairs').setup({ disable_filetype = { "TelescopePrompt" , --[["vim"]] } })
 require('nvim-autopairs').add_rules(require('nvim-autopairs.rules.endwise-ruby')) -- Auto adding end after blocks
 require('nvim-autopairs').add_rules(require('nvim-autopairs.rules.endwise-lua')) -- Auto adding end after blocks
 
@@ -112,7 +111,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 require("persisted").setup()
 
 
--- require("auto-save").setup({ trigger_events = { "FocusLost", "BufLeave", --[["BufDelete", "UILeave"]] }}) --[[:h events]]
+require("auto-save").setup({ enable = false, trigger_events = { "FocusLost", "BufLeave", --[["BufDelete", "UILeave"]] }}) --[[:h events]]
 
 
 -- git.nvim
