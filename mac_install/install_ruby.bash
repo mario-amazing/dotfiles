@@ -35,14 +35,13 @@ install_rvm() {
   echo_title "!!!RVM INSTALATION!!!"
 
   install_ruby_rvm_configs
-  gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-  \curl -sSL https://get.rvm.io | bash -s stable --rails
+  gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+  \curl -sSL https://get.rvm.io | bash -s master
   source "$HOME/.rvm/scripts/rvm"
   rvm pkg install openssl
 
-  RUBY_VERSION="3.0.1" # TODO remove version -> last
-  rvm install "$RUBY_VERSION"
-  rvm use "$RUBY_VERSION" --default
+  rvm install ruby # install latest ruby
+  rvm --default use ruby
 
   # manual_install_rvm_gems
 }
@@ -53,8 +52,7 @@ install_rbenv() {
 
   install_ruby_rbenv_configs
 
-  brew install rbenv
-  brew install rbenv-default-gems
+  brew install rbenv rbenv-default-gems
   ln -vsf "$ROOT_DIR/config/global.gems" "$HOME/.rbenv/default-gems"
 
   RUBY_VERSION=$(rbenv install -l | grep -v - | tail -1)
