@@ -59,7 +59,7 @@ map('n', '<space>=', vim.lsp.buf.formatting, { silent = true })
 map('n', '<space>h', vim.lsp.buf.hover, {silent = true})
 map('n', '<space>n', vim.lsp.buf.rename, {silent = true})
 -- TODO add vim.diagnostic.open_float float diagnostic
--- TODO check code_action and show action icon
+-- TODO check code_action and show action icon https://github.com/glepnir/lspsaga.nvim
 
 -- persisted.nvim
 map('n', '<Leader>sl', '<cmd>SessionLoadLast<cr>', { silent = true })

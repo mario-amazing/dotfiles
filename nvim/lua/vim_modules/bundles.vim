@@ -76,9 +76,6 @@ Plug 'AndrewRadev/undoquit.vim'
 Plug 'winston0410/cmd-parser.nvim' " requiremet for nvim-colorizer
 Plug 'NvChad/nvim-colorizer.lua' " Shows color by code
 
-" TODO substitute to main after merge https://github.com/Pocco81/auto-save.nvim/pull/47
-Plug 'XXiaoA/auto-save.nvim', { 'branch':  'new' }
-
 " Languages
 """""""""""""""
 Plug 'lyokha/vim-xkbswitch' " auto change language to en

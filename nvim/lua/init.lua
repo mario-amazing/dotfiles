@@ -29,7 +29,7 @@ require('nvim-treesitter.configs').setup {
   -- indent = { enable = true }, -- Experimental
 
   -- extension vim-matchup
-  matchup = { enable = true },
+  matchup = { enable = true, disable_virtual_text = true },
   -- extension nvim-ts-context-commentstring(comment by treesitter line type)(html with js and css)
   context_commentstring = { enable = true },
   -- extension nvim-ts-autotag
@@ -109,9 +109,6 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 
 require("persisted").setup()
-
-
-require("auto-save").setup({ enable = false, trigger_events = { "FocusLost", "BufLeave", --[["BufDelete", "UILeave"]] }}) --[[:h events]]
 
 
 -- git.nvim
