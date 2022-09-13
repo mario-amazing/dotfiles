@@ -44,7 +44,10 @@ require'lspconfig'.jsonls.setup{
 require'lspconfig'.yamlls.setup{
   capabilities = capabilities
 }
-
+-- vim.diagnostic.config({
+--   -- virtual_text = false,
+--   float = { scope = "cursor" }
+-- })
 
 -- ToggleDiagnostics LSP
 vim.diagnostic.disable()

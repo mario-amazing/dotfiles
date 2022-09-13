@@ -51,13 +51,16 @@ map('n', 'gr',        '<cmd>Telescop lsp_references<cr>', { silent = true })
 map('n', '<space>y',  '<cmd>Telescop lsp_document_symbols<cr>', { silent = true })
 map('n', '<space>i',  '<cmd>Telescop lsp_incoming_calls<cr>', { silent = true })
 map('n', '<space>o',  '<cmd>Telescop lsp_outgoing_calls<cr>', { silent = true })
-map('n', '<space>d',  '<cmd>Telescop diagnostics<cr>', { silent = true })
-map('n', '<space>td', '<cmd>lua ToggleDiagnostics()<CR>', {silent = true})
+map('n', '<space>da', '<cmd>Telescop diagnostics<cr>', { silent = true })
+map('n', '<space>n',  vim.diagnostic.goto_next, { silent = true })
+map('n', '<space>p',  vim.diagnostic.goto_prev, { silent = true })
+map('n', '<space>df', vim.diagnostic.open_float, { silent = true })
+map('n', '<space>dt', ToggleDiagnostics, {silent = true})
 --
 map('n', '<space>a', vim.lsp.buf.code_action, { silent = true })
 map('n', '<space>=', vim.lsp.buf.formatting, { silent = true })
 map('n', '<space>h', vim.lsp.buf.hover, {silent = true})
-map('n', '<space>n', vim.lsp.buf.rename, {silent = true})
+map('n', '<space>r', vim.lsp.buf.rename, {silent = true})
 -- TODO add vim.diagnostic.open_float float diagnostic
 -- TODO check code_action and show action icon https://github.com/glepnir/lspsaga.nvim
 
