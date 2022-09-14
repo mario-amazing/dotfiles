@@ -29,7 +29,9 @@ install_git() {
   # delta
   git config --global core.pager delta
   git config --global delta.features decorations
-  git config --global delta.syntax-theme Dracula
+  git config --global delta.syntax-theme gruvbox-dark
+  git config --global delta.minus-style "#ea6962"
+  git config --global delta.plus-style "#a9b665"
   git config --global delta.navigate true # use n and N to move between diff sections
   git config --global delta.decorations.file-style omit
   git config --global delta.decorations.hunk-header-style 'file line-number syntax'

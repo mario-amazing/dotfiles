@@ -54,8 +54,10 @@ local diagnostics_active = false
 function ToggleDiagnostics()
   if diagnostics_active then
     vim.diagnostic.disable()
+    print('Diagnostic Off')
   else
     vim.diagnostic.enable()
+    print('Diagnostic On')
   end
   diagnostics_active = not diagnostics_active
 end
