@@ -10,6 +10,9 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
+
+-- lspsaga.nvim
+require('lspsaga').init_lsp_saga({ finder_action_keys = { open = "<CR>" }})
 -- mason.nvim
 require("mason").setup()
 -- mason-lspconfig.nvim  -- auto install lsp
@@ -44,10 +47,6 @@ require'lspconfig'.jsonls.setup{
 require'lspconfig'.yamlls.setup{
   capabilities = capabilities
 }
--- vim.diagnostic.config({
---   -- virtual_text = false,
---   float = { scope = "cursor" }
--- })
 
 -- ToggleDiagnostics LSP
 vim.diagnostic.disable()

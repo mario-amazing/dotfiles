@@ -87,6 +87,7 @@ Plug 'chr4/nginx.vim'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' } " UI for lsp
 Plug 'onsails/lspkind-nvim' " kind of autocomplite
 Plug 'weilbith/nvim-code-action-menu', { 'on': 'CodeActionMenu' } " action float window
 
