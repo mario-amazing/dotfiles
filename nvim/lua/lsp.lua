@@ -48,18 +48,24 @@ require'lspconfig'.yamlls.setup{
   capabilities = capabilities
 }
 
+-- vim.diagnostic.disable()
+function DiagnosticConfig(value)
+  return {
+    virtual_text = value,
+    signs = value,
+    update_in_insert = value,
+    underline = value,
+    severity_sort = value,
+    float = value,
+  }
+end
 -- ToggleDiagnostics LSP
-vim.diagnostic.disable()
 local diagnostics_active = false
+vim.diagnostic.config(DiagnosticConfig(diagnostics_active))
 function ToggleDiagnostics()
-  if diagnostics_active then
-    vim.diagnostic.disable()
-    print('Diagnostic Off')
-  else
-    vim.diagnostic.enable()
-    print('Diagnostic On')
-  end
   diagnostics_active = not diagnostics_active
+  vim.diagnostic.config(DiagnosticConfig(diagnostics_active))
+  print('Diagnostic active:', diagnostics_active)
 end
 -- ToggleDiagnostics LSP
 
