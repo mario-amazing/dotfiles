@@ -50,13 +50,8 @@ zstyle ':completion:*' rehash true
 # curl
 export PATH="/usr/local/opt/curl/bin:$PATH"
 
-# IF rbenv uncomment
-# if which rbenv &> /dev/null
-# then
-#   # export PATH="$HOME/.rbenv/bin:$PATH"
-#   # export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-  eval "$(rbenv init -)"
-# fi
+eval "$(rbenv init -)"
+eval "$(nodenv init -)"
 
 # export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
@@ -73,7 +68,3 @@ export SOLARGRAPH_GLOBAL_CONFIG="$HOME/.solargraph/config.yml"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -68,6 +68,7 @@ install_programs(){
   brew install --cask visual-studio-code
   brew install --cask docker
   brew install --cask postman
+  brew install --cask ngrok  # proxy localhost server
 
   brew install --cask steam
   brew install --cask appcleaner
@@ -99,10 +100,9 @@ start_mysql() {
 }
 
 install_node_with_manager() {
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-  nvm install node
-  ln -vsf "$ROOT_DIR/config/nvm_default_packages" "$NVM_DIR/default-packages"
-  echo_info "!!!Inside project folder run => nvm use!!!"
+  brew install nodenv
+  brew install nodenv/nodenv/nodenv-default-packages
+  ln -vsf "$ROOT_DIR/config/nodenv_default_packages" "$(nodenv root)/default-packages"
 }
 
 install_python() {
