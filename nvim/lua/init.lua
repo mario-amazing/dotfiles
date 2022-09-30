@@ -24,7 +24,7 @@ require("telescope").load_extension("persisted")
 
 require('nvim-treesitter.configs').setup {
   highlight = { enable = true },
-  indent = { enable = true }, -- alternative vim.lsp.buf.formatting
+  -- indent = { enable = true }, -- alternative vim.lsp.buf.formatting
   ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", 'tsx', "css", "scss", "regex", "yaml" },
   -- indent = { enable = true }, -- Experimental
 

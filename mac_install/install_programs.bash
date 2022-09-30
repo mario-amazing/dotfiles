@@ -36,6 +36,7 @@ install_programs(){
   brew install overmind
   brew install imagemagick
   brew install kubectl
+  brew install docker-compose
 
   brew install postgresql
   brew install redis

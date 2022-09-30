@@ -15,6 +15,13 @@ require("gruvbox").setup({
     overrides = {
       Function = { link = "GruvboxAquaBold" },
       CmpItemAbbrMatch = { link = "GruvboxOrange" }, -- TODO remove line after fix  https://github.com/hrsh7th/nvim-cmp/issues/1152
+      NvimTreeSymlink = { link = "GruvboxBlue" },
+      NvimTreeFolderName = { link = "GruvboxGreen" },
+      NvimTreeRootFolder = { link = "GruvboxPurple" },
+      NvimTreeFolderIcon = { link = "GruvboxOrange" },
+      NvimTreeExecFile = { link = "GruvboxYellow" },
+      NvimTreeSpecialFile = { link = "GruvboxFg1" },
+      NvimTreeIndentMarker = { link = "GruvboxGray" },
     }
 })
 vim.cmd([[colorscheme gruvbox]])

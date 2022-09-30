@@ -4,7 +4,7 @@ Plug 'lewis6991/impatient.nvim' " cache startup lua plugins
 " Colorscheme
 """""""""""""""
 " Plug  'ellisonleao/gruvbox.nvim' ,
-Plug 'mario-amazing/gruvbox.nvim', { 'branch':  'add_nvim-tree_group' }
+Plug 'mario-amazing/gruvbox.nvim'
 
 " #UI
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }  " highlight syntax
