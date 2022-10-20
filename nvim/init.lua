@@ -15,7 +15,7 @@ require('autocmds')
 require('completion')
 
 -- ======== Tips:
--- https://github.com/crivotz/nv-ide last config synced on Aug 9, 2022 fe011790251d52fdd8057bf23ebe387cb0a952fa
+-- https://github.com/crivotz/nv-ide last config synced on Oct 10, 2022 89043c62e00dc7f9dc78b0e527b36660ca5ea6d0
 -- lua config https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 -- icons -> https://www.nerdfonts.com/cheat-sheet
 -- :au TextChangedI #(Run after typing) Debugging what plugins were run during text typing.

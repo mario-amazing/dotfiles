@@ -1,7 +1,7 @@
 -- :LspInfo # check lsp instalation in file
 -- NOTE lsp log file -> ~/.cache/nvim/lsp.log
-vim.lsp.set_log_level("error")
--- vim.lsp.set_log_level("off")
+-- vim.lsp.set_log_level("error")
+vim.lsp.set_log_level("off")
 
 -- Diagnostics symbols for display in the sign column.
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
