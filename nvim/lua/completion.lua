@@ -6,7 +6,8 @@ end
 local cmp = require'cmp'
 local luasnip = require("luasnip")
 local lspkind = require'lspkind'
-local max_item_count = 4
+local min_keyword_length = 2
+local max_item_count = 6
 
 cmp.setup({
   enabled = function()
@@ -14,7 +15,7 @@ cmp.setup({
     -- disable completion in comments
     return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
   end,
-  completion = { keyword_length = 3 }, -- characters needed to trigger auto-completion. For manual trigger <C-c>
+  completion = { keyword_length = min_keyword_length }, -- characters needed to trigger auto-completion. For manual trigger <C-c>
   performance = {
     debounce = 80, -- default 60
   },
