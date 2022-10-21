@@ -1,6 +1,8 @@
 vim.api.nvim_exec([[
   augroup FiletypeAutocommands
     au!
+    au BufWritePost * FormatWrite " formatter.nvim
+
     au FileType git,GV setlocal nolist nowrap nonumber
 
     au FileType python setlocal ts=2 sw=2 sts=2

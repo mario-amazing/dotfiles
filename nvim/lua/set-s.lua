@@ -33,7 +33,7 @@ set.backupdir = vim.env.HOME.."/.config/nvim/tmp/backup//"  -- backups
 set.backup = true
 set.swapfile = false
 
-set.hidden = false -- When off a buffer is unloaded (including loss of undo information) when it is abandoned.
+-- set.hidden = false -- When off a buffer is unloaded (including loss of undo information) when it is abandoned.
 
 set.wildignore = set.wildignore + '.git,.svn' -- ignored when expanding wildcards, completing file or directory names
 set.wildignore = set.wildignore + 'vendor/*'

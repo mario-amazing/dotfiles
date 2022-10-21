@@ -38,6 +38,22 @@ require('nvim-treesitter.configs').setup {
   playground = { enable = true },
 }
 
+require('formatter').setup({
+  logging = false,
+  filetype = {
+    javascript = {
+      -- prettierd
+      function()
+        return {
+          exe = "prettierd",
+          args = {vim.api.nvim_buf_get_name(0)},
+          stdin = true
+        }
+      end
+    },
+    -- other formatters ...
+  }
+})
 
 require('lightspeed').setup {
   ignore_case = true,

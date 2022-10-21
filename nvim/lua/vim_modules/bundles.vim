@@ -75,6 +75,9 @@ Plug 'AndrewRadev/undoquit.vim'
 Plug 'winston0410/cmd-parser.nvim' " requiremet for nvim-colorizer
 Plug 'NvChad/nvim-colorizer.lua' " Shows color by code
 
+
+" Indentation
+Plug 'mhartington/formatter.nvim'
 " Languages
 """""""""""""""
 Plug 'lyokha/vim-xkbswitch' " auto change language to en

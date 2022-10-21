@@ -1,5 +1,6 @@
 neovim
 @fsouza/prettierd
+eslint-plugin-prettier
 vim-language-server
 yaml-language-server
 dockerfile-language-server-nodejs

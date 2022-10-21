@@ -15,6 +15,7 @@ require('autocmds')
 require('completion')
 
 -- ======== Tips:
+-- :source $MYVIMRC -> reload config
 -- https://github.com/crivotz/nv-ide last config synced on Oct 10, 2022 89043c62e00dc7f9dc78b0e527b36660ca5ea6d0
 -- lua config https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 -- icons -> https://www.nerdfonts.com/cheat-sheet

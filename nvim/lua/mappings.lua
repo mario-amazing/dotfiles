@@ -113,8 +113,8 @@ map('x', 'S#', '<Plug>(operator-sandwich-add)i#{<cr>}<cr>')
 map('v', 'v',     '<Plug>(expand_region_expand)')
 map('v', '<C-v>', '<Plug>(expand_region_shrink)')
 
--- vim-commentary
-map('v', 'c',  '<Plug>Commentary')
+-- nvim-ts-context-commentstring(<Plug>ContextCommentary run vim-commentary)
+map('v', 'c',  '<Plug>ContextCommentary')
 
 -- vim-easy-align
 map({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)')
