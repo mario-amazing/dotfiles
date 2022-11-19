@@ -16,6 +16,7 @@ install_programs(){
   brew install wget
   brew install fd # friendly find
   brew install rg
+  brew install jq # prettify json
   # brew install ag
   # brew install md5sha1sum
 

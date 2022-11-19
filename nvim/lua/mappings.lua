@@ -170,6 +170,7 @@ map('n', '<C-o>', '<C-o>zz', { silent = true })
 map('n', '<F8>', function() preserveCursor("normal! ggVG=") end , { silent = true }) -- FullFileIndent
 map('n', 'i', IndentWithI, { expr = true })
 map('n', '<leader>wt', TrimWhiteSpace)
+map('n', '<leader>p', '<cmd>%!jq .<CR>') -- prettify json
 
 -- jump window
 map('', '<C-k>', '<C-w><C-k>', { silent = true })

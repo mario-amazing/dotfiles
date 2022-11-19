@@ -61,8 +61,6 @@ eval "$(nodenv init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export XDG_CONFIG_HOME="$HOME/.config" # lazygit
-
 # ruby
 export SOLARGRAPH_GLOBAL_CONFIG="$HOME/.solargraph/config.yml"
 
