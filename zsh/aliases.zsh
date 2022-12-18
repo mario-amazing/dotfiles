@@ -140,10 +140,8 @@ alias cdd='cd ~/Documents/dotfiles'
 
 # projects
 alias cdtm='eval cd $WORK_PATH/this_moment'
-
-# solaprgraph
-alias soi='ln -s ~/.solargraph/src/enhance-rails-intellisense-in-solargraph/rails.rb $PWD/config/definitions.rb'
-alias sop='git -C ~/.solargraph/src/enhance-rails-intellisense-in-solargraph pull'
+alias cdsm='eval cd $WORK_PATH/smart_massage'
+alias cdtmp='eval cd $WORK_PATH/tmp'
 
 # alias run_fidor='osascript $WORK_PATH/fidor/scripts/fidor_services.scpt'
 

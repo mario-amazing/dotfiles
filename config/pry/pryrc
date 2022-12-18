@@ -1,8 +1,5 @@
 require_relative 'pryrc_helpers.rb'
 
-require "amazing_print"
-AmazingPrint.pry! if defined? AmazingPrint
-
 Pry.editor = 'vim'
 Pry.config.color = true
 Pry.config.theme = "railscasts"

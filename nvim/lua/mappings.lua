@@ -97,10 +97,6 @@ map('n', '<leader>lp', '<cmd>LivedownToggle<CR>')
 -- auto-save.nvim
 map('n', '<leader>at', '<cmd>ASToggle<CR>')
 
--- sideways
-map('n', '<S-h>', '<cmd>SidewaysLeft<CR>')
-map('n', '<S-l>', '<cmd>SidewaysRight<CR>')
-
 -- CamelCaseMotion
 map('', '<S-W>', '<Plug>CamelCaseMotion_w')
 map('', '<S-B>', '<Plug>CamelCaseMotion_b')
@@ -108,6 +104,7 @@ map('', '<S-E>', '<Plug>CamelCaseMotion_e')
 
 -- sandwich
 map('x', 'S#', '<Plug>(operator-sandwich-add)i#{<cr>}<cr>')
+map('x', 'S%', '<Plug>(operator-sandwich-add)i%{<cr>}<cr>')
 
 -- vim-expand-region
 map('v', 'v',     '<Plug>(expand_region_expand)')
@@ -210,6 +207,7 @@ map('v', '<Leader>fs', ':OverCommandLine<CR>s/',  { silent = true })
 -- name of file
 map('n', 'yn', "<cmd>let @+ = substitute(expand('%'), '^'.getcwd().'/', '', '')<CR>")
 map('n', 'yN', '<cmd>let @+ = expand("%:t")<CR>')
+map('n', 'yl', "<cmd>let @+ = join([expand('%'), line('.')], ':')<CR>")
 
 -- #Commandline(after press :)
 map('c', '<C-a>', '<Home>')

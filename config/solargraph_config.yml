@@ -1,5 +1,6 @@
 ---
 # https://solargraph.org/guides/configuration
+# BUILD In the project root: yard gems
 include:
 - "**/*.rb"
 exclude:
@@ -18,5 +19,6 @@ formatter:
     only: []
     extra_args: []
 require_paths: []
-plugins: []
+plugins:
+  - solargraph-rails
 max_files: 5000

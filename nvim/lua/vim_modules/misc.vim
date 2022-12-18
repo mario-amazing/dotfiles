@@ -54,21 +54,6 @@ fu! TryCTag() abort
   endtry
 endfu
 
-fu! TryRailsCFile() abort
-  if !exists('*rails#cfile')
-    return 0
-  endif
-
-  try
-    exec 'find ' . rails#cfile()
-    return 1
-  catch /E345:/ " E345: Can't find file in path
-    return 0
-  catch /Not in a Rails app/
-    return 0
-  endtry
-endfu
-
 fu! TryURI() abort
   " https://github.com/itchyny/vim-highlighturl/blob/master/autoload/highlighturl.vim 
   let pattern = '\v\c%(%(h?ttps?|ftp|file|ssh|git)://|[a-z]+\@[a-z]+.[a-z]+:)%('
@@ -122,74 +107,5 @@ fu! SmartGF() abort
   unsilent echo "Can't find file or tag"
 endfu
 
-fu! TryFootnote() abort
-  let pattern='\(\[\d\+\]\)'
-
-  let curcol = col('.')
-  let line = getline('.')
-  let endpos = 0
-
-  let footnote = MatchUnderCursor(pattern)
-  if empty(footnote)
-    let footnote = matchstr(line, pattern, col('.')-1)
-    if empty(footnote) | return 0 | endif
-  endif
-
-  " search links section start from the end of an open buffer
-  let last_line = line('$')
-  let ln = last_line
-  while ln > 0
-    let line = getline(ln)
-
-    if line ==# '---'
-      let ln += 1
-      break
-    endif
-    let ln -= 1
-  endwhile
-
-  if ln ==# 0
-    return 0
-  endif
-
-  let links = []
-  let last_line = line('$')
-  while ln <= last_line
-    call add(links, getline(ln))
-    let ln += 1
-  endwhile
-
-
-  let link_pos = ''
-  for l in links
-    let n = matchstr(l, '^\(\[\d\+\]\)')
-    if n ==# footnote
-      let link = substitute(l, '^\(\[\d\+\]\) \(.*\)', '\2', '')
-
-      for opener in s:openers
-        if executable(opener)
-          call system(opener . ' ' . shellescape(link))
-          return 1
-        endif
-      endfor
-    endif
-  endfor
-endfu
-
-
-function! MatchUnderCursor(pat)
-  let line = getline(".")
-  let lastend = 0
-  while lastend >= 0
-    let beg = match(line,'\C'.a:pat,lastend)
-    let end = matchend(line,'\C'.a:pat,lastend)
-    if beg < col(".") && end >= col(".")
-      return matchstr(line,'\C'.a:pat,lastend)
-    endif
-    let lastend = end
-  endwhile
-  return ""
-endfunction
-
-let g:smartgf_strategies = [function('TryURI'), function('luaeval', ['VimBundlePackage()']),  function('TryPlainGF'), function('TryRailsCFile'), function('TryCTag'), function('TryFootnote')]
+let g:smartgf_strategies = [function('TryURI'), function('luaeval', ['VimBundlePackage()']),  function('TryPlainGF'), function('TryCTag')]
 """"""""""" SmartGF """""""""

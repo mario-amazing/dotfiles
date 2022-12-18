@@ -76,21 +76,9 @@ require('nvim-tree').setup {
   update_focused_file = { update_cwd = true },
   view = { mappings = { list = list } },
   filters = { dotfiles = true },
-  git = { ignore = false }
+  git = { ignore = false },
+  tab = { sync = { open = false, close = true, ignore = {} } },
 }
-
--- TODO add sync across all of the tabs https://github.com/kyazdani42/nvim-tree.lua/issues/457
---
--- TODO Check this discussion: (auto close if last buffer is Nvim-tree)
--- https://github.com/kyazdani42/nvim-tree.lua/discussions/1115
-vim.api.nvim_create_autocmd("BufEnter", {
-  nested = true,
-  callback = function()
-    if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
-      vim.cmd "quit"
-    end
-  end
-})
 
 
 -- You can use treesitter to check for a pair.
@@ -135,3 +123,9 @@ require("nvim-surround").setup()
 
 
 require("icon-picker").setup({ disable_legacy_commands = true })
+
+
+require('sibling-swap').setup({})
+
+
+require('dressing').setup({ input = { enabled = false }})

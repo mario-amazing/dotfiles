@@ -85,10 +85,8 @@ install_ruby_configs() {
   ln -vsf "$ROOT_DIR/config/irbrc" "$HOME/.irbrc"
   ln -vsf "$ROOT_DIR/config/gemrc" "$HOME/.gemrc"
 
-  # https://solargraph.org/guides/rails
-  mkdir -p "$HOME/.solargraph"
-  git clone https://gist.github.com/castwide/28b349566a223dfb439a337aea29713e ~/.solargraph/src/enhance-rails-intellisense-in-solargraph
-  ln -vsf "$ROOT_DIR/config/solargraph_config.yml" "$HOME/.solargraph/config.yml"
+  mkdir -p "$HOME/.config/solargraph"
+  ln -vsf "$ROOT_DIR/config/solargraph_config.yml" "$HOME/.config/solargraph/config.yml"
 }
 
 manual_install_rvm_gems() {

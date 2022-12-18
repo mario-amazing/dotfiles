@@ -2,9 +2,9 @@ bundler
 pry
 pry-rails
 interactive_editor
-amazing_print
 neovim
 rmagick
 shutup
 ripper-tags
 solargraph
+solargraph-rails

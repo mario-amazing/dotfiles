@@ -50,7 +50,7 @@ Plug 'windwp/nvim-ts-autotag'    " auto rename closing tags
 Plug 'AndrewRadev/switch.vim'    " Switch segments of text with predefined replacements(-)
 Plug 'tpope/vim-abolish'         " Working with word Cases(crs/crm/cru)
 Plug 'AndrewRadev/splitjoin.vim' " Split/Join(gS/gJ)
-Plug 'AndrewRadev/sideways.vim'  " Move an item in a delimiter-separated list left or right(S-h/S-l)
+Plug 'Wansmer/sibling-swap.nvim' " Move an item in a delimiter-separated list left or right(S-h/S-l)
 Plug 'tpope/vim-speeddating'     " CTRL-A/CTRL-X to increment dates, times, and more
 Plug 'hrsh7th/nvim-pasta'        " smart paste, override (p and P)!!!
 Plug 'fedepujol/move.nvim'       " Move lines and blocks

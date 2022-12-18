@@ -62,7 +62,7 @@ eval "$(nodenv init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # ruby
-export SOLARGRAPH_GLOBAL_CONFIG="$HOME/.solargraph/config.yml"
+export SOLARGRAPH_GLOBAL_CONFIG="$HOME/.config/solargraph/config.yml"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
