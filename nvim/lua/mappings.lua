@@ -71,7 +71,8 @@ map('n', '<Leader>ss', '<cmd>Telescope persisted<cr>', { silent = true })
 -- Search by asterisk(*)
 map('n', 'n',    'nzz')
 map('n', 'N',    'Nzz')
-map('',  '*',    '<Plug>(asterisk-gz*)', { silent = true })
+map('n', '*', function() require("lasterisk").search({ silent = true }) end)
+map('x', '*', function() require("lasterisk").search({ is_whole = false, silent = true }) end)
 map('n', '<CR>', '<cmd>nohl<CR><cmd><Esc>')
 
 -- nvim-colorizer

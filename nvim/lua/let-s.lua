@@ -80,3 +80,29 @@ vim.g.gutentags_ctags_extra_args_ruby = { '--ignore-unsupported-options', '--rec
 
 -- vim-yaml-helper
 -- let g:vim_yaml_helper#always_get_root = 1 -- add root path to yaml copy
+
+-- vim-rails
+vim.g.rails_projections = {
+  ['app/controllers/concerns/*.rb'] = {
+    ['test'] = {
+      'spec/controllers/concerns/{}_spec.rb',
+      'spec/requests/concerns/{}_spec.rb'
+    },
+  },
+  ['spec/requests/concerns/*_spec.rb'] = {
+    ['alternate'] = {
+      'app/controllers/concerns/{}.rb',
+    },
+  },
+  ['app/controllers/*_controller.rb'] = {
+    ['test'] = {
+      'spec/controllers/{}_controller_spec.rb',
+      'spec/requests/{}_controller_spec.rb'
+    },
+  },
+  ['spec/requests/*_controller_spec.rb'] = {
+    ['alternate'] = {
+      'app/controllers/{}_controller.rb',
+    },
+  }
+}
