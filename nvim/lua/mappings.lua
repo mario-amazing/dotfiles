@@ -28,8 +28,8 @@ map('n', '<A-j>', ':MoveLine(1)<CR>', { silent = true })
 map('n', '<A-k>', ':MoveLine(-1)<CR>', { silent = true })
 map('v', '<A-j>', ':MoveBlock(1)<CR>', { silent = true })
 map('v', '<A-k>', ':MoveBlock(-1)<CR>', { silent = true })
-map('n', '<A-l>', ':MoveHChar(1)<CR>', { silent = true })
-map('n', '<A-h>', ':MoveHChar(-1)<CR>', { silent = true })
+map('n', '<A-l>', ':MoveWord(1)<CR>', { silent = true })
+map('n', '<A-h>', ':MoveWord(-1)<CR>', { silent = true })
 map('v', '<A-l>', ':MoveHBlock(1)<CR>', { silent = true })
 map('v', '<A-h>', ':MoveHBlock(-1)<CR>', { silent = true })
 
@@ -41,7 +41,8 @@ map('n', '<Leader>t',  '<cmd>NvimTreeToggle<CR>', { silent = true })
 map('n', '<Leader>ft', '<cmd>NvimTreeFindFile<CR>', { silent = true })
 
 -- Telescope
-map('n', '<C-p>',      '<cmd>Telescope find_files<CR>')
+map('n', '<C-p>',      '<cmd>Telescope find_files find_command=rg,--hidden,--no-ignore-vcs,--files,--ignore-file,'..vim.fn.expand('~/.config/.ignore')..'<CR>')
+-- map('n', '<C-p>',      '<cmd>Telescope find_files find_command=rg,--hidden,--no-ignore-vcs,--files<CR>')
 map('n', '<C-f><C-m>', '<cmd>Telescope oldfiles<cr>')
 map('n', '<C-f><C-t>', '<cmd>Telescope filetypes<CR>')
 map('n', '<Leader>mc', '<cmd>Telescope find_files cwd=~/.config/nvim/lua<CR>')
@@ -112,7 +113,7 @@ map('v', 'v',     '<Plug>(expand_region_expand)')
 map('v', '<C-v>', '<Plug>(expand_region_shrink)')
 
 -- nvim-ts-context-commentstring(<Plug>ContextCommentary run vim-commentary)
-map('v', 'c',  '<Plug>ContextCommentary')
+map('v', 'c', '<Plug>Commentary')
 
 -- vim-easy-align
 map({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)')
@@ -168,7 +169,7 @@ map('n', '<C-o>', '<C-o>zz', { silent = true })
 map('n', '<F8>', function() preserveCursor("normal! ggVG=") end , { silent = true }) -- FullFileIndent
 map('n', 'i', IndentWithI, { expr = true })
 map('n', '<leader>wt', TrimWhiteSpace)
-map('n', '<leader>p', '<cmd>%!jq .<CR>') -- prettify json
+map('n', '<leader>pj', '<cmd>%!jq .<CR>') -- prettify json
 
 -- jump window
 map('', '<C-k>', '<C-w><C-k>', { silent = true })
@@ -221,14 +222,6 @@ map('c', '<C-d>', '<Delete>')
 map('c', '<M-b>', '<S-Left>')
 map('c', '<M-f>', '<S-Right>')
 map('c', '<M-d>', '<S-right><Delete>')
-
---git
-vim.cmd('cabbrev ga   Git add')
-vim.cmd('cabbrev gc   Git commit -m')
-vim.cmd('cabbrev gca  Git commit --amend -m')
-vim.cmd('cabbrev gcan Git commit --amend --no-edit<CR>')
-vim.cmd('cabbrev gco  Git checkout')
-vim.cmd('cabbrev gcof Git checkout "%:p:h"')
 
 -- ru mappings -> fixed with vim-xkbswitch lang swithcer
 vim.cmd("map ё `| map й q| map ц w| map у e| map к r| map е t| map н y| map г u| map ш i| map щ o| map з p| map х [| map ъ ]")

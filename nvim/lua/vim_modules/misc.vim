@@ -1,5 +1,5 @@
 """"""""""" vim-esearch """""""""
-let g:esearch = { 'backend': 'nvim', 'adapters': {'rg': {'options': '--hidden'}}}
+let g:esearch = { 'backend': 'nvim', 'adapters': {'rg': {'options': '--hidden --no-ignore-vcs --sort path --ignore-file ~/.config/.ignore'}}} " man rg for more options
 " call   esearch#map('<C-f><C-f>','esearch')
 " call   esearch#map('<C-f>f',    'esearch')
 " call   esearch#map('<C-f>w',    'esearch-word-under-cursor')

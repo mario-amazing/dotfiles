@@ -18,6 +18,7 @@ install_git() {
 
   git config --global user.name ${gitname}
   git config --global user.email ${gitemail}
+  git config --global init.defaultBranch master
   git config --global color.ui true
   git config --global push.default current
   git config --global core.excludesfile ~/.gitignore_global

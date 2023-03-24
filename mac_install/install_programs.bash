@@ -16,6 +16,8 @@ install_programs(){
   brew install wget
   brew install fd # friendly find
   brew install rg
+  ln -vsf "$ROOT_DIR/config/ripgrep.ignore" "$HOME/.config/.ignore"
+
   brew install jq # prettify json
   # brew install ag
   # brew install md5sha1sum
@@ -38,6 +40,7 @@ install_programs(){
   brew install imagemagick
   brew install kubectl
   brew install docker-compose
+  brew install rust # for ruby -yjit
 
   brew install postgresql
   brew install redis

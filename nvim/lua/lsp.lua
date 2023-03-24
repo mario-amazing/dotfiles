@@ -12,7 +12,10 @@ end
 
 
 -- lspsaga.nvim
-require('lspsaga').init_lsp_saga({ finder_action_keys = { open = "<CR>" }})
+require('lspsaga').setup({
+  symbol_in_winbar = { enable = false },
+  ui = { colors = { normal_bg = '#1a1a14' } }
+})
 -- mason.nvim
 require("mason").setup()
 -- mason-lspconfig.nvim  -- auto install lsp

@@ -36,10 +36,6 @@ install_git() {
   copy $SELF_DIR/config/gitignore_global $HOME/.gitignore_global
 }
 
-install_heroku() {
-  wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-}
-
 install_tmux() {
   copy "$SELF_DIR/tmux.conf" "$HOME/.tmux.conf"
 }
@@ -213,7 +209,6 @@ install_steam
 install_git
 install_programs
 install_fonts
-install_heroku
 install_ruby
 install_gems
 install_numix

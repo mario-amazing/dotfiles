@@ -1246,6 +1246,28 @@
 					<key>Text</key>
 					<string>0x1f</string>
 				</dict>
+				<key>0x432-0x40000-0x2</key>
+				<dict>
+					<key>Action</key>
+					<integer>12</integer>
+					<key>Label</key>
+					<string></string>
+					<key>Text</key>
+					<string>в</string>
+					<key>Version</key>
+					<integer>1</integer>
+				</dict>
+				<key>0x441-0x40000-0x8</key>
+				<dict>
+					<key>Action</key>
+					<integer>12</integer>
+					<key>Label</key>
+					<string></string>
+					<key>Text</key>
+					<string>с</string>
+					<key>Version</key>
+					<integer>1</integer>
+				</dict>
 				<key>0x5e-0x60000</key>
 				<dict>
 					<key>Action</key>

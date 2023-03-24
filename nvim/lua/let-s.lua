@@ -57,6 +57,11 @@ vim.g.operator_sandwich_no_default_key_mappings = 1
 -- vim-xkbswitch
 vim.g.XkbSwitchLib = '/usr/local/bin/libxkbswitch.dylib'
 vim.g.XkbSwitchEnabled = 1
+-- vim.g.XkbSwitchIMappings = { 'ru' }  -- letter э rails error
+vim.g.XkbSwitchAssistNKeymap = 1    -- for commands r and f
+vim.g.XkbSwitchDynamicKeymap = 1
+-- vim.g.XkbSwitchKeymapNames = {'1' = 'russian-jcukenwin'}
+vim.g.XkbSwitchIminsertToggleEcho = 0
 
 -- vim-matchup
 vim.g.matchup_matchparen_offscreen = {['method'] = 'popup'}
