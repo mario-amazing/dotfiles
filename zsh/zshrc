@@ -66,3 +66,7 @@ export SOLARGRAPH_GLOBAL_CONFIG="$HOME/.config/solargraph/config.yml"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+#TMP
+  export LDFLAGS="-L/usr/local/opt/postgresql@15/lib"
+  export CPPFLAGS="-I/usr/local/opt/postgresql@15/include"

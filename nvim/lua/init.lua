@@ -128,4 +128,14 @@ require("icon-picker").setup({ disable_legacy_commands = true })
 require('sibling-swap').setup({})
 
 
+require('treesj').setup({
+  use_default_keymaps = true,
+  check_syntax_error = true,
+  max_join_length = 9999,
+  cursor_behavior = 'hold',
+  notify = true,
+  dot_repeat = true,
+})
+
+
 require('dressing').setup({ input = { enabled = false }})

@@ -51,6 +51,7 @@ Plug 'AndrewRadev/switch.vim'    " Switch segments of text with predefined repla
 Plug 'tpope/vim-abolish'         " Working with word Cases(crs/crm/cru)
 Plug 'AndrewRadev/splitjoin.vim' " Split/Join(gS/gJ)
 Plug 'Wansmer/sibling-swap.nvim' " Move an item in a delimiter-separated list left or right(S-h/S-l)
+Plug 'Wansmer/treesj'            " Main Split/Join -> fallback to splitjoin.vim
 Plug 'tpope/vim-speeddating'     " CTRL-A/CTRL-X to increment dates, times, and more
 Plug 'hrsh7th/nvim-pasta'        " smart paste, override (p and P)!!!
 Plug 'fedepujol/move.nvim'       " Move lines and blocks
