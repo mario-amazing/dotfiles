@@ -78,17 +78,6 @@ install_docker() {
  sudo chmod +x /usr/local/bin/docker-compose
 }
 
-install_nvim() {
-  mkdir -p ~/.config/nvim
-  ln -vsf "$ROOT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
-  ln -vsf "$ROOT_DIR/nvim/lua" "$HOME/.config/nvim/lua"
-  mkdir -p "$HOME/.config/nvim/tmp/backup"
-
-  nvim +PlugUpdate +qa
-}
-
-install_nvim
-
-# install_docker
-# install_vim
-# install_zsh
+install_docker
+install_vim
+install_zsh

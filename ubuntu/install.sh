@@ -203,6 +203,32 @@ finish_fix() {
   sudo apt-get autoremove -y
 }
 
+install_nvim() {
+  # wget https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.tar.gz
+  #tar xzvf nvim-linux64.tar.gz
+  sudo apt install software-properties-common
+  sudo add-apt-repository ppa:neovim-ppa/unstable
+  sudo apt update
+  sudo apt install neovim
+  sudo apt install fzf
+  sudo apt install npm
+
+  sudo apt-get install ripgrep
+
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+  mkdir -p ~/.config/nvim
+  ln -vsf "$ROOT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
+  ln -vsf "$ROOT_DIR/nvim/lua" "$HOME/.config/nvim/lua"
+  # ln -vsf "/root/dotfiles/nvim/lua" "/root/.config/nvim/lua"
+  # ln -vsf "/root/dotfiles/nvim/init.lua" "/root/.config/nvim/init.lua"
+  mkdir -p "$HOME/.config/nvim/tmp/backup"
+
+  nvim +PlugUpdate +qa
+}
+
+# install_nvim
+
 init_settings
 install_vim
 install_steam
