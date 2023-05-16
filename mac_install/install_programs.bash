@@ -74,6 +74,7 @@ install_programs(){
   brew install --cask docker
   brew install --cask postman
   brew install --cask ngrok  # proxy localhost server
+  brew install --cask responsively
 
   brew install --cask steam
   brew install --cask appcleaner

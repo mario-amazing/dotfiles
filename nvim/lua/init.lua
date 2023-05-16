@@ -62,19 +62,9 @@ require('lightspeed').setup {
 
 
 -- nvim-tree
-local list = {
-  { key = "<Tab>", action = "" },
-  { key = "w",     action = "preview" },
-
-  { key = "<C-t>", action = "" },
-  { key = "t",     action = "tabnew" },
-
-  { key = "<S-A>", action = "toggle_full_width", action_cb = toggle_full_width },
-}
-
 require('nvim-tree').setup {
+  on_attach = on_attach_nvim_tree,
   update_focused_file = { update_cwd = true },
-  view = { mappings = { list = list } },
   filters = { dotfiles = true },
   git = { ignore = false },
   tab = { sync = { open = false, close = true, ignore = {} } },

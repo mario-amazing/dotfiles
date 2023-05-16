@@ -63,9 +63,9 @@ end
 local nvimTree_full_size_toggled = false
 function toggle_full_width()
   if nvimTree_full_size_toggled then
-    require'nvim-tree'.resize(30)
+    require'nvim-tree.view'.resize(30)
   else
-    require'nvim-tree'.resize(100)
+    require'nvim-tree.view'.resize(100)
   end
   nvimTree_full_size_toggled = not nvimTree_full_size_toggled
 end

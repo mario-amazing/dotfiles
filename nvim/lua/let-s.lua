@@ -12,7 +12,7 @@ vim.g.splitjoin_ruby_hanging_args = 0
 
 -- Bookmarks
 vim.g.bookmark_save_per_working_dir = 1
-vim.g.bookmark_sign = ' '
+vim.g.bookmark_sign = ''
 vim.g.bookmark_annotation_sign = ' ﮉ'
 vim.g.bookmark_show_toggle_warning = 0
 vim.g.bookmark_center = 1

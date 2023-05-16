@@ -47,7 +47,7 @@ map('n', '<C-f><C-m>', '<cmd>Telescope oldfiles<cr>')
 map('n', '<C-f><C-t>', '<cmd>Telescope filetypes<CR>')
 map('n', '<Leader>mc', '<cmd>Telescope find_files cwd=~/.config/nvim/lua<CR>')
 -- LSP
-map('n', '<space>=',  vim.lsp.buf.formatting, { silent = true })
+--map('n', '<space>=',  vim.lsp.buf.formatting, { silent = true })
 map('n', 'gd',        '<cmd>Telescop lsp_definitions<cr>', { silent = true })
 map('n', 'gr',        '<cmd>Telescop lsp_references<cr>', { silent = true })
 map('n', '<space>y',  '<cmd>Telescop lsp_document_symbols<cr>', { silent = true })
