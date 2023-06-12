@@ -1,3 +1,5 @@
+vim.filetype.add({ extension = { mdx = "markdown.mdx" } }) -- astro
+
 -- Common
 vim.g.mapleader = ','
 

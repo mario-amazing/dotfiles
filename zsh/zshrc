@@ -70,3 +70,4 @@ export SOLARGRAPH_GLOBAL_CONFIG="$HOME/.config/solargraph/config.yml"
 #TMP
   export LDFLAGS="-L/usr/local/opt/postgresql@15/lib"
   export CPPFLAGS="-I/usr/local/opt/postgresql@15/include"
+  export PATH=/usr/local/opt/postgresql@15/bin:$PATH

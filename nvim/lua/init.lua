@@ -25,7 +25,7 @@ require("telescope").load_extension("persisted")
 require('nvim-treesitter.configs').setup {
   highlight = { enable = true },
   indent = { enable = true }, -- alternative vim.lsp.buf.formatting
-  ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", 'tsx', "css", "scss", "regex", "yaml", "bash" },
+  ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", 'tsx', "css", "scss", "regex", "yaml", "bash", "astro", "markdown", "markdown_inline" },
   -- indent = { enable = true }, -- Experimental
 
   -- extension vim-matchup
@@ -38,20 +38,19 @@ require('nvim-treesitter.configs').setup {
   playground = { enable = true },
 }
 
+local prettierd_formatter = function()
+  return {
+    exe = "prettierd",
+    args = {vim.api.nvim_buf_get_name(0)},
+    stdin = true
+  }
+end
+
 require('formatter').setup({
   logging = false,
   filetype = {
-    javascript = {
-      -- prettierd
-      function()
-        return {
-          exe = "prettierd",
-          args = {vim.api.nvim_buf_get_name(0)},
-          stdin = true
-        }
-      end
-    },
-    -- other formatters ...
+    javascript = prettierd_formatter,
+    astro = prettierd_formatter
   }
 })
 

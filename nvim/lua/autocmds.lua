@@ -18,4 +18,10 @@ vim.api.nvim_exec([[
     au VimEnter,WinEnter,BufWinEnter,BufEnter * setlocal cursorline
     au BufLeave,WinLeave * setlocal nocursorline
   augroup END
+
+  augroup vim-commentary
+    au!
+    autocmd FileType eruby.yaml setlocal commentstring=#\ %s
+    autocmd FileType json setlocal commentstring=//\ %s
+  augroup END
 ]], true)

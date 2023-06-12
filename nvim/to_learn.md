@@ -46,8 +46,8 @@ Sat, 01 Jan 2000 00:16:03 -0001
 ```
 
 ```
-#### Plug 'AndrewRadev/sideways.vim'
-Move an item in a delimiter-separated list left or right(S-h/S-l)
+#### Plug 'Wansmer/sibling-swap.nvim'
+Move an item in a delimiter-separated list left or right(C-,/C-.)
 ```
 
 #### Plug 'junegunn/vim-easy-align' https://github.com/junegunn/vim-easy-align

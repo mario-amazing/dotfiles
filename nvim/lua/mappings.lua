@@ -138,6 +138,8 @@ map('n', "d'", "ds'", { remap = true })
 map('n', 'd"', 'ds"', { remap = true })
 map('n', 'dt', 'dst', { remap = true })
 
+map('n', '<Leader>fp', '<cmd>FormatWrite<CR>', { silent = true })
+
 ----------------------- COMMON -----------------------
 -- nvim-pasta
 map({ 'n', 'x' }, 'p', require('pasta.mappings').p)

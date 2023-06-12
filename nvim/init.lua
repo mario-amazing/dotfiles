@@ -17,7 +17,7 @@ require('completion')
 
 -- ======== Tips:
 -- :source $MYVIMRC -> reload config
--- https://github.com/crivotz/nv-ide last config synced on Oct 10, 2022 89043c62e00dc7f9dc78b0e527b36660ca5ea6d0
+-- https://github.com/crivotz/nv-ide last config synced on Jun 9, 2023 0b8f5eda0f853b27b143f093ec1ed586a22906ce
 -- lua config https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 -- icons -> https://www.nerdfonts.com/cheat-sheet
 -- :au TextChangedI #(Run after typing) Debugging what plugins were run during text typing.
