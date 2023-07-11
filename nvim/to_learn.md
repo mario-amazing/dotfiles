@@ -55,7 +55,7 @@ Move an item in a delimiter-separated list left or right(C-,/C-.)
 Text align lines symbols(ga )
 ```
 
-#### LivePreview markdown - shime/vim-livedown
+#### LivePreview markdown - r4mmer/markdown-preview.nvim
 ```
 <Leader>lp - Live privew Toggle README
 ```

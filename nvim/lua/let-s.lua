@@ -113,3 +113,7 @@ vim.g.rails_projections = {
     },
   }
 }
+
+-- r4mmer/markdown-preview.nvim
+vim.g.mkdp_theme = 'light'
+vim.g.mkdp_preview_options = { ['disable_sync_scroll'] = 1 }

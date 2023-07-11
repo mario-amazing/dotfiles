@@ -93,8 +93,8 @@ map('n', 'F',  '<Plug>Lightspeed_F', { silent = true })
 map('n', '<F5>',      RemoveBreakpoints, {silent = true })
 map('n', '<leader>b', ToggleBreakpoint, { silent = true})
 
--- shime/vim-livedown(preview)
-map('n', '<leader>lp', '<cmd>LivedownToggle<CR>')
+-- r4mmer/markdown-preview.nvim(preview)
+map('n', '<leader>lp', '<Plug>MarkdownPreviewToggle')
 
 -- auto-save.nvim
 map('n', '<leader>at', '<cmd>ASToggle<CR>')

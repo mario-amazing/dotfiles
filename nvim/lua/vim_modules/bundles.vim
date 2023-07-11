@@ -100,7 +100,7 @@ Plug 'tpope/vim-bundler', { 'for': ['Gemfile', 'Rakefile', 'ruby'] }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-rake'
 "    markdown
-Plug 'shime/vim-livedown', { 'on': 'LivedownToggle' } " Markdown live preview
+Plug 'r4mmer/markdown-preview.nvim', { 'do': 'cd app && yarn install' } " Markdown live preview
 "    yaml
 Plug 'lmeijvogel/vim-yaml-helper' " substirute to https://github.com/cuducos/yaml.nvim after https://github.com/nvim-treesitter/nvim-treesitter/issues/1352
 
