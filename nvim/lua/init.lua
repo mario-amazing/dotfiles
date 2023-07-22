@@ -128,3 +128,13 @@ require('treesj').setup({
 
 
 require('dressing').setup({ input = { enabled = false }})
+
+-- # TODO: TMP CONFIG 
+require('pasta').setup {
+  paste_mode = false,
+  fix_cursor = true,
+  fix_indent = false,
+  prevent_diagnostics = false,
+  next_key = vim.api.nvim_replace_termcodes('<C-p>', true, true, true),
+  prev_key = vim.api.nvim_replace_termcodes('<C-n>', true, true, true),
+}
