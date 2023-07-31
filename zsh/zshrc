@@ -44,6 +44,7 @@ export HISTSIZE=200000
 export SAVEHIST=200000
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=$HISTSIZE
+export XDG_CONFIG_HOME="$HOME/.config"
 
 zstyle ':completion:*' rehash true
 

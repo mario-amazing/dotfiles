@@ -26,7 +26,7 @@ install_programs(){
   $(brew --prefix)/opt/fzf/install --no-bash --completion --key-bindings --update-rc
 
   brew install cmake
-  brew install ctags
+  # brew install ctags
   brew install --HEAD universal-ctags/universal-ctags/universal-ctags
   brew install coreutils # command -> realpath
   brew install thefuck
@@ -38,11 +38,12 @@ install_programs(){
   brew install yarn
   brew install overmind
   brew install imagemagick
+  brew install vips
   brew install kubectl
   brew install docker-compose
   brew install rust # for ruby -yjit
 
-  brew install postgresql
+  brew install postgresql@15
   brew install redis
   # brew install mysql
 
@@ -64,6 +65,7 @@ install_programs(){
 
   brew install --cask tunnelbear
   brew install --cask dropbox
+  brew install --cask google-drive
   brew install --cask transmission
   brew install --cask tiles
   brew install --cask keycastr
