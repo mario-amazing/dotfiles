@@ -16,11 +16,6 @@ install_nvim() {
   mkdir -p "$HOME/.config/lazygit"
   ln -vsf "$ROOT_DIR/config/lazygit_config.yml" "$HOME/.config/lazygit/config.yml"
 
-  # vim-xkbswitch
-  curl -fLo /usr/local/bin/libxkbswitch.dylib https://raw.githubusercontent.com/myshov/libxkbswitch-macosx/master/bin/libxkbswitch.dylib
-  curl -fLo /usr/local/bin/xkbswitch          https://raw.githubusercontent.com/myshov/xkbswitch-macosx/master/bin/xkbswitch
-  chmod +x /usr/local/bin/xkbswitch
-
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   mkdir -p ~/.config/nvim

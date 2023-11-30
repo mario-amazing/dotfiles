@@ -79,9 +79,6 @@ Plug 'NvChad/nvim-colorizer.lua' " Shows color by code
 
 " Indentation
 Plug 'mhartington/formatter.nvim'
-" Languages
-"""""""""""""""
-Plug 'lyokha/vim-xkbswitch' " auto change language to en
 
 " nginx
 Plug 'chr4/nginx.vim'
