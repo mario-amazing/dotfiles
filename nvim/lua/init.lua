@@ -25,13 +25,11 @@ require("telescope").load_extension("persisted")
 require('nvim-treesitter.configs').setup {
   highlight = { enable = true },
   indent = { enable = true }, -- alternative vim.lsp.buf.formatting
-  ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", 'tsx', "css", "scss", "regex", "yaml", "bash", "astro", "markdown", "markdown_inline" },
+  ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", 'tsx', "css", "scss", "regex", "yaml", "bash", "astro", "markdown", "markdown_inline", "python" },
   -- indent = { enable = true }, -- Experimental
 
   -- extension vim-matchup
   matchup = { enable = true, disable_virtual_text = true },
-  -- extension nvim-ts-context-commentstring(comment by treesitter line type)(html with js and css)
-  context_commentstring = { enable = true },
   -- extension nvim-ts-autotag
   autotag = { enable = true },
   -- playground
@@ -82,16 +80,16 @@ require('gitsigns').setup()
 -- nvim-colorizer.lua
 require('colorizer').setup({
   filetypes = {'css', 'javascript'},
-  user_default_options = {
-    RGB      = true;         -- #RGB hex codes
-    RRGGBB   = true;         -- #RRGGBB hex codes
-    names    = true;         -- "Name" codes like Blue
-    RRGGBBAA = true;         -- #RRGGBBAA hex codes
-    rgb_fn   = true;         -- CSS rgb() and rgba() functions
-    hsl_fn   = true;         -- CSS hsl() and hsla() functions
-    css      = true;         -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-    css_fn   = true;         -- Enable all CSS *functions*: rgb_fn, hsl_fn
-  }})
+    user_default_options = {
+      RGB      = true;         -- #RGB hex codes
+      RRGGBB   = true;         -- #RRGGBB hex codes
+      names    = true;         -- "Name" codes like Blue
+      RRGGBBAA = true;         -- #RRGGBBAA hex codes
+      rgb_fn   = true;         -- CSS rgb() and rgba() functions
+      hsl_fn   = true;         -- CSS hsl() and hsla() functions
+      css      = true;         -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+      css_fn   = true;         -- Enable all CSS *functions*: rgb_fn, hsl_fn
+    }})
 
 
 require('neoscroll').setup()
@@ -129,12 +127,7 @@ require('treesj').setup({
 
 require('dressing').setup({ input = { enabled = false }})
 
--- # TODO: TMP CONFIG 
-require('pasta').setup {
-  paste_mode = false,
-  fix_cursor = true,
-  fix_indent = false,
-  prevent_diagnostics = false,
-  next_key = vim.api.nvim_replace_termcodes('<C-p>', true, true, true),
-  prev_key = vim.api.nvim_replace_termcodes('<C-n>', true, true, true),
+
+require('ts_context_commentstring').setup {
+  enable_autocmd = false,
 }

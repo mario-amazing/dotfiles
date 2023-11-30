@@ -113,7 +113,7 @@ map('v', 'v',     '<Plug>(expand_region_expand)')
 map('v', '<C-v>', '<Plug>(expand_region_shrink)')
 
 -- nvim-ts-context-commentstring(<Plug>ContextCommentary run vim-commentary)
-map('v', 'c', '<Plug>Commentary')
+map('v', 'c', '<Plug>ContextCommentary')
 
 -- vim-easy-align
 map({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)')
@@ -142,8 +142,8 @@ map('n', '<Leader>fp', '<cmd>FormatWrite<CR>', { silent = true })
 
 ----------------------- COMMON -----------------------
 -- nvim-pasta
-map({ 'n', 'x' }, 'p', require('pasta.mappings').p)
-map({ 'n', 'x' }, 'P', require('pasta.mappings').P)
+map({ 'n', 'x' }, 'p', require('pasta.mapping').p)
+map({ 'n', 'x' }, 'P', require('pasta.mapping').P)
 
 -- Misc
 map('n', '<S-q>', '<cmd>q<CR>', { silent = true})

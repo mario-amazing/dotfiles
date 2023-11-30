@@ -22,7 +22,7 @@ require('lualine').setup {
     lualine_a = {
       {
         'tabs',
-        max_length = vim.o.columns,
+        max_length = vim.o.columns * 3,
         mode = 2,
         tabs_color = { active = 'lualine_b_normal' },
         separator = { left = '', right = '' },

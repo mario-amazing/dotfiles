@@ -58,7 +58,7 @@ vim.g.operator_sandwich_no_default_key_mappings = 1
 
 -- vim-xkbswitch
 vim.g.XkbSwitchLib = '/usr/local/bin/libxkbswitch.dylib'
-vim.g.XkbSwitchEnabled = 1
+vim.g.XkbSwitchEnabled = 0
 -- vim.g.XkbSwitchIMappings = { 'ru' }  -- letter э rails error
 vim.g.XkbSwitchAssistNKeymap = 1    -- for commands r and f
 vim.g.XkbSwitchDynamicKeymap = 1
@@ -117,3 +117,6 @@ vim.g.rails_projections = {
 -- r4mmer/markdown-preview.nvim
 vim.g.mkdp_theme = 'light'
 vim.g.mkdp_preview_options = { ['disable_sync_scroll'] = 1 }
+
+-- nvim-ts-context-commentstring
+vim.g.skip_ts_context_commentstring_module = true

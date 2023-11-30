@@ -106,7 +106,8 @@ Plug 'lmeijvogel/vim-yaml-helper' " substirute to https://github.com/cuducos/yam
 
 "    Search
 """""""""""""""""""""""
-Plug 'eugen0329/vim-esearch'         " Project-wide search
+" Plug 'eugen0329/vim-esearch'         " Project-wide search
+Plug 'mario-amazing/vim-esearch'
 Plug 'eugen0329/vim-concertina'
 Plug 'rapan931/lasterisk.nvim'       " *-improved
 

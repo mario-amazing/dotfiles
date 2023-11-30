@@ -64,6 +64,7 @@ eval "$(nodenv init -)"
 
 # ruby
 export SOLARGRAPH_GLOBAL_CONFIG="$HOME/.config/solargraph/config.yml"
+export DISPLAY=:0 # display image with imagemagick(run xquartz before display)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

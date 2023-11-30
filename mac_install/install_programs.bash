@@ -37,11 +37,13 @@ install_programs(){
   brew install npm
   brew install yarn
   brew install overmind
-  brew install imagemagick
   brew install vips
   brew install kubectl
   brew install docker-compose
   brew install rust # for ruby -yjit
+
+  brew install tlk/imagemagick-x11/imagemagick
+  brew install --cask xquartz # display image with imagemagick(run xquartz before display)
 
   brew install postgresql@15
   brew install redis
