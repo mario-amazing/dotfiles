@@ -21,7 +21,7 @@ require("mason").setup()
 -- mason-lspconfig.nvim  -- auto install lsp
 -- NOTE , "solargraph" -manual install
 require("mason-lspconfig").setup({
-  ensure_installed = { "html", "tsserver", "cssls", "dockerls", "jsonls", "yamlls", "vimls", "tailwindcss", "astro" },
+  ensure_installed = { "html", "tsserver", "cssls", "dockerls", "jsonls", "yamlls", "vimls", "tailwindcss", "astro", "pyright" },
   -- automatic_installation = { exclude = { "solargraph" } }
 })
 
@@ -36,6 +36,9 @@ require'lspconfig'.tsserver.setup{
   capabilities = capabilities
 }
 require'lspconfig'.solargraph.setup{
+  capabilities = capabilities
+}
+require'lspconfig'.pyright.setup{
   capabilities = capabilities
 }
 require'lspconfig'.cssls.setup{

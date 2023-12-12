@@ -5,7 +5,6 @@ vim.api.nvim_exec([[
 
     au FileType git,GV setlocal nolist nowrap nonumber
 
-    au FileType python setlocal ts=2 sw=2 sts=2
     au FileType Jenkinsfile setlocal ts=2 sw=2 sts=2
     au Filetype ruby setlocal expandtab ts=2 sw=2 sts=2 makeprg=ruby
     au FileType vimrc setlocal ts=2 sw=2 sts=2
@@ -21,7 +20,6 @@ vim.api.nvim_exec([[
 
   augroup vim-commentary
     au!
-    autocmd FileType eruby.yaml setlocal commentstring=#\ %s
     autocmd FileType json setlocal commentstring=//\ %s
   augroup END
 ]], true)
