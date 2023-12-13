@@ -84,8 +84,8 @@ map('n', '<C-w>u', '<cmd>Undoquit', { silent = true})
 map('n', '<C-w><C-u>', '<cmd>Undoquit', { silent = true})
 
 -- lightspeed
-map('n', 'gs', '<Plug>Lightspeed_s', { silent = true })
-map('n', 'gS', '<Plug>Lightspeed_S', { silent = true })
+-- map('n', 'gs', '<Plug>Lightspeed_s', { silent = true })
+-- map('n', 'gS', '<Plug>Lightspeed_S', { silent = true })
 map('n', 'f',  '<Plug>Lightspeed_f', { silent = true })
 map('n', 'F',  '<Plug>Lightspeed_F', { silent = true })
 

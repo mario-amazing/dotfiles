@@ -1,7 +1,6 @@
-vim.cmd 'source ~/.config/nvim/lua/vim_modules/bundles.vim'
 vim.cmd 'source ~/.config/nvim/lua/vim_modules/misc.vim'
 
-require('impatient')-- .enable_profile() -- profiling with :LuaCacheProfile
+require('bundles')
 require('plugins/alpha-nvim')
 require('colors')
 require('set-s')

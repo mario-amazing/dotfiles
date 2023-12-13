@@ -4,8 +4,8 @@ vim.filetype.add({ extension = { mdx = "markdown.mdx" } }) -- astro
 vim.g.mapleader = ','
 
 -- lazygit.nvim
-vim.g.lazygit_use_custom_config_file_path = 1
-vim.g.lazygit_config_file_path = '~/.config/lazygit/config.yml'
+-- vim.g.lazygit_use_custom_config_file_path = 1
+-- vim.g.lazygit_config_file_path = '~/.config/lazygit/config.yml'
 
 -- splitjoin
 vim.g.splitjoin_ruby_trailing_comma = 1

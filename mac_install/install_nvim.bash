@@ -21,9 +21,10 @@ install_nvim() {
   mkdir -p ~/.config/nvim
   ln -vsf "$ROOT_DIR/nvim/init.lua" "$HOME/.config/nvim/init.lua"
   ln -vsf "$ROOT_DIR/nvim/lua" "$HOME/.config/nvim/lua"
+  ln -vsf "$ROOT_DIR/nvim/lazy-lock.json" "$HOME/.config/nvim/lazy-lock.json"
   mkdir -p "$HOME/.config/nvim/tmp/backup"
 
-  nvim +PlugUpdate +qa
+  nvim +Lazy update +qa
 }
 
 install_nvim

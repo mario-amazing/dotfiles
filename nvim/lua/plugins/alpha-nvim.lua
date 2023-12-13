@@ -40,7 +40,7 @@ local buttons = {
     button("p", "  Find file(Ctrl-p)", ":Telescope find_files hidden=true path_display=smart<CR>"),
     button("m", "  MRU", ":Telescope oldfiles<CR>"),
     button("f", "  Find text", "<plug>(esearch)"),
-    button("u", "  Update plugins", ":PlugUpdate<CR>"),
+    button("u", "  Update plugins", ":Lazy update<CR>"),
     button("q", "  Quit Neovim", ":qa!<CR>"),
   },
   opts = {
