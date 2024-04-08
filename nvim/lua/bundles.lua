@@ -64,7 +64,24 @@ require("lazy").setup( {
   { "Wansmer/treesj", dependencies = { 'nvim-treesitter/nvim-treesitter' } },            -- Main Split/Join -> fallback to splitjoin.vim
   { "tpope/vim-speeddating" },     -- CTRL-A/CTRL-X to increment dates, times, and more
   { "hrsh7th/nvim-pasta" },        -- smart paste, override (p and P)!!!
-  { "fedepujol/move.nvim" },       -- Move lines and blocks
+  {
+    "fedepujol/move.nvim", 
+    config = function()
+      require('move').setup({
+        line = { indent = false },
+        block = { indent = false }
+      })
+      local opts = { noremap = true, silent = true }
+      vim.keymap.set('n', '<A-j>', ':MoveLine(1)<CR>', { silent = true })
+      vim.keymap.set('n', '<A-k>', ':MoveLine(-1)<CR>', { silent = true })
+      vim.keymap.set('v', '<A-j>', ':MoveBlock(1)<CR>', { silent = true })
+      vim.keymap.set('v', '<A-k>', ':MoveBlock(-1)<CR>', { silent = true })
+      vim.keymap.set('n', '<A-l>', ':MoveWord(1)<CR>', { silent = true })
+      vim.keymap.set('n', '<A-h>', ':MoveWord(-1)<CR>', { silent = true })
+      vim.keymap.set('v', '<A-l>', ':MoveHBlock(1)<CR>', { silent = true })
+      vim.keymap.set('v', '<A-h>', ':MoveHBlock(-1)<CR>', { silent = true })
+    end
+  },       -- Move lines and blocks
 
   { "kylechui/nvim-surround", version = "*", event = "VeryLazy" }, -- Manage code surroundings(quotes, parenthesis, brackets, *ml-tags etc.)
   { "machakann/vim-sandwich" },    -- Add #{} surround to ruby string

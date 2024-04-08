@@ -31,6 +31,7 @@ install_programs(){
   brew install coreutils # command -> realpath
   brew install thefuck
   brew install htop
+  brew install libsass
 
   install_python
   install_node_with_manager
@@ -63,6 +64,7 @@ install_programs(){
   brew install --cask discord
 
   brew install --cask google-chrome
+  brew install --cask yandex
   brew install --cask vlc
 
   brew install --cask tunnelbear

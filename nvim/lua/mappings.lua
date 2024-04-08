@@ -22,17 +22,6 @@ map('x', 'gf', ':<C-u>call SmartGF()<CR>gv', { silent = true })
 map('n', 'gn', ':tnext<CR>', { silent = true })
 map('x', 'gn', ':tnext<CR>', { silent = true })
 
--- move.nvim
--- NOTE preferred ':' than <cmd> in visual mode
-map('n', '<A-j>', ':MoveLine(1)<CR>', { silent = true })
-map('n', '<A-k>', ':MoveLine(-1)<CR>', { silent = true })
-map('v', '<A-j>', ':MoveBlock(1)<CR>', { silent = true })
-map('v', '<A-k>', ':MoveBlock(-1)<CR>', { silent = true })
-map('n', '<A-l>', ':MoveWord(1)<CR>', { silent = true })
-map('n', '<A-h>', ':MoveWord(-1)<CR>', { silent = true })
-map('v', '<A-l>', ':MoveHBlock(1)<CR>', { silent = true })
-map('v', '<A-h>', ':MoveHBlock(-1)<CR>', { silent = true })
-
 -- Bookmarks with telescope-vim-bookmarks.nvim
 map('n', 'ma', '<cmd>Telescope vim_bookmarks all<CR>')
 
@@ -113,7 +102,7 @@ map('v', 'v',     '<Plug>(expand_region_expand)')
 map('v', '<C-v>', '<Plug>(expand_region_shrink)')
 
 -- nvim-ts-context-commentstring(<Plug>ContextCommentary run vim-commentary)
-map('v', 'c', '<Plug>ContextCommentary')
+map('v', 'c', '<Plug>Commentary')
 
 -- vim-easy-align
 map({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)')
@@ -139,6 +128,9 @@ map('n', 'd"', 'ds"', { remap = true })
 map('n', 'dt', 'dst', { remap = true })
 
 map('n', '<Leader>fp', '<cmd>FormatWrite<CR>', { silent = true })
+
+-- switch.vim
+map('n', "-", ":Switch<CR>", { remap = true })
 
 ----------------------- COMMON -----------------------
 -- nvim-pasta

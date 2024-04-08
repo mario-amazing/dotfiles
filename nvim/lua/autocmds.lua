@@ -23,3 +23,6 @@ vim.api.nvim_exec([[
     autocmd FileType json setlocal commentstring=//\ %s
   augroup END
 ]], true)
+
+-- vim-commentary
+vim.api.nvim_command('filetype plugin indent on')

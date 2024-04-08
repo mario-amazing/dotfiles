@@ -19,15 +19,8 @@ vim.g.bookmark_annotation_sign = ' ﮉ'
 vim.g.bookmark_show_toggle_warning = 0
 vim.g.bookmark_center = 1
 
--- switch.vim
-vim.g.switch_mapping = '-'
-
 -- vim-over
 vim.g.over_command_line_prompt = ':'
-
--- emmet-vim
-vim.g.user_emmet_leader_key = '<Leader>'
-vim.g.user_emmet_mode='iv' --  modes, in which Emmet mappings will be created(insert/visual)
 
 -- tabular
 vim.g.tabular_default_format = "l0"

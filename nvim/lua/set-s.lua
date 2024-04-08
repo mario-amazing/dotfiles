@@ -65,3 +65,7 @@ set.tags = set.tags + 'tags,.git/tags'
 -- nvim-cmp
 set.completeopt = { 'menu', 'menuone', 'noselect' }
 
+-- nvim-treesitter
+set.foldmethod = 'expr'
+set.foldexpr = 'nvim_treesitter#foldexpr()'
+set.foldenable = false -- Disable folding at startup.

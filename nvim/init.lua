@@ -1,5 +1,6 @@
 vim.cmd 'source ~/.config/nvim/lua/vim_modules/misc.vim'
 
+require('pre-bundles-config')
 require('bundles')
 require('plugins/alpha-nvim')
 require('colors')

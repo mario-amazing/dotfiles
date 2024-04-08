@@ -26,6 +26,7 @@ require("mason-lspconfig").setup({
 })
 
 
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- NOTE html lsp could raise error when html file has js code
 require'lspconfig'.html.setup {
@@ -38,6 +39,9 @@ require'lspconfig'.tsserver.setup{
 require'lspconfig'.solargraph.setup{
   capabilities = capabilities
 }
+-- require'lspconfig'.ruby_ls.setup{
+--   capabilities = capabilities
+-- }
 require'lspconfig'.pyright.setup{
   capabilities = capabilities
 }
