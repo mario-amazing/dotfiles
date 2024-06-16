@@ -39,7 +39,7 @@ require'lspconfig'.tsserver.setup{
 require'lspconfig'.solargraph.setup{
   capabilities = capabilities
 }
--- require'lspconfig'.ruby_ls.setup{
+-- require'lspconfig'.ruby_lsp.setup{
 --   capabilities = capabilities
 -- }
 require'lspconfig'.pyright.setup{

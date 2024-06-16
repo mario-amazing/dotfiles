@@ -134,6 +134,7 @@ alias ds='docker stop $(docker ps -aq)'
 alias dcR='docker stop $(docker ps -aq); docker rm $(docker ps -aq); docker rmi $(docker images -q)'
 alias dvR='docker volume rm $(docker volume ls -q)'
 alias dlC='truncate -s 0 /var/lib/docker/containers/**/*-json.log'
+alias dC='docker system prune'
 
 # python
 alias py='ipython3'
