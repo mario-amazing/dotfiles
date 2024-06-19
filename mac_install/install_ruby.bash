@@ -19,15 +19,16 @@ DEFAULT_GEMS=( $(default_gems) )
 install_ruby() {
   echo_title "!!!RUBY INSTALATION!!!"
 
-  echo_question "What Ruby version control do you want?"
+  # echo_question "What Ruby version control do you want?"
 
-  select ruby_manager in "RVM" "RBENV"; do
-    case $ruby_manager in
-      RVM ) install_rvm; break;;
-      RBENV ) install_rbenv; break;;
-    esac
-  done
+  # select ruby_manager in "RVM" "RBENV"; do
+  #   case $ruby_manager in
+  #     RVM ) install_rvm; break;;
+  #     RBENV ) install_rbenv; break;;
+  #   esac
+  # done
 
+  install_rbenv
   install_ruby_configs
 }
 

@@ -11,7 +11,7 @@ install_git() {
   ln -vsf "$ROOT_DIR/config/gitignore_global" "$HOME/.gitignore_global"
 
   read -e -p "$(echo ${LGREEN}Enter Your git name: ${NORMAL})" gitname
-  gitname="${gitname:=mario_amazing}"
+  gitname="${gitname:=mario-amazing}"
 
   read -e -p "$(echo ${LGREEN}Enter Your git email: ${NORMAL})" gitemail
   gitemail="${gitemail:=marian1amazing@gmail.com}"

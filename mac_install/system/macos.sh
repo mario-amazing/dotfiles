@@ -102,8 +102,8 @@ ExtraSettings() {
 }
 
 #General
-#Dock
-#Keyboard
+Dock
+Keyboard
 ExtraSettings
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -112,4 +112,4 @@ ExtraSettings
 for app in "Dock" "Finder" "SystemUIServer"; do
   killall "${app}" > /dev/null 2>&1
 done
-ApplePressAndHoldEnabled
+#ApplePressAndHoldEnabled

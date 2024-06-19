@@ -10,6 +10,41 @@ install_programs(){
 
   softwareupdate --install-rosetta
 
+  ##======= UI Applications
+  brew install --cask google-chrome
+  brew install --cask opera
+  brew install --cask yandex
+
+  brew install --cask telegram
+  # brew install --cask slack
+  # brew install --cask skype
+  brew install --cask zoom
+  brew install --cask viber
+  brew install --cask discord
+
+  brew install --cask iterm2
+  brew install --cask tableplus
+  brew install --cask visual-studio-code
+  brew install --cask docker
+  brew install --cask postman
+  brew install --cask ngrok  # proxy localhost server
+  brew install --cask responsively
+
+  brew install --cask tunnelbear
+  brew install --cask dropbox
+  brew install --cask google-drive
+  brew install --cask transmission
+  brew install --cask tiles
+  brew install --cask keycastr
+  brew install --cask vlc
+
+  brew install --cask steam
+  brew install --cask appcleaner
+
+  brew install --cask basictex
+  # brew install --cask chromedriver
+
+  brew install cmake
   brew install git
   brew install git-delta
   brew install curl
@@ -25,7 +60,6 @@ install_programs(){
   brew install fzf
   $(brew --prefix)/opt/fzf/install --no-bash --completion --key-bindings --update-rc
 
-  brew install cmake
   # brew install ctags
   brew install --HEAD universal-ctags/universal-ctags/universal-ctags
   brew install coreutils # command -> realpath
@@ -55,38 +89,6 @@ install_programs(){
   brew install --cask font-sauce-code-pro-nerd-font
   brew install --cask font-fontawesome
 
-  ##======= UI Applications
-  brew install --cask telegram
-  brew install --cask slack
-  brew install --cask skype
-  brew install --cask zoom
-  brew install --cask viber
-  brew install --cask discord
-
-  brew install --cask google-chrome
-  brew install --cask yandex
-  brew install --cask vlc
-
-  brew install --cask tunnelbear
-  brew install --cask dropbox
-  brew install --cask google-drive
-  brew install --cask transmission
-  brew install --cask tiles
-  brew install --cask keycastr
-
-  brew install --cask iterm2
-  brew install --cask tableplus
-  brew install --cask visual-studio-code
-  brew install --cask docker
-  brew install --cask postman
-  brew install --cask ngrok  # proxy localhost server
-  brew install --cask responsively
-
-  brew install --cask steam
-  brew install --cask appcleaner
-
-  brew install --cask basictex
-  # brew install --cask chromedriver
   # install_qt_5_5
 }
 
@@ -122,19 +124,19 @@ install_python() {
 
   brew install pipenv
 
-  pip3 install --upgrade flake8
-  pip3 install --upgrade jedi
-  pip3 install --upgrade yapf
-  pip3 install --upgrade pdbpp
-  pip3 install --upgrade ipdb
-  pip3 install --upgrade ipython
-  pip3 install --upgrade dynamic-yaml
+  pip3 install --upgrade flake8 --break-system-packages
+  pip3 install --upgrade jedi --break-system-packages
+  pip3 install --upgrade yapf --break-system-packages
+  pip3 install --upgrade pdbpp --break-system-packages
+  pip3 install --upgrade ipdb --break-system-packages
+  pip3 install --upgrade ipython --break-system-packages
+  pip3 install --upgrade dynamic-yaml --break-system-packages
 
   # for vim
-  pip3 install --upgrade neovim
-  pip3 install --upgrade pynvim
-  pip3 install --upgrade msgpack
-  pip3 install --upgrade python-language-server
+  pip3 install --upgrade neovim --break-system-packages
+  pip3 install --upgrade pynvim --break-system-packages
+  pip3 install --upgrade msgpack --break-system-packages
+  pip3 install --upgrade python-language-server --break-system-packages
 }
 
 install_programs
