@@ -8,6 +8,12 @@ source $SELF_DIR/display.bash
 install_zsh() {
   echo_title "!!!ZSH INSTALATION!!!"
 
+  brew install zsh
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+  brew install powerlevel10k
+  #git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
   ln -vsf "$ROOT_DIR/zsh/zshrc" "$HOME/.zshrc"
   ln -vsf "$ROOT_DIR/zsh/p10k.zsh" "$HOME/.p10k.zsh"
   cp "$ROOT_DIR/zsh/hushlogin" "$HOME/.hushlogin"
@@ -16,11 +22,6 @@ install_zsh() {
   ln -vsf "$ROOT_DIR/zsh/themes" "$HOME/.zsh"
   ln -vsf "$ROOT_DIR/zsh/aliases.zsh" "$HOME/.zsh"
   ln -vsf "$ROOT_DIR/zsh/kuberaliases.zsh" "$HOME/.zsh"
-
-  brew install zsh
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
   chsh -s /bin/zsh
 }
