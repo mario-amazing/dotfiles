@@ -12,7 +12,7 @@ require('telescope').setup{
   },
   pickers = {
     find_files = {
-      theme = "dropdown",
+      -- theme = "dropdown",
       hidden = true,
     }
   },
@@ -139,3 +139,6 @@ require('dressing').setup({ input = { enabled = false }})
 require('ts_context_commentstring').setup {
   enable_autocmd = false,
 }
+
+
+require("telescope-all-recent").setup({})

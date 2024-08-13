@@ -14,6 +14,7 @@ install_programs(){
   brew install --cask google-chrome
   brew install --cask opera
   brew install --cask yandex
+  brew install --cask firefox
 
   brew install --cask telegram
   # brew install --cask slack

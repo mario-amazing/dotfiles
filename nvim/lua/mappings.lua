@@ -34,6 +34,7 @@ map('n', '<C-p>',      '<cmd>Telescope find_files find_command=rg,--hidden,--no-
 -- map('n', '<C-p>',      '<cmd>Telescope find_files find_command=rg,--hidden,--no-ignore-vcs,--files<CR>')
 map('n', '<C-f><C-m>', '<cmd>Telescope oldfiles<cr>')
 map('n', '<C-f><C-t>', '<cmd>Telescope filetypes<CR>')
+map('n', '<C-f><C-g>', '<cmd>Telescope live_grep<CR>')
 map('n', '<Leader>mc', '<cmd>Telescope find_files cwd=~/.config/nvim/lua<CR>')
 -- LSP
 --map('n', '<space>=',  vim.lsp.buf.formatting, { silent = true })

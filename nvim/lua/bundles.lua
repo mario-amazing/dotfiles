@@ -35,10 +35,11 @@ require("lazy").setup( {
 
   -- Telescop
   ------------------------------
-  { 'nvim-telescope/telescope.nvim', tag = '0.1.5', dependencies = { 'nvim-lua/plenary.nvim' } }, -- bookmarks telescop visual
+  { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } }, -- bookmarks telescop visual
   { 'tom-anders/telescope-vim-bookmarks.nvim' }, -- bookmarks telescop visual
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- fuzzy search
   { 'nvim-tree/nvim-web-devicons' },
+  { 'prochri/telescope-all-recent.nvim', dependencies = { "nvim-telescope/telescope.nvim", "kkharji/sqlite.lua" } },
   -- TODO think about add projects https://github.com/nvim-telescope/telescope-project.nvim or https://github.com/cljoly/telescope-repo.nvim
 
   -- Git

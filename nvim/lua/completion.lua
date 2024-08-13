@@ -24,12 +24,25 @@ cmp.setup({
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
+  view = {
+    docs = {
+      auto_open = false
+    }
+  },
   mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+    ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
+
+    ['<C-g>'] = function()
+      if cmp.visible_docs() then
+        cmp.close_docs()
+      else
+        cmp.open_docs()
+      end
+    end,
 
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -56,10 +69,19 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'luasnip', max_item_count = max_item_count },
     { name = 'nvim_lsp', max_item_count = max_item_count  },
-    { name = 'tags', max_item_count = max_item_count  },
     { name = 'buffer', max_item_count = max_item_count  },
     { name = 'path', max_item_count = max_item_count },
     { name = 'rg', max_item_count = max_item_count },
+    {
+      name = 'tags',
+      option = {
+        complete_defer = 100,
+        max_items = max_item_count,
+        keyword_length = min_keyword_length,
+        exact_match = true, -- Use exact word match when searching `taglist`, for better searching performance.
+        current_buffer_only = true,
+      }
+    }, -- lagging
   }),
 
   -- extention lspkind
