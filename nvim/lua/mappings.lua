@@ -89,11 +89,6 @@ map('n', '<leader>lp', '<Plug>MarkdownPreviewToggle')
 -- auto-save.nvim
 map('n', '<leader>at', '<cmd>ASToggle<CR>')
 
--- CamelCaseMotion
-map('', '<S-W>', '<Plug>CamelCaseMotion_w')
-map('', '<S-B>', '<Plug>CamelCaseMotion_b')
-map('', '<S-E>', '<Plug>CamelCaseMotion_e')
-
 -- sandwich
 map('x', 'S#', '<Plug>(operator-sandwich-add)i#{<cr>}<cr>')
 map('x', 'S%', '<Plug>(operator-sandwich-add)i%{<cr>}<cr>')
@@ -118,9 +113,6 @@ map('n', '<C-f>w',     '<plug>(operator-esearch-prefill)iw')
 map('n', '<leader>yg', function() return vim.cmd('YamlGoToKey ' .. vim.fn.getreg('*')) end) -- goto key from buffer
 map('n', '<leader>yy', '<cmd>YamlGetFullPath<CR>')
 
--- icon-picker
-map("n", "<Leader>ip", "<cmd>IconPickerInsert<cr>")
-
 -- nvim-surround
 map('v', "'",  "S'", { remap = true })
 map('v', '"',  'S"', { remap = true })
@@ -132,6 +124,11 @@ map('n', '<Leader>fp', '<cmd>FormatWrite<CR>', { silent = true })
 
 -- switch.vim
 map('n', "-", ":Switch<CR>", { remap = true })
+
+-- nvim-spider
+map({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
+map({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
+map({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
 
 ----------------------- COMMON -----------------------
 -- nvim-pasta

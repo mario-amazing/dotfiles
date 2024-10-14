@@ -39,7 +39,7 @@
 <Leader>fs :OverCommandLine<CR>s/
 ```
 
-#### Plug 'tpope/vim-speeddating'
+#### Plug 'nat-418/boole.nvim'
 ```
 CTRL-A/CTRL-X to increment dates, times, and more ## same with numbers variables
 Sat, 01 Jan 2000 00:16:03 -0001

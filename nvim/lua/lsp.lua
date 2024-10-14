@@ -21,7 +21,7 @@ require("mason").setup()
 -- mason-lspconfig.nvim  -- auto install lsp
 -- NOTE , "solargraph" -manual install
 require("mason-lspconfig").setup({
-  ensure_installed = { "html", "tsserver", "cssls", "dockerls", "jsonls", "yamlls", "vimls", "tailwindcss", "astro", "pyright" },
+  ensure_installed = { "html", "ts_ls", "cssls", "dockerls", "jsonls", "yamlls", "vimls", "tailwindcss", "astro", "pyright", "emmet_language_server" },
   -- automatic_installation = { exclude = { "solargraph" } }
 })
 
@@ -33,7 +33,7 @@ require'lspconfig'.html.setup {
   filetypes = {"html", "eruby"},
   capabilities = capabilities
 }
-require'lspconfig'.tsserver.setup{
+require'lspconfig'.ts_ls.setup{
   capabilities = capabilities
 }
 require'lspconfig'.solargraph.setup{
@@ -81,6 +81,20 @@ require'lspconfig'.tailwindcss.setup{
   },
   capabilities = capabilities
 }
+require'lspconfig'.emmet_language_server.setup({
+  filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },
+  init_options = {
+    includeLanguages = {},
+    excludeLanguages = {},
+    extensionsPath = {},
+    preferences = {},
+    showAbbreviationSuggestions = true,
+    showExpandedAbbreviation = "always",
+    showSuggestionsAsSnippets = false,
+    syntaxProfiles = {},
+    variables = {},
+  },
+})
 
 -- vim.diagnostic.disable()
 function DiagnosticConfig(value)

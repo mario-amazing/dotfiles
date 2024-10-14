@@ -25,13 +25,10 @@ require("lazy").setup( {
   { "olimorris/persisted.nvim", config = true }, -- manage sessions
   { "kyazdani42/nvim-tree.lua" }, -- file manager
 
-  { "ziontee113/icon-picker.nvim", dependencies = { "stevearc/dressing.nvim" }, cmd = {"IconPickerInsert", "IconPickerNormal", "IconPickerYank"} },
-
   -- Motion
   ----------------------
   { "ggandor/lightspeed.nvim" }, -- easymotion(s/S) + f{char} improved
-  { "bkad/CamelCaseMotion" }, -- navigation inside word with different cases. Reverse alternative => https://github.com/chaoren/vim-wordmotion
-  { "karb94/neoscroll.nvim" }, -- smooth scroll zt, zz, zb, <C-u> <C-d> etc
+  { "chrisgrieser/nvim-spider", lazy = true }, -- navigation w, e, b motions like a spider. Move by subwords and skip insignificant punctuation.
 
   -- Telescop
   ------------------------------
@@ -39,7 +36,7 @@ require("lazy").setup( {
   { 'tom-anders/telescope-vim-bookmarks.nvim' }, -- bookmarks telescop visual
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- fuzzy search
   { 'nvim-tree/nvim-web-devicons' },
-  { 'prochri/telescope-all-recent.nvim', dependencies = { "nvim-telescope/telescope.nvim", "kkharji/sqlite.lua" } },
+  { 'prochri/telescope-all-recent.nvim', dependencies = { "nvim-telescope/telescope.nvim", "kkharji/sqlite.lua", "stevearc/dressing.nvim" } },
   -- TODO think about add projects https://github.com/nvim-telescope/telescope-project.nvim or https://github.com/cljoly/telescope-repo.nvim
 
   -- Git
@@ -64,7 +61,7 @@ require("lazy").setup( {
   { "AndrewRadev/splitjoin.vim" }, -- Split/Join(gS/gJ)
   { "Wansmer/sibling-swap.nvim", dependencies = { 'nvim-treesitter' } }, -- Move an item in a delimiter-separated list left or right(S-h/S-l)
   { "Wansmer/treesj", dependencies = { 'nvim-treesitter/nvim-treesitter' } },            -- Main Split/Join -> fallback to splitjoin.vim
-  { "tpope/vim-speeddating" },     -- CTRL-A/CTRL-X to increment dates, times, and more
+  { "nat-418/boole.nvim" },        -- CTRL-A/CTRL-X to increment dates, times, and more
   { "hrsh7th/nvim-pasta" },        -- smart paste, override (p and P)!!!
   {
     "fedepujol/move.nvim", 
@@ -102,15 +99,11 @@ require("lazy").setup( {
   { "MattesGroeger/vim-bookmarks" }, -- Bookmarks with space
   { "AndrewRadev/undoquit.vim" },
 
-  { "winston0410/cmd-parser.nvim" }, -- requiremet for nvim-colorizer
   { "NvChad/nvim-colorizer.lua" }, -- Shows color by code
 
 
   -- Indentation
   { "mhartington/formatter.nvim" },
-
-  -- nginx
-  { "chr4/nginx.vim" },
 
   -- lsp
   { "williamboman/mason-lspconfig.nvim", dependencies = { "williamboman/mason.nvim", 'neovim/nvim-lspconfig' } },
@@ -124,15 +117,22 @@ require("lazy").setup( {
   { "tpope/vim-rails", ft = { "ruby", "eruby" } },
   { "tpope/vim-rake" },
   --    markdown
-  { "iamcco/markdown-preview.nvim", cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" }, ft = { "markdown" }, build = function() vim.fn["mkdp#util#install"]() end }, -- Markdown live preview
-  --    yaml
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  }, -- Markdown live preview
   { "lmeijvogel/vim-yaml-helper" }, -- substirute to https://github.com/cuducos/yaml.nvim after https://github.com/nvim-treesitter/nvim-treesitter/issues/1352
 
   --    Search
   ----------------------------------------------
   -- Plug "eugen0329/vim-esearch"         -- Project-wide search
   { "mario-amazing/vim-esearch" },
-  { "eugen0329/vim-concertina" },
+  { "eugen0329/vim-concertina" },  -- Accordion-like windows layout
   { "rapan931/lasterisk.nvim" },       -- *-improved
 
   -- Autocomplete
@@ -148,7 +148,7 @@ require("lazy").setup( {
   -- Snippets
   ------------------------------
   { "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } }, -- snippets collection
-  { "mattn/emmet-vim" },        -- html tags expand div>h1
+  { "mattn/emmet-vim", commit = "3fb2f63" },        -- html tags expand div>h1
 
   -- Tags
   { "ludovicchabant/vim-gutentags" },

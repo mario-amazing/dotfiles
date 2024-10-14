@@ -71,6 +71,7 @@ vim.g.gutentags_ctags_extra_args_ruby = { '--ignore-unsupported-options', '--rec
 
 -- vim-yaml-helper
 -- let g:vim_yaml_helper#always_get_root = 1 -- add root path to yaml copy
+vim.g["vim_yaml_helper#auto_display_path"] = 0
 
 -- vim-rails
 vim.g.rails_projections = {

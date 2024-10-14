@@ -34,7 +34,7 @@ require('nvim-treesitter.configs').setup {
       node_decremental = "grm",
     },
   },
-  ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", 'tsx', "css", "scss", "regex", "yaml", "bash", "astro", "markdown", "markdown_inline", "python" },
+  ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", 'tsx', "css", "scss", "regex", "yaml", "bash", "astro", "markdown", "markdown_inline", "python", "nginx" },
 
   -- extension vim-matchup
   matchup = { enable = true, disable_virtual_text = true },
@@ -100,11 +100,17 @@ require('colorizer').setup({
     }})
 
 
-require('neoscroll').setup()
-
-
 -- friendly-snippets
 require("luasnip.loaders.from_vscode").lazy_load()
+
+
+-- boole.nvim
+require('boole').setup({
+  mappings = {
+    increment = '<C-a>',
+    decrement = '<C-x>'
+  }
+})
 
 
 require("persisted").setup()
@@ -115,9 +121,6 @@ require('git').setup({default_mappings = false})
 
 
 require("nvim-surround").setup()
-
-
-require("icon-picker").setup({ disable_legacy_commands = true })
 
 
 require('sibling-swap').setup({})
