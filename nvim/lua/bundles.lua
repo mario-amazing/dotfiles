@@ -28,7 +28,16 @@ require("lazy").setup( {
   -- Motion
   ----------------------
   { "ggandor/lightspeed.nvim" }, -- easymotion(s/S) + f{char} improved
-  { "chrisgrieser/nvim-spider", lazy = true }, -- navigation w, e, b motions like a spider. Move by subwords and skip insignificant punctuation.
+  { "bkad/CamelCaseMotion" },
+  -- {
+  --   "chrisgrieser/nvim-spider",
+  --   lazy = true,
+    -- dependencies = {
+    --   "theHamsta/nvim_rocks",
+    --   event = "VeryLazy",
+    --   config = function() require("nvim_rocks").ensure_installed("luautf8") end,
+    -- },
+  -- }, -- navigation w, e, b motions like a spider. Move by subwords and skip insignificant punctuation.
 
   -- Telescop
   ------------------------------
@@ -63,24 +72,7 @@ require("lazy").setup( {
   { "Wansmer/treesj", dependencies = { 'nvim-treesitter/nvim-treesitter' } },            -- Main Split/Join -> fallback to splitjoin.vim
   { "nat-418/boole.nvim" },        -- CTRL-A/CTRL-X to increment dates, times, and more
   { "hrsh7th/nvim-pasta" },        -- smart paste, override (p and P)!!!
-  {
-    "fedepujol/move.nvim", 
-    config = function()
-      require('move').setup({
-        line = { indent = false },
-        block = { indent = false }
-      })
-      local opts = { noremap = true, silent = true }
-      vim.keymap.set('n', '<A-j>', ':MoveLine(1)<CR>', { silent = true })
-      vim.keymap.set('n', '<A-k>', ':MoveLine(-1)<CR>', { silent = true })
-      vim.keymap.set('v', '<A-j>', ':MoveBlock(1)<CR>', { silent = true })
-      vim.keymap.set('v', '<A-k>', ':MoveBlock(-1)<CR>', { silent = true })
-      vim.keymap.set('n', '<A-l>', ':MoveWord(1)<CR>', { silent = true })
-      vim.keymap.set('n', '<A-h>', ':MoveWord(-1)<CR>', { silent = true })
-      vim.keymap.set('v', '<A-l>', ':MoveHBlock(1)<CR>', { silent = true })
-      vim.keymap.set('v', '<A-h>', ':MoveHBlock(-1)<CR>', { silent = true })
-    end
-  },       -- Move lines and blocks
+  { "fedepujol/move.nvim" },       -- Move lines and blocks
 
   { "kylechui/nvim-surround", version = "*", event = "VeryLazy" }, -- Manage code surroundings(quotes, parenthesis, brackets, *ml-tags etc.)
   { "machakann/vim-sandwich" },    -- Add #{} surround to ruby string

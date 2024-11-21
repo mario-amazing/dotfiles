@@ -121,6 +121,7 @@ alias rf='rspec --only-failures'
 alias guard='bundle exec guard'
 alias rub='bundle exec rubocop -P'
 alias ruba='bundle exec rubocop -A'
+alias rubF='rm -rf ~/.cache/rubocop_cache && mkdir ~/.cache/rubocop_cache && sudo chown -R $(whoami) ~/.cache/rubocop_cache'
 alias ord='ordinare'
 
 # parallel_tests

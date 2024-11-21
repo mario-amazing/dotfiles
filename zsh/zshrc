@@ -70,8 +70,8 @@ export DISPLAY=:0 # display image with imagemagick(run xquartz before display)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #TMP
-  export LDFLAGS="-L/usr/local/opt/postgresql@15/lib"
-  export CPPFLAGS="-I/usr/local/opt/postgresql@15/include"
-  export PATH=/usr/local/opt/postgresql@15/bin:$PATH
+  export LDFLAGS="-L/usr/local/opt/postgresql@17/lib"
+  export CPPFLAGS="-I/usr/local/opt/postgresql@17/include"
+  export PATH=/usr/local/opt/postgresql@17/bin:$PATH
 
   export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES

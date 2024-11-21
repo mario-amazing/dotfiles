@@ -2,16 +2,25 @@
 # https://solargraph.org/guides/configuration
 # BUILD In the project root: yard gems
 include:
-- "**/*.rb"
+  - "**/*.rb"
 exclude:
-- spec/**/*
-- test/**/*
-- vendor/**/*
-- ".bundle/**/*"
-require: []
+  - spec/**/*
+  - test/**/*
+  - vendor/**/*
+  - ".bundle/**/*"
+require:
+  - actioncable
+  - actionmailer
+  - actionpack
+  - actionview
+  - activejob
+  - activemodel
+  - activerecord
+  - activestorage
+  - activesupport
 domains: []
 reporters:
-- rubocop
+  - rubocop
 formatter:
   rubocop:
     cops: safe
@@ -21,4 +30,5 @@ formatter:
 require_paths: []
 plugins:
   - solargraph-rails
+  - solargraph-rails-patch-for-rails71 # FIX https://github.com/iftheshoefritz/solargraph-rails/issues/60
 max_files: 5000

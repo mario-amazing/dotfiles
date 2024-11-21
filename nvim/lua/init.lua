@@ -144,4 +144,16 @@ require('ts_context_commentstring').setup {
 }
 
 
+-- fedepujol/move.nvim
+require('move').setup({
+  line = { indent = false },
+  block = { indent = false }
+})
+
+
 require("telescope-all-recent").setup({})
+
+
+-- require("spider").setup {
+--   skipInsignificantPunctuation = true,
+-- }

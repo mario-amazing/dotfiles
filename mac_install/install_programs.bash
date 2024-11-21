@@ -81,7 +81,7 @@ install_programs(){
   brew install tlk/imagemagick-x11/imagemagick
   brew install --cask xquartz # display image with imagemagick(run xquartz before display)
 
-  brew install postgresql@15
+  brew install postgresql@17 libpq
   brew install redis
   # brew install mysql
 

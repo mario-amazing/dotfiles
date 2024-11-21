@@ -1,6 +1,8 @@
 vim.api.nvim_exec([[
   augroup FiletypeAutocommands
     au!
+    au BufRead,BufNewFile *.pryrc set filetype=ruby
+
     au BufWritePost * FormatWrite " formatter.nvim
 
     au FileType git,GV setlocal nolist nowrap nonumber
