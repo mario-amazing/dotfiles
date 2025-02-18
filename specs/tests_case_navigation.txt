@@ -1,0 +1,28 @@
+['ОНЛАЙН ЗАПИСЬ', 'Ощути разницу']
+  ^      ^         ^     ^
+
+['test sdf', 'sdf fsdf']
+  ^    ^      ^   ^
+
+-- positions vim's `w` will move to
+ocal myVariableName = FOO_BAR_BAZ
+--    ^              ^ ^
+
+-- positions spider's `w` will move to
+local myVariableName = FOO_BAR_BAZ
+--    ^ ^       ^    ^ ^   ^   ^
+^^--------------^-^-------------^^
+-- positions vim's `w` will move to
+if foo:find("%d") and foo == bar then print("[foo] has" .. bar) end
+-- ^  ^^   ^  ^^  ^   ^   ^  ^   ^    ^    ^  ^  ^ ^  ^ ^  ^  ^ ^  -> 21
+
+-- positions spider's `w` will move to
+if foo:find("%d") and foo == bar then print("[foo] has" .. bar) end
+-- ^   ^      ^   ^   ^   ^  ^   ^    ^       ^    ^    ^  ^    ^  -> 14
+
+
+foo == bar .. "baz"
+--  ^      ^    significant punctuation
+
+foo:find("a")
+-- ^    ^  ^  insignificant punctuation

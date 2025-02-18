@@ -39,6 +39,7 @@ require'lspconfig'.ts_ls.setup{
 require'lspconfig'.solargraph.setup{
   capabilities = capabilities
 }
+-- TODO: https://shopify.github.io/ruby-lsp/editors#neovim
 -- require'lspconfig'.ruby_lsp.setup{
 --   capabilities = capabilities
 -- }

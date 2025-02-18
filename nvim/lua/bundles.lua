@@ -28,16 +28,12 @@ require("lazy").setup( {
   -- Motion
   ----------------------
   { "ggandor/lightspeed.nvim" }, -- easymotion(s/S) + f{char} improved
-  { "bkad/CamelCaseMotion" },
-  -- {
-  --   "chrisgrieser/nvim-spider",
-  --   lazy = true,
-    -- dependencies = {
-    --   "theHamsta/nvim_rocks",
-    --   event = "VeryLazy",
-    --   config = function() require("nvim_rocks").ensure_installed("luautf8") end,
-    -- },
-  -- }, -- navigation w, e, b motions like a spider. Move by subwords and skip insignificant punctuation.
+  -- { "bkad/CamelCaseMotion" },
+  {
+    "chrisgrieser/nvim-spider",
+    lazy = true,
+    dependencies = { { "rami3l/nvim-spider-utf8", build = "rockspec" } },
+  }, -- navigation w, e, b motions like a spider. Move by subwords and skip insignificant punctuation.
 
   -- Telescop
   ------------------------------

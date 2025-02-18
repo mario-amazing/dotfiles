@@ -59,6 +59,10 @@ map('n', '<space>e',  "<cmd>Lspsaga peek_definition<CR>", {silent = true})
 map('n', '<Leader>sl', '<cmd>SessionLoadLast<cr>', { silent = true })
 map('n', '<Leader>ss', '<cmd>Telescope persisted<cr>', { silent = true })
 
+-- sibling-swap.nvim
+map("n", "<a-,>", "<cmd>lua require('sibling-swap').swap_with_left()<CR>")
+map("n", "<a-.>", "<cmd>lua require('sibling-swap').swap_with_right()<CR>")
+
 -- Search by asterisk(*)
 map('n', 'n',    'nzz')
 map('n', 'N',    'Nzz')
@@ -126,13 +130,13 @@ map('n', '<Leader>fp', '<cmd>FormatWrite<CR>', { silent = true })
 map('n', "-", ":Switch<CR>", { remap = true })
 
 -- -- nvim-spider
--- map({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
--- map({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
--- map({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
+map({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
+map({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
+map({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
 -- CamelCaseMotion
-map('', '<S-W>', '<Plug>CamelCaseMotion_w')
-map('', '<S-B>', '<Plug>CamelCaseMotion_b')
-map('', '<S-E>', '<Plug>CamelCaseMotion_e')
+-- map('', '<S-W>', '<Plug>CamelCaseMotion_w')
+-- map('', '<S-B>', '<Plug>CamelCaseMotion_b')
+-- map('', '<S-E>', '<Plug>CamelCaseMotion_e')
 
 -- fedepujol/move.nvim
 map('n', '<A-j>', ':MoveLine(1)<CR>', { silent = true })
