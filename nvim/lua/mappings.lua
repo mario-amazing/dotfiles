@@ -25,10 +25,6 @@ map('x', 'gn', ':tnext<CR>', { silent = true })
 -- Bookmarks with telescope-vim-bookmarks.nvim
 map('n', 'ma', '<cmd>Telescope vim_bookmarks all<CR>')
 
--- Navigation nvim-tree
-map('n', '<Leader>t',  '<cmd>NvimTreeToggle<CR>', { silent = true })
-map('n', '<Leader>ft', '<cmd>NvimTreeFindFile<CR>', { silent = true })
-
 -- Telescope
 map('n', '<C-p>',      '<cmd>Telescope find_files find_command=rg,--hidden,--no-ignore-vcs,--files,--ignore-file,'..vim.fn.expand('~/.config/.ignore')..'<CR>')
 -- map('n', '<C-p>',      '<cmd>Telescope find_files find_command=rg,--hidden,--no-ignore-vcs,--files<CR>')
@@ -36,24 +32,6 @@ map('n', '<C-f><C-m>', '<cmd>Telescope oldfiles<cr>')
 map('n', '<C-f><C-t>', '<cmd>Telescope filetypes<CR>')
 map('n', '<C-f><C-g>', '<cmd>Telescope live_grep<CR>')
 map('n', '<Leader>mc', '<cmd>Telescope find_files cwd=~/.config/nvim/lua<CR>')
--- LSP
---map('n', '<space>=',  vim.lsp.buf.formatting, { silent = true })
-map('n', 'gd',        '<cmd>Telescop lsp_definitions<cr>', { silent = true })
-map('n', 'gr',        '<cmd>Telescop lsp_references<cr>', { silent = true })
-map('n', '<space>y',  '<cmd>Telescop lsp_document_symbols<cr>', { silent = true })
-map('n', '<space>i',  '<cmd>Telescop lsp_incoming_calls<cr>', { silent = true })
-map('n', '<space>o',  '<cmd>Telescop lsp_outgoing_calls<cr>', { silent = true })
-map('n', '<space>da', '<cmd>Telescop diagnostics<cr>', { silent = true })
--- lspsaga.nvim
-map('n', '<space>dt', ToggleDiagnostics, {silent = true})
-map('n', '<space>dl', "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
-map('n', '<space>n',  "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
-map('n', '<space>p',  "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
-map("n", '<space>a',  "<cmd>Lspsaga code_action<CR>", { silent = true })
-map('n', '<space>h',  "<cmd>Lspsaga hover_doc<CR>", {silent = true})
-map('n', '<space>r',  "<cmd>Lspsaga rename<CR>", {silent = true})
-map('n', '<space>f',  "<cmd>Lspsaga lsp_finder<CR>", {silent = true})
-map('n', '<space>e',  "<cmd>Lspsaga peek_definition<CR>", {silent = true})
 
 -- persisted.nvim
 map('n', '<Leader>sl', '<cmd>SessionLoadLast<cr>', { silent = true })

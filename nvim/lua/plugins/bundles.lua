@@ -1,29 +1,9 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
--- TODO think about https://github.com/echasnovski/mini.nvim
-require("lazy").setup( {
-  -- Colorscheme
-  ------------------------------
-  { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true },
-
+return {
   -- #UI
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },  -- highlight syntax
   { "nvim-treesitter/playground" }, -- :TSPlaygroundToggle  treesitter information
-  { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons'} },
   { 'goolord/alpha-nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } }, -- startup window
   { "olimorris/persisted.nvim", config = true }, -- manage sessions
-  { "kyazdani42/nvim-tree.lua" }, -- file manager
 
   -- Motion
   ----------------------
@@ -93,12 +73,6 @@ require("lazy").setup( {
   -- Indentation
   { "mhartington/formatter.nvim" },
 
-  -- lsp
-  { "williamboman/mason-lspconfig.nvim", dependencies = { "williamboman/mason.nvim", 'neovim/nvim-lspconfig' } },
-  { 'nvimdev/lspsaga.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' } }, -- UI for lsp
-  { "onsails/lspkind-nvim" }, -- kind of autocomplite
-  { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" }, -- action float window
-
   --    ruby
   { "tpope/vim-rbenv" },  -- improve nvim ruby loading
   { "tpope/vim-bundler", ft = { "Gemfile", "Rakefile", "ruby" } },
@@ -123,16 +97,6 @@ require("lazy").setup( {
   { "eugen0329/vim-concertina" },  -- Accordion-like windows layout
   { "rapan931/lasterisk.nvim" },       -- *-improved
 
-  -- Autocomplete
-  --------------------------------------
-  { "hrsh7th/nvim-cmp" },
-  { "hrsh7th/cmp-nvim-lsp" },
-  { "hrsh7th/cmp-buffer" },
-  { "hrsh7th/cmp-path" },
-  { "hrsh7th/cmp-cmdline" },
-  { "lukas-reineke/cmp-rg" },
-  { "quangnguyen30192/cmp-nvim-tags" },
-  { "saadparwaiz1/cmp_luasnip" },
   -- Snippets
   ------------------------------
   { "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } }, -- snippets collection
@@ -140,5 +104,4 @@ require("lazy").setup( {
 
   -- Tags
   { "ludovicchabant/vim-gutentags" },
-})
-vim.loader.enable()
+}

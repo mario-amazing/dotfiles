@@ -59,19 +59,6 @@ end
 -- TrimWhiteSpace
 
 
--- nvim-tree
-local nvimTree_full_size_toggled = false
-function toggle_full_width()
-  if nvimTree_full_size_toggled then
-    require'nvim-tree.view'.resize(30)
-  else
-    require'nvim-tree.view'.resize(100)
-  end
-  nvimTree_full_size_toggled = not nvimTree_full_size_toggled
-end
--- nvim-tree
-
-
 -- SmartGF
 function VimBundlePackage()
   local type = vim.fn.expand('%:t')

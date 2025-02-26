@@ -66,16 +66,6 @@ require('lightspeed').setup {
 }
 
 
--- nvim-tree
-require('nvim-tree').setup {
-  on_attach = on_attach_nvim_tree,
-  update_focused_file = { update_cwd = true },
-  filters = { dotfiles = true },
-  git = { ignore = false },
-  tab = { sync = { open = false, close = true, ignore = {} } },
-}
-
-
 -- You can use treesitter to check for a pair.
 require('nvim-autopairs').setup({ disable_filetype = { "TelescopePrompt" , --[["vim"]] } })
 require('nvim-autopairs').add_rules(require('nvim-autopairs.rules.endwise-ruby')) -- Auto adding end after blocks
