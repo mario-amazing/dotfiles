@@ -8,62 +8,59 @@ return {
     "zbirenbaum/copilot.lua",
     "giuxtaposition/blink-cmp-copilot",
     "mikavilpas/blink-ripgrep.nvim",
-    "xzbdmw/colorful-menu.nvim", lazy = false ,
+    -- 'L3MON4D3/LuaSnip', version = 'v2.*', build = "make install_jsregexp"
   },
 
-  version = "v0.*",
+  version = "*",
+  -- config = function() require("luasnip.loaders.from_vscode").lazy_load() end, -- friendly-snippets
   opts = {
+    snippets = {
+      -- preset = 'luasnip',
+      -- Function to use when expanding LSP provided snippets
+      expand = function(snippet) vim.snippet.expand(snippet) end,
+      -- Function to use when checking if a snippet is active
+      active = function(filter) return vim.snippet.active(filter) end,
+      -- Function to use when jumping between tab stops in a snippet, where direction can be negative or positive
+      jump = function(direction) vim.snippet.jump(direction) end,
+    },
+
     -- 'default' for mappings similar to built-in completion
     -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
     -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
     keymap = {
-      preset = "default",
-      ['<A-1>'] = { function(cmp) cmp.accept({ index = 1 }) end },
-      ['<A-2>'] = { function(cmp) cmp.accept({ index = 2 }) end },
-      ['<A-3>'] = { function(cmp) cmp.accept({ index = 3 }) end },
-      ['<A-4>'] = { function(cmp) cmp.accept({ index = 4 }) end },
-      ['<A-5>'] = { function(cmp) cmp.accept({ index = 5 }) end },
-      ['<A-6>'] = { function(cmp) cmp.accept({ index = 6 }) end },
-      ['<A-7>'] = { function(cmp) cmp.accept({ index = 7 }) end },
-      ['<A-8>'] = { function(cmp) cmp.accept({ index = 8 }) end },
-      ['<A-9>'] = { function(cmp) cmp.accept({ index = 9 }) end },
-      ['<A-0>'] = { function(cmp) cmp.accept({ index = 10 }) end },
+      preset = "super-tab",
+      ['<C-n>'] = { 'show', 'select_next', 'fallback' },
+      ['<C-p>'] = { 'show', 'select_prev', 'fallback' },
+    },
+    appearance = {
+      use_nvim_cmp_as_default = true,
+      nerd_font_variant = 'normal',
     },
     completion = {
+      list = {
+        selection = { preselect = false, auto_insert = true }
+      },
+      -- ghost_text = {
+      --   enabled = false,
+      --   show_with_selection = true,
+      -- },
       menu = {
         draw = {
-          -- columns = { { 'item_idx' }, { 'kind_icon' }, { 'label', gap = 1 } },
-          -- components = {
-          --   label = {
-          --     text = function(ctx)
-          --       return require("colorful-menu").blink_components_text(ctx)
-          --     end,
-          --     highlight = function(ctx)
-          --       return require("colorful-menu").blink_components_highlight(ctx)
-          --     end,
-          --   },
-          --   item_idx = {
-          --     text = function(ctx) return ctx.idx == 10 and '0' or ctx.idx >= 10 and ' ' or tostring(ctx.idx) end,
-          --     highlight = 'BlinkCmpItemIdx' -- optional, only if you want to change its color
-          --   }
-          -- },
-          columns = { { "kind_icon" }, { "label", gap = 1 } },
-          components = {
-            label = {
-              text = require("colorful-menu").blink_components_text,
-              highlight = require("colorful-menu").blink_components_highlight,
-            },
-          },
-        }
-      },
-      documentation = {
-        window = {
-          border = "single",
+          -- source_id
+          columns = { { "label", gap = 1 }, { "kind_icon" }, {"kind" }, {"source_name" } },
         }
       }
     },
-    signature = { window = { border = 'single' } },
-    cmdline = { enabled = true },
+    signature = { enabled = true },
+    cmdline = {
+      enabled = true,
+      sources = function()
+        local type = vim.fn.getcmdtype()
+        if type == '/' or type == '?' then return { 'buffer' } end
+        if type == ':' or type == '@' then return { 'cmdline' } end
+        return {}
+      end,
+    },
     sources = {
       default = { "lsp", "path", "snippets", "buffer", "copilot", "ripgrep" },
       providers = {

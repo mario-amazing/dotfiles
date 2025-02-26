@@ -1,7 +1,6 @@
 vim.cmd 'source ~/.config/nvim/lua/vim_modules/misc.vim'
 
 require('lazy-conf')
-require('plugins/configs/alpha-nvim')
 require('set-s')
 require('let-s')
 require('helpers')

@@ -90,10 +90,6 @@ require('colorizer').setup({
     }})
 
 
--- friendly-snippets
-require("luasnip.loaders.from_vscode").lazy_load()
-
-
 -- boole.nvim
 require('boole').setup({
   mappings = {

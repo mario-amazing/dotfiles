@@ -2,7 +2,6 @@ return {
   -- #UI
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },  -- highlight syntax
   { "nvim-treesitter/playground" }, -- :TSPlaygroundToggle  treesitter information
-  { 'goolord/alpha-nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } }, -- startup window
   { "olimorris/persisted.nvim", config = true }, -- manage sessions
 
   -- Motion
@@ -99,7 +98,6 @@ return {
 
   -- Snippets
   ------------------------------
-  { "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } }, -- snippets collection
   { "mattn/emmet-vim", commit = "3fb2f63" },        -- html tags expand div>h1
 
   -- Tags
