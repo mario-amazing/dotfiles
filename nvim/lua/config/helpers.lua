@@ -61,8 +61,10 @@ end
 
 -- SmartGF
 function VimBundlePackage()
-  local type = vim.fn.expand('%:t')
-  if ( type ~= 'bundles.vim' and type ~= 'plugins.lua' and type ~= 'bundles.lua') then return false end
+  local path = vim.fn.expand('%:p')
+  local type = vim.fn.expand('%:e')
+
+  if not path:match('/lua/') or (type ~= 'lua' and type ~= 'vim') then return false end
 
   local pattern = "['\"][^/]*/[^'\"]*['\"]"
   local line_text = vim.api.nvim_get_current_line()

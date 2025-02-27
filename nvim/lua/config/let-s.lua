@@ -16,17 +16,11 @@ vim.g.bookmark_annotation_sign = ' ﮉ'
 vim.g.bookmark_show_toggle_warning = 0
 vim.g.bookmark_center = 1
 
--- vim-over
-vim.g.over_command_line_prompt = ':'
-
 -- tabular
 vim.g.tabular_default_format = "l0"
 
 -- gitv
 vim.g.Gitv_DoNotMapCtrlKey = 1
-
--- lightspeed
-vim.g.lightspeed_no_default_keymaps  =true
 
 -- " vvv https://github.com/terryma/vim-expand-region
 vim.g.expand_region_text_objects = {
@@ -48,10 +42,6 @@ vim.g.operator_sandwich_no_default_key_mappings = 1
 
 -- vim-matchup
 vim.g.matchup_matchparen_offscreen = {['method'] = 'popup'}
-
--- vim-floaterm
-vim.g.floaterm_width = 0.9
-vim.g.floaterm_height = 0.9
 
 -- vim-gutentags
 vim.g.gutentags_enabled = 1

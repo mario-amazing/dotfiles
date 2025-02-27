@@ -33,10 +33,6 @@ map('n', '<C-f><C-t>', '<cmd>Telescope filetypes<CR>')
 map('n', '<C-f><C-g>', '<cmd>Telescope live_grep<CR>')
 map('n', '<Leader>mc', '<cmd>Telescope find_files cwd=~/.config/nvim/lua<CR>')
 
--- persisted.nvim
-map('n', '<Leader>sl', '<cmd>SessionLoadLast<cr>', { silent = true })
-map('n', '<Leader>ss', '<cmd>Telescope persisted<cr>', { silent = true })
-
 -- sibling-swap.nvim
 map("n", "<a-,>", "<cmd>lua require('sibling-swap').swap_with_left()<CR>")
 map("n", "<a-.>", "<cmd>lua require('sibling-swap').swap_with_right()<CR>")
@@ -50,16 +46,6 @@ map('n', '<CR>', '<cmd>nohl<CR><cmd><Esc>')
 
 -- nvim-colorizer
 map('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { silent = true})
-
--- undoquit.vim
-map('n', '<C-w>u', '<cmd>Undoquit', { silent = true})
-map('n', '<C-w><C-u>', '<cmd>Undoquit', { silent = true})
-
--- lightspeed
--- map('n', 'gs', '<Plug>Lightspeed_s', { silent = true })
--- map('n', 'gS', '<Plug>Lightspeed_S', { silent = true })
-map('n', 'f',  '<Plug>Lightspeed_f', { silent = true })
-map('n', 'F',  '<Plug>Lightspeed_F', { silent = true })
 
 -- Breakpoints
 map('n', '<F5>',      RemoveBreakpoints, {silent = true })
@@ -80,7 +66,7 @@ map('v', 'v',     '<Plug>(expand_region_expand)')
 map('v', '<C-v>', '<Plug>(expand_region_shrink)')
 
 -- nvim-ts-context-commentstring(<Plug>ContextCommentary run vim-commentary)
-map('v', 'c', '<Plug>Commentary')
+map('v', 'c', '<Plug>ContextCommentary')
 
 -- vim-easy-align
 map({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)')
@@ -139,12 +125,6 @@ map({'n', 'i'}, '<C-c>', '<Esc>', { silent = true })
 map('i', '<C-d>', '<Delete>')
 map('n', '<S-u>', "<cmd>redo<CR>")
 
--- vim-floaterm
-map('n', '<A-t>', '<CMD>FloatermToggle<CR>')
-map('t', '<A-t>', '<C-\\><C-n><CMD>FloatermToggle<CR>')
--- NOTE lazygit uses <esc> and floaterm uses <C-\\><C-n>
-map('t', '<Esc>', function() return vim.bo.filetype == "floaterm" and "<C-\\><C-n>" or "<Esc>" end, {expr = true})
-
 -- scroll moves
 map('n', 'j',     'gj')          -- scroll by long line
 map('n', 'k',     'gk')
@@ -187,12 +167,6 @@ map('v', '<', '<gv', { silent = true })
 map('v', '>', '>gv', { silent = true })
 map('v', '=', '=gv', { silent = true })
 map('n', '=', '==',  { silent = true })
-
--- substitute
-map('n', '<Leader>f<S-s>', ':%s/')
-map('v', '<Leader>f<S-s>', ':s/')
-map('n', '<Leader>fs', ':OverCommandLine<CR>%s/', { silent = true })
-map('v', '<Leader>fs', ':OverCommandLine<CR>s/',  { silent = true })
 
 -- name of file
 map('n', 'yn', "<cmd>let @+ = substitute(expand('%'), '^'.getcwd().'/', '', '')<CR>")

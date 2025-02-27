@@ -35,8 +35,7 @@
 
 #### Visual substitute
 ```
-<Leader>fs :OverCommandLine<CR>%s/
-<Leader>fs :OverCommandLine<CR>s/
+<Leader>fs
 ```
 
 #### Plug 'nat-418/boole.nvim'
