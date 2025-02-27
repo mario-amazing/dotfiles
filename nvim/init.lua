@@ -1,12 +1,12 @@
 vim.cmd 'source ~/.config/nvim/lua/vim_modules/misc.vim'
 
-require('lazy-conf')
-require('set-s')
-require('let-s')
-require('helpers')
-require('init')
-require('mappings')
-require('autocmds')
+require('config/lazy-conf')
+require('config/set-s')
+require('config/let-s')
+require('config/helpers')
+require('config/init')
+require('config/mappings')
+require('config/autocmds')
 
 -- ======== Tips:
 -- :source $MYVIMRC -> reload config
