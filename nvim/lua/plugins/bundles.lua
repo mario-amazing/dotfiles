@@ -1,12 +1,7 @@
 return {
   -- Motion
   ----------------------
-  -- { "bkad/CamelCaseMotion" },
-  {
-    "chrisgrieser/nvim-spider",
-    lazy = true,
-    dependencies = { { "rami3l/nvim-spider-utf8", build = "rockspec" } },
-  }, -- navigation w, e, b motions like a spider. Move by subwords and skip insignificant punctuation.
+  { "bkad/CamelCaseMotion", lazy = false }, -- navigation w, e, b motions like a spider. Move by subwords and skip insignificant punctuation.
 
   -- Telescop
   ------------------------------

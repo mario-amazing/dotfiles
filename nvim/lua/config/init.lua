@@ -112,7 +112,4 @@ require('move').setup({
 require("telescope-all-recent").setup({})
 
 
-require("spider").setup { skipInsignificantPunctuation = true }
-
-
 require('nvim-ts-autotag').setup({})

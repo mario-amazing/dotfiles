@@ -1,4 +1,5 @@
 {
+  "CamelCaseMotion": { "branch": "master", "commit": "de439d7c06cffd0839a29045a103fe4b44b15cdc" },
   "alpha-nvim": { "branch": "main", "commit": "de72250e054e5e691b9736ee30db72c65d560771" },
   "blink-cmp-copilot": { "branch": "main", "commit": "439cff78780c033aa23cf061d7315314b347e3c1" },
   "blink-ripgrep.nvim": { "branch": "main", "commit": "e45cb2cb444ea909574b509e9719e23988ee9348" },
@@ -14,7 +15,6 @@
   "git.nvim": { "branch": "main", "commit": "164daed4eff61bd6bee6f1c97cb78144b9374022" },
   "gitsigns.nvim": { "branch": "main", "commit": "4c40357994f386e72be92a46f41fc1664c84c87d" },
   "gruvbox.nvim": { "branch": "main", "commit": "089b60e92aa0a1c6fa76ff527837cd35b6f5ac81" },
-  "hererocks": { "branch": "master", "commit": "c9c5444dea1e07e005484014a8231aa667be30b6" },
   "lasterisk.nvim": { "branch": "main", "commit": "bbcfcaeca50f686e338a03386e41645fc3305f44" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lazygit.nvim": { "branch": "main", "commit": "b9eae3badab982e71abab96d3ee1d258f0c07961" },
@@ -30,8 +30,6 @@
   "nvim-lspconfig": { "branch": "master", "commit": "99c75820f2606b6b446cad7c75ec2ef7ee8a1317" },
   "nvim-pasta": { "branch": "main", "commit": "7cc66bcf7101e40a6184b46a37eff0d5a43bde8d" },
   "nvim-rip-substitute": { "branch": "main", "commit": "13aff77083c48e335ea71cd65033d829eb0c9566" },
-  "nvim-spider": { "branch": "main", "commit": "2b38e3e95e143313d78ca098eeecda7aebfce925" },
-  "nvim-spider-utf8": { "branch": "master", "commit": "079c8c8b9a65cc7adba01a1df48e00c5003799dd" },
   "nvim-surround": { "branch": "main", "commit": "ae298105122c87bbe0a36b1ad20b06d417c0433e" },
   "nvim-tree.lua": { "branch": "master", "commit": "6709463b2d18e77f7a946027917aa00d4aaed6f4" },
   "nvim-treesitter": { "branch": "master", "commit": "8f87d28442f7f91347e993661c319135f47729c7" },
