@@ -25,13 +25,13 @@ if defined?(Rails)
   Pry.commands.alias_command "rr",  'show-routes' rescue nil
   Pry.commands.alias_command "rrg", 'show-routes --grep' rescue nil
 
-  if defined?(Rails::ConsoleMethods)
-    include Rails::ConsoleMethods
+  # if defined?(Rails::ConsoleMethods)
+  #   include Rails::ConsoleMethods
 
     Pry::Commands.block_command 're', 'Alias for "reload!"', keep_retval: false do
       TOPLEVEL_BINDING.eval("self").send("reload!")
     end
-  end
+  # end
 
   def rdb
     ActiveRecord::Migrator.migrate "db/migrate"

@@ -2,6 +2,7 @@
 return {
   {
     "ggandor/lightspeed.nvim", -- manage sessions
+    lazy = false,
     config = function()
       require('lightspeed').setup {
         ignore_case = true,

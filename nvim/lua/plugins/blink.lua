@@ -5,8 +5,6 @@ return {
   lazy = false, -- lazy loading handled internally
   dependencies = {
     "rafamadriz/friendly-snippets",
-    "zbirenbaum/copilot.lua",
-    "giuxtaposition/blink-cmp-copilot",
     "mikavilpas/blink-ripgrep.nvim",
     -- 'L3MON4D3/LuaSnip', version = 'v2.*', build = "make install_jsregexp"
   },
@@ -37,6 +35,9 @@ return {
       nerd_font_variant = 'normal',
     },
     completion = {
+      keyword = {
+        range = 'full',
+      },
       list = {
         selection = { preselect = false, auto_insert = true }
       },
@@ -62,28 +63,13 @@ return {
       end,
     },
     sources = {
-      default = { "lsp", "path", "snippets", "buffer", "copilot", "ripgrep" },
+      default = { "lsp", "path", "snippets", "buffer", "ripgrep" },
       providers = {
-        copilot = {
-          name = "copilot",
-          module = "blink-cmp-copilot",
-          score_offset = 100,
-          async = true,
-          transform_items = function(_, items)
-            local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-            local kind_idx = #CompletionItemKind + 1
-            CompletionItemKind[kind_idx] = "Copilot"
-            for _, item in ipairs(items) do
-              item.kind = kind_idx
-            end
-            return items
-          end,
-        },
         ripgrep = {
           module = "blink-ripgrep",
           name = "Ripgrep",
           opts = {
-            prefix_min_len = 3,
+            prefix_min_len = 2,
             context_size = 5,
             max_filesize = "1M",
             additional_rg_options = {},
