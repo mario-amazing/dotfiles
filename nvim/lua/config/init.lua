@@ -22,28 +22,6 @@ require('telescope').load_extension('vim_bookmarks')
 require("telescope").load_extension("persisted")
 
 
-require('nvim-treesitter.configs').setup {
-  highlight = { enable = true },
-  indent = { enable = true }, -- alternative vim.lsp.buf.formatting
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn", -- set to `false` to disable one of the mappings
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    },
-  },
-  ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", 'tsx', "css", "scss", "regex", "yaml", "bash", "astro", "markdown", "markdown_inline", "python", "nginx" },
-
-  -- extension vim-matchup
-  matchup = { enable = true, disable_virtual_text = true },
-  -- extension nvim-ts-autotag
-  autotag = { enable = true },
-  -- playground
-  playground = { enable = true },
-}
-
 local prettierd_formatter = function()
   return {
     exe = "prettierd",
@@ -59,22 +37,6 @@ require('formatter').setup({
     astro = prettierd_formatter
   }
 })
-
-require('lightspeed').setup {
-  ignore_case = true,
-  repeat_ft_with_target_char = true,
-}
-
-
--- nvim-tree
-require('nvim-tree').setup {
-  on_attach = on_attach_nvim_tree,
-  update_focused_file = { update_cwd = true },
-  filters = { dotfiles = true },
-  git = { ignore = false },
-  tab = { sync = { open = false, close = true, ignore = {} } },
-}
-
 
 -- You can use treesitter to check for a pair.
 require('nvim-autopairs').setup({ disable_filetype = { "TelescopePrompt" , --[["vim"]] } })
@@ -98,10 +60,6 @@ require('colorizer').setup({
       css      = true;         -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
       css_fn   = true;         -- Enable all CSS *functions*: rgb_fn, hsl_fn
     }})
-
-
--- friendly-snippets
-require("luasnip.loaders.from_vscode").lazy_load()
 
 
 -- boole.nvim
@@ -154,4 +112,4 @@ require('move').setup({
 require("telescope-all-recent").setup({})
 
 
-require("spider").setup { skipInsignificantPunctuation = true }
+require('nvim-ts-autotag').setup({})

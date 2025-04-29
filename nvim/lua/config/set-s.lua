@@ -18,7 +18,7 @@ set.ignorecase = true -- search(/) without case
 set.number = true -- line numbers
 set.signcolumn="yes:1" -- add signcolumn to the left of the numbers
 
-set.spelllang='ru_yo,en_us' -- languages words will be recognized
+-- set.spelllang='ru_ru,en_us' -- languages words will be recognized SPELLCHECKING
 
 set.ts = 2
 set.sw = 2
@@ -64,8 +64,3 @@ set.tags = set.tags + 'tags,.git/tags'
 
 -- nvim-cmp
 set.completeopt = { 'menu', 'menuone', 'noselect' }
-
--- nvim-treesitter
-set.foldmethod = 'manual'
-set.foldexpr = 'nvim_treesitter#foldexpr()'
-set.foldenable = false -- Disable folding at startup.

@@ -59,23 +59,12 @@ end
 -- TrimWhiteSpace
 
 
--- nvim-tree
-local nvimTree_full_size_toggled = false
-function toggle_full_width()
-  if nvimTree_full_size_toggled then
-    require'nvim-tree.view'.resize(30)
-  else
-    require'nvim-tree.view'.resize(100)
-  end
-  nvimTree_full_size_toggled = not nvimTree_full_size_toggled
-end
--- nvim-tree
-
-
 -- SmartGF
 function VimBundlePackage()
-  local type = vim.fn.expand('%:t')
-  if ( type ~= 'bundles.vim' and type ~= 'plugins.lua' and type ~= 'bundles.lua') then return false end
+  local path = vim.fn.expand('%:p')
+  local type = vim.fn.expand('%:e')
+
+  if not path:match('/lua/') or (type ~= 'lua' and type ~= 'vim') then return false end
 
   local pattern = "['\"][^/]*/[^'\"]*['\"]"
   local line_text = vim.api.nvim_get_current_line()

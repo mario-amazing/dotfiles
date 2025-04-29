@@ -25,10 +25,6 @@ map('x', 'gn', ':tnext<CR>', { silent = true })
 -- Bookmarks with telescope-vim-bookmarks.nvim
 map('n', 'ma', '<cmd>Telescope vim_bookmarks all<CR>')
 
--- Navigation nvim-tree
-map('n', '<Leader>t',  '<cmd>NvimTreeToggle<CR>', { silent = true })
-map('n', '<Leader>ft', '<cmd>NvimTreeFindFile<CR>', { silent = true })
-
 -- Telescope
 map('n', '<C-p>',      '<cmd>Telescope find_files find_command=rg,--hidden,--no-ignore-vcs,--files,--ignore-file,'..vim.fn.expand('~/.config/.ignore')..'<CR>')
 -- map('n', '<C-p>',      '<cmd>Telescope find_files find_command=rg,--hidden,--no-ignore-vcs,--files<CR>')
@@ -36,28 +32,6 @@ map('n', '<C-f><C-m>', '<cmd>Telescope oldfiles<cr>')
 map('n', '<C-f><C-t>', '<cmd>Telescope filetypes<CR>')
 map('n', '<C-f><C-g>', '<cmd>Telescope live_grep<CR>')
 map('n', '<Leader>mc', '<cmd>Telescope find_files cwd=~/.config/nvim/lua<CR>')
--- LSP
---map('n', '<space>=',  vim.lsp.buf.formatting, { silent = true })
-map('n', 'gd',        '<cmd>Telescop lsp_definitions<cr>', { silent = true })
-map('n', 'gr',        '<cmd>Telescop lsp_references<cr>', { silent = true })
-map('n', '<space>y',  '<cmd>Telescop lsp_document_symbols<cr>', { silent = true })
-map('n', '<space>i',  '<cmd>Telescop lsp_incoming_calls<cr>', { silent = true })
-map('n', '<space>o',  '<cmd>Telescop lsp_outgoing_calls<cr>', { silent = true })
-map('n', '<space>da', '<cmd>Telescop diagnostics<cr>', { silent = true })
--- lspsaga.nvim
-map('n', '<space>dt', ToggleDiagnostics, {silent = true})
-map('n', '<space>dl', "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
-map('n', '<space>n',  "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
-map('n', '<space>p',  "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
-map("n", '<space>a',  "<cmd>Lspsaga code_action<CR>", { silent = true })
-map('n', '<space>h',  "<cmd>Lspsaga hover_doc<CR>", {silent = true})
-map('n', '<space>r',  "<cmd>Lspsaga rename<CR>", {silent = true})
-map('n', '<space>f',  "<cmd>Lspsaga lsp_finder<CR>", {silent = true})
-map('n', '<space>e',  "<cmd>Lspsaga peek_definition<CR>", {silent = true})
-
--- persisted.nvim
-map('n', '<Leader>sl', '<cmd>SessionLoadLast<cr>', { silent = true })
-map('n', '<Leader>ss', '<cmd>Telescope persisted<cr>', { silent = true })
 
 -- sibling-swap.nvim
 map("n", "<a-,>", "<cmd>lua require('sibling-swap').swap_with_left()<CR>")
@@ -72,16 +46,6 @@ map('n', '<CR>', '<cmd>nohl<CR><cmd><Esc>')
 
 -- nvim-colorizer
 map('n', '<Leader>ct', '<cmd>ColorizerToggle<CR>', { silent = true})
-
--- undoquit.vim
-map('n', '<C-w>u', '<cmd>Undoquit', { silent = true})
-map('n', '<C-w><C-u>', '<cmd>Undoquit', { silent = true})
-
--- lightspeed
--- map('n', 'gs', '<Plug>Lightspeed_s', { silent = true })
--- map('n', 'gS', '<Plug>Lightspeed_S', { silent = true })
-map('n', 'f',  '<Plug>Lightspeed_f', { silent = true })
-map('n', 'F',  '<Plug>Lightspeed_F', { silent = true })
 
 -- Breakpoints
 map('n', '<F5>',      RemoveBreakpoints, {silent = true })
@@ -102,7 +66,7 @@ map('v', 'v',     '<Plug>(expand_region_expand)')
 map('v', '<C-v>', '<Plug>(expand_region_shrink)')
 
 -- nvim-ts-context-commentstring(<Plug>ContextCommentary run vim-commentary)
-map('v', 'c', '<Plug>Commentary')
+map('v', 'c', '<Plug>ContextCommentary')
 
 -- vim-easy-align
 map({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)')
@@ -129,14 +93,10 @@ map('n', '<Leader>fp', '<cmd>FormatWrite<CR>', { silent = true })
 -- switch.vim
 map('n', "-", ":Switch<CR>", { remap = true })
 
--- -- nvim-spider
-map({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
-map({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
-map({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
 -- CamelCaseMotion
--- map('', '<S-W>', '<Plug>CamelCaseMotion_w')
--- map('', '<S-B>', '<Plug>CamelCaseMotion_b')
--- map('', '<S-E>', '<Plug>CamelCaseMotion_e')
+map('', '<S-W>', '<Plug>CamelCaseMotion_w')
+map('', '<S-B>', '<Plug>CamelCaseMotion_b')
+map('', '<S-E>', '<Plug>CamelCaseMotion_e')
 
 -- fedepujol/move.nvim
 map('n', '<A-j>', ':MoveLine(1)<CR>', { silent = true })
@@ -160,12 +120,6 @@ map('n', '<C-s>', '<cmd>write<CR>')
 map({'n', 'i'}, '<C-c>', '<Esc>', { silent = true })
 map('i', '<C-d>', '<Delete>')
 map('n', '<S-u>', "<cmd>redo<CR>")
-
--- vim-floaterm
-map('n', '<A-t>', '<CMD>FloatermToggle<CR>')
-map('t', '<A-t>', '<C-\\><C-n><CMD>FloatermToggle<CR>')
--- NOTE lazygit uses <esc> and floaterm uses <C-\\><C-n>
-map('t', '<Esc>', function() return vim.bo.filetype == "floaterm" and "<C-\\><C-n>" or "<Esc>" end, {expr = true})
 
 -- scroll moves
 map('n', 'j',     'gj')          -- scroll by long line
@@ -209,12 +163,6 @@ map('v', '<', '<gv', { silent = true })
 map('v', '>', '>gv', { silent = true })
 map('v', '=', '=gv', { silent = true })
 map('n', '=', '==',  { silent = true })
-
--- substitute
-map('n', '<Leader>f<S-s>', ':%s/')
-map('v', '<Leader>f<S-s>', ':s/')
-map('n', '<Leader>fs', ':OverCommandLine<CR>%s/', { silent = true })
-map('v', '<Leader>fs', ':OverCommandLine<CR>s/',  { silent = true })
 
 -- name of file
 map('n', 'yn', "<cmd>let @+ = substitute(expand('%'), '^'.getcwd().'/', '', '')<CR>")

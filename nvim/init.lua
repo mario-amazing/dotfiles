@@ -1,19 +1,12 @@
 vim.cmd 'source ~/.config/nvim/lua/vim_modules/misc.vim'
 
-require('pre-bundles-config')
-require('bundles')
-require('plugins/alpha-nvim')
-require('colors')
-require('set-s')
-require('let-s')
-require('helpers')
-require('nvim-tree-on-attach')
-require('init')
-require('lsp')
-require('mappings')
-require('lualine_nvim')
-require('autocmds')
-require('completion')
+require('config/lazy-conf')
+require('config/set-s')
+require('config/let-s')
+require('config/helpers')
+require('config/init')
+require('config/mappings')
+require('config/autocmds')
 
 -- ======== Tips:
 -- :source $MYVIMRC -> reload config

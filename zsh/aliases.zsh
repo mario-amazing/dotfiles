@@ -106,7 +106,7 @@ alias eph="nvim ~/.pryrc_helpers.rb"
 # alias rc='bundle exec rails c'
 # alias drc='dotenv bundle exec rails c'
 # alias rs='bundle exec rails s'
-alias rsb='bundle exec rails s -b 0.0.0.0'
+alias rsb='rails s -b 0.0.0.0'
 
 # alias rdm='bundle exec rake db:migrate'
 # alias rdr='bundle exec rake db:rollback'
