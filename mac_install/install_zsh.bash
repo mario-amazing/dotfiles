@@ -23,6 +23,8 @@ install_zsh() {
   ln -vsf "$ROOT_DIR/zsh/aliases.zsh" "$HOME/.zsh"
   ln -vsf "$ROOT_DIR/zsh/kuberaliases.zsh" "$HOME/.zsh"
 
+  ln -vsf "$ROOT_DIR/zsh/iterm2-color-ssh.zsh" "$HOME/.oh-my-zsh/custom"
+
   chsh -s /bin/zsh
 }
 
