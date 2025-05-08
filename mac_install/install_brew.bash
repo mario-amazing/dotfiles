@@ -7,6 +7,7 @@ install_brew() {
   echo_title "!!!BREW INSTALATION!!!"
 
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  export PATH="/opt/homebrew/bin:$PATH"
   brew update && brew upgrade
 }
 

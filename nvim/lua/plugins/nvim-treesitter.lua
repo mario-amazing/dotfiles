@@ -2,6 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",  -- highlight syntax
     event = { "BufReadPre", "BufNewFile" },
+    lazy = false,
     build = ":TSUpdate",
     dependencies = {
       "andymass/vim-matchup"

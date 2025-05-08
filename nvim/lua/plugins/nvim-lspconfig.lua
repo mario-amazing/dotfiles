@@ -49,8 +49,12 @@ function M.config()
     ui = { colors = { normal_bg = '#1a1a14' } }
   })
   require("mason").setup()
+  require("mason-lspconfig").setup({
+    ensure_installed = { "html", "ts_ls", "cssls", "dockerls", "jsonls", "yamlls", "vimls", "tailwindcss", "astro", "pyright", "emmet_language_server" },
+    -- automatic_installation = { exclude = { "solargraph" } }
+  })
+
   local lspconfig = require("lspconfig")
-  local mason_lspconfig = require("mason-lspconfig")
   local capabilities = require('blink.cmp').get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities.textDocument.foldingRange = {
