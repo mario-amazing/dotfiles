@@ -8,7 +8,11 @@ return {
   { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } }, -- bookmarks telescop visual
   { 'tom-anders/telescope-vim-bookmarks.nvim' }, -- bookmarks telescop visual
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- fuzzy search
-  { 'prochri/telescope-all-recent.nvim', dependencies = { "nvim-telescope/telescope.nvim", "kkharji/sqlite.lua", "stevearc/dressing.nvim" } },
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = { 'mollerhoj/telescope-recent-files.nvim' },
+    config = function() require("telescope").load_extension("recent-files") end
+  },
   -- TODO think about add projects https://github.com/nvim-telescope/telescope-project.nvim or https://github.com/cljoly/telescope-repo.nvim
 
   -- Git

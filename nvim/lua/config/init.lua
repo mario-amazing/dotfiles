@@ -11,6 +11,9 @@ require('telescope').setup{
     prompt_prefix = "🔎 ",
   },
   pickers = {
+    oldfiles = {
+      cwd_only = true,
+    },
     find_files = {
       -- theme = "dropdown",
       hidden = true,
@@ -94,9 +97,6 @@ require('treesj').setup({
 })
 
 
-require('dressing').setup({ input = { enabled = false }})
-
-
 require('ts_context_commentstring').setup {
   enable_autocmd = false,
 }
@@ -107,9 +107,6 @@ require('move').setup({
   line = { indent = false },
   block = { indent = false }
 })
-
-
-require("telescope-all-recent").setup({})
 
 
 require('nvim-ts-autotag').setup({})

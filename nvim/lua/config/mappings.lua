@@ -26,9 +26,10 @@ map('x', 'gn', ':tnext<CR>', { silent = true })
 map('n', 'ma', '<cmd>Telescope vim_bookmarks all<CR>')
 
 -- Telescope
-map('n', '<C-p>',      '<cmd>Telescope find_files find_command=rg,--hidden,--no-ignore-vcs,--files,--ignore-file,'..vim.fn.expand('~/.config/.ignore')..'<CR>')
--- map('n', '<C-p>',      '<cmd>Telescope find_files find_command=rg,--hidden,--no-ignore-vcs,--files<CR>')
-map('n', '<C-f><C-m>', '<cmd>Telescope oldfiles<cr>')
+-- map('n', '<C-p>',      '<cmd>Telescope find_files find_command=rg,--hidden,--no-ignore-vcs,--files,--ignore-file,'..vim.fn.expand('~/.config/.ignore')..'<CR>')
+map('n', '<C-p>',      '<cmd>Telescope find_files<CR>')
+map('n', '<C-f><C-m>', function() require('telescope').extensions['recent-files'].recent_files({}) end, { silent = true })
+-- map('n', '<C-f><C-m>', '<cmd>Telescope oldfiles<cr>')
 map('n', '<C-f><C-t>', '<cmd>Telescope filetypes<CR>')
 map('n', '<C-f><C-g>', '<cmd>Telescope live_grep<CR>')
 map('n', '<Leader>mc', '<cmd>Telescope find_files cwd=~/.config/nvim/lua<CR>')
