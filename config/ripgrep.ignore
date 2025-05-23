@@ -1,21 +1,18 @@
-log/*
-
+log/
 tmp/
 .git/
+node_modules/
+coverage/
+
+tags
 *.swp
 *.swo
 *~
-tags
 *.DS_Store
-coverage/
 
-public/uploads/
 public/assets/
+public/packs/
 
-/node_modules
-/public/packs
-public/packs/development/
-/public/packs-test
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
