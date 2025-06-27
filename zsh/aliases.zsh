@@ -54,7 +54,7 @@ alias gshl="git stash list"
 alias gshC="git stash clear"
 
 alias gco='git checkout'
-alias gcom='git checkout master'
+alias gcom='git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")'
 alias gcod='git checkout develop'
 alias gd='git diff'
 

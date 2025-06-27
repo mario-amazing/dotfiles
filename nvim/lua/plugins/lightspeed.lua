@@ -1,4 +1,5 @@
 -- easymotion(s/S) + f{char} improved
+vim.g.lightspeed_no_default_keymaps = true
 return {
   {
     "ggandor/lightspeed.nvim", -- manage sessions
@@ -8,8 +9,6 @@ return {
         ignore_case = true,
         repeat_ft_with_target_char = true,
       }
-
-      vim.g.lightspeed_no_default_keymaps = true
 
       vim.keymap.set('n', 'gs', '<Plug>Lightspeed_s', { silent = true })
       vim.keymap.set('n', 'gS', '<Plug>Lightspeed_S', { silent = true })

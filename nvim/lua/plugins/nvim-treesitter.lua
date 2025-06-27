@@ -24,7 +24,7 @@ return {
             node_decremental = "grm",
           },
         },
-        ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", 'tsx', "css", "scss", "regex", "yaml", "bash", "astro", "markdown", "markdown_inline", "python", "nginx" },
+        ensure_installed = { "ruby", 'vim', "lua", 'dockerfile', 'html', 'json', "javascript", "typescript", 'tsx', "css", "scss", "regex", "yaml", "bash", "astro", "markdown", "markdown_inline", "python", "nginx", "go" },
 
         -- extension vim-matchup
         matchup = { enable = true, disable_virtual_text = true },

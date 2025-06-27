@@ -37,6 +37,7 @@ require('formatter').setup({
   logging = false,
   filetype = {
     javascript = prettierd_formatter,
+    javascriptreact = prettierd_formatter,
     astro = prettierd_formatter
   }
 })
@@ -104,8 +105,8 @@ require('ts_context_commentstring').setup {
 
 -- fedepujol/move.nvim
 require('move').setup({
-  line = { indent = false },
-  block = { indent = false }
+  line = { indent = true },
+  block = { indent = true }
 })
 
 

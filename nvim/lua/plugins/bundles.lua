@@ -37,7 +37,6 @@ return {
   { "Wansmer/sibling-swap.nvim", dependencies = { 'nvim-treesitter' } }, -- Move an item in a delimiter-separated list left or right(S-h/S-l)
   { "Wansmer/treesj", event = { "BufReadPre", "BufNewFile" }, dependencies = { 'nvim-treesitter/nvim-treesitter' } },            -- Main Split/Join -> fallback to splitjoin.vim
   { "nat-418/boole.nvim" },        -- CTRL-A/CTRL-X to increment dates, times, and more
-  { "hrsh7th/nvim-pasta", event = "VeryLazy" },        -- smart paste, override (p and P)!!!
   { "fedepujol/move.nvim" },       -- Move lines and blocks
 
   { "kylechui/nvim-surround", version = "*", event = "VeryLazy" }, -- Manage code surroundings(quotes, parenthesis, brackets, *ml-tags etc.)
@@ -86,7 +85,7 @@ return {
 
   -- Snippets
   ------------------------------
-  { "mattn/emmet-vim", commit = "3fb2f63", lazy = false },        -- html tags expand div>h1
+  { "mattn/emmet-vim", lazy = false },        -- html tags expand div>h1
 
   -- Tags
   { "ludovicchabant/vim-gutentags", lazy = false },

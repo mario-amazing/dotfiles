@@ -110,10 +110,6 @@ map('v', '<A-l>', ':MoveHBlock(1)<CR>', { silent = true })
 map('v', '<A-h>', ':MoveHBlock(-1)<CR>', { silent = true })
 
 ----------------------- COMMON -----------------------
--- nvim-pasta
-map({ 'n', 'x' }, 'p', require('pasta.mapping').p)
-map({ 'n', 'x' }, 'P', require('pasta.mapping').P)
-
 -- Misc
 map('n', '<S-q>', '<cmd>q<CR>', { silent = true})
 map('n', '<leader>q', '<cmd>qa<CR>', { silent = true})

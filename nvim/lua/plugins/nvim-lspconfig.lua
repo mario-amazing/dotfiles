@@ -34,7 +34,7 @@ local M = {
 
     require("mason").setup()
     require("mason-lspconfig").setup({
-      ensure_installed = { "html", "ts_ls", "cssls", "dockerls", "jsonls", "yamlls", "vimls", "tailwindcss", "astro", "pyright", "emmet_language_server" },
+      ensure_installed = { "html", "ts_ls", "cssls", "dockerls", "jsonls", "yamlls", "vimls", "tailwindcss", "astro", "pyright", "emmet_language_server", "solargraph" },
       -- automatic_installation = { exclude = { "solargraph" } }
     })
 
@@ -67,7 +67,7 @@ local M = {
       filetypes = {"html", "eruby"},
     }, lsp_opts))
 
-    vim.lsp.config('tsserver', lsp_opts)
+    vim.lsp.config('ts_ls', lsp_opts) -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ts_ls
     vim.lsp.config('solargraph', vim.tbl_deep_extend("force", {
       settings = {
         solargraph = {

@@ -73,6 +73,9 @@ Keyboard() {
   # max 2
   defaults write NSGlobalDomain KeyRepeat -float 2.0
   defaults write -g KeyRepeat -float 2.0
+
+  # ignore long button press
+  defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 }
 
 

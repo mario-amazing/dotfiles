@@ -11,6 +11,9 @@ install_programs(){
   softwareupdate --install-rosetta
 
   ##======= UI Applications
+  brew install --cask steam
+  brew install --cask appcleaner
+
   brew install --cask google-chrome
   brew install --cask opera
   brew install --cask yandex
@@ -39,8 +42,8 @@ install_programs(){
   brew install --cask keycastr
   brew install --cask vlc
 
-  brew install --cask steam
-  brew install --cask appcleaner
+  # Vim
+  brew install prettierd
 
   brew install --cask basictex
   # brew install --cask chromedriver

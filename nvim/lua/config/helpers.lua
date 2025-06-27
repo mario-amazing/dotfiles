@@ -9,8 +9,10 @@ local function BreakPointString()
 
   if ft == "ruby" then return ruby_bp_line end
   if ft == "eruby" or ft == "eruby.html" then return eruby_bp_line end
-  if ft == "javascript" or ft == "typescript" or ft == "typescriptreact" then return js_bp_line end
+  if ft == "javascript" or ft == "typescript" or ft == "typescriptreact" or ft == "javascriptreact" then return js_bp_line end
   if ft == "python" then return python_bp_line end
+
+  return ''
 end
 
 function RemoveBreakpoints()
